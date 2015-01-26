@@ -29,7 +29,7 @@
 
 #include "Entity.h"
 
-#include "../welt/Welt.h"
+#include "../world/Welt.h"
 
 using namespace std;
 

@@ -39,7 +39,7 @@
 #include "../gui/Button.h"
 #include "../gui/Bild.h"
 #include "../gui/GrafikHandler.h"
-#include "../protokoll/Session.h"
+#include "../protocol/Session.h"
 #include "../exception/ExcSocketHTTPServerLoginFehlgeschlagen.h"
 #include "../thread/HTTPSessionAktualisierenThread.h"
 

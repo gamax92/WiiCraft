@@ -35,9 +35,9 @@
 #else /* __wii__ */
 #include <grrlib.h>
 #endif /* __wii__ */
-#include "../welt/Welt.h"
+#include "../world/Welt.h"
 #include "../entity/Spieler.h"
-#include "../welt/ChunkLaden.h"
+#include "../world/ChunkLaden.h"
 #include "GrafikHandler.h"
 #include "../util/GrrlibErsatz.h"
 

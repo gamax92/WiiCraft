@@ -28,7 +28,7 @@ SOURCES		:=	src \
 				src/menue \
 				src/net \
 				src/protokoll \
-				src/protokoll/paket \
+				src/protocol/paket \
 				src/thread \
 				src/util \
 				src/welt

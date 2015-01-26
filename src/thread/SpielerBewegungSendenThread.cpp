@@ -31,14 +31,14 @@
 
 #include <unistd.h>
 #include "../entity/Spieler.h"
-#include "../welt/ChunkLaden.h"
-#include "../protokoll/PaketClient.h"
-#include "../protokoll/paket/Paket0APlayer.h"
-#include "../protokoll/paket/Paket0BPlayerPosition.h"
-#include "../protokoll/paket/Paket0CPlayerLook.h"
-#include "../protokoll/paket/Paket0DPlayerPositionLook.h"
-#include "../protokoll/paket/PaketCAPlayerAbilities.h"
-#include "../protokoll/Verbindung.h"
+#include "../world/ChunkLaden.h"
+#include "../protocol/PaketClient.h"
+#include "../protocol/packet/Paket0APlayer.h"
+#include "../protocol/packet/Paket0BPlayerPosition.h"
+#include "../protocol/packet/Paket0CPlayerLook.h"
+#include "../protocol/packet/Paket0DPlayerPositionLook.h"
+#include "../protocol/packet/PaketCAPlayerAbilities.h"
+#include "../protocol/Verbindung.h"
 #include "../util/Debug.h"
 
 using namespace std;

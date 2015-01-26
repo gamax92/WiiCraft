@@ -36,7 +36,7 @@
 #include "../item/item/Item166Karte.h"
 #include "../exception/ExcItemUnbekanntesItem.h"
 #include "../exception/ExcSlot.h"
-#include "../menue/FehlerMenue.h"
+#include "../menu/FehlerMenue.h"
 #include "../util/Debug.h"
 
 using namespace std;

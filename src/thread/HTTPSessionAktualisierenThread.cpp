@@ -30,7 +30,7 @@
 #include "HTTPSessionAktualisierenThread.h"
 
 #include <unistd.h>
-#include "../protokoll/Session.h"
+#include "../protocol/Session.h"
 #include "../exception/ExcSocketHTTPServerRefreshFehlgeschlagen.h"
 
 using namespace std;

@@ -32,7 +32,7 @@
 #include <cstdio>
 #include "../net/Socket.h"
 #include "../net/DataOutputStream.h"
-#include "../protokoll/PaketClient.h"
+#include "../protocol/PaketClient.h"
 #include "../exception/ExcThreadGestoppt.h"
 #include "../util/Debug.h"
 

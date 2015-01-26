@@ -31,10 +31,10 @@
 
 #include "../net/Socket.h"
 #include "../net/DataInputStream.h"
-#include "../protokoll/PaketServer.h"
+#include "../protocol/PaketServer.h"
 #include "../exception/ExcSocketVerbindungVerloren.h"
 #include "../exception/ExcPaketUnbekanntesPaket.h"
-#include "../protokoll/Verbindung.h"
+#include "../protocol/Verbindung.h"
 
 using namespace std;
 

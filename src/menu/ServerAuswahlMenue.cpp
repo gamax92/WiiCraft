@@ -33,15 +33,15 @@
 #if defined _WIN32 || defined __CYGWIN__
 #include <iostream>
 #endif
-#include "../protokoll/Verbindung.h"
-#include "../protokoll/paket/Paket02Handshake.h"
+#include "../protocol/Verbindung.h"
+#include "../protocol/packet/Paket02Handshake.h"
 #include "../gui/Hintergrund.h"
 #include "../gui/TextFeld.h"
 #include "../gui/Text.h"
 #include "../gui/Button.h"
 #include "../gui/Bild.h"
 #include "../gui/GrafikHandler.h"
-#include "../protokoll/Session.h"
+#include "../protocol/Session.h"
 #include "../exception/ExcSocketHTTPServerLoginFehlgeschlagen.h"
 
 using namespace std;

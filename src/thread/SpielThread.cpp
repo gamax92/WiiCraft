@@ -30,14 +30,14 @@
 #include "SpielThread.h"
 
 #include <unistd.h>
-#include "../protokoll/Verbindung.h"
-#include "../menue/Intro.h"
-#include "../menue/UpdateMenue.h"
-#include "../menue/AnmeldungMenue.h"
-#include "../menue/ServerAuswahlMenue.h"
-#include "../menue/Anzeige3D.h"
-#include "../welt/Welt.h"
-#include "../welt/ChunkLaden.h"
+#include "../protocol/Verbindung.h"
+#include "../menu/Intro.h"
+#include "../menu/UpdateMenue.h"
+#include "../menu/AnmeldungMenue.h"
+#include "../menu/ServerAuswahlMenue.h"
+#include "../menu/Anzeige3D.h"
+#include "../world/Welt.h"
+#include "../world/ChunkLaden.h"
 #include "../entity/Spieler.h"
 
 using namespace std;

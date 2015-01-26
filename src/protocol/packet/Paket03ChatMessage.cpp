@@ -33,7 +33,7 @@
 #include "../../net/DataOutputStream.h"
 #include "../../net/DataInputStream.h"
 #include "../../exception/ExcSocketStringLaengeUeberschritten.h"
-#include "../../protokoll/Chat.h"
+#include "../../protocol/Chat.h"
 #include "../PaketManager.h"
 #include "../../util/Debug.h"
 

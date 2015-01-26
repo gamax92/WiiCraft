@@ -49,7 +49,7 @@
 
 #ifdef DEBUG_ON
 #include <time.h>
-#include "../welt/Welt.h"
+#include "../world/Welt.h"
 #include "../entity/Spieler.h"
 #endif
 

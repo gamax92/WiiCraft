@@ -31,7 +31,7 @@
 
 #include "ChunkLaden.h"
 
-#include "../welt/Chunk.h"
+#include "../world/Chunk.h"
 
 using namespace std;
 

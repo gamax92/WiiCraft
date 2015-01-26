@@ -30,7 +30,7 @@
 #include "PaketeVerarbeitenThread.h"
 
 #include <cstdio>
-#include "../protokoll/PaketServer.h"
+#include "../protocol/PaketServer.h"
 #include "../exception/ExcThreadGestoppt.h"
 #include "../util/Debug.h"
 

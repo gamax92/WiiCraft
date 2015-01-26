@@ -34,9 +34,9 @@
 #include "../../net/DataInputStream.h"
 #include "../../exception/ExcSocketStringLaengeUeberschritten.h"
 #include "../../entity/Spieler.h"
-#include "../../welt/Welt.h"
-#include "../../protokoll/Chat.h"
-#include "../../protokoll/ServerInfo.h"
+#include "../../world/Welt.h"
+#include "../../protocol/Chat.h"
+#include "../../protocol/ServerInfo.h"
 #include "../PaketManager.h"
 #include "../../util/Debug.h"
 
