@@ -56,31 +56,31 @@
  * 8	North - West
  */
 
-#include "Paket3DSoundParticleEffect.h"
+#include "Packet3DSoundParticleEffect.h"
 
 #include <cstdio>
 #include "../../net/DataInputStream.h"
-#include "../PaketManager.h"
+#include "../PacketManager.h"
 #include "../../util/Debug.h"
 
 using namespace std;
 
-Paket3DSoundParticleEffect::Paket3DSoundParticleEffect() {
-	PaketServer::id = 0x3d;
-	PaketServer::prio = 50;
+Packet3DSoundParticleEffect::Packet3DSoundParticleEffect() {
+	PacketServer::id = 0x3d;
+	PacketServer::prio = 50;
 }
 
-PaketServer *Paket3DSoundParticleEffect::gebeInstanz() {
-	return new Paket3DSoundParticleEffect();
+PacketServer *Packet3DSoundParticleEffect::gebeInstanz() {
+	return new Packet3DSoundParticleEffect();
 }
 
-bool Paket3DSoundParticleEffect::registierePaket() {
-	PaketManager::registrierePaket(new Paket3DSoundParticleEffect());
+bool Packet3DSoundParticleEffect::registierePacket() {
+	PacketManager::registrierePacket(new Packet3DSoundParticleEffect());
 
 	return true;
 }
 
-void Paket3DSoundParticleEffect::lesePaketInhalt(DataInputStream *in) {
+void Packet3DSoundParticleEffect::lesePacketInhalt(DataInputStream *in) {
 	this->effectId = in->leseInt();
 	this->x = in->leseInt();
 	this->y = in->leseByte();
@@ -88,14 +88,14 @@ void Paket3DSoundParticleEffect::lesePaketInhalt(DataInputStream *in) {
 	this->data = in->leseInt();
 }
 
-void Paket3DSoundParticleEffect::verarbeitePaket() {
+void Packet3DSoundParticleEffect::verarbeitePacket() {
 #ifdef DEBUG_ON
 	char *buffer = new char[100];
 	sprintf(buffer, "effectId: %i, x: %i, y: %i, z: %i, data: %i",
 			this->effectId, this->x, this->y, this->z, this->data);
-	Debug::schreibePaketLog("Paket3DSoundParticleEffect", buffer);
+	Debug::schreibePacketLog("Packet3DSoundParticleEffect", buffer);
 	delete[] buffer;
 #endif
 
-	// TODO Paketverarbeitung implementieren
+	// TODO Packetverarbeitung implementieren
 }

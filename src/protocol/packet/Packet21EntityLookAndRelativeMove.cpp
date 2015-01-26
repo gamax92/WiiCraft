@@ -27,32 +27,32 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Paket21EntityLookAndRelativeMove.h"
+#include "Packet21EntityLookAndRelativeMove.h"
 
 #include <cstdio>
 #include "../../net/DataInputStream.h"
 #include "../../entity/Entity.h"
-#include "../PaketManager.h"
+#include "../PacketManager.h"
 #include "../../util/Debug.h"
 
 using namespace std;
 
-Paket21EntityLookAndRelativeMove::Paket21EntityLookAndRelativeMove() {
-	PaketServer::id = 0x21;
-	PaketServer::prio = 50;
+Packet21EntityLookAndRelativeMove::Packet21EntityLookAndRelativeMove() {
+	PacketServer::id = 0x21;
+	PacketServer::prio = 50;
 }
 
-PaketServer *Paket21EntityLookAndRelativeMove::gebeInstanz() {
-	return new Paket21EntityLookAndRelativeMove();
+PacketServer *Packet21EntityLookAndRelativeMove::gebeInstanz() {
+	return new Packet21EntityLookAndRelativeMove();
 }
 
-bool Paket21EntityLookAndRelativeMove::registierePaket() {
-	PaketManager::registrierePaket(new Paket21EntityLookAndRelativeMove());
+bool Packet21EntityLookAndRelativeMove::registierePacket() {
+	PacketManager::registrierePacket(new Packet21EntityLookAndRelativeMove());
 
 	return true;
 }
 
-void Paket21EntityLookAndRelativeMove::lesePaketInhalt(DataInputStream *in) {
+void Packet21EntityLookAndRelativeMove::lesePacketInhalt(DataInputStream *in) {
 	this->entityId = in->leseInt();
 	this->dX = in->leseByte();
 	this->dY = in->leseByte();
@@ -61,16 +61,16 @@ void Paket21EntityLookAndRelativeMove::lesePaketInhalt(DataInputStream *in) {
 	this->pitch = in->leseByte();
 }
 
-void Paket21EntityLookAndRelativeMove::verarbeitePaket() {
+void Packet21EntityLookAndRelativeMove::verarbeitePacket() {
 #ifdef DEBUG_ON
 	char *buffer = new char[200];
 	sprintf(buffer, "entityId: %i, dX: %i, dY: %i, dZ: %i, yaw: %i, pitch: %i",
 			this->entityId, this->dX, this->dY, this->dZ, this->yaw,
 			this->pitch);
-	Debug::schreibePaketLog("Paket21EntityLookAndRelativeMove", buffer);
+	Debug::schreibePacketLog("Packet21EntityLookAndRelativeMove", buffer);
 	delete[] buffer;
 #endif
 
 	Entity::gebeEntity(this->entityId);
-	// TODO Paketverarbeitung implementieren
+	// TODO Packetverarbeitung implementieren
 }

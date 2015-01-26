@@ -49,47 +49,47 @@
  * 19	poison			Hearts turn yellow					Caused by poisoning from cave (blue) spider
  */
 
-#include "Paket29EntityEffect.h"
+#include "Packet29EntityEffect.h"
 
 #include <cstdio>
 #include "../../net/DataInputStream.h"
 #include "../../entity/Entity.h"
-#include "../PaketManager.h"
+#include "../PacketManager.h"
 #include "../../util/Debug.h"
 
 using namespace std;
 
-Paket29EntityEffect::Paket29EntityEffect() {
-	PaketServer::id = 0x29;
-	PaketServer::prio = 50;
+Packet29EntityEffect::Packet29EntityEffect() {
+	PacketServer::id = 0x29;
+	PacketServer::prio = 50;
 }
 
-PaketServer *Paket29EntityEffect::gebeInstanz() {
-	return new Paket29EntityEffect();
+PacketServer *Packet29EntityEffect::gebeInstanz() {
+	return new Packet29EntityEffect();
 }
 
-bool Paket29EntityEffect::registierePaket() {
-	PaketManager::registrierePaket(new Paket29EntityEffect());
+bool Packet29EntityEffect::registierePacket() {
+	PacketManager::registrierePacket(new Packet29EntityEffect());
 
 	return true;
 }
 
-void Paket29EntityEffect::lesePaketInhalt(DataInputStream *in) {
+void Packet29EntityEffect::lesePacketInhalt(DataInputStream *in) {
 	this->entityId = in->leseInt();
 	this->effectId = in->leseByte();
 	this->amplifier = in->leseByte();
 	this->duration = in->leseShort();
 }
 
-void Paket29EntityEffect::verarbeitePaket() {
+void Packet29EntityEffect::verarbeitePacket() {
 #ifdef DEBUG_ON
 	char *buffer = new char[100];
 	sprintf(buffer, "entityId: %i, effectId: %i, amplifier: %i, duration: %i",
 			this->entityId, this->effectId, this->amplifier, this->duration);
-	Debug::schreibePaketLog("Paket29EntityEffect", buffer);
+	Debug::schreibePacketLog("Packet29EntityEffect", buffer);
 	delete[] buffer;
 #endif
 
 	Entity::gebeEntity(this->entityId);
-	// TODO Paketverarbeitung implementieren
+	// TODO Packetverarbeitung implementieren
 }

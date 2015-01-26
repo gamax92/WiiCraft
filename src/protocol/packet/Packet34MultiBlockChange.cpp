@@ -27,39 +27,39 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Paket34MultiBlockChange.h"
+#include "Packet34MultiBlockChange.h"
 
 #include <cstdio>
 #include "../../net/DataInputStream.h"
 #include "../../world/Welt.h"
 #include "../../world/BlockAenderung.h"
-#include "../PaketManager.h"
+#include "../PacketManager.h"
 #include "../../util/Debug.h"
 
 using namespace std;
 
-Paket34MultiBlockChange::Paket34MultiBlockChange() {
-	PaketServer::id = 0x34;
-	PaketServer::prio = 50;
+Packet34MultiBlockChange::Packet34MultiBlockChange() {
+	PacketServer::id = 0x34;
+	PacketServer::prio = 50;
 }
 
-Paket34MultiBlockChange::~Paket34MultiBlockChange() {
+Packet34MultiBlockChange::~Packet34MultiBlockChange() {
 	delete[] this->data;
 
 	this->data = NULL;
 }
 
-PaketServer *Paket34MultiBlockChange::gebeInstanz() {
-	return new Paket34MultiBlockChange();
+PacketServer *Packet34MultiBlockChange::gebeInstanz() {
+	return new Packet34MultiBlockChange();
 }
 
-bool Paket34MultiBlockChange::registierePaket() {
-	PaketManager::registrierePaket(new Paket34MultiBlockChange());
+bool Packet34MultiBlockChange::registierePacket() {
+	PacketManager::registrierePacket(new Packet34MultiBlockChange());
 
 	return true;
 }
 
-void Paket34MultiBlockChange::lesePaketInhalt(DataInputStream *in) {
+void Packet34MultiBlockChange::lesePacketInhalt(DataInputStream *in) {
 	this->chunkX = in->leseInt();
 	this->chunkZ = in->leseInt();
 	this->recordCount = in->leseShort() & 0xffff;
@@ -70,12 +70,12 @@ void Paket34MultiBlockChange::lesePaketInhalt(DataInputStream *in) {
 	this->data = in->leseBytes(this->dataSize);
 }
 
-void Paket34MultiBlockChange::verarbeitePaket() {
+void Packet34MultiBlockChange::verarbeitePacket() {
 #ifdef DEBUG_ON
 	char *buffer = new char[100];
 	sprintf(buffer, "chunk: %ix%i, count: %i", this->chunkX, this->chunkZ,
 			this->recordCount);
-	Debug::schreibePaketLog("Paket34MultiBlockChange", buffer);
+	Debug::schreibePacketLog("Packet34MultiBlockChange", buffer);
 	delete[] buffer;
 	buffer = NULL;
 #endif
@@ -110,7 +110,7 @@ void Paket34MultiBlockChange::verarbeitePaket() {
 				buffer,
 				"blockTyp: %i, blockMetadata: %i, x: %i, z: %i, y: %i, index: %i",
 				blockTyp, blockMetadata, x, z, y, index);
-		Debug::schreibePaketLog("Paket34MultiBlockChange", buffer);
+		Debug::schreibePacketLog("Packet34MultiBlockChange", buffer);
 		delete[] buffer;
 		buffer = NULL;
 #endif

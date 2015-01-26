@@ -27,39 +27,39 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Paket14NamedEntitySpawn.h"
+#include "Packet14NamedEntitySpawn.h"
 
 #include <cstdio>
 #include "../../net/DataInputStream.h"
 #include "../../exception/ExcSocketStringLaengeUeberschritten.h"
 #include "../../entity/Entity.h"
-#include "../PaketManager.h"
+#include "../PacketManager.h"
 #include "../../util/Debug.h"
 
 using namespace std;
 
-Paket14NamedEntitySpawn::Paket14NamedEntitySpawn() {
-	PaketServer::id = 0x14;
-	PaketServer::prio = 50;
+Packet14NamedEntitySpawn::Packet14NamedEntitySpawn() {
+	PacketServer::id = 0x14;
+	PacketServer::prio = 50;
 }
 
-PaketServer *Paket14NamedEntitySpawn::gebeInstanz() {
-	return new Paket14NamedEntitySpawn();
+PacketServer *Packet14NamedEntitySpawn::gebeInstanz() {
+	return new Packet14NamedEntitySpawn();
 }
 
-bool Paket14NamedEntitySpawn::registierePaket() {
-	PaketManager::registrierePaket(new Paket14NamedEntitySpawn());
+bool Packet14NamedEntitySpawn::registierePacket() {
+	PacketManager::registrierePacket(new Packet14NamedEntitySpawn());
 
 	return true;
 }
 
-void Paket14NamedEntitySpawn::lesePaketInhalt(DataInputStream *in) {
+void Packet14NamedEntitySpawn::lesePacketInhalt(DataInputStream *in) {
 	this->entityId = in->leseInt();
 
 	try {
 		this->playerName = in->leseString(16);
 	} catch (ExcSocketStringLaengeUeberschritten &exception) {
-		throw ExcSocketStringLaengeUeberschritten(PaketServer::id);
+		throw ExcSocketStringLaengeUeberschritten(PacketServer::id);
 	}
 
 	this->x = in->leseInt();
@@ -70,7 +70,7 @@ void Paket14NamedEntitySpawn::lesePaketInhalt(DataInputStream *in) {
 	this->currentItem = in->leseShort();
 }
 
-void Paket14NamedEntitySpawn::verarbeitePaket() {
+void Packet14NamedEntitySpawn::verarbeitePacket() {
 #ifdef DEBUG_ON
 	char *buffer = new char[200];
 	sprintf(
@@ -78,10 +78,10 @@ void Paket14NamedEntitySpawn::verarbeitePaket() {
 			"entityId: %i, playerName: %s, x: %i, y: %i, z: %i, rotation: %i, pitch: %i, currentItem: %i",
 			this->entityId, this->playerName.data(), this->x, this->y, this->z,
 			this->rotation, this->pitch, this->currentItem);
-	Debug::schreibePaketLog("Paket14NamedEntitySpawn", buffer);
+	Debug::schreibePacketLog("Packet14NamedEntitySpawn", buffer);
 	delete[] buffer;
 #endif
 
 	Entity::gebeEntity(this->entityId);
-	// TODO Paketverarbeitung implementieren
+	// TODO Packetverarbeitung implementieren
 }

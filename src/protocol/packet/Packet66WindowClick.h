@@ -27,22 +27,22 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef Paket66WindowClick_H_
-#define Paket66WindowClick_H_
+#ifndef Packet66WindowClick_H_
+#define Packet66WindowClick_H_
 
-#include "../PaketClient.h"
+#include "../PacketClient.h"
 
 namespace std {
 
 class DataOutputStream;
 class Slot;
 
-class Paket66WindowClick: public PaketClient {
+class Packet66WindowClick: public PacketClient {
 public:
-	~Paket66WindowClick();
-	Paket66WindowClick(byte _windowId, short _slot, byte _rightClick,
+	~Packet66WindowClick();
+	Packet66WindowClick(byte _windowId, short _slot, byte _rightClick,
 			short _actionNumber, bool _shift, Slot *_clickedItem);
-	void schreibePaketInhalt(DataOutputStream *out);
+	void schreibePacketInhalt(DataOutputStream *out);
 private:
 	byte windowId;
 	short slot;
@@ -52,4 +52,4 @@ private:
 	Slot *clickedItem;
 };
 }
-#endif /* Paket66WindowClick_H_ */
+#endif /* Packet66WindowClick_H_ */

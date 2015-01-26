@@ -30,8 +30,8 @@
 #ifndef PAKET09RESPAWN_H_
 #define PAKET09RESPAWN_H_
 
-#include "../PaketServer.h"
-#include "../PaketClient.h"
+#include "../PacketServer.h"
+#include "../PacketClient.h"
 #include <string>
 
 namespace std {
@@ -39,15 +39,15 @@ namespace std {
 class DataOutputStream;
 class DataInputStream;
 
-class Paket09Respawn: public PaketServer, public PaketClient {
+class Packet09Respawn: public PacketServer, public PacketClient {
 public:
-	Paket09Respawn(int _dimension, byte _difficulty, byte _creativeMode,
+	Packet09Respawn(int _dimension, byte _difficulty, byte _creativeMode,
 			short _worldHeight, string _levelType);
-	PaketServer *gebeInstanz();
-	static bool registierePaket();
-	void schreibePaketInhalt(DataOutputStream *out);
-	void lesePaketInhalt(DataInputStream *in);
-	void verarbeitePaket();
+	PacketServer *gebeInstanz();
+	static bool registierePacket();
+	void schreibePacketInhalt(DataOutputStream *out);
+	void lesePacketInhalt(DataInputStream *in);
+	void verarbeitePacket();
 private:
 
 	int dimension;
@@ -56,7 +56,7 @@ private:
 	short worldHeight;
 	string levelType;
 
-	Paket09Respawn();
+	Packet09Respawn();
 };
 }
 #endif /* PAKET09RESPAWN_H_ */

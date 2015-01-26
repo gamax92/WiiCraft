@@ -27,44 +27,44 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "PaketC9PlayerListItem.h"
+#include "PacketC9PlayerListItem.h"
 
 #include <cstdio>
 #include "../../net/DataInputStream.h"
 #include "../../exception/ExcSocketStringLaengeUeberschritten.h"
 #include "../ServerInfo.h"
-#include "../PaketManager.h"
+#include "../PacketManager.h"
 #include "../../util/Debug.h"
 
 using namespace std;
 
-PaketC9PlayerListItem::PaketC9PlayerListItem() {
-	PaketServer::id = 0xc9;
-	PaketServer::prio = 50;
+PacketC9PlayerListItem::PacketC9PlayerListItem() {
+	PacketServer::id = 0xc9;
+	PacketServer::prio = 50;
 }
 
-PaketServer *PaketC9PlayerListItem::gebeInstanz() {
-	return new PaketC9PlayerListItem();
+PacketServer *PacketC9PlayerListItem::gebeInstanz() {
+	return new PacketC9PlayerListItem();
 }
 
-bool PaketC9PlayerListItem::registierePaket() {
-	PaketManager::registrierePaket(new PaketC9PlayerListItem());
+bool PacketC9PlayerListItem::registierePacket() {
+	PacketManager::registrierePacket(new PacketC9PlayerListItem());
 
 	return true;
 }
 
-void PaketC9PlayerListItem::lesePaketInhalt(DataInputStream *in) {
+void PacketC9PlayerListItem::lesePacketInhalt(DataInputStream *in) {
 	try {
 		this->playerName = in->leseString(16);
 	} catch (ExcSocketStringLaengeUeberschritten &exception) {
-		throw ExcSocketStringLaengeUeberschritten(PaketServer::id);
+		throw ExcSocketStringLaengeUeberschritten(PacketServer::id);
 	}
 
 	this->online = in->leseBoolean();
 	this->ping = in->leseShort();
 }
 
-void PaketC9PlayerListItem::verarbeitePaket() {
+void PacketC9PlayerListItem::verarbeitePacket() {
 	ServerInfo::gebeServerInfo()->aktualisiereSpielerStatus(this->playerName,
 			this->online, this->ping);
 
@@ -72,7 +72,7 @@ void PaketC9PlayerListItem::verarbeitePaket() {
 	char *buffer = new char[100];
 	sprintf(buffer, "spieler: %s, online: %i, ping: %i",
 			this->playerName.data(), this->online, this->ping);
-	Debug::schreibePaketLog("PaketC9PlayerListItem", buffer);
+	Debug::schreibePacketLog("PacketC9PlayerListItem", buffer);
 	delete[] buffer;
 #endif
 }

@@ -27,17 +27,17 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "PaketVergleicher.h"
+#include "PacketVergleicher.h"
 
-#include "Paket.h"
+#include "Packet.h"
 
 using namespace std;
 
-bool PaketVergleicher::operator()(Paket *a, Paket *b) const {
+bool PacketVergleicher::operator()(Packet *a, Packet *b) const {
 	if (a->gebePrio() > b->gebePrio()) {
 		return true;
 	} else if (a->gebePrio() == b->gebePrio()) {
-		if (a->gebePaketNr() > b->gebePaketNr()) {
+		if (a->gebePacketNr() > b->gebePacketNr()) {
 			return true;
 		}
 	}

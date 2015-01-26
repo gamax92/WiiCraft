@@ -30,26 +30,26 @@
 #ifndef PAKET28ENTITYMETADATA_H_
 #define PAKET28ENTITYMETADATA_H_
 
-#include "../PaketServer.h"
+#include "../PacketServer.h"
 
 namespace std {
 
 class DataInputStream;
 class Metadata;
 
-class Paket28EntityMetadata: public PaketServer {
+class Packet28EntityMetadata: public PacketServer {
 public:
-	~Paket28EntityMetadata();
-	PaketServer *gebeInstanz();
-	static bool registierePaket();
-	void lesePaketInhalt(DataInputStream *in);
-	void verarbeitePaket();
+	~Packet28EntityMetadata();
+	PacketServer *gebeInstanz();
+	static bool registierePacket();
+	void lesePacketInhalt(DataInputStream *in);
+	void verarbeitePacket();
 private:
 
 	int entityId;
 	Metadata *entityMetadata;
 
-	Paket28EntityMetadata();
+	Packet28EntityMetadata();
 };
 }
 #endif /* PAKET28ENTITYMETADATA_H_ */

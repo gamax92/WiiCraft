@@ -27,32 +27,32 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Paket36BlockAction.h"
+#include "Packet36BlockAction.h"
 
 #include <cstdio>
 #include "../../net/DataInputStream.h"
 #include "../../world/Welt.h"
-#include "../PaketManager.h"
+#include "../PacketManager.h"
 #include "../../util/Debug.h"
 
 using namespace std;
 
-Paket36BlockAction::Paket36BlockAction() {
-	PaketServer::id = 0x36;
-	PaketServer::prio = 50;
+Packet36BlockAction::Packet36BlockAction() {
+	PacketServer::id = 0x36;
+	PacketServer::prio = 50;
 }
 
-PaketServer *Paket36BlockAction::gebeInstanz() {
-	return new Paket36BlockAction();
+PacketServer *Packet36BlockAction::gebeInstanz() {
+	return new Packet36BlockAction();
 }
 
-bool Paket36BlockAction::registierePaket() {
-	PaketManager::registrierePaket(new Paket36BlockAction());
+bool Packet36BlockAction::registierePacket() {
+	PacketManager::registrierePacket(new Packet36BlockAction());
 
 	return true;
 }
 
-void Paket36BlockAction::lesePaketInhalt(DataInputStream *in) {
+void Packet36BlockAction::lesePacketInhalt(DataInputStream *in) {
 	this->x = in->leseInt();
 	this->y = in->leseShort();
 	this->z = in->leseInt();
@@ -60,7 +60,7 @@ void Paket36BlockAction::lesePaketInhalt(DataInputStream *in) {
 	this->byte2 = in->leseByte();
 }
 
-void Paket36BlockAction::verarbeitePaket() {
+void Packet36BlockAction::verarbeitePacket() {
 	int chunkX;
 	int chunkZ;
 	Welt::berechneChunkPosition(this->x, this->z, chunkX, chunkZ);
@@ -77,9 +77,9 @@ void Paket36BlockAction::verarbeitePaket() {
 	char *buffer = new char[100];
 	sprintf(buffer, "chunk: %ix%i, index: %i, b1: %x, b2: %x", chunkX, chunkZ,
 			index, this->byte1, this->byte2);
-	Debug::schreibePaketLog("Paket36BlockAction", buffer);
+	Debug::schreibePacketLog("Packet36BlockAction", buffer);
 	delete[] buffer;
 #endif
 
-	// TODO Paketverarbeitung implementieren
+	// TODO Packetverarbeitung implementieren
 }

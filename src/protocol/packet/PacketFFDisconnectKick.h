@@ -30,8 +30,8 @@
 #ifndef PAKETFFDISCONNECTKICK_H_
 #define PAKETFFDISCONNECTKICK_H_
 
-#include "../PaketServer.h"
-#include "../PaketClient.h"
+#include "../PacketServer.h"
+#include "../PacketClient.h"
 #include <string>
 
 namespace std {
@@ -39,19 +39,19 @@ namespace std {
 class DataOutputStream;
 class DataInputStream;
 
-class PaketFFDisconnectKick: public PaketServer, public PaketClient {
+class PacketFFDisconnectKick: public PacketServer, public PacketClient {
 public:
-	PaketFFDisconnectKick(string _reason);
-	PaketServer *gebeInstanz();
-	static bool registierePaket();
-	void schreibePaketInhalt(DataOutputStream *out);
-	void lesePaketInhalt(DataInputStream *in);
-	void verarbeitePaket();
+	PacketFFDisconnectKick(string _reason);
+	PacketServer *gebeInstanz();
+	static bool registierePacket();
+	void schreibePacketInhalt(DataOutputStream *out);
+	void lesePacketInhalt(DataInputStream *in);
+	void verarbeitePacket();
 private:
 
 	string reason;
 
-	PaketFFDisconnectKick();
+	PacketFFDisconnectKick();
 };
 }
 #endif /* PAKETFFDISCONNECTKICK_H_ */

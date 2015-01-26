@@ -27,50 +27,50 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "PaketServer.h"
+#include "PacketServer.h"
 
 #include <cstdio>
 #include "../net/DataInputStream.h"
 #include "../exception/ExcSocketVerbindungVerloren.h"
-#include "PaketManager.h"
+#include "PacketManager.h"
 #include "../util/Debug.h"
-#include "../exception/ExcPaketUnbekanntesPaket.h"
+#include "../exception/ExcPacketUnbekanntesPacket.h"
 #include "Verbindung.h"
 
 using namespace std;
 
-byte PaketServer::letztePaketId = 0;
+byte PacketServer::letztePacketId = 0;
 
-PaketServer::~PaketServer() {
+PacketServer::~PacketServer() {
 }
 
-bool PaketServer::lesePaket(DataInputStream *in) {
+bool PacketServer::lesePacket(DataInputStream *in) {
 	byte byte = in->leseByte();
 
-	PaketServer *p = NULL;
+	PacketServer *p = NULL;
 	try {
-		p = PaketManager::getInstanz(byte);
-	} catch (ExcPaketUnbekanntesPaket &exception) {
+		p = PacketManager::getInstanz(byte);
+	} catch (ExcPacketUnbekanntesPacket &exception) {
 #ifdef DEBUG_ON
 		char *buffer = new char[100];
 		sprintf(buffer, "unbekanntes Packet gefunden: 0x%x\n",
 				exception.gebeByte());
-		Debug::schreibeLog("sd:/apps/WiiCraft/Paket.log", buffer,
+		Debug::schreibeLog("sd:/apps/WiiCraft/Packet.log", buffer,
 				Debug::DATEI_ERWEITERN);
 		delete[] buffer;
 #endif
-		throw ExcPaketUnbekanntesPaket(exception.gebeByte(),
-				PaketServer::letztePaketId);
+		throw ExcPacketUnbekanntesPacket(exception.gebeByte(),
+				PacketServer::letztePacketId);
 	}
 
-	p->lesePaketInhalt(in);
+	p->lesePacketInhalt(in);
 
-	p->setzePaketNr(Paket::aktuellePaketLeseNr);
-	Paket::aktuellePaketLeseNr++;
+	p->setzePacketNr(Packet::aktuellePacketLeseNr);
+	Packet::aktuellePacketLeseNr++;
 
-	Verbindung::zuVerarbeitendenPaketenHinzufuegen(p);
+	Verbindung::zuVerarbeitendenPacketenHinzufuegen(p);
 
-	PaketServer::letztePaketId = byte;
+	PacketServer::letztePacketId = byte;
 
 	if (byte == 0xff) {
 		return false;

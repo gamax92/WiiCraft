@@ -27,22 +27,22 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef Paket13EntityAction_H_
-#define Paket13EntityAction_H_
+#ifndef Packet13EntityAction_H_
+#define Packet13EntityAction_H_
 
-#include "../PaketClient.h"
+#include "../PacketClient.h"
 
 namespace std {
 
 class DataOutputStream;
 
-class Paket13EntityAction: public PaketClient {
+class Packet13EntityAction: public PacketClient {
 public:
-	Paket13EntityAction(int _entityId, byte _actionId);
-	void schreibePaketInhalt(DataOutputStream *out);
+	Packet13EntityAction(int _entityId, byte _actionId);
+	void schreibePacketInhalt(DataOutputStream *out);
 private:
 	int entityId;
 	byte actionId;
 };
 }
-#endif /* Paket13EntityAction_H_ */
+#endif /* Packet13EntityAction_H_ */

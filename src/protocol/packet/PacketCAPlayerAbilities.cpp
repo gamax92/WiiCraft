@@ -27,26 +27,26 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "PaketCAPlayerAbilities.h"
+#include "PacketCAPlayerAbilities.h"
 
 #include <cstdio>
 #include "../../net/DataOutputStream.h"
 #include "../../net/DataInputStream.h"
 #include "../../entity/Spieler.h"
-#include "../PaketManager.h"
+#include "../PacketManager.h"
 #include "../../util/Debug.h"
 
 using namespace std;
 
-PaketCAPlayerAbilities::PaketCAPlayerAbilities() {
-	PaketServer::id = 0xca;
-	PaketServer::prio = 50;
+PacketCAPlayerAbilities::PacketCAPlayerAbilities() {
+	PacketServer::id = 0xca;
+	PacketServer::prio = 50;
 }
 
-PaketCAPlayerAbilities::PaketCAPlayerAbilities(bool _invulnerability,
+PacketCAPlayerAbilities::PacketCAPlayerAbilities(bool _invulnerability,
 		bool _isFlying, bool _canFly, bool _instantDestroy) {
-	PaketClient::id = 0xca;
-	PaketClient::prio = 50;
+	PacketClient::id = 0xca;
+	PacketClient::prio = 50;
 
 	this->invulnerability = _invulnerability;
 	this->isFlying = _isFlying;
@@ -54,38 +54,38 @@ PaketCAPlayerAbilities::PaketCAPlayerAbilities(bool _invulnerability,
 	this->instantDestroy = _instantDestroy;
 }
 
-PaketServer *PaketCAPlayerAbilities::gebeInstanz() {
-	return new PaketCAPlayerAbilities();
+PacketServer *PacketCAPlayerAbilities::gebeInstanz() {
+	return new PacketCAPlayerAbilities();
 }
 
-bool PaketCAPlayerAbilities::registierePaket() {
-	PaketManager::registrierePaket(new PaketCAPlayerAbilities());
+bool PacketCAPlayerAbilities::registierePacket() {
+	PacketManager::registrierePacket(new PacketCAPlayerAbilities());
 
 	return true;
 }
 
-void PaketCAPlayerAbilities::schreibePaketInhalt(DataOutputStream *out) {
+void PacketCAPlayerAbilities::schreibePacketInhalt(DataOutputStream *out) {
 	out->schreibeBoolean(this->invulnerability);
 	out->schreibeBoolean(this->isFlying);
 	out->schreibeBoolean(this->canFly);
 	out->schreibeBoolean(this->instantDestroy);
 }
 
-void PaketCAPlayerAbilities::lesePaketInhalt(DataInputStream *in) {
+void PacketCAPlayerAbilities::lesePacketInhalt(DataInputStream *in) {
 	this->invulnerability = in->leseBoolean();
 	this->isFlying = in->leseBoolean();
 	this->canFly = in->leseBoolean();
 	this->instantDestroy = in->leseBoolean();
 }
 
-void PaketCAPlayerAbilities::verarbeitePaket() {
+void PacketCAPlayerAbilities::verarbeitePacket() {
 #ifdef DEBUG_ON
 	char *buffer = new char[200];
 	sprintf(buffer,
 			"invulnerability: %i, isFlying: %i, canFly: %i, instantDestroy: %i",
 			this->invulnerability, this->isFlying, this->canFly,
 			this->instantDestroy);
-	Debug::schreibePaketLog("PaketCAPlayerAbilities", buffer);
+	Debug::schreibePacketLog("PacketCAPlayerAbilities", buffer);
 	delete[] buffer;
 #endif
 

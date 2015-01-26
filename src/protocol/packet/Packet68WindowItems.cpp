@@ -27,45 +27,45 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Paket68WindowItems.h"
+#include "Packet68WindowItems.h"
 
 #include <cstdlib>
 #include <cstdio>
 #include "../../net/DataInputStream.h"
 #include "../../entity/Slot.h"
-#include "../PaketManager.h"
+#include "../PacketManager.h"
 #include "../../util/Debug.h"
 
 using namespace std;
 
-Paket68WindowItems::Paket68WindowItems() {
-	PaketServer::id = 0x68;
-	PaketServer::prio = 50;
+Packet68WindowItems::Packet68WindowItems() {
+	PacketServer::id = 0x68;
+	PacketServer::prio = 50;
 }
 
-PaketServer *Paket68WindowItems::gebeInstanz() {
-	return new Paket68WindowItems();
+PacketServer *Packet68WindowItems::gebeInstanz() {
+	return new Packet68WindowItems();
 }
 
-bool Paket68WindowItems::registierePaket() {
-	PaketManager::registrierePaket(new Paket68WindowItems());
+bool Packet68WindowItems::registierePacket() {
+	PacketManager::registrierePacket(new Packet68WindowItems());
 
 	return true;
 }
 
-void Paket68WindowItems::lesePaketInhalt(DataInputStream *in) {
+void Packet68WindowItems::lesePacketInhalt(DataInputStream *in) {
 	this->windowId = in->leseByte();
 	this->count = in->leseShort();
 	this->slotData = Slot::leseSlotArray(in, this->count);
 }
 
-void Paket68WindowItems::verarbeitePaket() {
+void Packet68WindowItems::verarbeitePacket() {
 #ifdef DEBUG_ON
 	char *buffer = new char[100];
 	sprintf(buffer, "windowId: %i, count: %i", this->windowId, this->count);
-	Debug::schreibePaketLog("Paket68WindowItems", buffer);
+	Debug::schreibePacketLog("Packet68WindowItems", buffer);
 	delete[] buffer;
 #endif
 
-	// TODO Paketverarbeitung implementieren
+	// TODO Packetverarbeitung implementieren
 }

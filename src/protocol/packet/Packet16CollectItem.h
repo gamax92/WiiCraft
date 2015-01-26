@@ -27,27 +27,27 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef Paket16CollectItem_H_
-#define Paket16CollectItem_H_
+#ifndef Packet16CollectItem_H_
+#define Packet16CollectItem_H_
 
-#include "../PaketServer.h"
+#include "../PacketServer.h"
 
 namespace std {
 
 class DataInputStream;
 
-class Paket16CollectItem: public PaketServer {
+class Packet16CollectItem: public PacketServer {
 public:
-	PaketServer *gebeInstanz();
-	static bool registierePaket();
-	void lesePaketInhalt(DataInputStream *in);
-	void verarbeitePaket();
+	PacketServer *gebeInstanz();
+	static bool registierePacket();
+	void lesePacketInhalt(DataInputStream *in);
+	void verarbeitePacket();
 private:
 
 	int collectedEntityId;
 	int collectorEntityId;
 
-	Paket16CollectItem();
+	Packet16CollectItem();
 };
 }
-#endif /* Paket16CollectItem_H_ */
+#endif /* Packet16CollectItem_H_ */

@@ -30,21 +30,21 @@
 #ifndef PAKETSERVER_H_
 #define PAKETSERVER_H_
 
-#include "Paket.h"
+#include "Packet.h"
 
 namespace std {
 
 class DataInputStream;
 
-class PaketServer: public std::Paket {
+class PacketServer: public std::Packet {
 public:
-	static byte letztePaketId;
+	static byte letztePacketId;
 
-	virtual ~PaketServer();
-	virtual PaketServer *gebeInstanz() = 0;
-	virtual void lesePaketInhalt(DataInputStream *in) = 0;
-	virtual void verarbeitePaket() = 0;
-	static bool lesePaket(DataInputStream *in);
+	virtual ~PacketServer();
+	virtual PacketServer *gebeInstanz() = 0;
+	virtual void lesePacketInhalt(DataInputStream *in) = 0;
+	virtual void verarbeitePacket() = 0;
+	static bool lesePacket(DataInputStream *in);
 };
 
 }

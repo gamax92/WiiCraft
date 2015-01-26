@@ -27,47 +27,47 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Paket1FEntityRelativeMove.h"
+#include "Packet1FEntityRelativeMove.h"
 
 #include <cstdio>
 #include "../../net/DataInputStream.h"
 #include "../../entity/Entity.h"
-#include "../PaketManager.h"
+#include "../PacketManager.h"
 #include "../../util/Debug.h"
 
 using namespace std;
 
-Paket1FEntityRelativeMove::Paket1FEntityRelativeMove() {
-	PaketServer::id = 0x1f;
-	PaketServer::prio = 50;
+Packet1FEntityRelativeMove::Packet1FEntityRelativeMove() {
+	PacketServer::id = 0x1f;
+	PacketServer::prio = 50;
 }
 
-PaketServer *Paket1FEntityRelativeMove::gebeInstanz() {
-	return new Paket1FEntityRelativeMove();
+PacketServer *Packet1FEntityRelativeMove::gebeInstanz() {
+	return new Packet1FEntityRelativeMove();
 }
 
-bool Paket1FEntityRelativeMove::registierePaket() {
-	PaketManager::registrierePaket(new Paket1FEntityRelativeMove());
+bool Packet1FEntityRelativeMove::registierePacket() {
+	PacketManager::registrierePacket(new Packet1FEntityRelativeMove());
 
 	return true;
 }
 
-void Paket1FEntityRelativeMove::lesePaketInhalt(DataInputStream *in) {
+void Packet1FEntityRelativeMove::lesePacketInhalt(DataInputStream *in) {
 	this->entityId = in->leseInt();
 	this->dX = in->leseByte();
 	this->dY = in->leseByte();
 	this->dZ = in->leseByte();
 }
 
-void Paket1FEntityRelativeMove::verarbeitePaket() {
+void Packet1FEntityRelativeMove::verarbeitePacket() {
 #ifdef DEBUG_ON
 	char *buffer = new char[200];
 	sprintf(buffer, "entityId: %i, dX: %i, dY: %i, dZ: %i", this->entityId,
 			this->dX, this->dY, this->dZ);
-	Debug::schreibePaketLog("Paket1FEntityRelativeMove", buffer);
+	Debug::schreibePacketLog("Packet1FEntityRelativeMove", buffer);
 	delete[] buffer;
 #endif
 
 	Entity::gebeEntity(this->entityId);
-	// TODO Paketverarbeitung implementieren
+	// TODO Packetverarbeitung implementieren
 }

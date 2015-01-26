@@ -30,18 +30,18 @@
 #ifndef PAKET35BLOCKCHANGE_H_
 #define PAKET35BLOCKCHANGE_H_
 
-#include "../PaketServer.h"
+#include "../PacketServer.h"
 
 namespace std {
 
 class DataInputStream;
 
-class Paket35BlockChange: public PaketServer {
+class Packet35BlockChange: public PacketServer {
 public:
-	PaketServer *gebeInstanz();
-	static bool registierePaket();
-	void lesePaketInhalt(DataInputStream *in);
-	void verarbeitePaket();
+	PacketServer *gebeInstanz();
+	static bool registierePacket();
+	void lesePacketInhalt(DataInputStream *in);
+	void verarbeitePacket();
 private:
 
 	int x;
@@ -50,7 +50,7 @@ private:
 	byte blockType;
 	byte blockMetadata;
 
-	Paket35BlockChange();
+	Packet35BlockChange();
 };
 }
 #endif /* PAKET35BLOCKCHANGE_H_ */

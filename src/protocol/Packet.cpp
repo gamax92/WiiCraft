@@ -27,28 +27,28 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Paket.h"
+#include "Packet.h"
 
 using namespace std;
 
-long double Paket::aktuellePaketLeseNr = 0;
-long double Paket::aktuellePaketSchreibeNr = 0;
+long double Packet::aktuellePacketLeseNr = 0;
+long double Packet::aktuellePacketSchreibeNr = 0;
 
-Paket::~Paket() {
+Packet::~Packet() {
 }
 
-byte Paket::gebePaketId() {
+byte Packet::gebePacketId() {
 	return this->id;
 }
 
-int Paket::gebePrio() {
+int Packet::gebePrio() {
 	return this->prio;
 }
 
-long double Paket::gebePaketNr() {
+long double Packet::gebePacketNr() {
 	return this->nr;
 }
 
-void Paket::setzePaketNr(long double aktuellePaketNr) {
-	this->nr = aktuellePaketNr;
+void Packet::setzePacketNr(long double aktuellePacketNr) {
+	this->nr = aktuellePacketNr;
 }

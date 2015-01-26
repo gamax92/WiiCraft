@@ -37,22 +37,22 @@
 #else
 #include "../util/pthread.h"
 #endif
-#include "../protocol/PaketVergleicher.h"
+#include "../protocol/PacketVergleicher.h"
 
 namespace std {
 
-class PaketServer;
+class PacketServer;
 
-class PaketeVerarbeitenThread: public Thread {
+class PacketeVerarbeitenThread: public Thread {
 public:
-	PaketeVerarbeitenThread();
-	virtual ~PaketeVerarbeitenThread();
+	PacketeVerarbeitenThread();
+	virtual ~PacketeVerarbeitenThread();
 	int exec();
 	void stop();
-	void verarbeitePaket(PaketServer *p);
+	void verarbeitePacket(PacketServer *p);
 
 private:
-	priority_queue<PaketServer *, vector<PaketServer*>, PaketVergleicher> verarbeitungPuffer;
+	priority_queue<PacketServer *, vector<PacketServer*>, PacketVergleicher> verarbeitungPuffer;
 	bool gestoppt;
 
 	pthread_mutex_t mutexqueue;
@@ -60,7 +60,7 @@ private:
 	pthread_mutex_t mutexwait;
 	pthread_cond_t condwait;
 
-	bool gebeNaechstesPaket();
+	bool gebeNaechstesPacket();
 	bool istGestopped();
 };
 }

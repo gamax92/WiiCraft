@@ -27,35 +27,35 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Paket3CExplosion.h"
+#include "Packet3CExplosion.h"
 
 #include <cstdio>
 #include "../../net/DataInputStream.h"
-#include "../PaketManager.h"
+#include "../PacketManager.h"
 #include "../../util/Debug.h"
 
 using namespace std;
 
-Paket3CExplosion::Paket3CExplosion() {
-	PaketServer::id = 0x3c;
-	PaketServer::prio = 50;
+Packet3CExplosion::Packet3CExplosion() {
+	PacketServer::id = 0x3c;
+	PacketServer::prio = 50;
 }
 
-Paket3CExplosion::~Paket3CExplosion() {
+Packet3CExplosion::~Packet3CExplosion() {
 	delete[] this->records;
 }
 
-PaketServer *Paket3CExplosion::gebeInstanz() {
-	return new Paket3CExplosion();
+PacketServer *Packet3CExplosion::gebeInstanz() {
+	return new Packet3CExplosion();
 }
 
-bool Paket3CExplosion::registierePaket() {
-	PaketManager::registrierePaket(new Paket3CExplosion());
+bool Packet3CExplosion::registierePacket() {
+	PacketManager::registrierePacket(new Packet3CExplosion());
 
 	return true;
 }
 
-void Paket3CExplosion::lesePaketInhalt(DataInputStream *in) {
+void Packet3CExplosion::lesePacketInhalt(DataInputStream *in) {
 	this->x = in->leseDouble();
 	this->y = in->leseDouble();
 	this->z = in->leseDouble();
@@ -72,14 +72,14 @@ void Paket3CExplosion::lesePaketInhalt(DataInputStream *in) {
 	}
 }
 
-void Paket3CExplosion::verarbeitePaket() {
+void Packet3CExplosion::verarbeitePacket() {
 #ifdef DEBUG_ON
 	char *buffer = new char[100];
 	sprintf(buffer, "x: %f, y: %f, z: %f, unknown: %f, recordCount: %i",
 			this->x, this->y, this->z, this->unknown, this->recordCount);
-	Debug::schreibePaketLog("Paket3CExplosion", buffer);
+	Debug::schreibePacketLog("Packet3CExplosion", buffer);
 	delete[] buffer;
 #endif
 
-	// TODO Paketverarbeitung implementieren
+	// TODO Packetverarbeitung implementieren
 }

@@ -30,17 +30,17 @@
 #ifndef PAKETCLIENT_H_
 #define PAKETCLIENT_H_
 
-#include "Paket.h"
+#include "Packet.h"
 
 namespace std {
 
 class DataOutputStream;
 
-class PaketClient: public std::Paket {
+class PacketClient: public std::Packet {
 public:
-	virtual ~PaketClient();
-	virtual void schreibePaketInhalt(DataOutputStream *out) = 0;
-	void schreibePaket(DataOutputStream *out);
+	virtual ~PacketClient();
+	virtual void schreibePacketInhalt(DataOutputStream *out) = 0;
+	void schreibePacket(DataOutputStream *out);
 };
 
 }

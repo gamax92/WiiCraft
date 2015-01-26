@@ -30,18 +30,18 @@
 #ifndef PAKET36BLOCKACTION_H_
 #define PAKET36BLOCKACTION_H_
 
-#include "../PaketServer.h"
+#include "../PacketServer.h"
 
 namespace std {
 
 class DataInputStream;
 
-class Paket36BlockAction: public PaketServer {
+class Packet36BlockAction: public PacketServer {
 public:
-	PaketServer *gebeInstanz();
-	static bool registierePaket();
-	void lesePaketInhalt(DataInputStream *in);
-	void verarbeitePaket();
+	PacketServer *gebeInstanz();
+	static bool registierePacket();
+	void lesePacketInhalt(DataInputStream *in);
+	void verarbeitePacket();
 private:
 
 	int x;
@@ -50,7 +50,7 @@ private:
 	byte byte1;
 	byte byte2;
 
-	Paket36BlockAction();
+	Packet36BlockAction();
 };
 }
 #endif /* PAKET36BLOCKACTION_H_ */

@@ -27,66 +27,66 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Paket02Handshake.h"
+#include "Packet02Handshake.h"
 
 #include <cstdio>
 #include "../Verbindung.h"
 #include "../../net/DataOutputStream.h"
 #include "../../net/DataInputStream.h"
-#include "Paket01LoginRequest.h"
+#include "Packet01LoginRequest.h"
 #include "../../exception/ExcSocketStringLaengeUeberschritten.h"
 #include "../../exception/ExcSocketHTTPServerJoinFehlgeschlagen.h"
 #include "../Session.h"
 #include "../../util/ClientInfo.h"
-#include "../PaketManager.h"
+#include "../PacketManager.h"
 #include "../../util/Debug.h"
 
 using namespace std;
 
-Paket02Handshake::Paket02Handshake() {
-	PaketServer::id = 0x02;
-	PaketServer::prio = 50;
+Packet02Handshake::Packet02Handshake() {
+	PacketServer::id = 0x02;
+	PacketServer::prio = 50;
 }
 
-Paket02Handshake::Paket02Handshake(string _usernameAndHost) {
-	PaketClient::id = 0x02;
-	PaketClient::prio = 50;
+Packet02Handshake::Packet02Handshake(string _usernameAndHost) {
+	PacketClient::id = 0x02;
+	PacketClient::prio = 50;
 
 	this->usernameAndHost = _usernameAndHost;
 }
 
-PaketServer *Paket02Handshake::gebeInstanz() {
-	return new Paket02Handshake();
+PacketServer *Packet02Handshake::gebeInstanz() {
+	return new Packet02Handshake();
 }
 
-bool Paket02Handshake::registierePaket() {
-	PaketManager::registrierePaket(new Paket02Handshake());
+bool Packet02Handshake::registierePacket() {
+	PacketManager::registrierePacket(new Packet02Handshake());
 
 	return true;
 }
 
-void Paket02Handshake::schreibePaketInhalt(DataOutputStream *out) {
+void Packet02Handshake::schreibePacketInhalt(DataOutputStream *out) {
 	out->schreibeString(this->usernameAndHost);
 }
 
-void Paket02Handshake::lesePaketInhalt(DataInputStream *in) {
+void Packet02Handshake::lesePacketInhalt(DataInputStream *in) {
 	try {
 		this->connectionHash = in->leseString(32);
 	} catch (ExcSocketStringLaengeUeberschritten &exception) {
-		throw ExcSocketStringLaengeUeberschritten(PaketServer::id);
+		throw ExcSocketStringLaengeUeberschritten(PacketServer::id);
 	}
 }
 
-void Paket02Handshake::verarbeitePaket() {
+void Packet02Handshake::verarbeitePacket() {
 #ifdef DEBUG_ON
-	Debug::schreibePaketLog("Paket02Handshake", this->connectionHash);
+	Debug::schreibePacketLog("Packet02Handshake", this->connectionHash);
 #endif
 
 	if (this->connectionHash != "+") {
 		Session::tretteServerBei(this->connectionHash);
 	}
 
-	PaketClient *p = new Paket01LoginRequest(ClientInfo::clientProtokollVersion,
+	PacketClient *p = new Packet01LoginRequest(ClientInfo::clientProtokollVersion,
 			Session::gebeBenutzer());
-	Verbindung::zuVerschickendenPaketenHinzufuegen(p);
+	Verbindung::zuVerschickendenPacketenHinzufuegen(p);
 }

@@ -27,34 +27,34 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Paket33MapChunk.h"
+#include "Packet33MapChunk.h"
 
 #include <cstdio>
 #include <cstdlib>
 #include "../../net/DataInputStream.h"
 #include "../../world/Welt.h"
 #include "../../world/KomprimierteChunkDaten.h"
-#include "../PaketManager.h"
+#include "../PacketManager.h"
 #include "../../util/Debug.h"
 
 using namespace std;
 
-Paket33MapChunk::Paket33MapChunk() {
-	PaketServer::id = 0x33;
-	PaketServer::prio = 50;
+Packet33MapChunk::Packet33MapChunk() {
+	PacketServer::id = 0x33;
+	PacketServer::prio = 50;
 }
 
-PaketServer *Paket33MapChunk::gebeInstanz() {
-	return new Paket33MapChunk();
+PacketServer *Packet33MapChunk::gebeInstanz() {
+	return new Packet33MapChunk();
 }
 
-bool Paket33MapChunk::registierePaket() {
-	PaketManager::registrierePaket(new Paket33MapChunk());
+bool Packet33MapChunk::registierePacket() {
+	PacketManager::registrierePacket(new Packet33MapChunk());
 
 	return true;
 }
 
-void Paket33MapChunk::lesePaketInhalt(DataInputStream *in) {
+void Packet33MapChunk::lesePacketInhalt(DataInputStream *in) {
 	this->chunkX = in->leseInt();
 	this->chunkZ = in->leseInt();
 	this->groundUpContiguous = in->leseBoolean();
@@ -65,7 +65,7 @@ void Paket33MapChunk::lesePaketInhalt(DataInputStream *in) {
 	this->compressedData = in->leseKomplett(this->compressedSize);
 }
 
-void Paket33MapChunk::verarbeitePaket() {
+void Packet33MapChunk::verarbeitePacket() {
 	int chunkTeile = 0;
 	for (int j = 0; j < 16; j++) {
 		chunkTeile += this->primaryBitMap >> j & 1;
@@ -79,7 +79,7 @@ void Paket33MapChunk::verarbeitePaket() {
 			this->chunkX, this->chunkZ, this->groundUpContiguous,
 			this->primaryBitMap, this->addBitMap, this->compressedSize,
 			chunkTeile);
-	Debug::schreibePaketLog("Paket33MapChunk", buffer);
+	Debug::schreibePacketLog("Packet33MapChunk", buffer);
 	delete[] buffer;
 #endif
 

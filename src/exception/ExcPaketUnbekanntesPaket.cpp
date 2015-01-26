@@ -27,33 +27,33 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "ExcPaketUnbekanntesPaket.h"
+#include "ExcPacketUnbekanntesPacket.h"
 
 #include <cstdio>
 #include "../util/Debug.h"
 
 using namespace std;
 
-ExcPaketUnbekanntesPaket::ExcPaketUnbekanntesPaket(byte _pbyte) {
+ExcPacketUnbekanntesPacket::ExcPacketUnbekanntesPacket(byte _pbyte) {
 	this->pbyte = _pbyte;
 
 #ifdef DEBUG_ON
 	char *buffer = new char[100];
-	sprintf(buffer, "ExcPaketUnbekanntesPaket; id=%x\n", this->pbyte);
+	sprintf(buffer, "ExcPacketUnbekanntesPacket; id=%x\n", this->pbyte);
 	Debug::schreibeLog("sd:/apps/WiiCraft/exception.log", buffer,
 			Debug::DATEI_ERWEITERN);
 	delete[] buffer;
 #endif
 }
 
-ExcPaketUnbekanntesPaket::ExcPaketUnbekanntesPaket(byte _pbyte, byte _lbyte) {
+ExcPacketUnbekanntesPacket::ExcPacketUnbekanntesPacket(byte _pbyte, byte _lbyte) {
 	this->pbyte = _pbyte;
 	this->lbyte = _lbyte;
 
 #ifdef DEBUG_ON
 	char *buffer = new char[100];
 	sprintf(buffer,
-			"ExcPaketUnbekanntesPaket; id=%x, letztes erfolgreiches Paket id=%x\n",
+			"ExcPacketUnbekanntesPacket; id=%x, letztes erfolgreiches Packet id=%x\n",
 			this->pbyte, this->lbyte);
 	Debug::schreibeLog("sd:/apps/WiiCraft/exception.log", buffer,
 			Debug::DATEI_ERWEITERN);
@@ -61,6 +61,6 @@ ExcPaketUnbekanntesPaket::ExcPaketUnbekanntesPaket(byte _pbyte, byte _lbyte) {
 #endif
 }
 
-byte ExcPaketUnbekanntesPaket::gebeByte() {
+byte ExcPacketUnbekanntesPacket::gebeByte() {
 	return this->pbyte;
 }

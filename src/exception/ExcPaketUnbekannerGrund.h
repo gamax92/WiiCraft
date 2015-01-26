@@ -30,14 +30,14 @@
 #ifndef EXCPAKETUNBEKANNERGRUND_H_
 #define EXCPAKETUNBEKANNERGRUND_H_
 
-#include "ExcPaket.h"
+#include "ExcPacket.h"
 #include "../util/Datentypen.h"
 
 namespace std {
 
-class ExcPaketUnbekannerGrund: public ExcPaket {
+class ExcPacketUnbekannerGrund: public ExcPacket {
 public:
-	ExcPaketUnbekannerGrund(byte _grund, byte _aenderung);
+	ExcPacketUnbekannerGrund(byte _grund, byte _aenderung);
 private:
 	byte grund;
 	byte aenderung;

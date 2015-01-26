@@ -36,21 +36,21 @@
  * 5	Stop sprinting
  */
 
-#include "Paket13EntityAction.h"
+#include "Packet13EntityAction.h"
 
 #include "../../net/DataOutputStream.h"
 
 using namespace std;
 
-Paket13EntityAction::Paket13EntityAction(int _entityId, byte _actionId) {
-	PaketClient::id = 0x13;
-	PaketClient::prio = 50;
+Packet13EntityAction::Packet13EntityAction(int _entityId, byte _actionId) {
+	PacketClient::id = 0x13;
+	PacketClient::prio = 50;
 
 	this->entityId = _entityId;
 	this->actionId = _actionId;
 }
 
-void Paket13EntityAction::schreibePaketInhalt(DataOutputStream *out) {
+void Packet13EntityAction::schreibePacketInhalt(DataOutputStream *out) {
 	out->schreibeInt(this->entityId);
 	out->schreibeByte(this->actionId);
 }

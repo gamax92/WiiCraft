@@ -30,8 +30,8 @@
 #ifndef PAKET01LOGINREQUEST_H_
 #define PAKET01LOGINREQUEST_H_
 
-#include "../PaketServer.h"
-#include "../PaketClient.h"
+#include "../PacketServer.h"
+#include "../PacketClient.h"
 #include <string>
 
 namespace std {
@@ -39,14 +39,14 @@ namespace std {
 class DataOutputStream;
 class DataInputStream;
 
-class Paket01LoginRequest: public PaketServer, public PaketClient {
+class Packet01LoginRequest: public PacketServer, public PacketClient {
 public:
-	Paket01LoginRequest(int _protocolVersion, string _userName);
-	PaketServer *gebeInstanz();
-	static bool registierePaket();
-	void schreibePaketInhalt(DataOutputStream *out);
-	void lesePaketInhalt(DataInputStream *in);
-	void verarbeitePaket();
+	Packet01LoginRequest(int _protocolVersion, string _userName);
+	PacketServer *gebeInstanz();
+	static bool registierePacket();
+	void schreibePacketInhalt(DataOutputStream *out);
+	void lesePacketInhalt(DataInputStream *in);
+	void verarbeitePacket();
 private:
 
 	int protocolVersion;
@@ -59,7 +59,7 @@ private:
 	byte worldHeight;
 	byte maxPlayers;
 
-	Paket01LoginRequest();
+	Packet01LoginRequest();
 };
 }
 #endif /* PAKET01LOGINREQUEST_H_ */

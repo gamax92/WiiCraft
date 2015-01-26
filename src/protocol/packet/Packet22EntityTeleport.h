@@ -27,21 +27,21 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef Paket22EntityTeleport_H_
-#define Paket22EntityTeleport_H_
+#ifndef Packet22EntityTeleport_H_
+#define Packet22EntityTeleport_H_
 
-#include "../PaketServer.h"
+#include "../PacketServer.h"
 
 namespace std {
 
 class DataInputStream;
 
-class Paket22EntityTeleport: public PaketServer {
+class Packet22EntityTeleport: public PacketServer {
 public:
-	PaketServer *gebeInstanz();
-	static bool registierePaket();
-	void lesePaketInhalt(DataInputStream *in);
-	void verarbeitePaket();
+	PacketServer *gebeInstanz();
+	static bool registierePacket();
+	void lesePacketInhalt(DataInputStream *in);
+	void verarbeitePacket();
 private:
 
 	int entityId;
@@ -51,7 +51,7 @@ private:
 	byte yaw;
 	byte pitch;
 
-	Paket22EntityTeleport();
+	Packet22EntityTeleport();
 };
 }
-#endif /* Paket22EntityTeleport_H_ */
+#endif /* Packet22EntityTeleport_H_ */

@@ -27,55 +27,55 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Paket00KeepAlive.h"
+#include "Packet00KeepAlive.h"
 
 #include <cstdio>
 #include "../../net/DataOutputStream.h"
 #include "../../net/DataInputStream.h"
 #include "../Verbindung.h"
-#include "../PaketManager.h"
+#include "../PacketManager.h"
 #include "../../util/Debug.h"
 
 using namespace std;
 
-Paket00KeepAlive::Paket00KeepAlive() {
-	PaketServer::id = 0x00;
-	PaketServer::prio = 0;
+Packet00KeepAlive::Packet00KeepAlive() {
+	PacketServer::id = 0x00;
+	PacketServer::prio = 0;
 }
 
-Paket00KeepAlive::Paket00KeepAlive(int _keepAliventityId) {
-	PaketClient::id = 0x00;
-	PaketClient::prio = 0;
+Packet00KeepAlive::Packet00KeepAlive(int _keepAliventityId) {
+	PacketClient::id = 0x00;
+	PacketClient::prio = 0;
 
 	this->keepAliventityId = _keepAliventityId;
 }
 
-PaketServer *Paket00KeepAlive::gebeInstanz() {
-	return new Paket00KeepAlive();
+PacketServer *Packet00KeepAlive::gebeInstanz() {
+	return new Packet00KeepAlive();
 }
 
-bool Paket00KeepAlive::registierePaket() {
-	PaketManager::registrierePaket(new Paket00KeepAlive());
+bool Packet00KeepAlive::registierePacket() {
+	PacketManager::registrierePacket(new Packet00KeepAlive());
 
 	return true;
 }
 
-void Paket00KeepAlive::schreibePaketInhalt(DataOutputStream *out) {
+void Packet00KeepAlive::schreibePacketInhalt(DataOutputStream *out) {
 	out->schreibeInt(this->keepAliventityId);
 }
 
-void Paket00KeepAlive::lesePaketInhalt(DataInputStream *in) {
+void Packet00KeepAlive::lesePacketInhalt(DataInputStream *in) {
 	this->keepAliventityId = in->leseInt();
 }
 
-void Paket00KeepAlive::verarbeitePaket() {
-	PaketClient *p = new Paket00KeepAlive(0);
-	Verbindung::zuVerschickendenPaketenHinzufuegen(p);
+void Packet00KeepAlive::verarbeitePacket() {
+	PacketClient *p = new Packet00KeepAlive(0);
+	Verbindung::zuVerschickendenPacketenHinzufuegen(p);
 
 #ifdef DEBUG_ON
 	char *buffer = new char[100];
 	sprintf(buffer, "id: %i", this->keepAliventityId);
-	Debug::schreibePaketLog("Paket00KeepAlive", buffer);
+	Debug::schreibePacketLog("Packet00KeepAlive", buffer);
 	delete[] buffer;
 #endif
 }

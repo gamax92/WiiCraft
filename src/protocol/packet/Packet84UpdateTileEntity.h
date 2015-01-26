@@ -30,18 +30,18 @@
 #ifndef PAKET84UPDATETILEENTITY_H_
 #define PAKET84UPDATETILEENTITY_H_
 
-#include "../PaketServer.h"
+#include "../PacketServer.h"
 
 namespace std {
 
 class DataInputStream;
 
-class Paket84UpdateTileEntity: public PaketServer {
+class Packet84UpdateTileEntity: public PacketServer {
 public:
-	PaketServer *gebeInstanz();
-	static bool registierePaket();
-	void lesePaketInhalt(DataInputStream *in);
-	void verarbeitePaket();
+	PacketServer *gebeInstanz();
+	static bool registierePacket();
+	void lesePacketInhalt(DataInputStream *in);
+	void verarbeitePacket();
 private:
 
 	int x;
@@ -52,7 +52,7 @@ private:
 	int custom2;
 	int custom3;
 
-	Paket84UpdateTileEntity();
+	Packet84UpdateTileEntity();
 };
 }
 #endif /* PAKET84UPDATETILEENTITY_H_ */

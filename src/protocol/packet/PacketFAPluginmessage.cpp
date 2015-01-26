@@ -27,48 +27,48 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "PaketFAPluginmessage.h"
+#include "PacketFAPluginmessage.h"
 
 #include <cstdio>
 #include <cstdlib>
 #include "../../net/DataOutputStream.h"
 #include "../../net/DataInputStream.h"
 #include "../../exception/ExcSocketStringLaengeUeberschritten.h"
-#include "../PaketManager.h"
+#include "../PacketManager.h"
 #include "../../util/Debug.h"
 
 using namespace std;
 
-PaketFAPluginmessage::PaketFAPluginmessage() {
-	PaketServer::id = 0xfa;
-	PaketServer::prio = 50;
+PacketFAPluginmessage::PacketFAPluginmessage() {
+	PacketServer::id = 0xfa;
+	PacketServer::prio = 50;
 }
 
-PaketFAPluginmessage::PaketFAPluginmessage(string _channel, short _length,
+PacketFAPluginmessage::PacketFAPluginmessage(string _channel, short _length,
 		byte *_data) {
-	PaketClient::id = 0xfa;
-	PaketClient::prio = 50;
+	PacketClient::id = 0xfa;
+	PacketClient::prio = 50;
 
 	this->channel = _channel;
 	this->length = _length;
 	this->data = _data;
 }
 
-PaketFAPluginmessage::~PaketFAPluginmessage() {
+PacketFAPluginmessage::~PacketFAPluginmessage() {
 	free(this->data);
 }
 
-PaketServer *PaketFAPluginmessage::gebeInstanz() {
-	return new PaketFAPluginmessage();
+PacketServer *PacketFAPluginmessage::gebeInstanz() {
+	return new PacketFAPluginmessage();
 }
 
-bool PaketFAPluginmessage::registierePaket() {
-	PaketManager::registrierePaket(new PaketFAPluginmessage());
+bool PacketFAPluginmessage::registierePacket() {
+	PacketManager::registrierePacket(new PacketFAPluginmessage());
 
 	return true;
 }
 
-void PaketFAPluginmessage::schreibePaketInhalt(DataOutputStream *out) {
+void PacketFAPluginmessage::schreibePacketInhalt(DataOutputStream *out) {
 	out->schreibeString(this->channel);
 	out->schreibeShort(this->length);
 	for (short i = 0; i < this->length; i++) {
@@ -76,11 +76,11 @@ void PaketFAPluginmessage::schreibePaketInhalt(DataOutputStream *out) {
 	}
 }
 
-void PaketFAPluginmessage::lesePaketInhalt(DataInputStream *in) {
+void PacketFAPluginmessage::lesePacketInhalt(DataInputStream *in) {
 	try {
 		this->channel = in->leseString(16);
 	} catch (ExcSocketStringLaengeUeberschritten &exception) {
-		throw ExcSocketStringLaengeUeberschritten(PaketServer::id);
+		throw ExcSocketStringLaengeUeberschritten(PacketServer::id);
 	}
 
 	this->length = in->leseShort();
@@ -91,12 +91,12 @@ void PaketFAPluginmessage::lesePaketInhalt(DataInputStream *in) {
 	}
 }
 
-void PaketFAPluginmessage::verarbeitePaket() {
+void PacketFAPluginmessage::verarbeitePacket() {
 #ifdef DEBUG_ON
 	char *buffer = new char[200];
 	sprintf(buffer, "channel: %s, length: %i", this->channel.data(),
 			this->length);
-	Debug::schreibePaketLog("PaketFAPluginmessage", buffer);
+	Debug::schreibePacketLog("PacketFAPluginmessage", buffer);
 	delete[] buffer;
 #endif
 	// TODO nur fuer Plugin API

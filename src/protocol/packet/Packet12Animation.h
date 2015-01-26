@@ -30,28 +30,28 @@
 #ifndef PAKET12ANIMATION_H_
 #define PAKET12ANIMATION_H_
 
-#include "../PaketServer.h"
-#include "../PaketClient.h"
+#include "../PacketServer.h"
+#include "../PacketClient.h"
 
 namespace std {
 
 class DataOutputStream;
 class DataInputStream;
 
-class Paket12Animation: public PaketServer, public PaketClient {
+class Packet12Animation: public PacketServer, public PacketClient {
 public:
-	Paket12Animation(int _entityId, byte _animation);
-	PaketServer *gebeInstanz();
-	static bool registierePaket();
-	void schreibePaketInhalt(DataOutputStream *out);
-	void lesePaketInhalt(DataInputStream *in);
-	void verarbeitePaket();
+	Packet12Animation(int _entityId, byte _animation);
+	PacketServer *gebeInstanz();
+	static bool registierePacket();
+	void schreibePacketInhalt(DataOutputStream *out);
+	void lesePacketInhalt(DataInputStream *in);
+	void verarbeitePacket();
 private:
 
 	int entityId;
 	byte animation;
 
-	Paket12Animation();
+	Packet12Animation();
 };
 }
 #endif /* PAKET12ANIMATION_H_ */

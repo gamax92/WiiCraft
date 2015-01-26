@@ -27,44 +27,44 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Paket06SpawnPosition.h"
+#include "Packet06SpawnPosition.h"
 
 #include <cstdio>
 #include "../../net/DataInputStream.h"
 #include "../../world/Welt.h"
-#include "../PaketManager.h"
+#include "../PacketManager.h"
 #include "../../util/Debug.h"
 
 using namespace std;
 
-Paket06SpawnPosition::Paket06SpawnPosition() {
-	PaketServer::id = 0x06;
-	PaketServer::prio = 50;
+Packet06SpawnPosition::Packet06SpawnPosition() {
+	PacketServer::id = 0x06;
+	PacketServer::prio = 50;
 }
 
-PaketServer *Paket06SpawnPosition::gebeInstanz() {
-	return new Paket06SpawnPosition();
+PacketServer *Packet06SpawnPosition::gebeInstanz() {
+	return new Packet06SpawnPosition();
 }
 
-bool Paket06SpawnPosition::registierePaket() {
-	PaketManager::registrierePaket(new Paket06SpawnPosition());
+bool Packet06SpawnPosition::registierePacket() {
+	PacketManager::registrierePacket(new Packet06SpawnPosition());
 
 	return true;
 }
 
-void Paket06SpawnPosition::lesePaketInhalt(DataInputStream *in) {
+void Packet06SpawnPosition::lesePacketInhalt(DataInputStream *in) {
 	this->x = in->leseInt();
 	this->y = in->leseInt();
 	this->z = in->leseInt();
 }
 
-void Paket06SpawnPosition::verarbeitePaket() {
+void Packet06SpawnPosition::verarbeitePacket() {
 	Welt::gebeWelt()->setzeKompassPosition(this->x, this->y, this->z);
 
 #ifdef DEBUG_ON
 	char *buffer = new char[100];
 	sprintf(buffer, "x: %i, y: %i, z: %i", this->x, this->y, this->z);
-	Debug::schreibePaketLog("Paket06SpawnPosition", buffer);
+	Debug::schreibePacketLog("Packet06SpawnPosition", buffer);
 	delete[] buffer;
 #endif
 }

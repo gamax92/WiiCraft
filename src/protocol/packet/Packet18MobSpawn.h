@@ -30,20 +30,20 @@
 #ifndef PAKET18MOBSPAWN_H_
 #define PAKET18MOBSPAWN_H_
 
-#include "../PaketServer.h"
+#include "../PacketServer.h"
 
 namespace std {
 
 class DataInputStream;
 class Metadata;
 
-class Paket18MobSpawn: public PaketServer {
+class Packet18MobSpawn: public PacketServer {
 public:
-	~Paket18MobSpawn();
-	PaketServer *gebeInstanz();
-	static bool registierePaket();
-	void lesePaketInhalt(DataInputStream *in);
-	void verarbeitePaket();
+	~Packet18MobSpawn();
+	PacketServer *gebeInstanz();
+	static bool registierePacket();
+	void lesePacketInhalt(DataInputStream *in);
+	void verarbeitePacket();
 private:
 
 	int entityId;
@@ -56,7 +56,7 @@ private:
 	byte headYaw;
 	Metadata *metaData;
 
-	Paket18MobSpawn();
+	Packet18MobSpawn();
 };
 }
 #endif /* PAKET18MOBSPAWN_H_ */

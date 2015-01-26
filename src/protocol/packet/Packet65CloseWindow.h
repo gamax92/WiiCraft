@@ -27,30 +27,30 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef Paket65CloseWindow_H_
-#define Paket65CloseWindow_H_
+#ifndef Packet65CloseWindow_H_
+#define Packet65CloseWindow_H_
 
-#include "../PaketServer.h"
-#include "../PaketClient.h"
+#include "../PacketServer.h"
+#include "../PacketClient.h"
 
 namespace std {
 
 class DataOutputStream;
 class DataInputStream;
 
-class Paket65CloseWindow: public PaketServer, public PaketClient {
+class Packet65CloseWindow: public PacketServer, public PacketClient {
 public:
-	Paket65CloseWindow(byte _windowId);
-	PaketServer *gebeInstanz();
-	static bool registierePaket();
-	void schreibePaketInhalt(DataOutputStream *out);
-	void lesePaketInhalt(DataInputStream *in);
-	void verarbeitePaket();
+	Packet65CloseWindow(byte _windowId);
+	PacketServer *gebeInstanz();
+	static bool registierePacket();
+	void schreibePacketInhalt(DataOutputStream *out);
+	void lesePacketInhalt(DataInputStream *in);
+	void verarbeitePacket();
 private:
 
 	byte windowId;
 
-	Paket65CloseWindow();
+	Packet65CloseWindow();
 };
 }
-#endif /* Paket65CloseWindow_H_ */
+#endif /* Packet65CloseWindow_H_ */

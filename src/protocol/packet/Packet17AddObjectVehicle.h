@@ -27,21 +27,21 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef Paket17AddObjectVehicle_H_
-#define Paket17AddObjectVehicle_H_
+#ifndef Packet17AddObjectVehicle_H_
+#define Packet17AddObjectVehicle_H_
 
-#include "../PaketServer.h"
+#include "../PacketServer.h"
 
 namespace std {
 
 class DataInputStream;
 
-class Paket17AddObjectVehicle: public PaketServer {
+class Packet17AddObjectVehicle: public PacketServer {
 public:
-	PaketServer *gebeInstanz();
-	static bool registierePaket();
-	void lesePaketInhalt(DataInputStream *in);
-	void verarbeitePaket();
+	PacketServer *gebeInstanz();
+	static bool registierePacket();
+	void lesePacketInhalt(DataInputStream *in);
+	void verarbeitePacket();
 private:
 
 	int entityId;
@@ -54,7 +54,7 @@ private:
 	short speedY;
 	short speedZ;
 
-	Paket17AddObjectVehicle();
+	Packet17AddObjectVehicle();
 };
 }
-#endif /* Paket17AddObjectVehicle_H_ */
+#endif /* Packet17AddObjectVehicle_H_ */

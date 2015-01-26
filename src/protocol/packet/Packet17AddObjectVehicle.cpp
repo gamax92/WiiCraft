@@ -44,33 +44,33 @@
  * FISHING_FLOAT = 90
  */
 
-#include "Paket17AddObjectVehicle.h"
+#include "Packet17AddObjectVehicle.h"
 
 #include <cstdio>
 #include <string>
 #include "../../net/DataInputStream.h"
 #include "../../entity/Entity.h"
-#include "../PaketManager.h"
+#include "../PacketManager.h"
 #include "../../util/Debug.h"
 
 using namespace std;
 
-Paket17AddObjectVehicle::Paket17AddObjectVehicle() {
-	PaketServer::id = 0x17;
-	PaketServer::prio = 50;
+Packet17AddObjectVehicle::Packet17AddObjectVehicle() {
+	PacketServer::id = 0x17;
+	PacketServer::prio = 50;
 }
 
-PaketServer *Paket17AddObjectVehicle::gebeInstanz() {
-	return new Paket17AddObjectVehicle();
+PacketServer *Packet17AddObjectVehicle::gebeInstanz() {
+	return new Packet17AddObjectVehicle();
 }
 
-bool Paket17AddObjectVehicle::registierePaket() {
-	PaketManager::registrierePaket(new Paket17AddObjectVehicle());
+bool Packet17AddObjectVehicle::registierePacket() {
+	PacketManager::registrierePacket(new Packet17AddObjectVehicle());
 
 	return true;
 }
 
-void Paket17AddObjectVehicle::lesePaketInhalt(DataInputStream *in) {
+void Packet17AddObjectVehicle::lesePacketInhalt(DataInputStream *in) {
 	this->entityId = in->leseInt();
 	this->type = in->leseByte();
 	this->x = in->leseInt();
@@ -84,7 +84,7 @@ void Paket17AddObjectVehicle::lesePaketInhalt(DataInputStream *in) {
 	}
 }
 
-void Paket17AddObjectVehicle::verarbeitePaket() {
+void Packet17AddObjectVehicle::verarbeitePacket() {
 #ifdef DEBUG_ON
 	char *buffer = new char[100];
 	string typ;
@@ -121,10 +121,10 @@ void Paket17AddObjectVehicle::verarbeitePaket() {
 	}
 
 	sprintf(buffer, "typ=%s, id=%i", typ.data(), this->entityId);
-	Debug::schreibePaketLog("Paket17AddObjectVehicle", buffer);
+	Debug::schreibePacketLog("Packet17AddObjectVehicle", buffer);
 	delete[] buffer;
 #endif
 
 	Entity::gebeEntity(this->entityId);
-	// TODO Paketverarbeitung implementieren
+	// TODO Packetverarbeitung implementieren
 }

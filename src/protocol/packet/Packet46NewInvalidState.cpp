@@ -27,38 +27,38 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Paket46NewInvalidState.h"
+#include "Packet46NewInvalidState.h"
 
 #include <cstdio>
 #include "../../net/DataInputStream.h"
 #include "../../world/Welt.h"
-#include "../../exception/ExcPaketUnbekannerGrund.h"
-#include "../PaketManager.h"
+#include "../../exception/ExcPacketUnbekannerGrund.h"
+#include "../PacketManager.h"
 #include "../../util/Debug.h"
 
 using namespace std;
 
-Paket46NewInvalidState::Paket46NewInvalidState() {
-	PaketServer::id = 0x46;
-	PaketServer::prio = 50;
+Packet46NewInvalidState::Packet46NewInvalidState() {
+	PacketServer::id = 0x46;
+	PacketServer::prio = 50;
 }
 
-PaketServer *Paket46NewInvalidState::gebeInstanz() {
-	return new Paket46NewInvalidState();
+PacketServer *Packet46NewInvalidState::gebeInstanz() {
+	return new Packet46NewInvalidState();
 }
 
-bool Paket46NewInvalidState::registierePaket() {
-	PaketManager::registrierePaket(new Paket46NewInvalidState());
+bool Packet46NewInvalidState::registierePacket() {
+	PacketManager::registrierePacket(new Packet46NewInvalidState());
 
 	return true;
 }
 
-void Paket46NewInvalidState::lesePaketInhalt(DataInputStream *in) {
+void Packet46NewInvalidState::lesePacketInhalt(DataInputStream *in) {
 	this->reason = in->leseByte();
 	this->gameMode = in->leseByte();
 }
 
-void Paket46NewInvalidState::verarbeitePaket() {
+void Packet46NewInvalidState::verarbeitePacket() {
 	if (this->reason == 0) {
 		// Invalid Bed "tile.bed.notValid"
 		// wird ignoriert
@@ -72,13 +72,13 @@ void Paket46NewInvalidState::verarbeitePaket() {
 		// Credits
 		// wird ignoriert
 	} else {
-		throw ExcPaketUnbekannerGrund(this->reason, this->gameMode);
+		throw ExcPacketUnbekannerGrund(this->reason, this->gameMode);
 	}
 
 #ifdef DEBUG_ON
 	char *buffer = new char[100];
 	sprintf(buffer, "reason: %x, gameMode: %x", this->reason, this->gameMode);
-	Debug::schreibePaketLog("Paket46NewInvalidState", buffer);
+	Debug::schreibePacketLog("Packet46NewInvalidState", buffer);
 	delete[] buffer;
 #endif
 }

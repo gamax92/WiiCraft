@@ -27,38 +27,38 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Paket2BExperience.h"
+#include "Packet2BExperience.h"
 
 #include <cstdio>
 #include "../../net/DataInputStream.h"
 #include "../../entity/Spieler.h"
-#include "../PaketManager.h"
+#include "../PacketManager.h"
 #include "../../util/Debug.h"
 
 using namespace std;
 
-Paket2BExperience::Paket2BExperience() {
-	PaketServer::id = 0x2b;
-	PaketServer::prio = 50;
+Packet2BExperience::Packet2BExperience() {
+	PacketServer::id = 0x2b;
+	PacketServer::prio = 50;
 }
 
-PaketServer *Paket2BExperience::gebeInstanz() {
-	return new Paket2BExperience();
+PacketServer *Packet2BExperience::gebeInstanz() {
+	return new Packet2BExperience();
 }
 
-bool Paket2BExperience::registierePaket() {
-	PaketManager::registrierePaket(new Paket2BExperience());
+bool Packet2BExperience::registierePacket() {
+	PacketManager::registrierePacket(new Packet2BExperience());
 
 	return true;
 }
 
-void Paket2BExperience::lesePaketInhalt(DataInputStream *in) {
+void Packet2BExperience::lesePacketInhalt(DataInputStream *in) {
 	this->experienceBar = in->leseFloat();
 	this->level = in->leseShort();
 	this->totalExperience = in->leseShort();
 }
 
-void Paket2BExperience::verarbeitePaket() {
+void Packet2BExperience::verarbeitePacket() {
 	Spieler::getSpieler()->setzeErfahrungsPunkteAktuelleStufe(
 			this->experienceBar);
 	Spieler::getSpieler()->setzeLevel(this->level);
@@ -68,7 +68,7 @@ void Paket2BExperience::verarbeitePaket() {
 	char *buffer = new char[100];
 	sprintf(buffer, "experienceBar: %f, level: %i, totalExperience: %i",
 			this->experienceBar, this->level, this->totalExperience);
-	Debug::schreibePaketLog("Paket2BExperience", buffer);
+	Debug::schreibePacketLog("Packet2BExperience", buffer);
 	delete[] buffer;
 #endif
 }

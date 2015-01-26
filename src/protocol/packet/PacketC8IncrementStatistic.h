@@ -30,24 +30,24 @@
 #ifndef PAKETC8INCREMENTSTATISTIC_H_
 #define PAKETC8INCREMENTSTATISTIC_H_
 
-#include "../PaketServer.h"
+#include "../PacketServer.h"
 
 namespace std {
 
 class DataInputStream;
 
-class PaketC8IncrementStatistic: public PaketServer {
+class PacketC8IncrementStatistic: public PacketServer {
 public:
-	PaketServer *gebeInstanz();
-	static bool registierePaket();
-	void lesePaketInhalt(DataInputStream *in);
-	void verarbeitePaket();
+	PacketServer *gebeInstanz();
+	static bool registierePacket();
+	void lesePacketInhalt(DataInputStream *in);
+	void verarbeitePacket();
 private:
 
 	int statisticId;
 	byte amount;
 
-	PaketC8IncrementStatistic();
+	PacketC8IncrementStatistic();
 };
 }
 #endif /* PAKETC8INCREMENTSTATISTIC_H_ */

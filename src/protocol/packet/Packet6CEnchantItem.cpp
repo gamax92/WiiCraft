@@ -27,21 +27,21 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Paket6CEnchantItem.h"
+#include "Packet6CEnchantItem.h"
 
 #include "../../net/DataOutputStream.h"
 
 using namespace std;
 
-Paket6CEnchantItem::Paket6CEnchantItem(byte _windowId, byte _enchantment) {
-	PaketClient::id = 0x6c;
-	PaketClient::prio = 50;
+Packet6CEnchantItem::Packet6CEnchantItem(byte _windowId, byte _enchantment) {
+	PacketClient::id = 0x6c;
+	PacketClient::prio = 50;
 
 	this->windowId = _windowId;
 	this->enchantment = _enchantment;
 }
 
-void Paket6CEnchantItem::schreibePaketInhalt(DataOutputStream *out) {
+void Packet6CEnchantItem::schreibePacketInhalt(DataOutputStream *out) {
 	out->schreibeByte(this->windowId);
 	out->schreibeByte(this->enchantment);
 }

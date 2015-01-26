@@ -27,32 +27,32 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Paket1AExperienceOrb.h"
+#include "Packet1AExperienceOrb.h"
 
 #include <cstdio>
 #include "../../net/DataInputStream.h"
 #include "../../entity/Entity.h"
-#include "../PaketManager.h"
+#include "../PacketManager.h"
 #include "../../util/Debug.h"
 
 using namespace std;
 
-Paket1AExperienceOrb::Paket1AExperienceOrb() {
-	PaketServer::id = 0x1a;
-	PaketServer::prio = 50;
+Packet1AExperienceOrb::Packet1AExperienceOrb() {
+	PacketServer::id = 0x1a;
+	PacketServer::prio = 50;
 }
 
-PaketServer *Paket1AExperienceOrb::gebeInstanz() {
-	return new Paket1AExperienceOrb();
+PacketServer *Packet1AExperienceOrb::gebeInstanz() {
+	return new Packet1AExperienceOrb();
 }
 
-bool Paket1AExperienceOrb::registierePaket() {
-	PaketManager::registrierePaket(new Paket1AExperienceOrb());
+bool Packet1AExperienceOrb::registierePacket() {
+	PacketManager::registrierePacket(new Packet1AExperienceOrb());
 
 	return true;
 }
 
-void Paket1AExperienceOrb::lesePaketInhalt(DataInputStream *in) {
+void Packet1AExperienceOrb::lesePacketInhalt(DataInputStream *in) {
 	this->entityId = in->leseInt();
 	this->x = in->leseInt();
 	this->y = in->leseInt();
@@ -60,15 +60,15 @@ void Paket1AExperienceOrb::lesePaketInhalt(DataInputStream *in) {
 	this->count = in->leseShort();
 }
 
-void Paket1AExperienceOrb::verarbeitePaket() {
+void Packet1AExperienceOrb::verarbeitePacket() {
 #ifdef DEBUG_ON
 	char *buffer = new char[100];
 	sprintf(buffer, "entityId: %i, x: %i, y: %i, z: %i, count: %i",
 			this->entityId, this->x, this->y, this->z, this->count);
-	Debug::schreibePaketLog("Paket1AExperienceOrb", buffer);
+	Debug::schreibePacketLog("Packet1AExperienceOrb", buffer);
 	delete[] buffer;
 #endif
 
 	Entity::gebeEntity(this->entityId);
-	// TODO Paketverarbeitung implementieren
+	// TODO Packetverarbeitung implementieren
 }

@@ -32,7 +32,7 @@
 #include "thread/SpielThread.h"
 #include "util/KontrollerHandler.h"
 #include "gui/GrafikHandler.h"
-#include "protocol/PaketManager.h"
+#include "protocol/PacketManager.h"
 #include "item/ItemManager.h"
 
 using namespace std;
@@ -43,7 +43,7 @@ int main(int argc, char **argv) {
 	Debug::start();
 #endif
 	GrafikHandler::initialisiere();
-	PaketManager::initialisierePaketListe();
+	PacketManager::initialisierePacketListe();
 	ItemManager::initialisiereItemListe();
 
 	SpielThread *spiel = new SpielThread();

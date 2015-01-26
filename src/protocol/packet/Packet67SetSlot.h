@@ -30,27 +30,27 @@
 #ifndef PAKET67SETSLOT_H_
 #define PAKET67SETSLOT_H_
 
-#include "../PaketServer.h"
+#include "../PacketServer.h"
 
 namespace std {
 
 class DataInputStream;
 class Slot;
 
-class Paket67SetSlot: public PaketServer {
+class Packet67SetSlot: public PacketServer {
 public:
-	~Paket67SetSlot();
-	PaketServer *gebeInstanz();
-	static bool registierePaket();
-	void lesePaketInhalt(DataInputStream *in);
-	void verarbeitePaket();
+	~Packet67SetSlot();
+	PacketServer *gebeInstanz();
+	static bool registierePacket();
+	void lesePacketInhalt(DataInputStream *in);
+	void verarbeitePacket();
 private:
 
 	byte windowId;
 	short slotNr;
 	Slot *slot;
 
-	Paket67SetSlot();
+	Packet67SetSlot();
 };
 }
 #endif /* PAKET67SETSLOT_H_ */

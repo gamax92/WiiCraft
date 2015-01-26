@@ -30,25 +30,25 @@
 #ifndef PAKET2BEXPERIENCE_H_
 #define PAKET2BEXPERIENCE_H_
 
-#include "../PaketServer.h"
+#include "../PacketServer.h"
 
 namespace std {
 
 class DataInputStream;
 
-class Paket2BExperience: public PaketServer {
+class Packet2BExperience: public PacketServer {
 public:
-	PaketServer *gebeInstanz();
-	static bool registierePaket();
-	void lesePaketInhalt(DataInputStream *in);
-	void verarbeitePaket();
+	PacketServer *gebeInstanz();
+	static bool registierePacket();
+	void lesePacketInhalt(DataInputStream *in);
+	void verarbeitePacket();
 private:
 
 	float experienceBar;
 	short level;
 	short totalExperience;
 
-	Paket2BExperience();
+	Packet2BExperience();
 };
 }
 #endif /* PAKET2BEXPERIENCE_H_ */

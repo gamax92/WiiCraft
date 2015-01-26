@@ -27,56 +27,56 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "PaketFFDisconnectKick.h"
+#include "PacketFFDisconnectKick.h"
 
 #include "../../net/DataOutputStream.h"
 #include "../../net/DataInputStream.h"
 #include "../Verbindung.h"
 #include "../../exception/ExcSocketStringLaengeUeberschritten.h"
-#include "../PaketManager.h"
+#include "../PacketManager.h"
 #include "../../util/Debug.h"
 
 using namespace std;
 
-PaketFFDisconnectKick::PaketFFDisconnectKick() {
-	PaketServer::id = 0xff;
-	PaketServer::prio = 0;
+PacketFFDisconnectKick::PacketFFDisconnectKick() {
+	PacketServer::id = 0xff;
+	PacketServer::prio = 0;
 }
 
-PaketFFDisconnectKick::PaketFFDisconnectKick(string _reason) {
-	PaketClient::id = 0xff;
-	PaketClient::prio = 0;
+PacketFFDisconnectKick::PacketFFDisconnectKick(string _reason) {
+	PacketClient::id = 0xff;
+	PacketClient::prio = 0;
 
 	this->reason = _reason;
 }
 
-PaketServer *PaketFFDisconnectKick::gebeInstanz() {
-	return new PaketFFDisconnectKick();
+PacketServer *PacketFFDisconnectKick::gebeInstanz() {
+	return new PacketFFDisconnectKick();
 }
 
-bool PaketFFDisconnectKick::registierePaket() {
-	PaketManager::registrierePaket(new PaketFFDisconnectKick());
+bool PacketFFDisconnectKick::registierePacket() {
+	PacketManager::registrierePacket(new PacketFFDisconnectKick());
 
 	return true;
 }
 
-void PaketFFDisconnectKick::schreibePaketInhalt(DataOutputStream *out) {
+void PacketFFDisconnectKick::schreibePacketInhalt(DataOutputStream *out) {
 	out->schreibeString(this->reason);
 
 	Verbindung::beenden(false);
 }
 
-void PaketFFDisconnectKick::lesePaketInhalt(DataInputStream *in) {
+void PacketFFDisconnectKick::lesePacketInhalt(DataInputStream *in) {
 	try {
 		this->reason = in->leseString(256);
 	} catch (ExcSocketStringLaengeUeberschritten &exception) {
-		throw ExcSocketStringLaengeUeberschritten(PaketServer::id);
+		throw ExcSocketStringLaengeUeberschritten(PacketServer::id);
 	}
 }
 
-void PaketFFDisconnectKick::verarbeitePaket() {
+void PacketFFDisconnectKick::verarbeitePacket() {
 #ifdef DEBUG_ON
-	Debug::schreibePaketLog("PaketFFDisconnectKick", this->reason);
+	Debug::schreibePacketLog("PacketFFDisconnectKick", this->reason);
 #endif
 	Verbindung::beenden(false);
 }

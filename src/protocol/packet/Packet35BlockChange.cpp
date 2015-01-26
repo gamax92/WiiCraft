@@ -27,33 +27,33 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Paket35BlockChange.h"
+#include "Packet35BlockChange.h"
 
 #include <cstdio>
 #include "../../net/DataInputStream.h"
 #include "../../world/Welt.h"
 #include "../../world/BlockAenderung.h"
-#include "../PaketManager.h"
+#include "../PacketManager.h"
 #include "../../util/Debug.h"
 
 using namespace std;
 
-Paket35BlockChange::Paket35BlockChange() {
-	PaketServer::id = 0x35;
-	PaketServer::prio = 50;
+Packet35BlockChange::Packet35BlockChange() {
+	PacketServer::id = 0x35;
+	PacketServer::prio = 50;
 }
 
-PaketServer *Paket35BlockChange::gebeInstanz() {
-	return new Paket35BlockChange();
+PacketServer *Packet35BlockChange::gebeInstanz() {
+	return new Packet35BlockChange();
 }
 
-bool Paket35BlockChange::registierePaket() {
-	PaketManager::registrierePaket(new Paket35BlockChange());
+bool Packet35BlockChange::registierePacket() {
+	PacketManager::registrierePacket(new Packet35BlockChange());
 
 	return true;
 }
 
-void Paket35BlockChange::lesePaketInhalt(DataInputStream *in) {
+void Packet35BlockChange::lesePacketInhalt(DataInputStream *in) {
 	this->x = in->leseInt();
 	this->y = in->leseByte();
 	this->z = in->leseInt();
@@ -61,7 +61,7 @@ void Paket35BlockChange::lesePaketInhalt(DataInputStream *in) {
 	this->blockMetadata = in->leseByte();
 }
 
-void Paket35BlockChange::verarbeitePaket() {
+void Packet35BlockChange::verarbeitePacket() {
 	int chunkX;
 	int chunkZ;
 	Welt::berechneChunkPosition(this->x, this->z, chunkX, chunkZ);
@@ -82,7 +82,7 @@ void Paket35BlockChange::verarbeitePaket() {
 	char *buffer = new char[100];
 	sprintf(buffer, "chunk: %ix%i, blockType: %i, blockMetadata: %i, index: %i",
 			chunkX, chunkZ, this->blockType, this->blockMetadata, index);
-	Debug::schreibePaketLog("Paket35BlockChange", buffer);
+	Debug::schreibePacketLog("Packet35BlockChange", buffer);
 	delete[] buffer;
 #endif
 }

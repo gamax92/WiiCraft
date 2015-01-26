@@ -89,8 +89,8 @@ void Debug::deInitSD() {
 #endif
 }
 
-void Debug::schreibePaketLog(string paketName, string nachricht) {
-	if (paketName != "Paket03ChatMessage") {
+void Debug::schreibePacketLog(string paketName, string nachricht) {
+	if (paketName != "Packet03ChatMessage") {
 		return;
 	}
 
@@ -100,7 +100,7 @@ void Debug::schreibePaketLog(string paketName, string nachricht) {
 void Debug::start() {
 	Debug::schreibeLog("sd:/apps/WiiCraft/exception.log", "",
 			Debug::DATEI_UEBERSCHREIBEN);
-	Debug::schreibeLog("sd:/apps/WiiCraft/Paket.log", "",
+	Debug::schreibeLog("sd:/apps/WiiCraft/Packet.log", "",
 			Debug::DATEI_UEBERSCHREIBEN);
 	Debug::schreibeLog("sd:/apps/WiiCraft/Debug.log", "",
 			Debug::DATEI_UEBERSCHREIBEN);

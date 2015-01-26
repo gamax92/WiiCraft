@@ -30,18 +30,18 @@
 #ifndef PAKETDUMMY_H_
 #define PAKETDUMMY_H_
 
-#include "../PaketServer.h"
+#include "../PacketServer.h"
 
 namespace std {
 
 class DataInputStream;
 
-class PaketDummy: public PaketServer {
+class PacketDummy: public PacketServer {
 public:
-	PaketDummy();
-	PaketServer *gebeInstanz();
-	void lesePaketInhalt(DataInputStream *in);
-	void verarbeitePaket();
+	PacketDummy();
+	PacketServer *gebeInstanz();
+	void lesePacketInhalt(DataInputStream *in);
+	void verarbeitePacket();
 };
 }
 #endif /* PAKETDUMMY_H_ */

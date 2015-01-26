@@ -27,53 +27,53 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Paket03ChatMessage.h"
+#include "Packet03ChatMessage.h"
 
 #include <cstdio>
 #include "../../net/DataOutputStream.h"
 #include "../../net/DataInputStream.h"
 #include "../../exception/ExcSocketStringLaengeUeberschritten.h"
 #include "../../protocol/Chat.h"
-#include "../PaketManager.h"
+#include "../PacketManager.h"
 #include "../../util/Debug.h"
 
 using namespace std;
 
-Paket03ChatMessage::Paket03ChatMessage() {
-	PaketServer::id = 0x03;
-	PaketServer::prio = 50;
+Packet03ChatMessage::Packet03ChatMessage() {
+	PacketServer::id = 0x03;
+	PacketServer::prio = 50;
 }
 
-Paket03ChatMessage::Paket03ChatMessage(string _message) {
-	PaketClient::id = 0x03;
-	PaketClient::prio = 50;
+Packet03ChatMessage::Packet03ChatMessage(string _message) {
+	PacketClient::id = 0x03;
+	PacketClient::prio = 50;
 
 	this->message = _message;
 }
 
-PaketServer *Paket03ChatMessage::gebeInstanz() {
-	return new Paket03ChatMessage();
+PacketServer *Packet03ChatMessage::gebeInstanz() {
+	return new Packet03ChatMessage();
 }
 
-bool Paket03ChatMessage::registierePaket() {
-	PaketManager::registrierePaket(new Paket03ChatMessage());
+bool Packet03ChatMessage::registierePacket() {
+	PacketManager::registrierePacket(new Packet03ChatMessage());
 
 	return true;
 }
 
-void Paket03ChatMessage::schreibePaketInhalt(DataOutputStream *out) {
+void Packet03ChatMessage::schreibePacketInhalt(DataOutputStream *out) {
 	out->schreibeString(this->message);
 }
 
-void Paket03ChatMessage::lesePaketInhalt(DataInputStream *in) {
+void Packet03ChatMessage::lesePacketInhalt(DataInputStream *in) {
 	try {
 		this->message = in->leseString(119);
 	} catch (ExcSocketStringLaengeUeberschritten &exception) {
-		throw ExcSocketStringLaengeUeberschritten(PaketServer::id);
+		throw ExcSocketStringLaengeUeberschritten(PacketServer::id);
 	}
 }
 
-void Paket03ChatMessage::verarbeitePaket() {
+void Packet03ChatMessage::verarbeitePacket() {
 	// Steuerzeichen §
 	//this->message.substr(0, 1);
 
@@ -123,7 +123,7 @@ void Paket03ChatMessage::verarbeitePaket() {
 
 	char *buffer = new char[200];
 	sprintf(buffer, "farbe=%s, text=%s", farbcode.data(), nachricht.data());
-	Debug::schreibePaketLog("Paket03ChatMessage", buffer);
+	Debug::schreibePacketLog("Packet03ChatMessage", buffer);
 	delete[] buffer;
 #endif
 

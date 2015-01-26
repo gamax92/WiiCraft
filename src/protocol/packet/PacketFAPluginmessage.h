@@ -30,8 +30,8 @@
 #ifndef PAKETFAPLUGINMESSAGE_H_
 #define PAKETFAPLUGINMESSAGE_H_
 
-#include "../PaketServer.h"
-#include "../PaketClient.h"
+#include "../PacketServer.h"
+#include "../PacketClient.h"
 #include <string>
 
 namespace std {
@@ -39,22 +39,22 @@ namespace std {
 class DataOutputStream;
 class DataInputStream;
 
-class PaketFAPluginmessage: public PaketServer, public PaketClient {
+class PacketFAPluginmessage: public PacketServer, public PacketClient {
 public:
-	~PaketFAPluginmessage();
-	PaketFAPluginmessage(string _channel, short _length, byte *_data);
-	PaketServer *gebeInstanz();
-	static bool registierePaket();
-	void schreibePaketInhalt(DataOutputStream *out);
-	void lesePaketInhalt(DataInputStream *in);
-	void verarbeitePaket();
+	~PacketFAPluginmessage();
+	PacketFAPluginmessage(string _channel, short _length, byte *_data);
+	PacketServer *gebeInstanz();
+	static bool registierePacket();
+	void schreibePacketInhalt(DataOutputStream *out);
+	void lesePacketInhalt(DataInputStream *in);
+	void verarbeitePacket();
 private:
 
 	string channel;
 	short length;
 	byte *data;
 
-	PaketFAPluginmessage();
+	PacketFAPluginmessage();
 };
 }
 #endif /* PAKETFAPLUGINMESSAGE_H_ */

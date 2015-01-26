@@ -30,23 +30,23 @@
 #ifndef PAKET0DPLAYERPOSITIONLOOK_H_
 #define PAKET0DPLAYERPOSITIONLOOK_H_
 
-#include "../PaketServer.h"
-#include "../PaketClient.h"
+#include "../PacketServer.h"
+#include "../PacketClient.h"
 
 namespace std {
 
 class DataOutputStream;
 class DataInputStream;
 
-class Paket0DPlayerPositionLook: public PaketServer, public PaketClient {
+class Packet0DPlayerPositionLook: public PacketServer, public PacketClient {
 public:
-	Paket0DPlayerPositionLook(double _x, double _y, double _stance, double _z,
+	Packet0DPlayerPositionLook(double _x, double _y, double _stance, double _z,
 			float _yaw, float _pitch, bool _onGround);
-	PaketServer *gebeInstanz();
-	static bool registierePaket();
-	void schreibePaketInhalt(DataOutputStream *out);
-	void lesePaketInhalt(DataInputStream *in);
-	void verarbeitePaket();
+	PacketServer *gebeInstanz();
+	static bool registierePacket();
+	void schreibePacketInhalt(DataOutputStream *out);
+	void lesePacketInhalt(DataInputStream *in);
+	void verarbeitePacket();
 private:
 
 	double x;
@@ -57,7 +57,7 @@ private:
 	float pitch;
 	bool onGround;
 
-	Paket0DPlayerPositionLook();
+	Packet0DPlayerPositionLook();
 };
 }
 #endif /* PAKET0DPLAYERPOSITIONLOOK_H_ */

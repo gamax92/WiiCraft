@@ -42,10 +42,10 @@ namespace std {
 class DataInputStream;
 class Socket;
 
-class PaketeLesenThread: public Thread {
+class PacketeLesenThread: public Thread {
 public:
-	PaketeLesenThread(Socket *_socket);
-	virtual ~PaketeLesenThread();
+	PacketeLesenThread(Socket *_socket);
+	virtual ~PacketeLesenThread();
 	int exec();
 	void stop();
 private:

@@ -27,44 +27,44 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Paket69UpdateWindowProperty.h"
+#include "Packet69UpdateWindowProperty.h"
 
 #include <cstdio>
 #include "../../net/DataInputStream.h"
-#include "../PaketManager.h"
+#include "../PacketManager.h"
 #include "../../util/Debug.h"
 
 using namespace std;
 
-Paket69UpdateWindowProperty::Paket69UpdateWindowProperty() {
-	PaketServer::id = 0x69;
-	PaketServer::prio = 50;
+Packet69UpdateWindowProperty::Packet69UpdateWindowProperty() {
+	PacketServer::id = 0x69;
+	PacketServer::prio = 50;
 }
 
-PaketServer *Paket69UpdateWindowProperty::gebeInstanz() {
-	return new Paket69UpdateWindowProperty();
+PacketServer *Packet69UpdateWindowProperty::gebeInstanz() {
+	return new Packet69UpdateWindowProperty();
 }
 
-bool Paket69UpdateWindowProperty::registierePaket() {
-	PaketManager::registrierePaket(new Paket69UpdateWindowProperty());
+bool Packet69UpdateWindowProperty::registierePacket() {
+	PacketManager::registrierePacket(new Packet69UpdateWindowProperty());
 
 	return true;
 }
 
-void Paket69UpdateWindowProperty::lesePaketInhalt(DataInputStream *in) {
+void Packet69UpdateWindowProperty::lesePacketInhalt(DataInputStream *in) {
 	this->windowId = in->leseByte();
 	this->property = in->leseShort();
 	this->value = in->leseShort();
 }
 
-void Paket69UpdateWindowProperty::verarbeitePaket() {
+void Packet69UpdateWindowProperty::verarbeitePacket() {
 #ifdef DEBUG_ON
 	char *buffer = new char[200];
 	sprintf(buffer, "windowId: %i, property: %i, value: %i", this->windowId,
 			this->property, this->value);
-	Debug::schreibePaketLog("Paket69UpdateWindowProperty", buffer);
+	Debug::schreibePacketLog("Packet69UpdateWindowProperty", buffer);
 	delete[] buffer;
 #endif
 
-	// TODO Paketverarbeitung implementieren
+	// TODO Packetverarbeitung implementieren
 }

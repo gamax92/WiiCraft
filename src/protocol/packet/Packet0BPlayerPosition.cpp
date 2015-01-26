@@ -27,16 +27,16 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Paket0BPlayerPosition.h"
+#include "Packet0BPlayerPosition.h"
 
 #include "../../net/DataOutputStream.h"
 
 using namespace std;
 
-Paket0BPlayerPosition::Paket0BPlayerPosition(double _x, double _y,
+Packet0BPlayerPosition::Packet0BPlayerPosition(double _x, double _y,
 		double _stance, double _z, bool _onGround) {
-	PaketClient::id = 0x0b;
-	PaketClient::prio = 50;
+	PacketClient::id = 0x0b;
+	PacketClient::prio = 50;
 
 	this->x = _x;
 	this->y = _y;
@@ -45,7 +45,7 @@ Paket0BPlayerPosition::Paket0BPlayerPosition(double _x, double _y,
 	this->onGround = _onGround;
 }
 
-void Paket0BPlayerPosition::schreibePaketInhalt(DataOutputStream *out) {
+void Packet0BPlayerPosition::schreibePacketInhalt(DataOutputStream *out) {
 	out->schreibeDouble(this->x);
 	out->schreibeDouble(this->y);
 	out->schreibeDouble(this->stance);

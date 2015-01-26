@@ -27,43 +27,43 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Paket04TimeUpdate.h"
+#include "Packet04TimeUpdate.h"
 
 #include <cstdio>
 #include "../../net/DataInputStream.h"
 #include "../../world/Welt.h"
-#include "../PaketManager.h"
+#include "../PacketManager.h"
 #include "../../util/Debug.h"
 
 using namespace std;
 
-Paket04TimeUpdate::Paket04TimeUpdate() {
-	PaketServer::id = 0x04;
-	PaketServer::prio = 20;
+Packet04TimeUpdate::Packet04TimeUpdate() {
+	PacketServer::id = 0x04;
+	PacketServer::prio = 20;
 }
 
-PaketServer *Paket04TimeUpdate::gebeInstanz() {
-	return new Paket04TimeUpdate();
+PacketServer *Packet04TimeUpdate::gebeInstanz() {
+	return new Packet04TimeUpdate();
 }
 
-bool Paket04TimeUpdate::registierePaket() {
-	PaketManager::registrierePaket(new Paket04TimeUpdate());
+bool Packet04TimeUpdate::registierePacket() {
+	PacketManager::registrierePacket(new Packet04TimeUpdate());
 
 	return true;
 }
 
-void Paket04TimeUpdate::lesePaketInhalt(DataInputStream *in) {
+void Packet04TimeUpdate::lesePacketInhalt(DataInputStream *in) {
 	this->time = in->leseLong();
 }
 
-void Paket04TimeUpdate::verarbeitePaket() {
+void Packet04TimeUpdate::verarbeitePacket() {
 	unsigned short uhrzeit = this->time % 24000;
 	Welt::gebeWelt()->setzeUhrzeit(uhrzeit);
 
 #ifdef DEBUG_ON
 	char *buffer = new char[100];
 	sprintf(buffer, "uhrzeit: %i", uhrzeit);
-	Debug::schreibePaketLog("Paket04TimeUpdate", buffer);
+	Debug::schreibePacketLog("Packet04TimeUpdate", buffer);
 	delete[] buffer;
 #endif
 }

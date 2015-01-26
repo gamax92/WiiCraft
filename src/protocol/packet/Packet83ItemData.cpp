@@ -27,36 +27,36 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Paket83ItemData.h"
+#include "Packet83ItemData.h"
 
 #include <cstdio>
 #include <cstdlib>
 #include "../../net/DataInputStream.h"
-#include "../PaketManager.h"
+#include "../PacketManager.h"
 #include "../../util/Debug.h"
 
 using namespace std;
 
-Paket83ItemData::Paket83ItemData() {
-	PaketServer::id = 0x83;
-	PaketServer::prio = 50;
+Packet83ItemData::Packet83ItemData() {
+	PacketServer::id = 0x83;
+	PacketServer::prio = 50;
 }
 
-Paket83ItemData::~Paket83ItemData() {
+Packet83ItemData::~Packet83ItemData() {
 	delete[] this->text;
 }
 
-PaketServer *Paket83ItemData::gebeInstanz() {
-	return new Paket83ItemData();
+PacketServer *Packet83ItemData::gebeInstanz() {
+	return new Packet83ItemData();
 }
 
-bool Paket83ItemData::registierePaket() {
-	PaketManager::registrierePaket(new Paket83ItemData());
+bool Packet83ItemData::registierePacket() {
+	PacketManager::registrierePacket(new Packet83ItemData());
 
 	return true;
 }
 
-void Paket83ItemData::lesePaketInhalt(DataInputStream *in) {
+void Packet83ItemData::lesePacketInhalt(DataInputStream *in) {
 	this->itemType = in->leseShort();
 	this->itemId = in->leseShort();
 	this->textLength = in->leseByte();
@@ -68,14 +68,14 @@ void Paket83ItemData::lesePaketInhalt(DataInputStream *in) {
 	}
 }
 
-void Paket83ItemData::verarbeitePaket() {
+void Packet83ItemData::verarbeitePacket() {
 #ifdef DEBUG_ON
 	char *buffer = new char[100];
 	sprintf(buffer, "itemType: %i, itemId: %i, textLength: %i", this->itemType,
 			this->itemId, this->textLength);
-	Debug::schreibePaketLog("Paket83ItemData", buffer);
+	Debug::schreibePacketLog("Packet83ItemData", buffer);
 	delete[] buffer;
 #endif
 
-	// TODO Paketverarbeitung implementieren
+	// TODO Packetverarbeitung implementieren
 }

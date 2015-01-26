@@ -27,45 +27,45 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Paket27AttachEntity.h"
+#include "Packet27AttachEntity.h"
 
 #include <cstdio>
 #include "../../net/DataInputStream.h"
 #include "../../entity/Entity.h"
-#include "../PaketManager.h"
+#include "../PacketManager.h"
 #include "../../util/Debug.h"
 
 using namespace std;
 
-Paket27AttachEntity::Paket27AttachEntity() {
-	PaketServer::id = 0x27;
-	PaketServer::prio = 50;
+Packet27AttachEntity::Packet27AttachEntity() {
+	PacketServer::id = 0x27;
+	PacketServer::prio = 50;
 }
 
-PaketServer *Paket27AttachEntity::gebeInstanz() {
-	return new Paket27AttachEntity();
+PacketServer *Packet27AttachEntity::gebeInstanz() {
+	return new Packet27AttachEntity();
 }
 
-bool Paket27AttachEntity::registierePaket() {
-	PaketManager::registrierePaket(new Paket27AttachEntity());
+bool Packet27AttachEntity::registierePacket() {
+	PacketManager::registrierePacket(new Packet27AttachEntity());
 
 	return true;
 }
 
-void Paket27AttachEntity::lesePaketInhalt(DataInputStream *in) {
+void Packet27AttachEntity::lesePacketInhalt(DataInputStream *in) {
 	this->entityId = in->leseInt();
 	this->vehiclentityId = in->leseInt();
 }
 
-void Paket27AttachEntity::verarbeitePaket() {
+void Packet27AttachEntity::verarbeitePacket() {
 #ifdef DEBUG_ON
 	char *buffer = new char[100];
 	sprintf(buffer, "entityId: %i, vehiclentityId: %i", this->entityId,
 			this->vehiclentityId);
-	Debug::schreibePaketLog("Paket27AttachEntity", buffer);
+	Debug::schreibePacketLog("Packet27AttachEntity", buffer);
 	delete[] buffer;
 #endif
 
 	Entity::gebeEntity(this->entityId);
-	// TODO Paketverarbeitung implementieren
+	// TODO Packetverarbeitung implementieren
 }

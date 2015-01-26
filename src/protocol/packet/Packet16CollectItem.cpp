@@ -27,46 +27,46 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Paket16CollectItem.h"
+#include "Packet16CollectItem.h"
 
 #include <cstdio>
 #include "../../net/DataInputStream.h"
 #include "../../entity/Entity.h"
-#include "../PaketManager.h"
+#include "../PacketManager.h"
 #include "../../util/Debug.h"
 
 using namespace std;
 
-Paket16CollectItem::Paket16CollectItem() {
-	PaketServer::id = 0x16;
-	PaketServer::prio = 50;
+Packet16CollectItem::Packet16CollectItem() {
+	PacketServer::id = 0x16;
+	PacketServer::prio = 50;
 }
 
-PaketServer *Paket16CollectItem::gebeInstanz() {
-	return new Paket16CollectItem();
+PacketServer *Packet16CollectItem::gebeInstanz() {
+	return new Packet16CollectItem();
 }
 
-bool Paket16CollectItem::registierePaket() {
-	PaketManager::registrierePaket(new Paket16CollectItem());
+bool Packet16CollectItem::registierePacket() {
+	PacketManager::registrierePacket(new Packet16CollectItem());
 
 	return true;
 }
 
-void Paket16CollectItem::lesePaketInhalt(DataInputStream *in) {
+void Packet16CollectItem::lesePacketInhalt(DataInputStream *in) {
 	this->collectedEntityId = in->leseInt();
 	this->collectorEntityId = in->leseInt();
 }
 
-void Paket16CollectItem::verarbeitePaket() {
+void Packet16CollectItem::verarbeitePacket() {
 #ifdef DEBUG_ON
 	char *buffer = new char[100];
 	sprintf(buffer, "collectedEntityId: %i, collectorEntityId: %i",
 			this->collectedEntityId, this->collectorEntityId);
-	Debug::schreibePaketLog("Paket16CollectItem", buffer);
+	Debug::schreibePacketLog("Packet16CollectItem", buffer);
 	delete[] buffer;
 #endif
 
 	Entity::gebeEntity(this->collectedEntityId);
 	Entity::gebeEntity(this->collectorEntityId);
-	// TODO Paketverarbeitung implementieren
+	// TODO Packetverarbeitung implementieren
 }

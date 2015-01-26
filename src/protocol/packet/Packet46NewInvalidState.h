@@ -35,27 +35,27 @@
  * ENTER_CREDITS = 4
  */
 
-#ifndef Paket46NewInvalidState_H_
-#define Paket46NewInvalidState_H_
+#ifndef Packet46NewInvalidState_H_
+#define Packet46NewInvalidState_H_
 
-#include "../PaketServer.h"
+#include "../PacketServer.h"
 
 namespace std {
 
 class DataInputStream;
 
-class Paket46NewInvalidState: public PaketServer {
+class Packet46NewInvalidState: public PacketServer {
 public:
-	PaketServer *gebeInstanz();
-	static bool registierePaket();
-	void lesePaketInhalt(DataInputStream *in);
-	void verarbeitePaket();
+	PacketServer *gebeInstanz();
+	static bool registierePacket();
+	void lesePacketInhalt(DataInputStream *in);
+	void verarbeitePacket();
 private:
 
 	byte reason;
 	byte gameMode;
 
-	Paket46NewInvalidState();
+	Packet46NewInvalidState();
 };
 }
-#endif /* Paket46NewInvalidState_H_ */
+#endif /* Packet46NewInvalidState_H_ */

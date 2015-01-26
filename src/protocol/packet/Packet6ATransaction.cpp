@@ -27,61 +27,61 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Paket6ATransaction.h"
+#include "Packet6ATransaction.h"
 
 #include <cstdio>
 #include "../../net/DataOutputStream.h"
 #include "../../net/DataInputStream.h"
-#include "../PaketManager.h"
+#include "../PacketManager.h"
 #include "../../util/Debug.h"
 
 using namespace std;
 
-Paket6ATransaction::Paket6ATransaction() {
-	PaketServer::id = 0x6a;
-	PaketServer::prio = 50;
+Packet6ATransaction::Packet6ATransaction() {
+	PacketServer::id = 0x6a;
+	PacketServer::prio = 50;
 }
 
-Paket6ATransaction::Paket6ATransaction(byte _windowId, short _actionNumber,
+Packet6ATransaction::Packet6ATransaction(byte _windowId, short _actionNumber,
 		bool _accepted) {
-	PaketClient::id = 0x6a;
-	PaketClient::prio = 50;
+	PacketClient::id = 0x6a;
+	PacketClient::prio = 50;
 
 	this->windowId = _windowId;
 	this->actionNumber = _actionNumber;
 	this->accepted = _accepted;
 }
 
-PaketServer *Paket6ATransaction::gebeInstanz() {
-	return new Paket6ATransaction();
+PacketServer *Packet6ATransaction::gebeInstanz() {
+	return new Packet6ATransaction();
 }
 
-bool Paket6ATransaction::registierePaket() {
-	PaketManager::registrierePaket(new Paket6ATransaction());
+bool Packet6ATransaction::registierePacket() {
+	PacketManager::registrierePacket(new Packet6ATransaction());
 
 	return true;
 }
 
-void Paket6ATransaction::schreibePaketInhalt(DataOutputStream *out) {
+void Packet6ATransaction::schreibePacketInhalt(DataOutputStream *out) {
 	out->schreibeByte(this->windowId);
 	out->schreibeShort(this->actionNumber);
 	out->schreibeBoolean(this->accepted);
 }
 
-void Paket6ATransaction::lesePaketInhalt(DataInputStream *in) {
+void Packet6ATransaction::lesePacketInhalt(DataInputStream *in) {
 	this->windowId = in->leseByte();
 	this->actionNumber = in->leseShort();
 	this->accepted = in->leseBoolean();
 }
 
-void Paket6ATransaction::verarbeitePaket() {
+void Packet6ATransaction::verarbeitePacket() {
 #ifdef DEBUG_ON
 	char *buffer = new char[200];
 	sprintf(buffer, "windowId: %i, actionNumber: %i, accepted: %i",
 			this->windowId, this->actionNumber, this->accepted);
-	Debug::schreibePaketLog("Paket6ATransaction", buffer);
+	Debug::schreibePacketLog("Packet6ATransaction", buffer);
 	delete[] buffer;
 #endif
 
-	// TODO Paketverarbeitung implementieren
+	// TODO Packetverarbeitung implementieren
 }

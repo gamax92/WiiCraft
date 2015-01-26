@@ -43,16 +43,16 @@
  * 5	+X
  */
 
-#include "Paket0EPlayerDigging.h"
+#include "Packet0EPlayerDigging.h"
 
 #include "../../net/DataOutputStream.h"
 
 using namespace std;
 
-Paket0EPlayerDigging::Paket0EPlayerDigging(byte _status, int _x, byte _y,
+Packet0EPlayerDigging::Packet0EPlayerDigging(byte _status, int _x, byte _y,
 		int _z, byte _face) {
-	PaketClient::id = 0x0e;
-	PaketClient::prio = 50;
+	PacketClient::id = 0x0e;
+	PacketClient::prio = 50;
 
 	this->status = _status;
 	this->x = _x;
@@ -61,7 +61,7 @@ Paket0EPlayerDigging::Paket0EPlayerDigging(byte _status, int _x, byte _y,
 	this->face = _face;
 }
 
-void Paket0EPlayerDigging::schreibePaketInhalt(DataOutputStream *out) {
+void Packet0EPlayerDigging::schreibePacketInhalt(DataOutputStream *out) {
 	out->schreibeByte(this->status);
 	out->schreibeInt(this->x);
 	out->schreibeByte(this->y);

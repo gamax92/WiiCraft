@@ -30,19 +30,19 @@
 #ifndef PAKET3CEXPLOSION_H_
 #define PAKET3CEXPLOSION_H_
 
-#include "../PaketServer.h"
+#include "../PacketServer.h"
 
 namespace std {
 
 class DataInputStream;
 
-class Paket3CExplosion: public PaketServer {
+class Packet3CExplosion: public PacketServer {
 public:
-	~Paket3CExplosion();
-	PaketServer *gebeInstanz();
-	static bool registierePaket();
-	void lesePaketInhalt(DataInputStream *in);
-	void verarbeitePaket();
+	~Packet3CExplosion();
+	PacketServer *gebeInstanz();
+	static bool registierePacket();
+	void lesePacketInhalt(DataInputStream *in);
+	void verarbeitePacket();
 private:
 
 	double x;
@@ -52,7 +52,7 @@ private:
 	int recordCount;
 	byte *records;
 
-	Paket3CExplosion();
+	Packet3CExplosion();
 };
 }
 #endif /* PAKET3CEXPLOSION_H_ */

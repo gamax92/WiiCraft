@@ -27,23 +27,23 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "PaketDummy.h"
+#include "PacketDummy.h"
 
 #include "../../net/DataInputStream.h"
 
 using namespace std;
 
-PaketDummy::PaketDummy() {
-	PaketServer::id = 0x00;
-	PaketServer::prio = 0;
+PacketDummy::PacketDummy() {
+	PacketServer::id = 0x00;
+	PacketServer::prio = 0;
 }
 
-PaketServer *PaketDummy::gebeInstanz() {
-	return new PaketDummy();
+PacketServer *PacketDummy::gebeInstanz() {
+	return new PacketDummy();
 }
 
-void PaketDummy::lesePaketInhalt(DataInputStream *in) {
+void PacketDummy::lesePacketInhalt(DataInputStream *in) {
 }
 
-void PaketDummy::verarbeitePaket() {
+void PacketDummy::verarbeitePacket() {
 }

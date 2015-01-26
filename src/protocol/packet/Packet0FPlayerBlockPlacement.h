@@ -30,19 +30,19 @@
 #ifndef PAKET0FPLAYERBLOCKPLACEMENT_H_
 #define PAKET0FPLAYERBLOCKPLACEMENT_H_
 
-#include "../PaketClient.h"
+#include "../PacketClient.h"
 
 namespace std {
 
 class DataOutputStream;
 class Slot;
 
-class Paket0FPlayerBlockPlacement: public PaketClient {
+class Packet0FPlayerBlockPlacement: public PacketClient {
 public:
-	~Paket0FPlayerBlockPlacement();
-	Paket0FPlayerBlockPlacement(int _x, byte _y, int _z, byte _direction,
+	~Packet0FPlayerBlockPlacement();
+	Packet0FPlayerBlockPlacement(int _x, byte _y, int _z, byte _direction,
 			Slot *_heldItem);
-	void schreibePaketInhalt(DataOutputStream *out);
+	void schreibePacketInhalt(DataOutputStream *out);
 private:
 	int x;
 	byte y;

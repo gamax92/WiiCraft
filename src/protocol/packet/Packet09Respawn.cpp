@@ -27,27 +27,27 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Paket09Respawn.h"
+#include "Packet09Respawn.h"
 
 #include <cstdio>
 #include "../../net/DataOutputStream.h"
 #include "../../net/DataInputStream.h"
 #include "../../exception/ExcSocketStringLaengeUeberschritten.h"
 #include "../../world/Welt.h"
-#include "../PaketManager.h"
+#include "../PacketManager.h"
 #include "../../util/Debug.h"
 
 using namespace std;
 
-Paket09Respawn::Paket09Respawn() {
-	PaketServer::id = 0x09;
-	PaketServer::prio = 50;
+Packet09Respawn::Packet09Respawn() {
+	PacketServer::id = 0x09;
+	PacketServer::prio = 50;
 }
 
-Paket09Respawn::Paket09Respawn(int _dimension, byte _difficulty,
+Packet09Respawn::Packet09Respawn(int _dimension, byte _difficulty,
 		byte _creativeMode, short _worldHeight, string _levelType) {
-	PaketClient::id = 0x09;
-	PaketClient::prio = 50;
+	PacketClient::id = 0x09;
+	PacketClient::prio = 50;
 
 	this->dimension = _dimension;
 	this->difficulty = _difficulty;
@@ -56,17 +56,17 @@ Paket09Respawn::Paket09Respawn(int _dimension, byte _difficulty,
 	this->levelType = _levelType;
 }
 
-PaketServer *Paket09Respawn::gebeInstanz() {
-	return new Paket09Respawn();
+PacketServer *Packet09Respawn::gebeInstanz() {
+	return new Packet09Respawn();
 }
 
-bool Paket09Respawn::registierePaket() {
-	PaketManager::registrierePaket(new Paket09Respawn());
+bool Packet09Respawn::registierePacket() {
+	PacketManager::registrierePacket(new Packet09Respawn());
 
 	return true;
 }
 
-void Paket09Respawn::schreibePaketInhalt(DataOutputStream *out) {
+void Packet09Respawn::schreibePacketInhalt(DataOutputStream *out) {
 	out->schreibeInt(this->dimension);
 	out->schreibeByte(this->difficulty);
 	out->schreibeByte(this->creativeMode);
@@ -74,7 +74,7 @@ void Paket09Respawn::schreibePaketInhalt(DataOutputStream *out) {
 	out->schreibeString(this->levelType);
 }
 
-void Paket09Respawn::lesePaketInhalt(DataInputStream *in) {
+void Packet09Respawn::lesePacketInhalt(DataInputStream *in) {
 	this->dimension = in->leseInt();
 	this->difficulty = in->leseByte();
 	this->creativeMode = in->leseByte();
@@ -83,11 +83,11 @@ void Paket09Respawn::lesePaketInhalt(DataInputStream *in) {
 	try {
 		this->levelType = in->leseString(16);
 	} catch (ExcSocketStringLaengeUeberschritten &exception) {
-		throw ExcSocketStringLaengeUeberschritten(PaketServer::id);
+		throw ExcSocketStringLaengeUeberschritten(PacketServer::id);
 	}
 }
 
-void Paket09Respawn::verarbeitePaket() {
+void Packet09Respawn::verarbeitePacket() {
 	Welt::initialisiereWelt(this->dimension, this->levelType, this->difficulty,
 			this->creativeMode, this->worldHeight);
 
@@ -98,7 +98,7 @@ void Paket09Respawn::verarbeitePaket() {
 			"dimension: %i, difficulty: %i, creativeMode: %i, worldHeight: %i, levelType: %s",
 			this->dimension, this->difficulty, this->creativeMode,
 			this->worldHeight, this->levelType.data());
-	Debug::schreibePaketLog("Paket09Respawn", buffer);
+	Debug::schreibePacketLog("Packet09Respawn", buffer);
 	delete[] buffer;
 #endif
 }

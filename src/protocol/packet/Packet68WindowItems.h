@@ -31,7 +31,7 @@
 #define PAKET68WINDOWITEMS_H_
 
 #include <vector>
-#include "../PaketServer.h"
+#include "../PacketServer.h"
 
 namespace std {
 
@@ -39,19 +39,19 @@ class DataOutputStream;
 class DataInputStream;
 class Slot;
 
-class Paket68WindowItems: public PaketServer {
+class Packet68WindowItems: public PacketServer {
 public:
-	PaketServer *gebeInstanz();
-	static bool registierePaket();
-	void lesePaketInhalt(DataInputStream *in);
-	void verarbeitePaket();
+	PacketServer *gebeInstanz();
+	static bool registierePacket();
+	void lesePacketInhalt(DataInputStream *in);
+	void verarbeitePacket();
 private:
 
 	byte windowId;
 	short count;
 	vector<Slot *> slotData;
 
-	Paket68WindowItems();
+	Packet68WindowItems();
 };
 }
 #endif /* PAKET68WINDOWITEMS_H_ */

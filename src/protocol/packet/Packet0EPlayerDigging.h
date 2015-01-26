@@ -30,16 +30,16 @@
 #ifndef PAKET0EPLAYERDIGGING_H_
 #define PAKET0EPLAYERDIGGING_H_
 
-#include "../PaketClient.h"
+#include "../PacketClient.h"
 
 namespace std {
 
 class DataOutputStream;
 
-class Paket0EPlayerDigging: public PaketClient {
+class Packet0EPlayerDigging: public PacketClient {
 public:
-	Paket0EPlayerDigging(byte _status, int _x, byte _y, int _z, byte _face);
-	void schreibePaketInhalt(DataOutputStream *out);
+	Packet0EPlayerDigging(byte _status, int _x, byte _y, int _z, byte _face);
+	void schreibePacketInhalt(DataOutputStream *out);
 private:
 	byte status;
 	int x;

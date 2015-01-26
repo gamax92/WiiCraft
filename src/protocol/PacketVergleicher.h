@@ -32,11 +32,11 @@
 
 namespace std {
 
-class Paket;
+class Packet;
 
-class PaketVergleicher {
+class PacketVergleicher {
 public:
-	bool operator()(Paket *p1, Paket *p2) const;
+	bool operator()(Packet *p1, Packet *p2) const;
 };
 
 }

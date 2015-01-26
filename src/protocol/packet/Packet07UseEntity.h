@@ -30,16 +30,16 @@
 #ifndef PAKET07USEENTITY_H_
 #define PAKET07USEENTITY_H_
 
-#include "../PaketClient.h"
+#include "../PacketClient.h"
 
 namespace std {
 
 class DataOutputStream;
 
-class Paket07UseEntity: public PaketClient {
+class Packet07UseEntity: public PacketClient {
 public:
-	Paket07UseEntity(int _user, int _target, bool _leftClick);
-	void schreibePaketInhalt(DataOutputStream *out);
+	Packet07UseEntity(int _user, int _target, bool _leftClick);
+	void schreibePacketInhalt(DataOutputStream *out);
 private:
 	int user;
 	int target;

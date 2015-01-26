@@ -27,43 +27,43 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Paket1DDestroyEntity.h"
+#include "Packet1DDestroyEntity.h"
 
 #include <cstdio>
 #include "../../net/DataInputStream.h"
 #include "../../entity/Entity.h"
-#include "../PaketManager.h"
+#include "../PacketManager.h"
 #include "../../util/Debug.h"
 
 using namespace std;
 
-Paket1DDestroyEntity::Paket1DDestroyEntity() {
-	PaketServer::id = 0x1d;
-	PaketServer::prio = 50;
+Packet1DDestroyEntity::Packet1DDestroyEntity() {
+	PacketServer::id = 0x1d;
+	PacketServer::prio = 50;
 }
 
-PaketServer *Paket1DDestroyEntity::gebeInstanz() {
-	return new Paket1DDestroyEntity();
+PacketServer *Packet1DDestroyEntity::gebeInstanz() {
+	return new Packet1DDestroyEntity();
 }
 
-bool Paket1DDestroyEntity::registierePaket() {
-	PaketManager::registrierePaket(new Paket1DDestroyEntity());
+bool Packet1DDestroyEntity::registierePacket() {
+	PacketManager::registrierePacket(new Packet1DDestroyEntity());
 
 	return true;
 }
 
-void Paket1DDestroyEntity::lesePaketInhalt(DataInputStream *in) {
+void Packet1DDestroyEntity::lesePacketInhalt(DataInputStream *in) {
 	this->entityId = in->leseInt();
 }
 
-void Paket1DDestroyEntity::verarbeitePaket() {
+void Packet1DDestroyEntity::verarbeitePacket() {
 #ifdef DEBUG_ON
 	char *buffer = new char[100];
 	sprintf(buffer, "entityId: %i", this->entityId);
-	Debug::schreibePaketLog("Paket1DDestroyEntity", buffer);
+	Debug::schreibePacketLog("Packet1DDestroyEntity", buffer);
 	delete[] buffer;
 #endif
 
 	Entity::gebeEntity(this->entityId);
-	// TODO Paketverarbeitung implementieren
+	// TODO Packetverarbeitung implementieren
 }

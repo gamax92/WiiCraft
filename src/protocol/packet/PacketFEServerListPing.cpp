@@ -27,17 +27,17 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "PaketFEServerListPing.h"
+#include "PacketFEServerListPing.h"
 
 #include "../../net/DataOutputStream.h"
 
 using namespace std;
 
-PaketFEServerListPing::PaketFEServerListPing() {
-	PaketClient::id = 0xfe;
-	PaketClient::prio = 50;
+PacketFEServerListPing::PacketFEServerListPing() {
+	PacketClient::id = 0xfe;
+	PacketClient::prio = 50;
 }
 
-void PaketFEServerListPing::schreibePaketInhalt(DataOutputStream *out) {
+void PacketFEServerListPing::schreibePacketInhalt(DataOutputStream *out) {
 	// enthaelt keine weiteren Bytes
 }

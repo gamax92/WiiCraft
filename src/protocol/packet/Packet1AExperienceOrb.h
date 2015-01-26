@@ -30,18 +30,18 @@
 #ifndef PAKET1AEXPERIENCEORB_H_
 #define PAKET1AEXPERIENCEORB_H_
 
-#include "../PaketServer.h"
+#include "../PacketServer.h"
 
 namespace std {
 
 class DataInputStream;
 
-class Paket1AExperienceOrb: public PaketServer {
+class Packet1AExperienceOrb: public PacketServer {
 public:
-	PaketServer *gebeInstanz();
-	static bool registierePaket();
-	void lesePaketInhalt(DataInputStream *in);
-	void verarbeitePaket();
+	PacketServer *gebeInstanz();
+	static bool registierePacket();
+	void lesePacketInhalt(DataInputStream *in);
+	void verarbeitePacket();
 private:
 
 	int entityId;
@@ -50,7 +50,7 @@ private:
 	int z;
 	short count;
 
-	Paket1AExperienceOrb();
+	Packet1AExperienceOrb();
 };
 }
 #endif /* PAKET1AEXPERIENCEORB_H_ */

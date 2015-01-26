@@ -27,7 +27,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Paket01LoginRequest.h"
+#include "Packet01LoginRequest.h"
 
 #include <cstdio>
 #include "../../net/DataOutputStream.h"
@@ -37,36 +37,36 @@
 #include "../../world/Welt.h"
 #include "../../protocol/Chat.h"
 #include "../../protocol/ServerInfo.h"
-#include "../PaketManager.h"
+#include "../PacketManager.h"
 #include "../../util/Debug.h"
 
 using namespace std;
 
-Paket01LoginRequest::Paket01LoginRequest() {
-	PaketServer::id = 0x01;
-	PaketServer::prio = 0;
+Packet01LoginRequest::Packet01LoginRequest() {
+	PacketServer::id = 0x01;
+	PacketServer::prio = 0;
 }
 
-Paket01LoginRequest::Paket01LoginRequest(int _protocolVersion,
+Packet01LoginRequest::Packet01LoginRequest(int _protocolVersion,
 		string _userName) {
-	PaketClient::id = 0x01;
-	PaketClient::prio = 50;
+	PacketClient::id = 0x01;
+	PacketClient::prio = 50;
 
 	this->protocolVersion = _protocolVersion;
 	this->userName = _userName;
 }
 
-PaketServer *Paket01LoginRequest::gebeInstanz() {
-	return new Paket01LoginRequest();
+PacketServer *Packet01LoginRequest::gebeInstanz() {
+	return new Packet01LoginRequest();
 }
 
-bool Paket01LoginRequest::registierePaket() {
-	PaketManager::registrierePaket(new Paket01LoginRequest());
+bool Packet01LoginRequest::registierePacket() {
+	PacketManager::registrierePacket(new Packet01LoginRequest());
 
 	return true;
 }
 
-void Paket01LoginRequest::schreibePaketInhalt(DataOutputStream *out) {
+void Packet01LoginRequest::schreibePacketInhalt(DataOutputStream *out) {
 	out->schreibeInt(this->protocolVersion);
 	out->schreibeString(this->userName);
 	out->schreibeString("");
@@ -77,19 +77,19 @@ void Paket01LoginRequest::schreibePaketInhalt(DataOutputStream *out) {
 	out->schreibeByte(0);
 }
 
-void Paket01LoginRequest::lesePaketInhalt(DataInputStream *in) {
+void Packet01LoginRequest::lesePacketInhalt(DataInputStream *in) {
 	this->entityId = in->leseInt();
 
 	try {
 		in->leseString(16);
 	} catch (ExcSocketStringLaengeUeberschritten &exception) {
-		throw ExcSocketStringLaengeUeberschritten(PaketServer::id);
+		throw ExcSocketStringLaengeUeberschritten(PacketServer::id);
 	}
 
 	try {
 		this->levelType = in->leseString(16);
 	} catch (ExcSocketStringLaengeUeberschritten &exception) {
-		throw ExcSocketStringLaengeUeberschritten(PaketServer::id);
+		throw ExcSocketStringLaengeUeberschritten(PacketServer::id);
 	}
 
 	this->serverMode = in->leseInt();
@@ -99,7 +99,7 @@ void Paket01LoginRequest::lesePaketInhalt(DataInputStream *in) {
 	this->maxPlayers = in->leseByte();
 }
 
-void Paket01LoginRequest::verarbeitePaket() {
+void Packet01LoginRequest::verarbeitePacket() {
 	Spieler::initialisiereSpieler(this->entityId);
 	Welt::initialisiereWelt(this->dimension, this->levelType, this->difficulty,
 			this->serverMode, this->worldHeight);
@@ -113,7 +113,7 @@ void Paket01LoginRequest::verarbeitePaket() {
 			this->entityId, this->levelType.data(), this->serverMode,
 			this->dimension, this->difficulty, this->worldHeight,
 			this->maxPlayers);
-	Debug::schreibePaketLog("Paket01LoginRequest", buffer);
+	Debug::schreibePacketLog("Packet01LoginRequest", buffer);
 	delete[] buffer;
 #endif
 }

@@ -34,16 +34,16 @@
 
 namespace std {
 
-class Paket {
+class Packet {
 public:
-	static long double aktuellePaketLeseNr;
-	static long double aktuellePaketSchreibeNr;
+	static long double aktuellePacketLeseNr;
+	static long double aktuellePacketSchreibeNr;
 
-	virtual ~Paket();
-	byte gebePaketId();
+	virtual ~Packet();
+	byte gebePacketId();
 	int gebePrio();
-	void setzePaketNr(long double aktuellePaketNr);
-	long double gebePaketNr();
+	void setzePacketNr(long double aktuellePacketNr);
+	long double gebePacketNr();
 protected:
 	byte id;
 	long double nr;

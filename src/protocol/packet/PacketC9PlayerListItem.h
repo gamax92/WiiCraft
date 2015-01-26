@@ -30,26 +30,26 @@
 #ifndef PAKETC9PLAYERLISTITEM_H_
 #define PAKETC9PLAYERLISTITEM_H_
 
-#include "../PaketServer.h"
+#include "../PacketServer.h"
 #include <string>
 
 namespace std {
 
 class DataInputStream;
 
-class PaketC9PlayerListItem: public PaketServer {
+class PacketC9PlayerListItem: public PacketServer {
 public:
-	PaketServer *gebeInstanz();
-	static bool registierePaket();
-	void lesePaketInhalt(DataInputStream *in);
-	void verarbeitePaket();
+	PacketServer *gebeInstanz();
+	static bool registierePacket();
+	void lesePacketInhalt(DataInputStream *in);
+	void verarbeitePacket();
 private:
 
 	string playerName;
 	bool online;
 	short ping;
 
-	PaketC9PlayerListItem();
+	PacketC9PlayerListItem();
 };
 }
 #endif /* PAKETC9PLAYERLISTITEM_H_ */

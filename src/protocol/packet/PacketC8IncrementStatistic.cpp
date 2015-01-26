@@ -27,43 +27,43 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "PaketC8IncrementStatistic.h"
+#include "PacketC8IncrementStatistic.h"
 
 #include <cstdio>
 #include "../../net/DataInputStream.h"
-#include "../PaketManager.h"
+#include "../PacketManager.h"
 #include "../../util/Debug.h"
 
 using namespace std;
 
-PaketC8IncrementStatistic::PaketC8IncrementStatistic() {
-	PaketServer::id = 0xc8;
-	PaketServer::prio = 50;
+PacketC8IncrementStatistic::PacketC8IncrementStatistic() {
+	PacketServer::id = 0xc8;
+	PacketServer::prio = 50;
 }
 
-PaketServer *PaketC8IncrementStatistic::gebeInstanz() {
-	return new PaketC8IncrementStatistic();
+PacketServer *PacketC8IncrementStatistic::gebeInstanz() {
+	return new PacketC8IncrementStatistic();
 }
 
-bool PaketC8IncrementStatistic::registierePaket() {
-	PaketManager::registrierePaket(new PaketC8IncrementStatistic());
+bool PacketC8IncrementStatistic::registierePacket() {
+	PacketManager::registrierePacket(new PacketC8IncrementStatistic());
 
 	return true;
 }
 
-void PaketC8IncrementStatistic::lesePaketInhalt(DataInputStream *in) {
+void PacketC8IncrementStatistic::lesePacketInhalt(DataInputStream *in) {
 	this->statisticId = in->leseInt();
 	this->amount = in->leseByte();
 }
 
-void PaketC8IncrementStatistic::verarbeitePaket() {
+void PacketC8IncrementStatistic::verarbeitePacket() {
 #ifdef DEBUG_ON
 	char *buffer = new char[100];
 	sprintf(buffer, "statisticId: %i, amount: %i", this->statisticId,
 			this->amount);
-	Debug::schreibePaketLog("PaketC8IncrementStatistic", buffer);
+	Debug::schreibePacketLog("PacketC8IncrementStatistic", buffer);
 	delete[] buffer;
 #endif
 
-	// TODO Paketverarbeitung implementieren
+	// TODO Packetverarbeitung implementieren
 }

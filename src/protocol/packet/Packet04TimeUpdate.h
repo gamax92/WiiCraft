@@ -30,23 +30,23 @@
 #ifndef PAKET04TIMEUPDATE_H_
 #define PAKET04TIMEUPDATE_H_
 
-#include "../PaketServer.h"
+#include "../PacketServer.h"
 
 namespace std {
 
 class DataInputStream;
 
-class Paket04TimeUpdate: public PaketServer {
+class Packet04TimeUpdate: public PacketServer {
 public:
-	PaketServer *gebeInstanz();
-	static bool registierePaket();
-	void lesePaketInhalt(DataInputStream *in);
-	void verarbeitePaket();
+	PacketServer *gebeInstanz();
+	static bool registierePacket();
+	void lesePacketInhalt(DataInputStream *in);
+	void verarbeitePacket();
 private:
 
 	long long time;
 
-	Paket04TimeUpdate();
+	Packet04TimeUpdate();
 };
 }
 #endif /* PAKET04TIMEUPDATE_H_ */

@@ -27,16 +27,16 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "PaketClient.h"
+#include "PacketClient.h"
 
 #include "../net/DataOutputStream.h"
 
 using namespace std;
 
-PaketClient::~PaketClient() {
+PacketClient::~PacketClient() {
 }
 
-void PaketClient::schreibePaket(DataOutputStream *out) {
+void PacketClient::schreibePacket(DataOutputStream *out) {
 	out->schreibeByte(this->id);
-	this->schreibePaketInhalt(out);
+	this->schreibePacketInhalt(out);
 }

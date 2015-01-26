@@ -27,32 +27,32 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Paket15PickupSpawn.h"
+#include "Packet15PickupSpawn.h"
 
 #include <cstdio>
 #include "../../net/DataInputStream.h"
 #include "../../entity/Entity.h"
-#include "../PaketManager.h"
+#include "../PacketManager.h"
 #include "../../util/Debug.h"
 
 using namespace std;
 
-Paket15PickupSpawn::Paket15PickupSpawn() {
-	PaketServer::id = 0x15;
-	PaketServer::prio = 50;
+Packet15PickupSpawn::Packet15PickupSpawn() {
+	PacketServer::id = 0x15;
+	PacketServer::prio = 50;
 }
 
-PaketServer *Paket15PickupSpawn::gebeInstanz() {
-	return new Paket15PickupSpawn();
+PacketServer *Packet15PickupSpawn::gebeInstanz() {
+	return new Packet15PickupSpawn();
 }
 
-bool Paket15PickupSpawn::registierePaket() {
-	PaketManager::registrierePaket(new Paket15PickupSpawn());
+bool Packet15PickupSpawn::registierePacket() {
+	PacketManager::registrierePacket(new Packet15PickupSpawn());
 
 	return true;
 }
 
-void Paket15PickupSpawn::lesePaketInhalt(DataInputStream *in) {
+void Packet15PickupSpawn::lesePacketInhalt(DataInputStream *in) {
 	this->entityId = in->leseInt();
 	this->item = in->leseShort();
 	this->count = in->leseByte();
@@ -65,7 +65,7 @@ void Paket15PickupSpawn::lesePaketInhalt(DataInputStream *in) {
 	this->roll = in->leseByte();
 }
 
-void Paket15PickupSpawn::verarbeitePaket() {
+void Packet15PickupSpawn::verarbeitePacket() {
 #ifdef DEBUG_ON
 	char *buffer = new char[200];
 	sprintf(
@@ -73,10 +73,10 @@ void Paket15PickupSpawn::verarbeitePaket() {
 			"entityId: %i, item: %x, count: %i, damageData: %i, x: %i, y: %i, z: %i, rotation: %i, pitch: %i, roll: %i",
 			this->entityId, this->item, this->count, this->damageData, this->x,
 			this->y, this->z, this->rotation, this->pitch, this->roll);
-	Debug::schreibePaketLog("Paket15PickupSpawn", buffer);
+	Debug::schreibePacketLog("Packet15PickupSpawn", buffer);
 	delete[] buffer;
 #endif
 
 	Entity::gebeEntity(this->entityId);
-	// TODO Paketverarbeitung implementieren
+	// TODO Packetverarbeitung implementieren
 }

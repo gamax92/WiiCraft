@@ -27,18 +27,18 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "PaketeLesenThread.h"
+#include "PacketeLesenThread.h"
 
 #include "../net/Socket.h"
 #include "../net/DataInputStream.h"
-#include "../protocol/PaketServer.h"
+#include "../protocol/PacketServer.h"
 #include "../exception/ExcSocketVerbindungVerloren.h"
-#include "../exception/ExcPaketUnbekanntesPaket.h"
+#include "../exception/ExcPacketUnbekanntesPacket.h"
 #include "../protocol/Verbindung.h"
 
 using namespace std;
 
-PaketeLesenThread::PaketeLesenThread(Socket *_socket) {
+PacketeLesenThread::PacketeLesenThread(Socket *_socket) {
 	this->socket = _socket;
 	this->gestoppt = false;
 	this->iStream = new DataInputStream(this->socket);
@@ -46,11 +46,11 @@ PaketeLesenThread::PaketeLesenThread(Socket *_socket) {
 	pthread_mutex_init(&this->mutexstop, NULL);
 }
 
-PaketeLesenThread::~PaketeLesenThread() {
+PacketeLesenThread::~PacketeLesenThread() {
 	pthread_mutex_destroy(&this->mutexstop);
 }
 
-int PaketeLesenThread::exec() {
+int PacketeLesenThread::exec() {
 	bool ok;
 	do {
 		if (this->istGestopped()) {
@@ -58,12 +58,12 @@ int PaketeLesenThread::exec() {
 		}
 
 		try {
-			ok = PaketServer::lesePaket(this->iStream);
+			ok = PacketServer::lesePacket(this->iStream);
 		} catch (ExcSocketVerbindungVerloren &exception) {
 			this->stop();
 			Verbindung::beenden(false);
 			break;
-		} catch (ExcPaketUnbekanntesPaket &exception) {
+		} catch (ExcPacketUnbekanntesPacket &exception) {
 			this->stop();
 			Verbindung::beenden(true);
 			break;
@@ -74,9 +74,9 @@ int PaketeLesenThread::exec() {
 	char *buffer = new char[100];
 	pthread_mutex_lock(&this->mutexqueue);
 	sprintf(buffer, "Lesen wird gestoppt, letzteId: %x\n",
-			PaketServer::letztePaketId);
+			PacketServer::letztePacketId);
 	pthread_mutex_unlock(&this->mutexqueue);
-	Debug::schreibeLog("sd:/apps/WiiCraft/Paket.log", buffer,
+	Debug::schreibeLog("sd:/apps/WiiCraft/Packet.log", buffer,
 			Debug::DATEI_ERWEITERN);
 	delete[] buffer;
 #endif
@@ -84,13 +84,13 @@ int PaketeLesenThread::exec() {
 	return 0;
 }
 
-void PaketeLesenThread::stop() {
+void PacketeLesenThread::stop() {
 	pthread_mutex_lock(&this->mutexstop);
 	this->gestoppt = true;
 	pthread_mutex_unlock(&this->mutexstop);
 }
 
-bool PaketeLesenThread::istGestopped() {
+bool PacketeLesenThread::istGestopped() {
 	bool b = false;
 
 	pthread_mutex_lock(&this->mutexstop);

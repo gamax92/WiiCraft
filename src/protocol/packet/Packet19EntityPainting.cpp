@@ -27,39 +27,39 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Paket19EntityPainting.h"
+#include "Packet19EntityPainting.h"
 
 #include <cstdio>
 #include "../../net/DataInputStream.h"
 #include "../../exception/ExcSocketStringLaengeUeberschritten.h"
 #include "../../entity/Entity.h"
-#include "../PaketManager.h"
+#include "../PacketManager.h"
 #include "../../util/Debug.h"
 
 using namespace std;
 
-Paket19EntityPainting::Paket19EntityPainting() {
-	PaketServer::id = 0x19;
-	PaketServer::prio = 50;
+Packet19EntityPainting::Packet19EntityPainting() {
+	PacketServer::id = 0x19;
+	PacketServer::prio = 50;
 }
 
-PaketServer *Paket19EntityPainting::gebeInstanz() {
-	return new Paket19EntityPainting();
+PacketServer *Packet19EntityPainting::gebeInstanz() {
+	return new Packet19EntityPainting();
 }
 
-bool Paket19EntityPainting::registierePaket() {
-	PaketManager::registrierePaket(new Paket19EntityPainting());
+bool Packet19EntityPainting::registierePacket() {
+	PacketManager::registrierePacket(new Packet19EntityPainting());
 
 	return true;
 }
 
-void Paket19EntityPainting::lesePaketInhalt(DataInputStream *in) {
+void Packet19EntityPainting::lesePacketInhalt(DataInputStream *in) {
 	this->entityId = in->leseInt();
 
 	try {
 		this->title = in->leseString(13);
 	} catch (ExcSocketStringLaengeUeberschritten &exception) {
-		throw ExcSocketStringLaengeUeberschritten(PaketServer::id);
+		throw ExcSocketStringLaengeUeberschritten(PacketServer::id);
 	}
 
 	this->x = in->leseInt();
@@ -68,17 +68,17 @@ void Paket19EntityPainting::lesePaketInhalt(DataInputStream *in) {
 	this->direction = in->leseInt();
 }
 
-void Paket19EntityPainting::verarbeitePaket() {
+void Packet19EntityPainting::verarbeitePacket() {
 #ifdef DEBUG_ON
 	char *buffer = new char[200];
 	sprintf(buffer,
 			"entityId: %i, title: %s, x: %i, y: %i, z: %i, direction: %i",
 			this->entityId, this->title.data(), this->x, this->y, this->z,
 			this->direction);
-	Debug::schreibePaketLog("Paket19EntityPainting", buffer);
+	Debug::schreibePacketLog("Packet19EntityPainting", buffer);
 	delete[] buffer;
 #endif
 
 	Entity::gebeEntity(this->entityId);
-	// TODO Paketverarbeitung implementieren
+	// TODO Packetverarbeitung implementieren
 }

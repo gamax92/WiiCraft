@@ -30,8 +30,8 @@
 #ifndef PAKET03CHATMESSAGE_H_
 #define PAKET03CHATMESSAGE_H_
 
-#include "../PaketServer.h"
-#include "../PaketClient.h"
+#include "../PacketServer.h"
+#include "../PacketClient.h"
 #include <string>
 
 namespace std {
@@ -39,19 +39,19 @@ namespace std {
 class DataOutputStream;
 class DataInputStream;
 
-class Paket03ChatMessage: public PaketServer, public PaketClient {
+class Packet03ChatMessage: public PacketServer, public PacketClient {
 public:
-	Paket03ChatMessage(string _message);
-	PaketServer *gebeInstanz();
-	static bool registierePaket();
-	void schreibePaketInhalt(DataOutputStream *out);
-	void lesePaketInhalt(DataInputStream *in);
-	void verarbeitePaket();
+	Packet03ChatMessage(string _message);
+	PacketServer *gebeInstanz();
+	static bool registierePacket();
+	void schreibePacketInhalt(DataOutputStream *out);
+	void lesePacketInhalt(DataInputStream *in);
+	void verarbeitePacket();
 private:
 
 	string message;
 
-	Paket03ChatMessage();
+	Packet03ChatMessage();
 };
 }
 #endif /* PAKET03CHATMESSAGE_H_ */

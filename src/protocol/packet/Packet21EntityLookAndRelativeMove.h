@@ -30,18 +30,18 @@
 #ifndef PAKET21ENTITYLOOKANDRELATIVEMOVE_H_
 #define PAKET21ENTITYLOOKANDRELATIVEMOVE_H_
 
-#include "../PaketServer.h"
+#include "../PacketServer.h"
 
 namespace std {
 
 class DataInputStream;
 
-class Paket21EntityLookAndRelativeMove: public PaketServer {
+class Packet21EntityLookAndRelativeMove: public PacketServer {
 public:
-	PaketServer *gebeInstanz();
-	static bool registierePaket();
-	void lesePaketInhalt(DataInputStream *in);
-	void verarbeitePaket();
+	PacketServer *gebeInstanz();
+	static bool registierePacket();
+	void lesePacketInhalt(DataInputStream *in);
+	void verarbeitePacket();
 private:
 
 	int entityId;
@@ -51,7 +51,7 @@ private:
 	byte yaw;
 	byte pitch;
 
-	Paket21EntityLookAndRelativeMove();
+	Packet21EntityLookAndRelativeMove();
 };
 }
 #endif /* PAKET21ENTITYLOOKANDRELATIVEMOVE_H_ */

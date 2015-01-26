@@ -27,23 +27,23 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Paket07UseEntity.h"
+#include "Packet07UseEntity.h"
 
 #include "../../net/DataOutputStream.h"
 #include "../../util/Debug.h"
 
 using namespace std;
 
-Paket07UseEntity::Paket07UseEntity(int _user, int _target, bool _leftClick) {
-	PaketClient::id = 0x07;
-	PaketClient::prio = 50;
+Packet07UseEntity::Packet07UseEntity(int _user, int _target, bool _leftClick) {
+	PacketClient::id = 0x07;
+	PacketClient::prio = 50;
 
 	this->user = _user;
 	this->target = _target;
 	this->leftClick = _leftClick;
 }
 
-void Paket07UseEntity::schreibePaketInhalt(DataOutputStream *out) {
+void Packet07UseEntity::schreibePacketInhalt(DataOutputStream *out) {
 	out->schreibeInt(this->user);
 	out->schreibeInt(this->target);
 	out->schreibeBoolean(this->leftClick);

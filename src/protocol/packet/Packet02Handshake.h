@@ -30,8 +30,8 @@
 #ifndef PAKET02HANDSHAKE_H_
 #define PAKET02HANDSHAKE_H_
 
-#include "../PaketServer.h"
-#include "../PaketClient.h"
+#include "../PacketServer.h"
+#include "../PacketClient.h"
 #include <string>
 
 namespace std {
@@ -39,20 +39,20 @@ namespace std {
 class DataOutputStream;
 class DataInputStream;
 
-class Paket02Handshake: public PaketServer, public PaketClient {
+class Packet02Handshake: public PacketServer, public PacketClient {
 public:
-	Paket02Handshake(string _usernameAndHost);
-	PaketServer *gebeInstanz();
-	static bool registierePaket();
-	void schreibePaketInhalt(DataOutputStream *out);
-	void lesePaketInhalt(DataInputStream *in);
-	void verarbeitePaket();
+	Packet02Handshake(string _usernameAndHost);
+	PacketServer *gebeInstanz();
+	static bool registierePacket();
+	void schreibePacketInhalt(DataOutputStream *out);
+	void lesePacketInhalt(DataInputStream *in);
+	void verarbeitePacket();
 private:
 
 	string usernameAndHost;
 	string connectionHash;
 
-	Paket02Handshake();
+	Packet02Handshake();
 };
 }
 #endif /* PAKET02HANDSHAKE_H_ */

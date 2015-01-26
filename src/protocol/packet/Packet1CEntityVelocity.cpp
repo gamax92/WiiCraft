@@ -27,47 +27,47 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Paket1CEntityVelocity.h"
+#include "Packet1CEntityVelocity.h"
 
 #include <cstdio>
 #include "../../net/DataInputStream.h"
 #include "../../entity/Entity.h"
-#include "../PaketManager.h"
+#include "../PacketManager.h"
 #include "../../util/Debug.h"
 
 using namespace std;
 
-Paket1CEntityVelocity::Paket1CEntityVelocity() {
-	PaketServer::id = 0x1c;
-	PaketServer::prio = 50;
+Packet1CEntityVelocity::Packet1CEntityVelocity() {
+	PacketServer::id = 0x1c;
+	PacketServer::prio = 50;
 }
 
-PaketServer *Paket1CEntityVelocity::gebeInstanz() {
-	return new Paket1CEntityVelocity();
+PacketServer *Packet1CEntityVelocity::gebeInstanz() {
+	return new Packet1CEntityVelocity();
 }
 
-bool Paket1CEntityVelocity::registierePaket() {
-	PaketManager::registrierePaket(new Paket1CEntityVelocity());
+bool Packet1CEntityVelocity::registierePacket() {
+	PacketManager::registrierePacket(new Packet1CEntityVelocity());
 
 	return true;
 }
 
-void Paket1CEntityVelocity::lesePaketInhalt(DataInputStream *in) {
+void Packet1CEntityVelocity::lesePacketInhalt(DataInputStream *in) {
 	this->entityId = in->leseInt();
 	this->velocityX = in->leseShort();
 	this->velocityY = in->leseShort();
 	this->velocityZ = in->leseShort();
 }
 
-void Paket1CEntityVelocity::verarbeitePaket() {
+void Packet1CEntityVelocity::verarbeitePacket() {
 #ifdef DEBUG_ON
 	char *buffer = new char[100];
 	sprintf(buffer, "entityId: %i, velocity: %ix%ix%i", this->entityId,
 			this->velocityX, this->velocityY, this->velocityZ);
-	Debug::schreibePaketLog("Paket1CEntityVelocity", buffer);
+	Debug::schreibePacketLog("Packet1CEntityVelocity", buffer);
 	delete[] buffer;
 #endif
 
 	Entity::gebeEntity(this->entityId);
-	// TODO Paketverarbeitung implementieren
+	// TODO Packetverarbeitung implementieren
 }

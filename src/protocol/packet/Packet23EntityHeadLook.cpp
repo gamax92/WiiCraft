@@ -27,44 +27,44 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Paket23EntityHeadLook.h"
+#include "Packet23EntityHeadLook.h"
 
 #include <cstdio>
 #include "../../net/DataInputStream.h"
 #include "../../entity/Entity.h"
-#include "../PaketManager.h"
+#include "../PacketManager.h"
 #include "../../util/Debug.h"
 
 using namespace std;
 
-Paket23EntityHeadLook::Paket23EntityHeadLook() {
-	PaketServer::id = 0x23;
-	PaketServer::prio = 50;
+Packet23EntityHeadLook::Packet23EntityHeadLook() {
+	PacketServer::id = 0x23;
+	PacketServer::prio = 50;
 }
 
-PaketServer *Paket23EntityHeadLook::gebeInstanz() {
-	return new Paket23EntityHeadLook();
+PacketServer *Packet23EntityHeadLook::gebeInstanz() {
+	return new Packet23EntityHeadLook();
 }
 
-bool Paket23EntityHeadLook::registierePaket() {
-	PaketManager::registrierePaket(new Paket23EntityHeadLook());
+bool Packet23EntityHeadLook::registierePacket() {
+	PacketManager::registrierePacket(new Packet23EntityHeadLook());
 
 	return true;
 }
 
-void Paket23EntityHeadLook::lesePaketInhalt(DataInputStream *in) {
+void Packet23EntityHeadLook::lesePacketInhalt(DataInputStream *in) {
 	this->entityId = in->leseInt();
 	this->headYaw = in->leseByte();
 }
 
-void Paket23EntityHeadLook::verarbeitePaket() {
+void Packet23EntityHeadLook::verarbeitePacket() {
 #ifdef DEBUG_ON
 	char *buffer = new char[100];
 	sprintf(buffer, "entityId: %i, headYaw: %i", this->entityId, this->headYaw);
-	Debug::schreibePaketLog("Paket23EntityHeadLook", buffer);
+	Debug::schreibePacketLog("Packet23EntityHeadLook", buffer);
 	delete[] buffer;
 #endif
 
 	Entity::gebeEntity(this->entityId);
-	// TODO Paketverarbeitung implementieren
+	// TODO Packetverarbeitung implementieren
 }

@@ -27,32 +27,32 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Paket22EntityTeleport.h"
+#include "Packet22EntityTeleport.h"
 
 #include <cstdio>
 #include "../../net/DataInputStream.h"
 #include "../../entity/Entity.h"
-#include "../PaketManager.h"
+#include "../PacketManager.h"
 #include "../../util/Debug.h"
 
 using namespace std;
 
-Paket22EntityTeleport::Paket22EntityTeleport() {
-	PaketServer::id = 0x22;
-	PaketServer::prio = 50;
+Packet22EntityTeleport::Packet22EntityTeleport() {
+	PacketServer::id = 0x22;
+	PacketServer::prio = 50;
 }
 
-PaketServer *Paket22EntityTeleport::gebeInstanz() {
-	return new Paket22EntityTeleport();
+PacketServer *Packet22EntityTeleport::gebeInstanz() {
+	return new Packet22EntityTeleport();
 }
 
-bool Paket22EntityTeleport::registierePaket() {
-	PaketManager::registrierePaket(new Paket22EntityTeleport());
+bool Packet22EntityTeleport::registierePacket() {
+	PacketManager::registrierePacket(new Packet22EntityTeleport());
 
 	return true;
 }
 
-void Paket22EntityTeleport::lesePaketInhalt(DataInputStream *in) {
+void Packet22EntityTeleport::lesePacketInhalt(DataInputStream *in) {
 	this->entityId = in->leseInt();
 	this->x = in->leseInt();
 	this->y = in->leseInt();
@@ -61,15 +61,15 @@ void Paket22EntityTeleport::lesePaketInhalt(DataInputStream *in) {
 	this->pitch = in->leseByte();
 }
 
-void Paket22EntityTeleport::verarbeitePaket() {
+void Packet22EntityTeleport::verarbeitePacket() {
 #ifdef DEBUG_ON
 	char *buffer = new char[100];
 	sprintf(buffer, "entityId: %i, x: %i, y: %i, z: %i, yaw: %i, pitch: %i",
 			this->entityId, this->x, this->y, this->z, this->yaw, this->pitch);
-	Debug::schreibePaketLog("Paket22EntityTeleport", buffer);
+	Debug::schreibePacketLog("Packet22EntityTeleport", buffer);
 	delete[] buffer;
 #endif
 
 	Entity::gebeEntity(this->entityId);
-	// TODO Paketverarbeitung implementieren
+	// TODO Packetverarbeitung implementieren
 }

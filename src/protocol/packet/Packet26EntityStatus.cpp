@@ -27,45 +27,45 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Paket26EntityStatus.h"
+#include "Packet26EntityStatus.h"
 
 #include <cstdio>
 #include "../../net/DataInputStream.h"
 #include "../../entity/Entity.h"
-#include "../PaketManager.h"
+#include "../PacketManager.h"
 #include "../../util/Debug.h"
 
 using namespace std;
 
-Paket26EntityStatus::Paket26EntityStatus() {
-	PaketServer::id = 0x26;
-	PaketServer::prio = 50;
+Packet26EntityStatus::Packet26EntityStatus() {
+	PacketServer::id = 0x26;
+	PacketServer::prio = 50;
 }
 
-PaketServer *Paket26EntityStatus::gebeInstanz() {
-	return new Paket26EntityStatus();
+PacketServer *Packet26EntityStatus::gebeInstanz() {
+	return new Packet26EntityStatus();
 }
 
-bool Paket26EntityStatus::registierePaket() {
-	PaketManager::registrierePaket(new Paket26EntityStatus());
+bool Packet26EntityStatus::registierePacket() {
+	PacketManager::registrierePacket(new Packet26EntityStatus());
 
 	return true;
 }
 
-void Paket26EntityStatus::lesePaketInhalt(DataInputStream *in) {
+void Packet26EntityStatus::lesePacketInhalt(DataInputStream *in) {
 	this->entityId = in->leseInt();
 	this->entityStatus = in->leseByte();
 }
 
-void Paket26EntityStatus::verarbeitePaket() {
+void Packet26EntityStatus::verarbeitePacket() {
 #ifdef DEBUG_ON
 	char *buffer = new char[100];
 	sprintf(buffer, "entityId: %i, entityStatus: %i", this->entityId,
 			this->entityStatus);
-	Debug::schreibePaketLog("Paket26EntityStatus", buffer);
+	Debug::schreibePacketLog("Packet26EntityStatus", buffer);
 	delete[] buffer;
 #endif
 
 	Entity::gebeEntity(this->entityId);
-	// TODO Paketverarbeitung implementieren
+	// TODO Packetverarbeitung implementieren
 }

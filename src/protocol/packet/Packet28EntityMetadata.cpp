@@ -27,7 +27,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Paket28EntityMetadata.h"
+#include "Packet28EntityMetadata.h"
 
 #include <cstdio>
 #include <cstdlib>
@@ -36,49 +36,49 @@
 #include "../../exception/ExcSocketStringLaengeUeberschritten.h"
 #include "../../exception/ExcMetadata.h"
 #include "../../entity/Entity.h"
-#include "../PaketManager.h"
+#include "../PacketManager.h"
 #include "../../util/Debug.h"
 
 using namespace std;
 
-Paket28EntityMetadata::Paket28EntityMetadata() {
-	PaketServer::id = 0x28;
-	PaketServer::prio = 50;
+Packet28EntityMetadata::Packet28EntityMetadata() {
+	PacketServer::id = 0x28;
+	PacketServer::prio = 50;
 }
 
-Paket28EntityMetadata::~Paket28EntityMetadata() {
+Packet28EntityMetadata::~Packet28EntityMetadata() {
 	delete this->entityMetadata;
 }
 
-PaketServer *Paket28EntityMetadata::gebeInstanz() {
-	return new Paket28EntityMetadata();
+PacketServer *Packet28EntityMetadata::gebeInstanz() {
+	return new Packet28EntityMetadata();
 }
 
-bool Paket28EntityMetadata::registierePaket() {
-	PaketManager::registrierePaket(new Paket28EntityMetadata());
+bool Packet28EntityMetadata::registierePacket() {
+	PacketManager::registrierePacket(new Packet28EntityMetadata());
 
 	return true;
 }
 
-void Paket28EntityMetadata::lesePaketInhalt(DataInputStream *in) {
+void Packet28EntityMetadata::lesePacketInhalt(DataInputStream *in) {
 	this->entityId = in->leseInt();
 	try {
 		this->entityMetadata = Metadata::leseDaten(in);
 	} catch (ExcSocketStringLaengeUeberschritten &exception) {
-		throw ExcSocketStringLaengeUeberschritten(PaketServer::id);
+		throw ExcSocketStringLaengeUeberschritten(PacketServer::id);
 	} catch (ExcMetadata &exception) {
-		throw ExcMetadata(PaketServer::id);
+		throw ExcMetadata(PacketServer::id);
 	}
 }
 
-void Paket28EntityMetadata::verarbeitePaket() {
+void Packet28EntityMetadata::verarbeitePacket() {
 #ifdef DEBUG_ON
 	char *buffer = new char[100];
 	sprintf(buffer, "entityId: %i", this->entityId);
-	Debug::schreibePaketLog("Paket28EntityMetadata", buffer);
+	Debug::schreibePacketLog("Packet28EntityMetadata", buffer);
 	delete[] buffer;
 #endif
 
 	Entity::gebeEntity(this->entityId);
-	// TODO Paketverarbeitung implementieren
+	// TODO Packetverarbeitung implementieren
 }

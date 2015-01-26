@@ -30,17 +30,17 @@
 #ifndef PAKET0BPLAYERPOSITION_H_
 #define PAKET0BPLAYERPOSITION_H_
 
-#include "../PaketClient.h"
+#include "../PacketClient.h"
 
 namespace std {
 
 class DataOutputStream;
 
-class Paket0BPlayerPosition: public PaketClient {
+class Packet0BPlayerPosition: public PacketClient {
 public:
-	Paket0BPlayerPosition(double _x, double _y, double _stance, double _z,
+	Packet0BPlayerPosition(double _x, double _y, double _stance, double _z,
 			bool _onGround);
-	void schreibePaketInhalt(DataOutputStream *out);
+	void schreibePacketInhalt(DataOutputStream *out);
 private:
 	double x;
 	double y;

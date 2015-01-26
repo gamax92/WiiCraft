@@ -30,29 +30,29 @@
 #ifndef PAKET6ATRANSACTION_H_
 #define PAKET6ATRANSACTION_H_
 
-#include "../PaketServer.h"
-#include "../PaketClient.h"
+#include "../PacketServer.h"
+#include "../PacketClient.h"
 
 namespace std {
 
 class DataOutputStream;
 class DataInputStream;
 
-class Paket6ATransaction: public PaketServer, public PaketClient {
+class Packet6ATransaction: public PacketServer, public PacketClient {
 public:
-	Paket6ATransaction(byte _windowId, short _actionNumber, bool _accepted);
-	PaketServer *gebeInstanz();
-	static bool registierePaket();
-	void schreibePaketInhalt(DataOutputStream *out);
-	void lesePaketInhalt(DataInputStream *in);
-	void verarbeitePaket();
+	Packet6ATransaction(byte _windowId, short _actionNumber, bool _accepted);
+	PacketServer *gebeInstanz();
+	static bool registierePacket();
+	void schreibePacketInhalt(DataOutputStream *out);
+	void lesePacketInhalt(DataInputStream *in);
+	void verarbeitePacket();
 private:
 
 	byte windowId;
 	short actionNumber;
 	bool accepted;
 
-	Paket6ATransaction();
+	Packet6ATransaction();
 };
 }
 #endif /* PAKET6ATRANSACTION_H_ */

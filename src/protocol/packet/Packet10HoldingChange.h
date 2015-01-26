@@ -27,21 +27,21 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef Paket10HoldingChange_H_
-#define Paket10HoldingChange_H_
+#ifndef Packet10HoldingChange_H_
+#define Packet10HoldingChange_H_
 
-#include "../PaketClient.h"
+#include "../PacketClient.h"
 
 namespace std {
 
 class DataOutputStream;
 
-class Paket10HoldingChange: public PaketClient {
+class Packet10HoldingChange: public PacketClient {
 public:
-	Paket10HoldingChange(short _slotId);
-	void schreibePaketInhalt(DataOutputStream *out);
+	Packet10HoldingChange(short _slotId);
+	void schreibePacketInhalt(DataOutputStream *out);
 private:
 	short slotId;
 };
 }
-#endif /* Paket10HoldingChange_H_ */
+#endif /* Packet10HoldingChange_H_ */

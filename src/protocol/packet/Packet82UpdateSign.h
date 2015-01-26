@@ -30,8 +30,8 @@
 #ifndef PAKET82UPDATESIGN_H_
 #define PAKET82UPDATESIGN_H_
 
-#include "../PaketServer.h"
-#include "../PaketClient.h"
+#include "../PacketServer.h"
+#include "../PacketClient.h"
 #include <string>
 
 namespace std {
@@ -39,15 +39,15 @@ namespace std {
 class DataOutputStream;
 class DataInputStream;
 
-class Paket82UpdateSign: public PaketServer, public PaketClient {
+class Packet82UpdateSign: public PacketServer, public PacketClient {
 public:
-	Paket82UpdateSign(int _x, short _y, int _z, string _text1, string _text2,
+	Packet82UpdateSign(int _x, short _y, int _z, string _text1, string _text2,
 			string _text3, string _text4);
-	PaketServer *gebeInstanz();
-	static bool registierePaket();
-	void schreibePaketInhalt(DataOutputStream *out);
-	void lesePaketInhalt(DataInputStream *in);
-	void verarbeitePaket();
+	PacketServer *gebeInstanz();
+	static bool registierePacket();
+	void schreibePacketInhalt(DataOutputStream *out);
+	void lesePacketInhalt(DataInputStream *in);
+	void verarbeitePacket();
 private:
 
 	int x;
@@ -58,7 +58,7 @@ private:
 	string text3;
 	string text4;
 
-	Paket82UpdateSign();
+	Packet82UpdateSign();
 };
 }
 #endif /* PAKET82UPDATESIGN_H_ */

@@ -31,31 +31,31 @@
 #define VERBINDUNG_H_
 
 #include "../net/Socket.h"
-#include "PaketClient.h"
-#include "PaketServer.h"
-#include "../thread/PaketeLesenThread.h"
-#include "../thread/PaketeSchreibenThread.h"
-#include "../thread/PaketeVerarbeitenThread.h"
+#include "PacketClient.h"
+#include "PacketServer.h"
+#include "../thread/PacketeLesenThread.h"
+#include "../thread/PacketeSchreibenThread.h"
+#include "../thread/PacketeVerarbeitenThread.h"
 
 namespace std {
 
-class PaketeLesenThread;
-class PaketeSchreibenThread;
-class PaketeVerarbeitenThread;
+class PacketeLesenThread;
+class PacketeSchreibenThread;
+class PacketeVerarbeitenThread;
 
 class Verbindung {
 public:
 	static bool verbinde(string server, int port);
 	static void starteSchnittstelle();
 	static void warte();
-	static void zuVerschickendenPaketenHinzufuegen(PaketClient *p);
-	static void zuVerarbeitendenPaketenHinzufuegen(PaketServer *p);
+	static void zuVerschickendenPacketenHinzufuegen(PacketClient *p);
+	static void zuVerarbeitendenPacketenHinzufuegen(PacketServer *p);
 	static void beenden(bool aktiv);
 private:
 	static Socket *socket;
-	static PaketeLesenThread *vLesen;
-	static PaketeSchreibenThread *vSchreiben;
-	static PaketeVerarbeitenThread *vVerarbeitung;
+	static PacketeLesenThread *vLesen;
+	static PacketeSchreibenThread *vSchreiben;
+	static PacketeVerarbeitenThread *vVerarbeitung;
 };
 }
 #endif /* VERBINDUNG_H_ */

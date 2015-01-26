@@ -30,16 +30,16 @@
 #ifndef PAKET0CPLAYERLOOK_H_
 #define PAKET0CPLAYERLOOK_H_
 
-#include "../PaketClient.h"
+#include "../PacketClient.h"
 
 namespace std {
 
 class DataOutputStream;
 
-class Paket0CPlayerLook: public PaketClient {
+class Packet0CPlayerLook: public PacketClient {
 public:
-	Paket0CPlayerLook(float _yaw, float _pitch, bool _onGround);
-	void schreibePaketInhalt(DataOutputStream *out);
+	Packet0CPlayerLook(float _yaw, float _pitch, bool _onGround);
+	void schreibePacketInhalt(DataOutputStream *out);
 private:
 	float yaw;
 	float pitch;

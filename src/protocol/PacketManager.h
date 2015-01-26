@@ -34,15 +34,15 @@
 
 namespace std {
 
-class PaketServer;
+class PacketServer;
 
-class PaketManager {
+class PacketManager {
 public:
-	static PaketServer *getInstanz(byte byte);
-	static void registrierePaket(PaketServer * paket);
-	static void initialisierePaketListe();
+	static PacketServer *getInstanz(byte byte);
+	static void registrierePacket(PacketServer * paket);
+	static void initialisierePacketListe();
 private:
-	static PaketServer **paketListe;
+	static PacketServer **paketListe;
 };
 }
 #endif /* PAKETMANAGER_H_ */

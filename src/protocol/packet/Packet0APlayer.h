@@ -30,16 +30,16 @@
 #ifndef PAKET0APLAYER_H_
 #define PAKET0APLAYER_H_
 
-#include "../PaketClient.h"
+#include "../PacketClient.h"
 
 namespace std {
 
 class DataOutputStream;
 
-class Paket0APlayer: public PaketClient {
+class Packet0APlayer: public PacketClient {
 public:
-	Paket0APlayer(bool _onGround);
-	void schreibePaketInhalt(DataOutputStream *out);
+	Packet0APlayer(bool _onGround);
+	void schreibePacketInhalt(DataOutputStream *out);
 private:
 	bool onGround;
 };

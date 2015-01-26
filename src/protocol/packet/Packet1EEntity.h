@@ -30,23 +30,23 @@
 #ifndef PAKET1EENTITY_H_
 #define PAKET1EENTITY_H_
 
-#include "../PaketServer.h"
+#include "../PacketServer.h"
 
 namespace std {
 
 class DataInputStream;
 
-class Paket1EEntity: public PaketServer {
+class Packet1EEntity: public PacketServer {
 public:
-	PaketServer *gebeInstanz();
-	static bool registierePaket();
-	void lesePaketInhalt(DataInputStream *in);
-	void verarbeitePaket();
+	PacketServer *gebeInstanz();
+	static bool registierePacket();
+	void lesePacketInhalt(DataInputStream *in);
+	void verarbeitePacket();
 private:
 
 	int entityId;
 
-	Paket1EEntity();
+	Packet1EEntity();
 };
 }
 #endif /* PAKET1EENTITY_H_ */

@@ -27,22 +27,22 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Paket0CPlayerLook.h"
+#include "Packet0CPlayerLook.h"
 
 #include "../../net/DataOutputStream.h"
 
 using namespace std;
 
-Paket0CPlayerLook::Paket0CPlayerLook(float _yaw, float _pitch, bool _onGround) {
-	PaketClient::id = 0x0c;
-	PaketClient::prio = 50;
+Packet0CPlayerLook::Packet0CPlayerLook(float _yaw, float _pitch, bool _onGround) {
+	PacketClient::id = 0x0c;
+	PacketClient::prio = 50;
 
 	this->yaw = _yaw;
 	this->pitch = _pitch;
 	this->onGround = _onGround;
 }
 
-void Paket0CPlayerLook::schreibePaketInhalt(DataOutputStream *out) {
+void Packet0CPlayerLook::schreibePacketInhalt(DataOutputStream *out) {
 	out->schreibeFloat(this->yaw);
 	out->schreibeFloat(this->pitch);
 	out->schreibeBoolean(this->onGround);

@@ -30,18 +30,18 @@
 #ifndef PAKET33MAPCHUNK_H_
 #define PAKET33MAPCHUNK_H_
 
-#include "../PaketServer.h"
+#include "../PacketServer.h"
 
 namespace std {
 
 class DataInputStream;
 
-class Paket33MapChunk: public PaketServer {
+class Packet33MapChunk: public PacketServer {
 public:
-	PaketServer *gebeInstanz();
-	static bool registierePaket();
-	void lesePaketInhalt(DataInputStream *in);
-	void verarbeitePaket();
+	PacketServer *gebeInstanz();
+	static bool registierePacket();
+	void lesePacketInhalt(DataInputStream *in);
+	void verarbeitePacket();
 private:
 
 	int chunkX;
@@ -52,7 +52,7 @@ private:
 	int compressedSize;
 	byte *compressedData;
 
-	Paket33MapChunk();
+	Packet33MapChunk();
 };
 }
 #endif /* PAKET33MAPCHUNK_H_ */

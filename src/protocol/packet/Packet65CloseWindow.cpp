@@ -27,53 +27,53 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Paket65CloseWindow.h"
+#include "Packet65CloseWindow.h"
 
 #include <cstdio>
 #include "../../net/DataOutputStream.h"
 #include "../../net/DataInputStream.h"
-#include "../PaketManager.h"
+#include "../PacketManager.h"
 #include "../../util/Debug.h"
 
 using namespace std;
 
-Paket65CloseWindow::Paket65CloseWindow() {
-	PaketServer::id = 0x65;
-	PaketServer::prio = 50;
+Packet65CloseWindow::Packet65CloseWindow() {
+	PacketServer::id = 0x65;
+	PacketServer::prio = 50;
 }
 
-Paket65CloseWindow::Paket65CloseWindow(byte _windowId) {
-	PaketClient::id = 0x65;
-	PaketClient::prio = 50;
+Packet65CloseWindow::Packet65CloseWindow(byte _windowId) {
+	PacketClient::id = 0x65;
+	PacketClient::prio = 50;
 
 	this->windowId = _windowId;
 }
 
-PaketServer *Paket65CloseWindow::gebeInstanz() {
-	return new Paket65CloseWindow();
+PacketServer *Packet65CloseWindow::gebeInstanz() {
+	return new Packet65CloseWindow();
 }
 
-bool Paket65CloseWindow::registierePaket() {
-	PaketManager::registrierePaket(new Paket65CloseWindow());
+bool Packet65CloseWindow::registierePacket() {
+	PacketManager::registrierePacket(new Packet65CloseWindow());
 
 	return true;
 }
 
-void Paket65CloseWindow::schreibePaketInhalt(DataOutputStream *out) {
+void Packet65CloseWindow::schreibePacketInhalt(DataOutputStream *out) {
 	out->schreibeByte(this->windowId);
 }
 
-void Paket65CloseWindow::lesePaketInhalt(DataInputStream *in) {
+void Packet65CloseWindow::lesePacketInhalt(DataInputStream *in) {
 	this->windowId = in->leseByte();
 }
 
-void Paket65CloseWindow::verarbeitePaket() {
+void Packet65CloseWindow::verarbeitePacket() {
 #ifdef DEBUG_ON
 	char *buffer = new char[200];
 	sprintf(buffer, "windowId: %i", this->windowId);
-	Debug::schreibePaketLog("Paket65CloseWindow", buffer);
+	Debug::schreibePacketLog("Packet65CloseWindow", buffer);
 	delete[] buffer;
 #endif
 
-	// TODO Paketverarbeitung implementieren
+	// TODO Packetverarbeitung implementieren
 }

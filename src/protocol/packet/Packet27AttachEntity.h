@@ -30,24 +30,24 @@
 #ifndef PAKET27ATTACHENTITY_H_
 #define PAKET27ATTACHENTITY_H_
 
-#include "../PaketServer.h"
+#include "../PacketServer.h"
 
 namespace std {
 
 class DataInputStream;
 
-class Paket27AttachEntity: public PaketServer {
+class Packet27AttachEntity: public PacketServer {
 public:
-	PaketServer *gebeInstanz();
-	static bool registierePaket();
-	void lesePaketInhalt(DataInputStream *in);
-	void verarbeitePaket();
+	PacketServer *gebeInstanz();
+	static bool registierePacket();
+	void lesePacketInhalt(DataInputStream *in);
+	void verarbeitePacket();
 private:
 
 	int entityId;
 	int vehiclentityId;
 
-	Paket27AttachEntity();
+	Packet27AttachEntity();
 };
 }
 #endif /* PAKET27ATTACHENTITY_H_ */

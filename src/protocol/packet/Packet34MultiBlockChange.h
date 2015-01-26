@@ -30,19 +30,19 @@
 #ifndef PAKET34MULTIBLOCKCHANGE_H_
 #define PAKET34MULTIBLOCKCHANGE_H_
 
-#include "../PaketServer.h"
+#include "../PacketServer.h"
 
 namespace std {
 
 class DataInputStream;
 
-class Paket34MultiBlockChange: public PaketServer {
+class Packet34MultiBlockChange: public PacketServer {
 public:
-	~Paket34MultiBlockChange();
-	PaketServer *gebeInstanz();
-	static bool registierePaket();
-	void lesePaketInhalt(DataInputStream *in);
-	void verarbeitePaket();
+	~Packet34MultiBlockChange();
+	PacketServer *gebeInstanz();
+	static bool registierePacket();
+	void lesePacketInhalt(DataInputStream *in);
+	void verarbeitePacket();
 private:
 
 	int chunkX;
@@ -51,7 +51,7 @@ private:
 	short dataSize;
 	byte *data;
 
-	Paket34MultiBlockChange();
+	Packet34MultiBlockChange();
 };
 }
 #endif /* PAKET34MULTIBLOCKCHANGE_H_ */

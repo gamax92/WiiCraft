@@ -30,24 +30,24 @@
 #ifndef PAKET23ENTITYHEADLOOK_H_
 #define PAKET23ENTITYHEADLOOK_H_
 
-#include "../PaketServer.h"
+#include "../PacketServer.h"
 
 namespace std {
 
 class DataInputStream;
 
-class Paket23EntityHeadLook: public PaketServer {
+class Packet23EntityHeadLook: public PacketServer {
 public:
-	PaketServer *gebeInstanz();
-	static bool registierePaket();
-	void lesePaketInhalt(DataInputStream *in);
-	void verarbeitePaket();
+	PacketServer *gebeInstanz();
+	static bool registierePacket();
+	void lesePacketInhalt(DataInputStream *in);
+	void verarbeitePacket();
 private:
 
 	int entityId;
 	byte headYaw;
 
-	Paket23EntityHeadLook();
+	Packet23EntityHeadLook();
 };
 }
 #endif /* PAKET23ENTITYHEADLOOK_H_ */

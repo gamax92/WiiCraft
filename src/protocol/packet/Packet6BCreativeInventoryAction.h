@@ -27,11 +27,11 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef Paket6BCreativeInventoryAction_H_
-#define Paket6BCreativeInventoryAction_H_
+#ifndef Packet6BCreativeInventoryAction_H_
+#define Packet6BCreativeInventoryAction_H_
 
-#include "../PaketServer.h"
-#include "../PaketClient.h"
+#include "../PacketServer.h"
+#include "../PacketClient.h"
 
 namespace std {
 
@@ -39,20 +39,20 @@ class DataOutputStream;
 class DataInputStream;
 class Slot;
 
-class Paket6BCreativeInventoryAction: public PaketServer, public PaketClient {
+class Packet6BCreativeInventoryAction: public PacketServer, public PacketClient {
 public:
-	~Paket6BCreativeInventoryAction();
-	PaketServer *gebeInstanz();
-	static bool registierePaket();
-	void schreibePaketInhalt(DataOutputStream *out);
-	void lesePaketInhalt(DataInputStream *in);
-	void verarbeitePaket();
+	~Packet6BCreativeInventoryAction();
+	PacketServer *gebeInstanz();
+	static bool registierePacket();
+	void schreibePacketInhalt(DataOutputStream *out);
+	void lesePacketInhalt(DataInputStream *in);
+	void verarbeitePacket();
 private:
 
 	short slot;
 	Slot *clickedItem;
 
-	Paket6BCreativeInventoryAction();
+	Packet6BCreativeInventoryAction();
 };
 }
-#endif /* Paket6BCreativeInventoryAction_H_ */
+#endif /* Packet6BCreativeInventoryAction_H_ */

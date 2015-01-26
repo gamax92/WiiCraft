@@ -30,25 +30,25 @@
 #ifndef PAKET69UPDATEWINDOWPROPERTY_H_
 #define PAKET69UPDATEWINDOWPROPERTY_H_
 
-#include "../PaketServer.h"
+#include "../PacketServer.h"
 
 namespace std {
 
 class DataInputStream;
 
-class Paket69UpdateWindowProperty: public PaketServer {
+class Packet69UpdateWindowProperty: public PacketServer {
 public:
-	PaketServer *gebeInstanz();
-	static bool registierePaket();
-	void lesePaketInhalt(DataInputStream *in);
-	void verarbeitePaket();
+	PacketServer *gebeInstanz();
+	static bool registierePacket();
+	void lesePacketInhalt(DataInputStream *in);
+	void verarbeitePacket();
 private:
 
 	byte windowId;
 	short property;
 	short value;
 
-	Paket69UpdateWindowProperty();
+	Packet69UpdateWindowProperty();
 };
 }
 #endif /* PAKET69UPDATEWINDOWPROPERTY_H_ */

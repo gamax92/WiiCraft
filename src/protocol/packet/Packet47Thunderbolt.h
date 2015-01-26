@@ -30,19 +30,19 @@
 #ifndef PAKET47THUNDERBOLT_H_
 #define PAKET47THUNDERBOLT_H_
 
-#include "../PaketServer.h"
+#include "../PacketServer.h"
 
 namespace std {
 
 class DataOutputStream;
 class DataInputStream;
 
-class Paket47Thunderbolt: public PaketServer {
+class Packet47Thunderbolt: public PacketServer {
 public:
-	PaketServer *gebeInstanz();
-	static bool registierePaket();
-	void lesePaketInhalt(DataInputStream *in);
-	void verarbeitePaket();
+	PacketServer *gebeInstanz();
+	static bool registierePacket();
+	void lesePacketInhalt(DataInputStream *in);
+	void verarbeitePacket();
 private:
 
 	int entityId;
@@ -51,7 +51,7 @@ private:
 	int y;
 	int z;
 
-	Paket47Thunderbolt();
+	Packet47Thunderbolt();
 };
 }
 #endif /* PAKET47THUNDERBOLT_H_ */

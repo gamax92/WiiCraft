@@ -30,16 +30,16 @@
 #ifndef PAKETFESERVERLISTPING_H_
 #define PAKETFESERVERLISTPING_H_
 
-#include "../PaketClient.h"
+#include "../PacketClient.h"
 
 namespace std {
 
 class DataOutputStream;
 
-class PaketFEServerListPing: public PaketClient {
+class PacketFEServerListPing: public PacketClient {
 public:
-	PaketFEServerListPing();
-	void schreibePaketInhalt(DataOutputStream *out);
+	PacketFEServerListPing();
+	void schreibePacketInhalt(DataOutputStream *out);
 };
 }
 #endif /* PAKETFESERVERLISTPING_H_ */

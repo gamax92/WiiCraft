@@ -30,18 +30,18 @@
 #ifndef PAKET1FENTITYRELATIVEMOVE_H_
 #define PAKET1FENTITYRELATIVEMOVE_H_
 
-#include "../PaketServer.h"
+#include "../PacketServer.h"
 
 namespace std {
 
 class DataInputStream;
 
-class Paket1FEntityRelativeMove: public PaketServer {
+class Packet1FEntityRelativeMove: public PacketServer {
 public:
-	PaketServer *gebeInstanz();
-	static bool registierePaket();
-	void lesePaketInhalt(DataInputStream *in);
-	void verarbeitePaket();
+	PacketServer *gebeInstanz();
+	static bool registierePacket();
+	void lesePacketInhalt(DataInputStream *in);
+	void verarbeitePacket();
 private:
 
 	int entityId;
@@ -49,7 +49,7 @@ private:
 	byte dY;
 	byte dZ;
 
-	Paket1FEntityRelativeMove();
+	Packet1FEntityRelativeMove();
 };
 }
 #endif /* PAKET1FENTITYRELATIVEMOVE_H_ */

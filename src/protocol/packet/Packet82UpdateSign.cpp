@@ -27,26 +27,26 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Paket82UpdateSign.h"
+#include "Packet82UpdateSign.h"
 
 #include <cstdio>
 #include "../../net/DataOutputStream.h"
 #include "../../net/DataInputStream.h"
 #include "../../exception/ExcSocketStringLaengeUeberschritten.h"
-#include "../PaketManager.h"
+#include "../PacketManager.h"
 #include "../../util/Debug.h"
 
 using namespace std;
 
-Paket82UpdateSign::Paket82UpdateSign() {
-	PaketServer::id = 0x82;
-	PaketServer::prio = 50;
+Packet82UpdateSign::Packet82UpdateSign() {
+	PacketServer::id = 0x82;
+	PacketServer::prio = 50;
 }
 
-Paket82UpdateSign::Paket82UpdateSign(int _x, short _y, int _z, string _text1,
+Packet82UpdateSign::Packet82UpdateSign(int _x, short _y, int _z, string _text1,
 		string _text2, string _text3, string _text4) {
-	PaketClient::id = 0x82;
-	PaketClient::prio = 50;
+	PacketClient::id = 0x82;
+	PacketClient::prio = 50;
 
 	this->x = _x;
 	this->y = _y;
@@ -57,17 +57,17 @@ Paket82UpdateSign::Paket82UpdateSign(int _x, short _y, int _z, string _text1,
 	this->text4 = _text4;
 }
 
-PaketServer *Paket82UpdateSign::gebeInstanz() {
-	return new Paket82UpdateSign();
+PacketServer *Packet82UpdateSign::gebeInstanz() {
+	return new Packet82UpdateSign();
 }
 
-bool Paket82UpdateSign::registierePaket() {
-	PaketManager::registrierePaket(new Paket82UpdateSign());
+bool Packet82UpdateSign::registierePacket() {
+	PacketManager::registrierePacket(new Packet82UpdateSign());
 
 	return true;
 }
 
-void Paket82UpdateSign::schreibePaketInhalt(DataOutputStream *out) {
+void Packet82UpdateSign::schreibePacketInhalt(DataOutputStream *out) {
 	out->schreibeInt(this->x);
 	out->schreibeShort(this->y);
 	out->schreibeInt(this->z);
@@ -77,7 +77,7 @@ void Paket82UpdateSign::schreibePaketInhalt(DataOutputStream *out) {
 	out->schreibeString(this->text4);
 }
 
-void Paket82UpdateSign::lesePaketInhalt(DataInputStream *in) {
+void Packet82UpdateSign::lesePacketInhalt(DataInputStream *in) {
 	this->x = in->leseInt();
 	this->y = in->leseShort();
 	this->z = in->leseInt();
@@ -88,20 +88,20 @@ void Paket82UpdateSign::lesePaketInhalt(DataInputStream *in) {
 		this->text3 = in->leseString(15);
 		this->text4 = in->leseString(15);
 	} catch (ExcSocketStringLaengeUeberschritten &exception) {
-		throw ExcSocketStringLaengeUeberschritten(PaketServer::id);
+		throw ExcSocketStringLaengeUeberschritten(PacketServer::id);
 	}
 }
 
-void Paket82UpdateSign::verarbeitePaket() {
+void Packet82UpdateSign::verarbeitePacket() {
 #ifdef DEBUG_ON
 	char *buffer = new char[300];
 	sprintf(buffer,
 			"x: %i, y: %i, z: %i, text1: %s, text2: %s, text3: %s, text4: %s",
 			this->x, this->y, this->z, this->text1.data(), this->text2.data(),
 			this->text3.data(), this->text4.data());
-	Debug::schreibePaketLog("Paket82UpdateSign", buffer);
+	Debug::schreibePacketLog("Packet82UpdateSign", buffer);
 	delete[] buffer;
 #endif
 
-	// TODO Paketverarbeitung implementieren
+	// TODO Packetverarbeitung implementieren
 }

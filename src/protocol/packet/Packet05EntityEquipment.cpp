@@ -27,47 +27,47 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Paket05EntityEquipment.h"
+#include "Packet05EntityEquipment.h"
 
 #include <cstdio>
 #include "../../net/DataInputStream.h"
 #include "../../entity/Entity.h"
-#include "../PaketManager.h"
+#include "../PacketManager.h"
 #include "../../util/Debug.h"
 
 using namespace std;
 
-Paket05EntityEquipment::Paket05EntityEquipment() {
-	PaketServer::id = 0x05;
-	PaketServer::prio = 50;
+Packet05EntityEquipment::Packet05EntityEquipment() {
+	PacketServer::id = 0x05;
+	PacketServer::prio = 50;
 }
 
-PaketServer *Paket05EntityEquipment::gebeInstanz() {
-	return new Paket05EntityEquipment();
+PacketServer *Packet05EntityEquipment::gebeInstanz() {
+	return new Packet05EntityEquipment();
 }
 
-bool Paket05EntityEquipment::registierePaket() {
-	PaketManager::registrierePaket(new Paket05EntityEquipment());
+bool Packet05EntityEquipment::registierePacket() {
+	PacketManager::registrierePacket(new Packet05EntityEquipment());
 
 	return true;
 }
 
-void Paket05EntityEquipment::lesePaketInhalt(DataInputStream *in) {
+void Packet05EntityEquipment::lesePacketInhalt(DataInputStream *in) {
 	this->entityId = in->leseInt();
 	this->slot = in->leseShort();
 	this->itemId = in->leseShort();
 	this->damage = in->leseShort();
 }
 
-void Paket05EntityEquipment::verarbeitePaket() {
+void Packet05EntityEquipment::verarbeitePacket() {
 #ifdef DEBUG_ON
 	char *buffer = new char[200];
 	sprintf(buffer, "entityId: %i, slot: %i, itemId: %i, damage: %i",
 			this->entityId, this->slot, this->itemId, this->damage);
-	Debug::schreibePaketLog("Paket05EntityEquipment", buffer);
+	Debug::schreibePacketLog("Packet05EntityEquipment", buffer);
 	delete[] buffer;
 #endif
 
 	Entity::gebeEntity(this->entityId);
-	// TODO Paketverarbeitung implementieren
+	// TODO Packetverarbeitung implementieren
 }

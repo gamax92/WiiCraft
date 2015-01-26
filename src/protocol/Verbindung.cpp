@@ -29,25 +29,25 @@
 
 #include "Verbindung.h"
 
-#include "paket/PaketFFDisconnectKick.h"
+#include "paket/PacketFFDisconnectKick.h"
 #include "../util/Debug.h"
 
 
 using namespace std;
 
 Socket *Verbindung::socket;
-PaketeSchreibenThread *Verbindung::vSchreiben;
-PaketeLesenThread *Verbindung::vLesen;
-PaketeVerarbeitenThread *Verbindung::vVerarbeitung;
+PacketeSchreibenThread *Verbindung::vSchreiben;
+PacketeLesenThread *Verbindung::vLesen;
+PacketeVerarbeitenThread *Verbindung::vVerarbeitung;
 
 bool Verbindung::verbinde(string server, int port) {
 	Verbindung::socket = new Socket();
 
 	bool ret = Verbindung::socket->connect(server.data(), port);
 	if (ret) {
-		Verbindung::vSchreiben = new PaketeSchreibenThread(Verbindung::socket);
-		Verbindung::vVerarbeitung = new PaketeVerarbeitenThread();
-		Verbindung::vLesen = new PaketeLesenThread(Verbindung::socket);
+		Verbindung::vSchreiben = new PacketeSchreibenThread(Verbindung::socket);
+		Verbindung::vVerarbeitung = new PacketeVerarbeitenThread();
+		Verbindung::vLesen = new PacketeLesenThread(Verbindung::socket);
 	}
 
 	return ret;
@@ -65,28 +65,28 @@ void Verbindung::warte() {
 	Verbindung::vLesen->join();
 }
 
-void Verbindung::zuVerschickendenPaketenHinzufuegen(PaketClient *p) {
-	Verbindung::vSchreiben->verschickePaket(p);
+void Verbindung::zuVerschickendenPacketenHinzufuegen(PacketClient *p) {
+	Verbindung::vSchreiben->verschickePacket(p);
 }
 
-void Verbindung::zuVerarbeitendenPaketenHinzufuegen(PaketServer *p) {
-	Verbindung::vVerarbeitung->verarbeitePaket(p);
+void Verbindung::zuVerarbeitendenPacketenHinzufuegen(PacketServer *p) {
+	Verbindung::vVerarbeitung->verarbeitePacket(p);
 }
 
 void Verbindung::beenden(bool aktiv) {
 	if (aktiv) {
 #ifdef DEBUG_ON
-		Debug::schreibeLog("sd:/apps/WiiCraft/Paket.log",
+		Debug::schreibeLog("sd:/apps/WiiCraft/Packet.log",
 				"Spiel wird aktiv verlassen.\n", Debug::DATEI_ERWEITERN);
 #endif
-		PaketClient *p = new PaketFFDisconnectKick("Spiel wurde verlassen.");
-		Verbindung::zuVerschickendenPaketenHinzufuegen(p);
+		PacketClient *p = new PacketFFDisconnectKick("Spiel wurde verlassen.");
+		Verbindung::zuVerschickendenPacketenHinzufuegen(p);
 		return;
 	}
 #ifdef DEBUG_ON
 	else {
 
-		Debug::schreibeLog("sd:/apps/WiiCraft/Paket.log",
+		Debug::schreibeLog("sd:/apps/WiiCraft/Packet.log",
 				"Spiel wird passiv verlassen.\n", Debug::DATEI_ERWEITERN);
 	}
 #endif

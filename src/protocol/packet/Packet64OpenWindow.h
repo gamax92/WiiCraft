@@ -30,19 +30,19 @@
 #ifndef PAKET64OPENWINDOW_H_
 #define PAKET64OPENWINDOW_H_
 
-#include "../PaketServer.h"
+#include "../PacketServer.h"
 #include <string>
 
 namespace std {
 
 class DataInputStream;
 
-class Paket64OpenWindow: public PaketServer {
+class Packet64OpenWindow: public PacketServer {
 public:
-	PaketServer *gebeInstanz();
-	static bool registierePaket();
-	void lesePaketInhalt(DataInputStream *in);
-	void verarbeitePaket();
+	PacketServer *gebeInstanz();
+	static bool registierePacket();
+	void lesePacketInhalt(DataInputStream *in);
+	void verarbeitePacket();
 private:
 
 	byte windowId;
@@ -50,7 +50,7 @@ private:
 	string windowTitle;
 	byte numberOfSlots;
 
-	Paket64OpenWindow();
+	Packet64OpenWindow();
 };
 }
 #endif /* PAKET64OPENWINDOW_H_ */

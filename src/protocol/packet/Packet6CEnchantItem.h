@@ -30,16 +30,16 @@
 #ifndef PAKET6CENCHANTITEM_H_
 #define PAKET6CENCHANTITEM_H_
 
-#include "../PaketClient.h"
+#include "../PacketClient.h"
 
 namespace std {
 
 class DataOutputStream;
 
-class Paket6CEnchantItem: public PaketClient {
+class Packet6CEnchantItem: public PacketClient {
 public:
-	Paket6CEnchantItem(byte _windowId, byte _enchantment);
-	void schreibePaketInhalt(DataOutputStream *out);
+	Packet6CEnchantItem(byte _windowId, byte _enchantment);
+	void schreibePacketInhalt(DataOutputStream *out);
 private:
 	byte windowId;
 	byte enchantment;

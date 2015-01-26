@@ -27,18 +27,18 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "PaketeSchreibenThread.h"
+#include "PacketeSchreibenThread.h"
 
 #include <cstdio>
 #include "../net/Socket.h"
 #include "../net/DataOutputStream.h"
-#include "../protocol/PaketClient.h"
+#include "../protocol/PacketClient.h"
 #include "../exception/ExcThreadGestoppt.h"
 #include "../util/Debug.h"
 
 using namespace std;
 
-PaketeSchreibenThread::PaketeSchreibenThread(Socket *_socket) {
+PacketeSchreibenThread::PacketeSchreibenThread(Socket *_socket) {
 	this->socket = _socket;
 	this->gestoppt = false;
 	this->oStream = new DataOutputStream(this->socket);
@@ -49,30 +49,30 @@ PaketeSchreibenThread::PaketeSchreibenThread(Socket *_socket) {
 	pthread_cond_init(&this->condwait, NULL);
 }
 
-PaketeSchreibenThread::~PaketeSchreibenThread() {
+PacketeSchreibenThread::~PacketeSchreibenThread() {
 	pthread_mutex_destroy(&this->mutexqueue);
 	pthread_mutex_destroy(&this->mutexstop);
 	pthread_mutex_destroy(&this->mutexwait);
 	pthread_cond_destroy(&this->condwait);
 }
 
-int PaketeSchreibenThread::exec() {
+int PacketeSchreibenThread::exec() {
 	bool ok;
 	do {
-		ok = this->gebeNaechstesPaket();
+		ok = this->gebeNaechstesPacket();
 	} while (ok);
 
 	return 0;
 }
 
-void PaketeSchreibenThread::verschickePaket(PaketClient *p) {
+void PacketeSchreibenThread::verschickePacket(PacketClient *p) {
 	if (this->istGestopped()) {
 		return;
 	}
 
 	pthread_mutex_lock(&this->mutexqueue);
-	p->setzePaketNr(Paket::aktuellePaketSchreibeNr);
-	Paket::aktuellePaketSchreibeNr++;
+	p->setzePacketNr(Packet::aktuellePacketSchreibeNr);
+	Packet::aktuellePacketSchreibeNr++;
 
 	this->schreibPuffer.push(p);
 	pthread_mutex_unlock(&this->mutexqueue);
@@ -82,7 +82,7 @@ void PaketeSchreibenThread::verschickePaket(PaketClient *p) {
 	pthread_mutex_unlock(&this->mutexwait);
 }
 
-bool PaketeSchreibenThread::gebeNaechstesPaket() {
+bool PacketeSchreibenThread::gebeNaechstesPacket() {
 	pthread_mutex_lock(&this->mutexqueue);
 	bool leer = this->schreibPuffer.empty();
 	pthread_mutex_unlock(&this->mutexqueue);
@@ -102,31 +102,31 @@ bool PaketeSchreibenThread::gebeNaechstesPaket() {
 		sprintf(buffer, "Schreiben wird gestoppt, Queue: %i\n",
 				this->schreibPuffer.size());
 		pthread_mutex_unlock(&this->mutexqueue);
-		Debug::schreibeLog("sd:/apps/WiiCraft/Paket.log", buffer,
+		Debug::schreibeLog("sd:/apps/WiiCraft/Packet.log", buffer,
 				Debug::DATEI_ERWEITERN);
 		delete[] buffer;
 #endif
 
-		this->schreibPuffer = priority_queue<PaketClient *,
-				vector<PaketClient*>, PaketVergleicher>();
+		this->schreibPuffer = priority_queue<PacketClient *,
+				vector<PacketClient*>, PacketVergleicher>();
 		pthread_mutex_unlock(&this->mutexqueue);
 
 		return false;
 	}
 
 	pthread_mutex_lock(&this->mutexqueue);
-	PaketClient *p = this->schreibPuffer.top();
+	PacketClient *p = this->schreibPuffer.top();
 	this->schreibPuffer.pop();
 	pthread_mutex_unlock(&this->mutexqueue);
 
-	p->schreibePaket(this->oStream);
+	p->schreibePacket(this->oStream);
 
 	delete p;
 
 	return true;
 }
 
-void PaketeSchreibenThread::stop() {
+void PacketeSchreibenThread::stop() {
 	pthread_mutex_lock(&this->mutexstop);
 	this->gestoppt = true;
 	pthread_mutex_unlock(&this->mutexstop);
@@ -136,7 +136,7 @@ void PaketeSchreibenThread::stop() {
 	pthread_mutex_unlock(&this->mutexwait);
 }
 
-bool PaketeSchreibenThread::istGestopped() {
+bool PacketeSchreibenThread::istGestopped() {
 	pthread_mutex_lock(&this->mutexstop);
 	bool b = this->gestoppt;
 	pthread_mutex_unlock(&this->mutexstop);

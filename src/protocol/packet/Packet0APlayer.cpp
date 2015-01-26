@@ -27,19 +27,19 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Paket0APlayer.h"
+#include "Packet0APlayer.h"
 
 #include "../../net/DataOutputStream.h"
 
 using namespace std;
 
-Paket0APlayer::Paket0APlayer(bool _onGround) {
-	PaketClient::id = 0x0a;
-	PaketClient::prio = 50;
+Packet0APlayer::Packet0APlayer(bool _onGround) {
+	PacketClient::id = 0x0a;
+	PacketClient::prio = 50;
 
 	this->onGround = _onGround;
 }
 
-void Paket0APlayer::schreibePaketInhalt(DataOutputStream *out) {
+void Packet0APlayer::schreibePacketInhalt(DataOutputStream *out) {
 	out->schreibeBoolean(this->onGround);
 }

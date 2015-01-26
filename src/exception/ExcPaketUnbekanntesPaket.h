@@ -30,15 +30,15 @@
 #ifndef EXCPAKETUNBEKANNTESPAKET_H_
 #define EXCPAKETUNBEKANNTESPAKET_H_
 
-#include "ExcPaket.h"
+#include "ExcPacket.h"
 #include "../util/Datentypen.h"
 
 namespace std {
 
-class ExcPaketUnbekanntesPaket: public ExcPaket {
+class ExcPacketUnbekanntesPacket: public ExcPacket {
 public:
-	ExcPaketUnbekanntesPaket(byte _pbyte);
-	ExcPaketUnbekanntesPaket(byte _pbyte, byte _lbyte);
+	ExcPacketUnbekanntesPacket(byte _pbyte);
+	ExcPacketUnbekanntesPacket(byte _pbyte, byte _lbyte);
 	byte gebeByte();
 private:
 	byte pbyte;

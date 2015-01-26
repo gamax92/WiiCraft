@@ -27,22 +27,22 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef Paket83ItemData_H_
-#define Paket83ItemData_H_
+#ifndef Packet83ItemData_H_
+#define Packet83ItemData_H_
 
-#include "../PaketServer.h"
+#include "../PacketServer.h"
 
 namespace std {
 
 class DataInputStream;
 
-class Paket83ItemData: public PaketServer {
+class Packet83ItemData: public PacketServer {
 public:
-	~Paket83ItemData();
-	PaketServer *gebeInstanz();
-	static bool registierePaket();
-	void lesePaketInhalt(DataInputStream *in);
-	void verarbeitePaket();
+	~Packet83ItemData();
+	PacketServer *gebeInstanz();
+	static bool registierePacket();
+	void lesePacketInhalt(DataInputStream *in);
+	void verarbeitePacket();
 private:
 
 	short itemType;
@@ -50,7 +50,7 @@ private:
 	byte textLength;
 	byte *text;
 
-	Paket83ItemData();
+	Packet83ItemData();
 };
 }
-#endif /* Paket83ItemData_H_ */
+#endif /* Packet83ItemData_H_ */

@@ -27,26 +27,26 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef Paket1DDestroyEntity_H_
-#define Paket1DDestroyEntity_H_
+#ifndef Packet1DDestroyEntity_H_
+#define Packet1DDestroyEntity_H_
 
-#include "../PaketServer.h"
+#include "../PacketServer.h"
 
 namespace std {
 
 class DataInputStream;
 
-class Paket1DDestroyEntity: public PaketServer {
+class Packet1DDestroyEntity: public PacketServer {
 public:
-	PaketServer *gebeInstanz();
-	static bool registierePaket();
-	void lesePaketInhalt(DataInputStream *in);
-	void verarbeitePaket();
+	PacketServer *gebeInstanz();
+	static bool registierePacket();
+	void lesePacketInhalt(DataInputStream *in);
+	void verarbeitePacket();
 private:
 
 	int entityId;
 
-	Paket1DDestroyEntity();
+	Packet1DDestroyEntity();
 };
 }
-#endif /* Paket1DDestroyEntity_H_ */
+#endif /* Packet1DDestroyEntity_H_ */

@@ -27,15 +27,15 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "ExcPaket.h"
+#include "ExcPacket.h"
 
 #include "../util/Debug.h"
 
 using namespace std;
 
-ExcPaket::ExcPaket() {
+ExcPacket::ExcPacket() {
 #ifdef DEBUG_ON
-	Debug::schreibeLog("sd:/apps/WiiCraft/exception.log", "ExcPaket\n",
+	Debug::schreibeLog("sd:/apps/WiiCraft/exception.log", "ExcPacket\n",
 			Debug::DATEI_ERWEITERN);
 #endif
 }

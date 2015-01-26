@@ -30,19 +30,19 @@
 #ifndef PAKET14NAMEDENTITYSPAWN_H_
 #define PAKET14NAMEDENTITYSPAWN_H_
 
-#include "../PaketServer.h"
+#include "../PacketServer.h"
 #include <string>
 
 namespace std {
 
 class DataInputStream;
 
-class Paket14NamedEntitySpawn: public PaketServer {
+class Packet14NamedEntitySpawn: public PacketServer {
 public:
-	PaketServer *gebeInstanz();
-	static bool registierePaket();
-	void lesePaketInhalt(DataInputStream *in);
-	void verarbeitePaket();
+	PacketServer *gebeInstanz();
+	static bool registierePacket();
+	void lesePacketInhalt(DataInputStream *in);
+	void verarbeitePacket();
 private:
 
 	int entityId;
@@ -54,7 +54,7 @@ private:
 	byte pitch;
 	short currentItem;
 
-	Paket14NamedEntitySpawn();
+	Packet14NamedEntitySpawn();
 };
 }
 #endif /* PAKET14NAMEDENTITYSPAWN_H_ */

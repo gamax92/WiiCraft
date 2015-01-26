@@ -30,18 +30,18 @@
 #ifndef PAKET29ENTITYEFFECT_H_
 #define PAKET29ENTITYEFFECT_H_
 
-#include "../PaketServer.h"
+#include "../PacketServer.h"
 
 namespace std {
 
 class DataInputStream;
 
-class Paket29EntityEffect: public PaketServer {
+class Packet29EntityEffect: public PacketServer {
 public:
-	PaketServer *gebeInstanz();
-	static bool registierePaket();
-	void lesePaketInhalt(DataInputStream *in);
-	void verarbeitePaket();
+	PacketServer *gebeInstanz();
+	static bool registierePacket();
+	void lesePacketInhalt(DataInputStream *in);
+	void verarbeitePacket();
 private:
 
 	int entityId;
@@ -49,7 +49,7 @@ private:
 	byte amplifier;
 	short duration;
 
-	Paket29EntityEffect();
+	Packet29EntityEffect();
 };
 }
 #endif /* PAKET29ENTITYEFFECT_H_ */

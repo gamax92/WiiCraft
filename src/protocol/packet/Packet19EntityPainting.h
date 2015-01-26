@@ -30,19 +30,19 @@
 #ifndef PAKET19ENTITYPAINTING_H_
 #define PAKET19ENTITYPAINTING_H_
 
-#include "../PaketServer.h"
+#include "../PacketServer.h"
 #include <string>
 
 namespace std {
 
 class DataInputStream;
 
-class Paket19EntityPainting: public PaketServer {
+class Packet19EntityPainting: public PacketServer {
 public:
-	PaketServer *gebeInstanz();
-	static bool registierePaket();
-	void lesePaketInhalt(DataInputStream *in);
-	void verarbeitePaket();
+	PacketServer *gebeInstanz();
+	static bool registierePacket();
+	void lesePacketInhalt(DataInputStream *in);
+	void verarbeitePacket();
 private:
 
 	int entityId;
@@ -52,7 +52,7 @@ private:
 	int z;
 	int direction;
 
-	Paket19EntityPainting();
+	Packet19EntityPainting();
 };
 }
 #endif /* PAKET19ENTITYPAINTING_H_ */

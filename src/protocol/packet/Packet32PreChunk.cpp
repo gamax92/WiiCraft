@@ -27,38 +27,38 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Paket32PreChunk.h"
+#include "Packet32PreChunk.h"
 
 #include <cstdio>
 #include "../../net/DataInputStream.h"
 #include "../../world/Welt.h"
-#include "../PaketManager.h"
+#include "../PacketManager.h"
 #include "../../util/Debug.h"
 
 using namespace std;
 
-Paket32PreChunk::Paket32PreChunk() {
-	PaketServer::id = 0x32;
-	PaketServer::prio = 50;
+Packet32PreChunk::Packet32PreChunk() {
+	PacketServer::id = 0x32;
+	PacketServer::prio = 50;
 }
 
-PaketServer *Paket32PreChunk::gebeInstanz() {
-	return new Paket32PreChunk();
+PacketServer *Packet32PreChunk::gebeInstanz() {
+	return new Packet32PreChunk();
 }
 
-bool Paket32PreChunk::registierePaket() {
-	PaketManager::registrierePaket(new Paket32PreChunk());
+bool Packet32PreChunk::registierePacket() {
+	PacketManager::registrierePacket(new Packet32PreChunk());
 
 	return true;
 }
 
-void Paket32PreChunk::lesePaketInhalt(DataInputStream *in) {
+void Packet32PreChunk::lesePacketInhalt(DataInputStream *in) {
 	this->x = in->leseInt();
 	this->z = in->leseInt();
 	this->mode = in->leseBoolean();
 }
 
-void Paket32PreChunk::verarbeitePaket() {
+void Packet32PreChunk::verarbeitePacket() {
 	if (this->mode == 1) {
 		Welt::gebeWelt()->initialisiereChunk(this->x, this->z);
 	} else {
@@ -68,7 +68,7 @@ void Paket32PreChunk::verarbeitePaket() {
 #ifdef DEBUG_ON
 	char *buffer = new char[100];
 	sprintf(buffer, "chunk: %ix%i, init: %i", this->x, this->z, this->mode);
-	Debug::schreibePaketLog("Paket32PreChunk", buffer);
+	Debug::schreibePacketLog("Packet32PreChunk", buffer);
 	delete[] buffer;
 #endif
 }

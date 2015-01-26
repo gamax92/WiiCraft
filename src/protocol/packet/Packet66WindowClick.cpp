@@ -27,7 +27,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Paket66WindowClick.h"
+#include "Packet66WindowClick.h"
 
 #include <cstdlib>
 #include "../../net/DataOutputStream.h"
@@ -35,11 +35,11 @@
 
 using namespace std;
 
-Paket66WindowClick::Paket66WindowClick(byte _windowId, short _slot,
+Packet66WindowClick::Packet66WindowClick(byte _windowId, short _slot,
 		byte _rightClick, short _actionNumber, bool _shift,
 		Slot *_clickedItem) {
-	PaketClient::id = 0x66;
-	PaketClient::prio = 50;
+	PacketClient::id = 0x66;
+	PacketClient::prio = 50;
 
 	this->windowId = _windowId;
 	this->slot = _slot;
@@ -49,11 +49,11 @@ Paket66WindowClick::Paket66WindowClick(byte _windowId, short _slot,
 	this->clickedItem = _clickedItem;
 }
 
-Paket66WindowClick::~Paket66WindowClick() {
+Packet66WindowClick::~Packet66WindowClick() {
 	free(this->clickedItem);
 }
 
-void Paket66WindowClick::schreibePaketInhalt(DataOutputStream *out) {
+void Packet66WindowClick::schreibePacketInhalt(DataOutputStream *out) {
 	out->schreibeByte(this->windowId);
 	out->schreibeShort(this->slot);
 	out->schreibeByte(this->rightClick);

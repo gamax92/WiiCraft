@@ -27,46 +27,46 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Paket20EntityLook.h"
+#include "Packet20EntityLook.h"
 
 #include <cstdio>
 #include "../../net/DataInputStream.h"
 #include "../../entity/Entity.h"
-#include "../PaketManager.h"
+#include "../PacketManager.h"
 #include "../../util/Debug.h"
 
 using namespace std;
 
-Paket20EntityLook::Paket20EntityLook() {
-	PaketServer::id = 0x20;
-	PaketServer::prio = 50;
+Packet20EntityLook::Packet20EntityLook() {
+	PacketServer::id = 0x20;
+	PacketServer::prio = 50;
 }
 
-PaketServer *Paket20EntityLook::gebeInstanz() {
-	return new Paket20EntityLook();
+PacketServer *Packet20EntityLook::gebeInstanz() {
+	return new Packet20EntityLook();
 }
 
-bool Paket20EntityLook::registierePaket() {
-	PaketManager::registrierePaket(new Paket20EntityLook());
+bool Packet20EntityLook::registierePacket() {
+	PacketManager::registrierePacket(new Packet20EntityLook());
 
 	return true;
 }
 
-void Paket20EntityLook::lesePaketInhalt(DataInputStream *in) {
+void Packet20EntityLook::lesePacketInhalt(DataInputStream *in) {
 	this->entityId = in->leseInt();
 	this->yaw = in->leseByte();
 	this->pitch = in->leseByte();
 }
 
-void Paket20EntityLook::verarbeitePaket() {
+void Packet20EntityLook::verarbeitePacket() {
 #ifdef DEBUG_ON
 	char *buffer = new char[100];
 	sprintf(buffer, "entityId: %i, yaw: %i, pitch: %i", this->entityId,
 			this->yaw, this->pitch);
-	Debug::schreibePaketLog("Paket20EntityLook", buffer);
+	Debug::schreibePacketLog("Packet20EntityLook", buffer);
 	delete[] buffer;
 #endif
 
 	Entity::gebeEntity(this->entityId);
-	// TODO Paketverarbeitung implementieren
+	// TODO Packetverarbeitung implementieren
 }

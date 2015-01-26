@@ -27,45 +27,45 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Paket2ARemoveEntityEffect.h"
+#include "Packet2ARemoveEntityEffect.h"
 
 #include <cstdio>
 #include "../../net/DataInputStream.h"
 #include "../../entity/Entity.h"
-#include "../PaketManager.h"
+#include "../PacketManager.h"
 #include "../../util/Debug.h"
 
 using namespace std;
 
-Paket2ARemoveEntityEffect::Paket2ARemoveEntityEffect() {
-	PaketServer::id = 0x2a;
-	PaketServer::prio = 50;
+Packet2ARemoveEntityEffect::Packet2ARemoveEntityEffect() {
+	PacketServer::id = 0x2a;
+	PacketServer::prio = 50;
 }
 
-PaketServer *Paket2ARemoveEntityEffect::gebeInstanz() {
-	return new Paket2ARemoveEntityEffect();
+PacketServer *Packet2ARemoveEntityEffect::gebeInstanz() {
+	return new Packet2ARemoveEntityEffect();
 }
 
-bool Paket2ARemoveEntityEffect::registierePaket() {
-	PaketManager::registrierePaket(new Paket2ARemoveEntityEffect());
+bool Packet2ARemoveEntityEffect::registierePacket() {
+	PacketManager::registrierePacket(new Packet2ARemoveEntityEffect());
 
 	return true;
 }
 
-void Paket2ARemoveEntityEffect::lesePaketInhalt(DataInputStream *in) {
+void Packet2ARemoveEntityEffect::lesePacketInhalt(DataInputStream *in) {
 	this->entityId = in->leseInt();
 	this->effectId = in->leseByte();
 }
 
-void Paket2ARemoveEntityEffect::verarbeitePaket() {
+void Packet2ARemoveEntityEffect::verarbeitePacket() {
 #ifdef DEBUG_ON
 	char *buffer = new char[100];
 	sprintf(buffer, "entityId: %i, effectId: %i", this->entityId,
 			this->effectId);
-	Debug::schreibePaketLog("Paket2ARemoveEntityEffect", buffer);
+	Debug::schreibePacketLog("Packet2ARemoveEntityEffect", buffer);
 	delete[] buffer;
 #endif
 
 	Entity::gebeEntity(this->entityId);
-	// TODO Paketverarbeitung implementieren
+	// TODO Packetverarbeitung implementieren
 }

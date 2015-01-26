@@ -27,53 +27,53 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Paket6BCreativeInventoryAction.h"
+#include "Packet6BCreativeInventoryAction.h"
 
 #include <cstdio>
 #include <cstdlib>
 #include "../../net/DataOutputStream.h"
 #include "../../net/DataInputStream.h"
 #include "../../entity/Slot.h"
-#include "../PaketManager.h"
+#include "../PacketManager.h"
 #include "../../util/Debug.h"
 
 using namespace std;
 
-Paket6BCreativeInventoryAction::Paket6BCreativeInventoryAction() {
-	PaketServer::id = 0x6b;
-	PaketServer::prio = 50;
+Packet6BCreativeInventoryAction::Packet6BCreativeInventoryAction() {
+	PacketServer::id = 0x6b;
+	PacketServer::prio = 50;
 }
 
-Paket6BCreativeInventoryAction::~Paket6BCreativeInventoryAction() {
+Packet6BCreativeInventoryAction::~Packet6BCreativeInventoryAction() {
 	free(this->clickedItem);
 }
 
-PaketServer *Paket6BCreativeInventoryAction::gebeInstanz() {
-	return new Paket6BCreativeInventoryAction();
+PacketServer *Packet6BCreativeInventoryAction::gebeInstanz() {
+	return new Packet6BCreativeInventoryAction();
 }
 
-bool Paket6BCreativeInventoryAction::registierePaket() {
-	PaketManager::registrierePaket(new Paket6BCreativeInventoryAction());
+bool Packet6BCreativeInventoryAction::registierePacket() {
+	PacketManager::registrierePacket(new Packet6BCreativeInventoryAction());
 
 	return true;
 }
 
-void Paket6BCreativeInventoryAction::schreibePaketInhalt(
+void Packet6BCreativeInventoryAction::schreibePacketInhalt(
 		DataOutputStream *out) {
 }
 
-void Paket6BCreativeInventoryAction::lesePaketInhalt(DataInputStream *in) {
+void Packet6BCreativeInventoryAction::lesePacketInhalt(DataInputStream *in) {
 	this->slot = in->leseShort();
 	this->clickedItem = Slot::leseSlot(in);
 }
 
-void Paket6BCreativeInventoryAction::verarbeitePaket() {
+void Packet6BCreativeInventoryAction::verarbeitePacket() {
 #ifdef DEBUG_ON
 	char *buffer = new char[100];
 	sprintf(buffer, "slot: %i", this->slot);
-	Debug::schreibePaketLog("Paket6BCreativeInventoryAction", buffer);
+	Debug::schreibePacketLog("Packet6BCreativeInventoryAction", buffer);
 	delete[] buffer;
 #endif
 
-	// TODO Paketverarbeitung implementieren
+	// TODO Packetverarbeitung implementieren
 }

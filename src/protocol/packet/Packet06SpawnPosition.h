@@ -30,25 +30,25 @@
 #ifndef PAKET06SPAWNPOSITION_H_
 #define PAKET06SPAWNPOSITION_H_
 
-#include "../PaketServer.h"
+#include "../PacketServer.h"
 
 namespace std {
 
 class DataInputStream;
 
-class Paket06SpawnPosition: public PaketServer {
+class Packet06SpawnPosition: public PacketServer {
 public:
-	PaketServer *gebeInstanz();
-	static bool registierePaket();
-	void lesePaketInhalt(DataInputStream *in);
-	void verarbeitePaket();
+	PacketServer *gebeInstanz();
+	static bool registierePacket();
+	void lesePacketInhalt(DataInputStream *in);
+	void verarbeitePacket();
 private:
 
 	int x;
 	int y;
 	int z;
 
-	Paket06SpawnPosition();
+	Packet06SpawnPosition();
 };
 }
 #endif /* PAKET06SPAWNPOSITION_H_ */

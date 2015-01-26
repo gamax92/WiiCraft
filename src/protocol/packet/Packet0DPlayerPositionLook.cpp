@@ -27,26 +27,26 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Paket0DPlayerPositionLook.h"
+#include "Packet0DPlayerPositionLook.h"
 
 #include <cstdio>
 #include "../../net/DataOutputStream.h"
 #include "../../net/DataInputStream.h"
 #include "../../entity/Spieler.h"
-#include "../PaketManager.h"
+#include "../PacketManager.h"
 #include "../../util/Debug.h"
 
 using namespace std;
 
-Paket0DPlayerPositionLook::Paket0DPlayerPositionLook() {
-	PaketServer::id = 0x0d;
-	PaketServer::prio = 50;
+Packet0DPlayerPositionLook::Packet0DPlayerPositionLook() {
+	PacketServer::id = 0x0d;
+	PacketServer::prio = 50;
 }
 
-Paket0DPlayerPositionLook::Paket0DPlayerPositionLook(double _x, double _y,
+Packet0DPlayerPositionLook::Packet0DPlayerPositionLook(double _x, double _y,
 		double _stance, double _z, float _yaw, float _pitch, bool _onGround) {
-	PaketClient::id = 0x0d;
-	PaketClient::prio = 50;
+	PacketClient::id = 0x0d;
+	PacketClient::prio = 50;
 
 	this->x = _x;
 	this->y = _y;
@@ -57,17 +57,17 @@ Paket0DPlayerPositionLook::Paket0DPlayerPositionLook(double _x, double _y,
 	this->onGround = _onGround;
 }
 
-PaketServer *Paket0DPlayerPositionLook::gebeInstanz() {
-	return new Paket0DPlayerPositionLook();
+PacketServer *Packet0DPlayerPositionLook::gebeInstanz() {
+	return new Packet0DPlayerPositionLook();
 }
 
-bool Paket0DPlayerPositionLook::registierePaket() {
-	PaketManager::registrierePaket(new Paket0DPlayerPositionLook());
+bool Packet0DPlayerPositionLook::registierePacket() {
+	PacketManager::registrierePacket(new Packet0DPlayerPositionLook());
 
 	return true;
 }
 
-void Paket0DPlayerPositionLook::schreibePaketInhalt(DataOutputStream *out) {
+void Packet0DPlayerPositionLook::schreibePacketInhalt(DataOutputStream *out) {
 	out->schreibeDouble(this->x);
 	out->schreibeDouble(this->y);
 	out->schreibeDouble(this->stance);
@@ -77,7 +77,7 @@ void Paket0DPlayerPositionLook::schreibePaketInhalt(DataOutputStream *out) {
 	out->schreibeBoolean(this->onGround);
 }
 
-void Paket0DPlayerPositionLook::lesePaketInhalt(DataInputStream *in) {
+void Packet0DPlayerPositionLook::lesePacketInhalt(DataInputStream *in) {
 	this->x = in->leseDouble();
 	this->stance = in->leseDouble();
 	this->y = in->leseDouble();
@@ -87,14 +87,14 @@ void Paket0DPlayerPositionLook::lesePaketInhalt(DataInputStream *in) {
 	this->onGround = in->leseBoolean();
 }
 
-void Paket0DPlayerPositionLook::verarbeitePaket() {
+void Packet0DPlayerPositionLook::verarbeitePacket() {
 #ifdef DEBUG_ON
 	char *buffer = new char[200];
 	sprintf(buffer,
 			"x: %f, y: %f, z: %f, stance: %f, yaw: %f, pitch: %f, onGround: %i",
 			this->x, this->y, this->z, this->stance, this->yaw, this->pitch,
 			this->onGround);
-	Debug::schreibePaketLog("Paket0DPlayerPositionLook", buffer);
+	Debug::schreibePacketLog("Packet0DPlayerPositionLook", buffer);
 	delete[] buffer;
 #endif
 

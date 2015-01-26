@@ -27,16 +27,16 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "PaketeVerarbeitenThread.h"
+#include "PacketeVerarbeitenThread.h"
 
 #include <cstdio>
-#include "../protocol/PaketServer.h"
+#include "../protocol/PacketServer.h"
 #include "../exception/ExcThreadGestoppt.h"
 #include "../util/Debug.h"
 
 using namespace std;
 
-PaketeVerarbeitenThread::PaketeVerarbeitenThread() {
+PacketeVerarbeitenThread::PacketeVerarbeitenThread() {
 	this->gestoppt = false;
 
 	pthread_mutex_init(&this->mutexqueue, NULL);
@@ -45,23 +45,23 @@ PaketeVerarbeitenThread::PaketeVerarbeitenThread() {
 	pthread_cond_init(&this->condwait, NULL);
 }
 
-PaketeVerarbeitenThread::~PaketeVerarbeitenThread() {
+PacketeVerarbeitenThread::~PacketeVerarbeitenThread() {
 	pthread_mutex_destroy(&this->mutexqueue);
 	pthread_mutex_destroy(&this->mutexstop);
 	pthread_mutex_destroy(&this->mutexwait);
 	pthread_cond_destroy(&this->condwait);
 }
 
-int PaketeVerarbeitenThread::exec() {
+int PacketeVerarbeitenThread::exec() {
 	bool ok;
 	do {
-		ok = this->gebeNaechstesPaket();
+		ok = this->gebeNaechstesPacket();
 	} while (ok);
 
 	return 0;
 }
 
-void PaketeVerarbeitenThread::verarbeitePaket(PaketServer *p) {
+void PacketeVerarbeitenThread::verarbeitePacket(PacketServer *p) {
 	if (this->istGestopped()) {
 		return;
 	}
@@ -76,7 +76,7 @@ void PaketeVerarbeitenThread::verarbeitePaket(PaketServer *p) {
 	pthread_mutex_unlock(&this->mutexwait);
 }
 
-bool PaketeVerarbeitenThread::gebeNaechstesPaket() {
+bool PacketeVerarbeitenThread::gebeNaechstesPacket() {
 	pthread_mutex_lock(&this->mutexqueue);
 	bool leer = this->verarbeitungPuffer.empty();
 	pthread_mutex_unlock(&this->mutexqueue);
@@ -96,31 +96,31 @@ bool PaketeVerarbeitenThread::gebeNaechstesPaket() {
 		sprintf(buffer, "Verarbeitung wird gestoppt, Queue: %i\n",
 				this->verarbeitungPuffer.size());
 		pthread_mutex_unlock(&this->mutexqueue);
-		Debug::schreibeLog("sd:/apps/WiiCraft/Paket.log", buffer,
+		Debug::schreibeLog("sd:/apps/WiiCraft/Packet.log", buffer,
 				Debug::DATEI_ERWEITERN);
 		delete[] buffer;
 #endif
 
-		this->verarbeitungPuffer = priority_queue<PaketServer *,
-				vector<PaketServer*>, PaketVergleicher>();
+		this->verarbeitungPuffer = priority_queue<PacketServer *,
+				vector<PacketServer*>, PacketVergleicher>();
 		pthread_mutex_unlock(&this->mutexqueue);
 
 		return false;
 	}
 
 	pthread_mutex_lock(&this->mutexqueue);
-	PaketServer *p = this->verarbeitungPuffer.top();
+	PacketServer *p = this->verarbeitungPuffer.top();
 	this->verarbeitungPuffer.pop();
 	pthread_mutex_unlock(&this->mutexqueue);
 
-	p->verarbeitePaket();
+	p->verarbeitePacket();
 
 	delete p;
 
 	return true;
 }
 
-void PaketeVerarbeitenThread::stop() {
+void PacketeVerarbeitenThread::stop() {
 	pthread_mutex_lock(&this->mutexstop);
 	this->gestoppt = true;
 	pthread_mutex_unlock(&this->mutexstop);
@@ -130,7 +130,7 @@ void PaketeVerarbeitenThread::stop() {
 	pthread_mutex_unlock(&this->mutexwait);
 }
 
-bool PaketeVerarbeitenThread::istGestopped() {
+bool PacketeVerarbeitenThread::istGestopped() {
 	pthread_mutex_lock(&this->mutexstop);
 	bool b = this->gestoppt;
 	pthread_mutex_unlock(&this->mutexstop);

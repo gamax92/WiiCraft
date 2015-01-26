@@ -32,9 +32,9 @@
 
 namespace std {
 
-class ExcPaket {
+class ExcPacket {
 public:
-	ExcPaket();
+	ExcPacket();
 };
 }
 #endif /* EXCPAKET_H_ */

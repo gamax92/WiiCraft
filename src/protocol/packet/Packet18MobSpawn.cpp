@@ -54,7 +54,7 @@
  * VILLAGER = 120
  */
 
-#include "Paket18MobSpawn.h"
+#include "Packet18MobSpawn.h"
 
 #include <cstdio>
 #include <cstdlib>
@@ -63,31 +63,31 @@
 #include "../../exception/ExcSocketStringLaengeUeberschritten.h"
 #include "../../exception/ExcMetadata.h"
 #include "../../entity/Entity.h"
-#include "../PaketManager.h"
+#include "../PacketManager.h"
 #include "../../util/Debug.h"
 
 using namespace std;
 
-Paket18MobSpawn::Paket18MobSpawn() {
-	PaketServer::id = 0x18;
-	PaketServer::prio = 50;
+Packet18MobSpawn::Packet18MobSpawn() {
+	PacketServer::id = 0x18;
+	PacketServer::prio = 50;
 }
 
-Paket18MobSpawn::~Paket18MobSpawn() {
+Packet18MobSpawn::~Packet18MobSpawn() {
 	delete this->metaData;
 }
 
-PaketServer *Paket18MobSpawn::gebeInstanz() {
-	return new Paket18MobSpawn();
+PacketServer *Packet18MobSpawn::gebeInstanz() {
+	return new Packet18MobSpawn();
 }
 
-bool Paket18MobSpawn::registierePaket() {
-	PaketManager::registrierePaket(new Paket18MobSpawn());
+bool Packet18MobSpawn::registierePacket() {
+	PacketManager::registrierePacket(new Packet18MobSpawn());
 
 	return true;
 }
 
-void Paket18MobSpawn::lesePaketInhalt(DataInputStream *in) {
+void Packet18MobSpawn::lesePacketInhalt(DataInputStream *in) {
 	this->entityId = in->leseInt();
 	this->type = (in->leseByte() & 0xff);
 	this->x = in->leseInt();
@@ -99,13 +99,13 @@ void Paket18MobSpawn::lesePaketInhalt(DataInputStream *in) {
 	try {
 		this->metaData = Metadata::leseDaten(in);
 	} catch (ExcSocketStringLaengeUeberschritten &exception) {
-		throw ExcSocketStringLaengeUeberschritten(PaketServer::id);
+		throw ExcSocketStringLaengeUeberschritten(PacketServer::id);
 	} catch (ExcMetadata &exception) {
-		throw ExcMetadata(PaketServer::id);
+		throw ExcMetadata(PacketServer::id);
 	}
 }
 
-void Paket18MobSpawn::verarbeitePaket() {
+void Packet18MobSpawn::verarbeitePacket() {
 #ifdef DEBUG_ON
 	char *buffer = new char[1000];
 
@@ -197,10 +197,10 @@ void Paket18MobSpawn::verarbeitePaket() {
 			this->entityId, mobTyp.data(), this->x, this->y, this->z, this->yaw,
 			this->pitch, this->headYaw);
 
-	Debug::schreibePaketLog("Paket18MobSpawn", buffer);
+	Debug::schreibePacketLog("Packet18MobSpawn", buffer);
 	delete[] buffer;
 #endif
 
 	Entity::gebeEntity(this->entityId);
-	// TODO Paketverarbeitung implementieren
+	// TODO Packetverarbeitung implementieren
 }

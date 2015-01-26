@@ -42,59 +42,59 @@
  * See also 0x26.
  */
 
-#include "Paket12Animation.h"
+#include "Packet12Animation.h"
 
 #include <cstdio>
 #include "../../net/DataOutputStream.h"
 #include "../../net/DataInputStream.h"
 #include "../../entity/Entity.h"
-#include "../PaketManager.h"
+#include "../PacketManager.h"
 #include "../../util/Debug.h"
 
 using namespace std;
 
-Paket12Animation::Paket12Animation() {
-	PaketServer::id = 0x12;
-	PaketServer::prio = 50;
+Packet12Animation::Packet12Animation() {
+	PacketServer::id = 0x12;
+	PacketServer::prio = 50;
 }
 
-Paket12Animation::Paket12Animation(int _entityId, byte _animation) {
-	PaketClient::id = 0x12;
-	PaketClient::prio = 50;
+Packet12Animation::Packet12Animation(int _entityId, byte _animation) {
+	PacketClient::id = 0x12;
+	PacketClient::prio = 50;
 
 	this->entityId = _entityId;
 	this->animation = _animation;
 }
 
-PaketServer *Paket12Animation::gebeInstanz() {
-	return new Paket12Animation();
+PacketServer *Packet12Animation::gebeInstanz() {
+	return new Packet12Animation();
 }
 
-bool Paket12Animation::registierePaket() {
-	PaketManager::registrierePaket(new Paket12Animation());
+bool Packet12Animation::registierePacket() {
+	PacketManager::registrierePacket(new Packet12Animation());
 
 	return true;
 }
 
-void Paket12Animation::schreibePaketInhalt(DataOutputStream *out) {
+void Packet12Animation::schreibePacketInhalt(DataOutputStream *out) {
 	out->schreibeInt(this->entityId);
 	out->schreibeByte(this->animation);
 }
 
-void Paket12Animation::lesePaketInhalt(DataInputStream *in) {
+void Packet12Animation::lesePacketInhalt(DataInputStream *in) {
 	this->entityId = in->leseInt();
 	this->animation = in->leseByte();
 }
 
-void Paket12Animation::verarbeitePaket() {
+void Packet12Animation::verarbeitePacket() {
 #ifdef DEBUG_ON
 	char *buffer = new char[100];
 	sprintf(buffer, "entityId: %i, animation: %i", this->entityId,
 			this->animation);
-	Debug::schreibePaketLog("Paket12Animation", buffer);
+	Debug::schreibePacketLog("Packet12Animation", buffer);
 	delete[] buffer;
 #endif
 
 	Entity::gebeEntity(this->entityId);
-	// TODO Paketverarbeitung implementieren
+	// TODO Packetverarbeitung implementieren
 }

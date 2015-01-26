@@ -43,7 +43,7 @@ namespace std {
 		static const bool DATEI_UEBERSCHREIBEN = false;
 
 		static void schreibeLog(string dateiName, string nachricht, bool flag);
-		static void schreibePaketLog(string paketName, string nachricht);
+		static void schreibePacketLog(string paketName, string nachricht);
 
 		static void start();
 	private:

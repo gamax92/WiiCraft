@@ -30,28 +30,28 @@
 #ifndef PAKET00KEEPALIVE_H_
 #define PAKET00KEEPALIVE_H_
 
-#include "../Paket.h"
-#include "../PaketServer.h"
-#include "../PaketClient.h"
+#include "../Packet.h"
+#include "../PacketServer.h"
+#include "../PacketClient.h"
 
 namespace std {
 
 class DataOutputStream;
 class DataInputStream;
 
-class Paket00KeepAlive: public PaketServer, public PaketClient {
+class Packet00KeepAlive: public PacketServer, public PacketClient {
 public:
-	Paket00KeepAlive(int _keepAliventityId);
-	PaketServer *gebeInstanz();
-	static bool registierePaket();
-	void schreibePaketInhalt(DataOutputStream *out);
-	void lesePaketInhalt(DataInputStream *in);
-	void verarbeitePaket();
+	Packet00KeepAlive(int _keepAliventityId);
+	PacketServer *gebeInstanz();
+	static bool registierePacket();
+	void schreibePacketInhalt(DataOutputStream *out);
+	void lesePacketInhalt(DataInputStream *in);
+	void verarbeitePacket();
 private:
 
 	int keepAliventityId;
 
-	Paket00KeepAlive();
+	Packet00KeepAlive();
 };
 }
 #endif /* PAKET00KEEPALIVE_H_ */

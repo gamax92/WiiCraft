@@ -30,25 +30,25 @@
 #ifndef PAKET08UPDATEHEALTH_H_
 #define PAKET08UPDATEHEALTH_H_
 
-#include "../PaketServer.h"
+#include "../PacketServer.h"
 
 namespace std {
 
 class DataInputStream;
 
-class Paket08UpdateHealth: public PaketServer {
+class Packet08UpdateHealth: public PacketServer {
 public:
-	PaketServer *gebeInstanz();
-	static bool registierePaket();
-	void lesePaketInhalt(DataInputStream *in);
-	void verarbeitePaket();
+	PacketServer *gebeInstanz();
+	static bool registierePacket();
+	void lesePacketInhalt(DataInputStream *in);
+	void verarbeitePacket();
 private:
 
 	short health;
 	short food;
 	float foodSaturation;
 
-	Paket08UpdateHealth();
+	Packet08UpdateHealth();
 };
 }
 #endif /* PAKET08UPDATEHEALTH_H_ */

@@ -27,31 +27,31 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Paket84UpdateTileEntity.h"
+#include "Packet84UpdateTileEntity.h"
 
 #include <cstdio>
 #include "../../net/DataInputStream.h"
-#include "../PaketManager.h"
+#include "../PacketManager.h"
 #include "../../util/Debug.h"
 
 using namespace std;
 
-Paket84UpdateTileEntity::Paket84UpdateTileEntity() {
-	PaketServer::id = 0x84;
-	PaketServer::prio = 50;
+Packet84UpdateTileEntity::Packet84UpdateTileEntity() {
+	PacketServer::id = 0x84;
+	PacketServer::prio = 50;
 }
 
-PaketServer *Paket84UpdateTileEntity::gebeInstanz() {
-	return new Paket84UpdateTileEntity();
+PacketServer *Packet84UpdateTileEntity::gebeInstanz() {
+	return new Packet84UpdateTileEntity();
 }
 
-bool Paket84UpdateTileEntity::registierePaket() {
-	PaketManager::registrierePaket(new Paket84UpdateTileEntity());
+bool Packet84UpdateTileEntity::registierePacket() {
+	PacketManager::registrierePacket(new Packet84UpdateTileEntity());
 
 	return true;
 }
 
-void Paket84UpdateTileEntity::lesePaketInhalt(DataInputStream *in) {
+void Packet84UpdateTileEntity::lesePacketInhalt(DataInputStream *in) {
 	this->x = in->leseInt();
 	this->y = in->leseShort();
 	this->z = in->leseInt();
@@ -61,7 +61,7 @@ void Paket84UpdateTileEntity::lesePaketInhalt(DataInputStream *in) {
 	this->custom3 = in->leseInt();
 }
 
-void Paket84UpdateTileEntity::verarbeitePaket() {
+void Packet84UpdateTileEntity::verarbeitePacket() {
 #ifdef DEBUG_ON
 	char *buffer = new char[200];
 	sprintf(
@@ -69,9 +69,9 @@ void Paket84UpdateTileEntity::verarbeitePaket() {
 			"x: %i, y: %i, z: %i, action: %i, custom1: %i, custom2: %i, custom3: %i",
 			this->x, this->y, this->z, this->action, this->custom1,
 			this->custom2, this->custom3);
-	Debug::schreibePaketLog("Paket84UpdateTileEntity", buffer);
+	Debug::schreibePacketLog("Packet84UpdateTileEntity", buffer);
 	delete[] buffer;
 #endif
 
-	// TODO Paketverarbeitung implementieren
+	// TODO Packetverarbeitung implementieren
 }

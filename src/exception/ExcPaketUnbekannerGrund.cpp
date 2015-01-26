@@ -27,20 +27,20 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "ExcPaketUnbekannerGrund.h"
+#include "ExcPacketUnbekannerGrund.h"
 
 #include <cstdio>
 #include "../util/Debug.h"
 
 using namespace std;
 
-ExcPaketUnbekannerGrund::ExcPaketUnbekannerGrund(byte _grund, byte _aenderung) {
+ExcPacketUnbekannerGrund::ExcPacketUnbekannerGrund(byte _grund, byte _aenderung) {
 	this->grund = _grund;
 	this->aenderung = _aenderung;
 
 #ifdef DEBUG_ON
 	char *buffer = new char[100];
-	sprintf(buffer, "ExcPaketUnbekannerGrund; grund=%i, aenderung=%i\n",
+	sprintf(buffer, "ExcPacketUnbekannerGrund; grund=%i, aenderung=%i\n",
 			this->grund, this->aenderung);
 	Debug::schreibeLog("sd:/apps/WiiCraft/exception.log", buffer,
 			Debug::DATEI_ERWEITERN);

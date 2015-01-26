@@ -27,32 +27,32 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Paket11UseBed.h"
+#include "Packet11UseBed.h"
 
 #include <cstdio>
 #include "../../net/DataInputStream.h"
 #include "../../entity/Entity.h"
-#include "../PaketManager.h"
+#include "../PacketManager.h"
 #include "../../util/Debug.h"
 
 using namespace std;
 
-Paket11UseBed::Paket11UseBed() {
-	PaketServer::id = 0x11;
-	PaketServer::prio = 50;
+Packet11UseBed::Packet11UseBed() {
+	PacketServer::id = 0x11;
+	PacketServer::prio = 50;
 }
 
-PaketServer *Paket11UseBed::gebeInstanz() {
-	return new Paket11UseBed();
+PacketServer *Packet11UseBed::gebeInstanz() {
+	return new Packet11UseBed();
 }
 
-bool Paket11UseBed::registierePaket() {
-	PaketManager::registrierePaket(new Paket11UseBed());
+bool Packet11UseBed::registierePacket() {
+	PacketManager::registrierePacket(new Packet11UseBed());
 
 	return true;
 }
 
-void Paket11UseBed::lesePaketInhalt(DataInputStream *in) {
+void Packet11UseBed::lesePacketInhalt(DataInputStream *in) {
 	this->entityId = in->leseInt();
 	this->inBed = in->leseByte();
 	this->x = in->leseInt();
@@ -60,15 +60,15 @@ void Paket11UseBed::lesePaketInhalt(DataInputStream *in) {
 	this->z = in->leseInt();
 }
 
-void Paket11UseBed::verarbeitePaket() {
+void Packet11UseBed::verarbeitePacket() {
 #ifdef DEBUG_ON
 	char *buffer = new char[100];
 	sprintf(buffer, "entityId: %i, inBed: %i, x: %i, y: %i, z: %i",
 			this->entityId, this->inBed, this->x, this->y, this->z);
-	Debug::schreibePaketLog("Paket11UseBed", buffer);
+	Debug::schreibePacketLog("Packet11UseBed", buffer);
 	delete[] buffer;
 #endif
 
 	Entity::gebeEntity(this->entityId);
-	// TODO Paketverarbeitung implementieren
+	// TODO Packetverarbeitung implementieren
 }

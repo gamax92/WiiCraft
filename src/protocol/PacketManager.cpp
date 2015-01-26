@@ -27,153 +27,153 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "PaketManager.h"
+#include "PacketManager.h"
 
 #include <stddef.h>
 #include <stdlib.h>
-#include "PaketServer.h"
-#include "../exception/ExcPaketUnbekanntesPaket.h"
-#include "paket/Paket00KeepAlive.h"
-#include "paket/Paket01LoginRequest.h"
-#include "paket/Paket02Handshake.h"
-#include "paket/Paket03ChatMessage.h"
-#include "paket/Paket04TimeUpdate.h"
-#include "paket/Paket05EntityEquipment.h"
-#include "paket/Paket06SpawnPosition.h"
-#include "paket/Paket08UpdateHealth.h"
-#include "paket/Paket09Respawn.h"
-#include "paket/Paket0DPlayerPositionLook.h"
-#include "paket/Paket11UseBed.h"
-#include "paket/Paket12Animation.h"
-#include "paket/Paket14NamedEntitySpawn.h"
-#include "paket/Paket15PickupSpawn.h"
-#include "paket/Paket16CollectItem.h"
-#include "paket/Paket17AddObjectVehicle.h"
-#include "paket/Paket18MobSpawn.h"
-#include "paket/Paket19EntityPainting.h"
-#include "paket/Paket1AExperienceOrb.h"
-#include "paket/Paket1CEntityVelocity.h"
-#include "paket/Paket1DDestroyEntity.h"
-#include "paket/Paket1EEntity.h"
-#include "paket/Paket1FEntityRelativeMove.h"
-#include "paket/Paket20EntityLook.h"
-#include "paket/Paket21EntityLookAndRelativeMove.h"
-#include "paket/Paket22EntityTeleport.h"
-#include "paket/Paket23EntityHeadLook.h"
-#include "paket/Paket26EntityStatus.h"
-#include "paket/Paket27AttachEntity.h"
-#include "paket/Paket28EntityMetadata.h"
-#include "paket/Paket29EntityEffect.h"
-#include "paket/Paket2ARemoveEntityEffect.h"
-#include "paket/Paket2BExperience.h"
-#include "paket/Paket32PreChunk.h"
-#include "paket/Paket33MapChunk.h"
-#include "paket/Paket34MultiBlockChange.h"
-#include "paket/Paket35BlockChange.h"
-#include "paket/Paket36BlockAction.h"
-#include "paket/Paket3CExplosion.h"
-#include "paket/Paket3DSoundParticleEffect.h"
-#include "paket/Paket46NewInvalidState.h"
-#include "paket/Paket47Thunderbolt.h"
-#include "paket/Paket64OpenWindow.h"
-#include "paket/Paket65CloseWindow.h"
-#include "paket/Paket67SetSlot.h"
-#include "paket/Paket68WindowItems.h"
-#include "paket/Paket69UpdateWindowProperty.h"
-#include "paket/Paket6ATransaction.h"
-#include "paket/Paket6BCreativeInventoryAction.h"
-#include "paket/Paket82UpdateSign.h"
-#include "paket/Paket83ItemData.h"
-#include "paket/Paket84UpdateTileEntity.h"
-#include "paket/PaketC8IncrementStatistic.h"
-#include "paket/PaketC9PlayerListItem.h"
-#include "paket/PaketCAPlayerAbilities.h"
-#include "paket/PaketFAPluginmessage.h"
-#include "paket/PaketFFDisconnectKick.h"
-#include "paket/PaketDummy.h"
+#include "PacketServer.h"
+#include "../exception/ExcPacketUnbekanntesPacket.h"
+#include "paket/Packet00KeepAlive.h"
+#include "paket/Packet01LoginRequest.h"
+#include "paket/Packet02Handshake.h"
+#include "paket/Packet03ChatMessage.h"
+#include "paket/Packet04TimeUpdate.h"
+#include "paket/Packet05EntityEquipment.h"
+#include "paket/Packet06SpawnPosition.h"
+#include "paket/Packet08UpdateHealth.h"
+#include "paket/Packet09Respawn.h"
+#include "paket/Packet0DPlayerPositionLook.h"
+#include "paket/Packet11UseBed.h"
+#include "paket/Packet12Animation.h"
+#include "paket/Packet14NamedEntitySpawn.h"
+#include "paket/Packet15PickupSpawn.h"
+#include "paket/Packet16CollectItem.h"
+#include "paket/Packet17AddObjectVehicle.h"
+#include "paket/Packet18MobSpawn.h"
+#include "paket/Packet19EntityPainting.h"
+#include "paket/Packet1AExperienceOrb.h"
+#include "paket/Packet1CEntityVelocity.h"
+#include "paket/Packet1DDestroyEntity.h"
+#include "paket/Packet1EEntity.h"
+#include "paket/Packet1FEntityRelativeMove.h"
+#include "paket/Packet20EntityLook.h"
+#include "paket/Packet21EntityLookAndRelativeMove.h"
+#include "paket/Packet22EntityTeleport.h"
+#include "paket/Packet23EntityHeadLook.h"
+#include "paket/Packet26EntityStatus.h"
+#include "paket/Packet27AttachEntity.h"
+#include "paket/Packet28EntityMetadata.h"
+#include "paket/Packet29EntityEffect.h"
+#include "paket/Packet2ARemoveEntityEffect.h"
+#include "paket/Packet2BExperience.h"
+#include "paket/Packet32PreChunk.h"
+#include "paket/Packet33MapChunk.h"
+#include "paket/Packet34MultiBlockChange.h"
+#include "paket/Packet35BlockChange.h"
+#include "paket/Packet36BlockAction.h"
+#include "paket/Packet3CExplosion.h"
+#include "paket/Packet3DSoundParticleEffect.h"
+#include "paket/Packet46NewInvalidState.h"
+#include "paket/Packet47Thunderbolt.h"
+#include "paket/Packet64OpenWindow.h"
+#include "paket/Packet65CloseWindow.h"
+#include "paket/Packet67SetSlot.h"
+#include "paket/Packet68WindowItems.h"
+#include "paket/Packet69UpdateWindowProperty.h"
+#include "paket/Packet6ATransaction.h"
+#include "paket/Packet6BCreativeInventoryAction.h"
+#include "paket/Packet82UpdateSign.h"
+#include "paket/Packet83ItemData.h"
+#include "paket/Packet84UpdateTileEntity.h"
+#include "paket/PacketC8IncrementStatistic.h"
+#include "paket/PacketC9PlayerListItem.h"
+#include "paket/PacketCAPlayerAbilities.h"
+#include "paket/PacketFAPluginmessage.h"
+#include "paket/PacketFFDisconnectKick.h"
+#include "paket/PacketDummy.h"
 
 using namespace std;
 
-PaketServer **PaketManager::paketListe = NULL;
+PacketServer **PacketManager::paketListe = NULL;
 
-void PaketManager::registrierePaket(PaketServer *paket) {
-	delete PaketManager::paketListe[paket->gebePaketId()];
-	PaketManager::paketListe[paket->gebePaketId()] = paket;
+void PacketManager::registrierePacket(PacketServer *paket) {
+	delete PacketManager::paketListe[paket->gebePacketId()];
+	PacketManager::paketListe[paket->gebePacketId()] = paket;
 }
 
-void PaketManager::initialisierePaketListe() {
-	PaketManager::paketListe = (PaketServer **) malloc(
-			sizeof(PaketServer *) * 256);
+void PacketManager::initialisierePacketListe() {
+	PacketManager::paketListe = (PacketServer **) malloc(
+			sizeof(PacketServer *) * 256);
 
 	for (short i = 0; i < 256; i++) {
-		PaketManager::paketListe[i] = new PaketDummy();
+		PacketManager::paketListe[i] = new PacketDummy();
 	}
 
-	Paket00KeepAlive::registierePaket();
-	Paket01LoginRequest::registierePaket();
-	Paket02Handshake::registierePaket();
-	Paket03ChatMessage::registierePaket();
-	Paket04TimeUpdate::registierePaket();
-	Paket05EntityEquipment::registierePaket();
-	Paket06SpawnPosition::registierePaket();
-	Paket08UpdateHealth::registierePaket();
-	Paket09Respawn::registierePaket();
-	Paket0DPlayerPositionLook::registierePaket();
-	Paket11UseBed::registierePaket();
-	Paket12Animation::registierePaket();
-	Paket14NamedEntitySpawn::registierePaket();
-	Paket15PickupSpawn::registierePaket();
-	Paket16CollectItem::registierePaket();
-	Paket17AddObjectVehicle::registierePaket();
-	Paket18MobSpawn::registierePaket();
-	Paket19EntityPainting::registierePaket();
-	Paket1AExperienceOrb::registierePaket();
-	Paket1CEntityVelocity::registierePaket();
-	Paket1DDestroyEntity::registierePaket();
-	Paket1EEntity::registierePaket();
-	Paket1FEntityRelativeMove::registierePaket();
-	Paket20EntityLook::registierePaket();
-	Paket21EntityLookAndRelativeMove::registierePaket();
-	Paket22EntityTeleport::registierePaket();
-	Paket23EntityHeadLook::registierePaket();
-	Paket26EntityStatus::registierePaket();
-	Paket27AttachEntity::registierePaket();
-	Paket28EntityMetadata::registierePaket();
-	Paket29EntityEffect::registierePaket();
-	Paket2ARemoveEntityEffect::registierePaket();
-	Paket2BExperience::registierePaket();
-	Paket32PreChunk::registierePaket();
-	Paket33MapChunk::registierePaket();
-	Paket34MultiBlockChange::registierePaket();
-	Paket35BlockChange::registierePaket();
-	Paket36BlockAction::registierePaket();
-	Paket3CExplosion::registierePaket();
-	Paket3DSoundParticleEffect::registierePaket();
-	Paket46NewInvalidState::registierePaket();
-	Paket47Thunderbolt::registierePaket();
-	Paket64OpenWindow::registierePaket();
-	Paket65CloseWindow::registierePaket();
-	Paket67SetSlot::registierePaket();
-	Paket68WindowItems::registierePaket();
-	Paket69UpdateWindowProperty::registierePaket();
-	Paket6ATransaction::registierePaket();
-	Paket6BCreativeInventoryAction::registierePaket();
-	Paket82UpdateSign::registierePaket();
-	Paket83ItemData::registierePaket();
-	Paket84UpdateTileEntity::registierePaket();
-	PaketC8IncrementStatistic::registierePaket();
-	PaketC9PlayerListItem::registierePaket();
-	PaketCAPlayerAbilities::registierePaket();
-	PaketFAPluginmessage::registierePaket();
-	PaketFFDisconnectKick::registierePaket();
+	Packet00KeepAlive::registierePacket();
+	Packet01LoginRequest::registierePacket();
+	Packet02Handshake::registierePacket();
+	Packet03ChatMessage::registierePacket();
+	Packet04TimeUpdate::registierePacket();
+	Packet05EntityEquipment::registierePacket();
+	Packet06SpawnPosition::registierePacket();
+	Packet08UpdateHealth::registierePacket();
+	Packet09Respawn::registierePacket();
+	Packet0DPlayerPositionLook::registierePacket();
+	Packet11UseBed::registierePacket();
+	Packet12Animation::registierePacket();
+	Packet14NamedEntitySpawn::registierePacket();
+	Packet15PickupSpawn::registierePacket();
+	Packet16CollectItem::registierePacket();
+	Packet17AddObjectVehicle::registierePacket();
+	Packet18MobSpawn::registierePacket();
+	Packet19EntityPainting::registierePacket();
+	Packet1AExperienceOrb::registierePacket();
+	Packet1CEntityVelocity::registierePacket();
+	Packet1DDestroyEntity::registierePacket();
+	Packet1EEntity::registierePacket();
+	Packet1FEntityRelativeMove::registierePacket();
+	Packet20EntityLook::registierePacket();
+	Packet21EntityLookAndRelativeMove::registierePacket();
+	Packet22EntityTeleport::registierePacket();
+	Packet23EntityHeadLook::registierePacket();
+	Packet26EntityStatus::registierePacket();
+	Packet27AttachEntity::registierePacket();
+	Packet28EntityMetadata::registierePacket();
+	Packet29EntityEffect::registierePacket();
+	Packet2ARemoveEntityEffect::registierePacket();
+	Packet2BExperience::registierePacket();
+	Packet32PreChunk::registierePacket();
+	Packet33MapChunk::registierePacket();
+	Packet34MultiBlockChange::registierePacket();
+	Packet35BlockChange::registierePacket();
+	Packet36BlockAction::registierePacket();
+	Packet3CExplosion::registierePacket();
+	Packet3DSoundParticleEffect::registierePacket();
+	Packet46NewInvalidState::registierePacket();
+	Packet47Thunderbolt::registierePacket();
+	Packet64OpenWindow::registierePacket();
+	Packet65CloseWindow::registierePacket();
+	Packet67SetSlot::registierePacket();
+	Packet68WindowItems::registierePacket();
+	Packet69UpdateWindowProperty::registierePacket();
+	Packet6ATransaction::registierePacket();
+	Packet6BCreativeInventoryAction::registierePacket();
+	Packet82UpdateSign::registierePacket();
+	Packet83ItemData::registierePacket();
+	Packet84UpdateTileEntity::registierePacket();
+	PacketC8IncrementStatistic::registierePacket();
+	PacketC9PlayerListItem::registierePacket();
+	PacketCAPlayerAbilities::registierePacket();
+	PacketFAPluginmessage::registierePacket();
+	PacketFFDisconnectKick::registierePacket();
 }
 
-PaketServer *PaketManager::getInstanz(byte byte) {
-	PaketDummy *paketServer =
-			dynamic_cast<PaketDummy *>(PaketManager::paketListe[byte]);
+PacketServer *PacketManager::getInstanz(byte byte) {
+	PacketDummy *paketServer =
+			dynamic_cast<PacketDummy *>(PacketManager::paketListe[byte]);
 	if (paketServer != 0) {
-		throw ExcPaketUnbekanntesPaket(byte);
+		throw ExcPacketUnbekanntesPacket(byte);
 	}
 
-	return PaketManager::paketListe[byte]->gebeInstanz();
+	return PacketManager::paketListe[byte]->gebeInstanz();
 }

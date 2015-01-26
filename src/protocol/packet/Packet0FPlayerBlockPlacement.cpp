@@ -27,7 +27,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Paket0FPlayerBlockPlacement.h"
+#include "Packet0FPlayerBlockPlacement.h"
 
 #include <cstdlib>
 #include "../../net/DataOutputStream.h"
@@ -35,10 +35,10 @@
 
 using namespace std;
 
-Paket0FPlayerBlockPlacement::Paket0FPlayerBlockPlacement(int _x, byte _y,
+Packet0FPlayerBlockPlacement::Packet0FPlayerBlockPlacement(int _x, byte _y,
 		int _z, byte _direction, Slot *_heldItem) {
-	PaketClient::id = 0x0f;
-	PaketClient::prio = 50;
+	PacketClient::id = 0x0f;
+	PacketClient::prio = 50;
 
 	this->x = _x;
 	this->y = _y;
@@ -47,11 +47,11 @@ Paket0FPlayerBlockPlacement::Paket0FPlayerBlockPlacement(int _x, byte _y,
 	this->heldItem = _heldItem;
 }
 
-Paket0FPlayerBlockPlacement::~Paket0FPlayerBlockPlacement() {
+Packet0FPlayerBlockPlacement::~Packet0FPlayerBlockPlacement() {
 	free(this->heldItem);
 }
 
-void Paket0FPlayerBlockPlacement::schreibePaketInhalt(DataOutputStream *out) {
+void Packet0FPlayerBlockPlacement::schreibePacketInhalt(DataOutputStream *out) {
 	out->schreibeInt(this->x);
 	out->schreibeByte(this->y);
 	out->schreibeInt(this->z);

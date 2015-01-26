@@ -34,7 +34,7 @@
 #include <iostream>
 #endif
 #include "../protocol/Verbindung.h"
-#include "../protocol/packet/Paket02Handshake.h"
+#include "../protocol/packet/Packet02Handshake.h"
 #include "../gui/Hintergrund.h"
 #include "../gui/TextFeld.h"
 #include "../gui/Text.h"
@@ -155,8 +155,8 @@ void ServerAuswahlMenue::zeigeServerAuswahlMenue() {
 				benutzerUndHost.append(";");
 				benutzerUndHost.append(_portString);
 
-				PaketClient *p = new Paket02Handshake(benutzerUndHost);
-				Verbindung::zuVerschickendenPaketenHinzufuegen(p);
+				PacketClient *p = new Packet02Handshake(benutzerUndHost);
+				Verbindung::zuVerschickendenPacketenHinzufuegen(p);
 			} else {
 				throw ExcSocketHTTPServerLoginFehlgeschlagen(
 						"Verbindung zum Server konnte nicht hergestellt werden.");

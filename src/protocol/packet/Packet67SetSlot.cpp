@@ -27,49 +27,49 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Paket67SetSlot.h"
+#include "Packet67SetSlot.h"
 
 #include <cstdlib>
 #include <cstdio>
 #include "../../net/DataInputStream.h"
 #include "../../entity/Slot.h"
-#include "../PaketManager.h"
+#include "../PacketManager.h"
 #include "../../util/Debug.h"
 
 using namespace std;
 
-Paket67SetSlot::Paket67SetSlot() {
-	PaketServer::id = 0x67;
-	PaketServer::prio = 50;
+Packet67SetSlot::Packet67SetSlot() {
+	PacketServer::id = 0x67;
+	PacketServer::prio = 50;
 }
 
-Paket67SetSlot::~Paket67SetSlot() {
+Packet67SetSlot::~Packet67SetSlot() {
 	free(this->slot);
 }
 
-PaketServer *Paket67SetSlot::gebeInstanz() {
-	return new Paket67SetSlot();
+PacketServer *Packet67SetSlot::gebeInstanz() {
+	return new Packet67SetSlot();
 }
 
-bool Paket67SetSlot::registierePaket() {
-	PaketManager::registrierePaket(new Paket67SetSlot());
+bool Packet67SetSlot::registierePacket() {
+	PacketManager::registrierePacket(new Packet67SetSlot());
 
 	return true;
 }
 
-void Paket67SetSlot::lesePaketInhalt(DataInputStream *in) {
+void Packet67SetSlot::lesePacketInhalt(DataInputStream *in) {
 	this->windowId = in->leseByte();
 	this->slotNr = in->leseShort();
 	this->slot = Slot::leseSlot(in);
 }
 
-void Paket67SetSlot::verarbeitePaket() {
+void Packet67SetSlot::verarbeitePacket() {
 #ifdef DEBUG_ON
 	char *buffer = new char[100];
 	sprintf(buffer, "windowId: %i, slotNr: %i", this->windowId, this->slotNr);
-	Debug::schreibePaketLog("Paket67SetSlot", buffer);
+	Debug::schreibePacketLog("Packet67SetSlot", buffer);
 	delete[] buffer;
 #endif
 
-	// TODO Paketverarbeitung implementieren
+	// TODO Packetverarbeitung implementieren
 }

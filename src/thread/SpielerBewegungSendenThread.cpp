@@ -32,12 +32,12 @@
 #include <unistd.h>
 #include "../entity/Spieler.h"
 #include "../world/ChunkLaden.h"
-#include "../protocol/PaketClient.h"
-#include "../protocol/packet/Paket0APlayer.h"
-#include "../protocol/packet/Paket0BPlayerPosition.h"
-#include "../protocol/packet/Paket0CPlayerLook.h"
-#include "../protocol/packet/Paket0DPlayerPositionLook.h"
-#include "../protocol/packet/PaketCAPlayerAbilities.h"
+#include "../protocol/PacketClient.h"
+#include "../protocol/packet/Packet0APlayer.h"
+#include "../protocol/packet/Packet0BPlayerPosition.h"
+#include "../protocol/packet/Packet0CPlayerLook.h"
+#include "../protocol/packet/Packet0DPlayerPositionLook.h"
+#include "../protocol/packet/PacketCAPlayerAbilities.h"
 #include "../protocol/Verbindung.h"
 #include "../util/Debug.h"
 
@@ -96,10 +96,10 @@ int SpielerBewegungSendenThread::exec() {
 				|| aktuellHaltung != this->zuletztUebertragenHaltung)
 				&& (aktuellWinkel != this->zuletztUebertragenWinkel
 						|| aktuellAbstand != this->zuletztUebertragenAbstand)) {
-			PaketClient *p = new Paket0DPlayerPositionLook(aktuellX, aktuellY,
+			PacketClient *p = new Packet0DPlayerPositionLook(aktuellX, aktuellY,
 					aktuellHaltung, aktuellZ, aktuellWinkel, aktuellAbstand,
 					aktuellIstAufBoden);
-			Verbindung::zuVerschickendenPaketenHinzufuegen(p);
+			Verbindung::zuVerschickendenPacketenHinzufuegen(p);
 
 			this->zuletztUebertragenX = aktuellX;
 			this->zuletztUebertragenY = aktuellY;
@@ -114,9 +114,9 @@ int SpielerBewegungSendenThread::exec() {
 				|| aktuellY != this->zuletztUebertragenY
 				|| aktuellZ != this->zuletztUebertragenZ
 				|| aktuellHaltung != this->zuletztUebertragenHaltung) {
-			PaketClient *p = new Paket0BPlayerPosition(aktuellX, aktuellY,
+			PacketClient *p = new Packet0BPlayerPosition(aktuellX, aktuellY,
 					aktuellHaltung, aktuellZ, aktuellIstAufBoden);
-			Verbindung::zuVerschickendenPaketenHinzufuegen(p);
+			Verbindung::zuVerschickendenPacketenHinzufuegen(p);
 
 			this->zuletztUebertragenX = aktuellX;
 			this->zuletztUebertragenY = aktuellY;
@@ -127,9 +127,9 @@ int SpielerBewegungSendenThread::exec() {
 			// Blickwinkel geaendert
 		} else if (aktuellWinkel != this->zuletztUebertragenWinkel
 				|| aktuellAbstand != this->zuletztUebertragenAbstand) {
-			PaketClient *p = new Paket0CPlayerLook(aktuellWinkel,
+			PacketClient *p = new Packet0CPlayerLook(aktuellWinkel,
 					aktuellAbstand, aktuellIstAufBoden);
-			Verbindung::zuVerschickendenPaketenHinzufuegen(p);
+			Verbindung::zuVerschickendenPacketenHinzufuegen(p);
 
 			this->zuletztUebertragenWinkel = aktuellWinkel;
 			this->zuletztUebertragenAbstand = aktuellAbstand;
@@ -137,8 +137,8 @@ int SpielerBewegungSendenThread::exec() {
 
 			// keine Bewegung des Spielers
 		} else {
-			PaketClient *p = new Paket0APlayer(aktuellIstAufBoden);
-			Verbindung::zuVerschickendenPaketenHinzufuegen(p);
+			PacketClient *p = new Packet0APlayer(aktuellIstAufBoden);
+			Verbindung::zuVerschickendenPacketenHinzufuegen(p);
 
 			this->zuletztUebertragenIstAufBoden = aktuellIstAufBoden;
 		}
@@ -151,10 +151,10 @@ int SpielerBewegungSendenThread::exec() {
 		bool aktuellIstUnverwundbar = this->spieler->gebeIstUnverwundbar();
 
 		if (aktuellIstFliegend != this->zuletztUebertragenIstFliegend) {
-			PaketClient *p = new PaketCAPlayerAbilities(aktuellIstUnverwundbar,
+			PacketClient *p = new PacketCAPlayerAbilities(aktuellIstUnverwundbar,
 					aktuellIstFliegend, aktuellIstFliegenMoeglich,
 					aktuellIstEinfachesAbbauenAktiv);
-			Verbindung::zuVerschickendenPaketenHinzufuegen(p);
+			Verbindung::zuVerschickendenPacketenHinzufuegen(p);
 
 			this->zuletztUebertragenIstFliegend = aktuellIstFliegend;
 		}
@@ -176,7 +176,7 @@ int SpielerBewegungSendenThread::exec() {
 	} while (true);
 
 #ifdef DEBUG_ON
-	Debug::schreibeLog("sd:/apps/WiiCraft/Paket.log", "Bewegen gestoppt\n",
+	Debug::schreibeLog("sd:/apps/WiiCraft/Packet.log", "Bewegen gestoppt\n",
 			Debug::DATEI_ERWEITERN);
 #endif
 

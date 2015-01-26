@@ -27,46 +27,46 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Paket64OpenWindow.h"
+#include "Packet64OpenWindow.h"
 
 #include <cstdio>
 #include "../../net/DataInputStream.h"
 #include "../../exception/ExcSocketStringLaengeUeberschritten.h"
-#include "../PaketManager.h"
+#include "../PacketManager.h"
 #include "../../util/Debug.h"
 
 using namespace std;
 
-Paket64OpenWindow::Paket64OpenWindow() {
-	PaketServer::id = 0x64;
-	PaketServer::prio = 50;
+Packet64OpenWindow::Packet64OpenWindow() {
+	PacketServer::id = 0x64;
+	PacketServer::prio = 50;
 }
 
-PaketServer *Paket64OpenWindow::gebeInstanz() {
-	return new Paket64OpenWindow();
+PacketServer *Packet64OpenWindow::gebeInstanz() {
+	return new Packet64OpenWindow();
 }
 
-bool Paket64OpenWindow::registierePaket() {
-	PaketManager::registrierePaket(new Paket64OpenWindow());
+bool Packet64OpenWindow::registierePacket() {
+	PacketManager::registrierePacket(new Packet64OpenWindow());
 
 	return true;
 }
 
-void Paket64OpenWindow::lesePaketInhalt(DataInputStream *in) {
+void Packet64OpenWindow::lesePacketInhalt(DataInputStream *in) {
 	this->windowId = in->leseByte();
 	this->inventoryType = in->leseByte();
 
 	try {
 		this->windowTitle = in->leseString(32);
 	} catch (ExcSocketStringLaengeUeberschritten &exception) {
-		throw ExcSocketStringLaengeUeberschritten(PaketServer::id);
+		throw ExcSocketStringLaengeUeberschritten(PacketServer::id);
 	}
 
 	this->numberOfSlots = in->leseByte();
 
 }
 
-void Paket64OpenWindow::verarbeitePaket() {
+void Packet64OpenWindow::verarbeitePacket() {
 #ifdef DEBUG_ON
 	char *buffer = new char[200];
 	sprintf(
@@ -74,9 +74,9 @@ void Paket64OpenWindow::verarbeitePaket() {
 			"windowId: %i, inventoryType: %i, windowTitle: %s, numberOfSlots: %i",
 			this->windowId, this->inventoryType, this->windowTitle.data(),
 			this->numberOfSlots);
-	Debug::schreibePaketLog("Paket64OpenWindow", buffer);
+	Debug::schreibePacketLog("Packet64OpenWindow", buffer);
 	delete[] buffer;
 #endif
 
-	// TODO Paketverarbeitung implementieren
+	// TODO Packetverarbeitung implementieren
 }

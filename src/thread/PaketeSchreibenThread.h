@@ -37,26 +37,26 @@
 #else
 #include "../util/pthread.h"
 #endif
-#include "../protocol/PaketVergleicher.h"
+#include "../protocol/PacketVergleicher.h"
 
 namespace std {
 
 class Socket;
-class PaketClient;
+class PacketClient;
 class DataOutputStream;
 
-class PaketeSchreibenThread: public Thread {
+class PacketeSchreibenThread: public Thread {
 public:
-	PaketeSchreibenThread(Socket *_socket);
-	virtual ~PaketeSchreibenThread();
+	PacketeSchreibenThread(Socket *_socket);
+	virtual ~PacketeSchreibenThread();
 	int exec();
 	void stop();
-	void verschickePaket(PaketClient *p);
+	void verschickePacket(PacketClient *p);
 
 private:
 	Socket *socket;
 	DataOutputStream *oStream;
-	priority_queue<PaketClient *, vector<PaketClient*>, PaketVergleicher> schreibPuffer;
+	priority_queue<PacketClient *, vector<PacketClient*>, PacketVergleicher> schreibPuffer;
 	bool gestoppt;
 
 	pthread_mutex_t mutexqueue;
@@ -64,7 +64,7 @@ private:
 	pthread_mutex_t mutexwait;
 	pthread_cond_t condwait;
 
-	bool gebeNaechstesPaket();
+	bool gebeNaechstesPacket();
 	bool istGestopped();
 };
 }

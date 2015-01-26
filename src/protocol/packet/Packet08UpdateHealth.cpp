@@ -27,38 +27,38 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Paket08UpdateHealth.h"
+#include "Packet08UpdateHealth.h"
 
 #include <cstdio>
 #include "../../net/DataInputStream.h"
 #include "../../entity/Spieler.h"
-#include "../PaketManager.h"
+#include "../PacketManager.h"
 #include "../../util/Debug.h"
 
 using namespace std;
 
-Paket08UpdateHealth::Paket08UpdateHealth() {
-	PaketServer::id = 0x08;
-	PaketServer::prio = 50;
+Packet08UpdateHealth::Packet08UpdateHealth() {
+	PacketServer::id = 0x08;
+	PacketServer::prio = 50;
 }
 
-PaketServer *Paket08UpdateHealth::gebeInstanz() {
-	return new Paket08UpdateHealth();
+PacketServer *Packet08UpdateHealth::gebeInstanz() {
+	return new Packet08UpdateHealth();
 }
 
-bool Paket08UpdateHealth::registierePaket() {
-	PaketManager::registrierePaket(new Paket08UpdateHealth());
+bool Packet08UpdateHealth::registierePacket() {
+	PacketManager::registrierePacket(new Packet08UpdateHealth());
 
 	return true;
 }
 
-void Paket08UpdateHealth::lesePaketInhalt(DataInputStream *in) {
+void Packet08UpdateHealth::lesePacketInhalt(DataInputStream *in) {
 	this->health = in->leseShort();
 	this->food = in->leseShort();
 	this->foodSaturation = in->leseFloat();
 }
 
-void Paket08UpdateHealth::verarbeitePaket() {
+void Packet08UpdateHealth::verarbeitePacket() {
 	Spieler::getSpieler()->setzeLebensEnergie(this->health);
 	Spieler::getSpieler()->setzeSaettigung(this->food);
 	Spieler::getSpieler()->setzeUeberSaettigung(this->foodSaturation);
@@ -67,7 +67,7 @@ void Paket08UpdateHealth::verarbeitePaket() {
 	char *buffer = new char[100];
 	sprintf(buffer, "health: %i, food: %i, foodSaturation: %f", this->health,
 			this->food, this->foodSaturation);
-	Debug::schreibePaketLog("Paket08UpdateHealth", buffer);
+	Debug::schreibePacketLog("Packet08UpdateHealth", buffer);
 	delete[] buffer;
 #endif
 }

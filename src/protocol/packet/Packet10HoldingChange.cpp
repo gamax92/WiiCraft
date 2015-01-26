@@ -27,19 +27,19 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Paket10HoldingChange.h"
+#include "Packet10HoldingChange.h"
 
 #include "../../net/DataOutputStream.h"
 
 using namespace std;
 
-Paket10HoldingChange::Paket10HoldingChange(short _slotId) {
-	PaketClient::id = 0x10;
-	PaketClient::prio = 50;
+Packet10HoldingChange::Packet10HoldingChange(short _slotId) {
+	PacketClient::id = 0x10;
+	PacketClient::prio = 50;
 
 	this->slotId = _slotId;
 }
 
-void Paket10HoldingChange::schreibePaketInhalt(DataOutputStream *out) {
+void Packet10HoldingChange::schreibePacketInhalt(DataOutputStream *out) {
 	out->schreibeShort(this->slotId);
 }

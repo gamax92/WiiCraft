@@ -27,32 +27,32 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Paket47Thunderbolt.h"
+#include "Packet47Thunderbolt.h"
 
 #include <cstdio>
 #include "../../net/DataInputStream.h"
 #include "../../entity/Entity.h"
-#include "../PaketManager.h"
+#include "../PacketManager.h"
 #include "../../util/Debug.h"
 
 using namespace std;
 
-Paket47Thunderbolt::Paket47Thunderbolt() {
-	PaketServer::id = 0x47;
-	PaketServer::prio = 50;
+Packet47Thunderbolt::Packet47Thunderbolt() {
+	PacketServer::id = 0x47;
+	PacketServer::prio = 50;
 }
 
-PaketServer *Paket47Thunderbolt::gebeInstanz() {
-	return new Paket47Thunderbolt();
+PacketServer *Packet47Thunderbolt::gebeInstanz() {
+	return new Packet47Thunderbolt();
 }
 
-bool Paket47Thunderbolt::registierePaket() {
-	PaketManager::registrierePaket(new Paket47Thunderbolt());
+bool Packet47Thunderbolt::registierePacket() {
+	PacketManager::registrierePacket(new Packet47Thunderbolt());
 
 	return true;
 }
 
-void Paket47Thunderbolt::lesePaketInhalt(DataInputStream *in) {
+void Packet47Thunderbolt::lesePacketInhalt(DataInputStream *in) {
 	this->entityId = in->leseInt();
 	this->unknown = in->leseBoolean();
 	this->x = in->leseInt();
@@ -60,15 +60,15 @@ void Paket47Thunderbolt::lesePaketInhalt(DataInputStream *in) {
 	this->z = in->leseInt();
 }
 
-void Paket47Thunderbolt::verarbeitePaket() {
+void Packet47Thunderbolt::verarbeitePacket() {
 #ifdef DEBUG_ON
 	char *buffer = new char[100];
 	sprintf(buffer, "entityId: %i, unknown: %i, x: %i, y: %i, z: %i",
 			this->entityId, this->unknown, this->x, this->y, this->z);
-	Debug::schreibePaketLog("Paket47Thunderbolt", buffer);
+	Debug::schreibePacketLog("Packet47Thunderbolt", buffer);
 	delete[] buffer;
 #endif
 
 	Entity::gebeEntity(this->entityId);
-	// TODO Paketverarbeitung implementieren
+	// TODO Packetverarbeitung implementieren
 }

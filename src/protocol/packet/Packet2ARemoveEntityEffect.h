@@ -30,24 +30,24 @@
 #ifndef PAKET2AREMOVEENTITYEFFECT_H_
 #define PAKET2AREMOVEENTITYEFFECT_H_
 
-#include "../PaketServer.h"
+#include "../PacketServer.h"
 
 namespace std {
 
 class DataInputStream;
 
-class Paket2ARemoveEntityEffect: public PaketServer {
+class Packet2ARemoveEntityEffect: public PacketServer {
 public:
-	PaketServer *gebeInstanz();
-	static bool registierePaket();
-	void lesePaketInhalt(DataInputStream *in);
-	void verarbeitePaket();
+	PacketServer *gebeInstanz();
+	static bool registierePacket();
+	void lesePacketInhalt(DataInputStream *in);
+	void verarbeitePacket();
 private:
 
 	int entityId;
 	byte effectId;
 
-	Paket2ARemoveEntityEffect();
+	Packet2ARemoveEntityEffect();
 };
 }
 #endif /* PAKET2AREMOVEENTITYEFFECT_H_ */
