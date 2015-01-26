@@ -32,7 +32,7 @@
 #include "thread/SpielThread.h"
 #include "util/KontrollerHandler.h"
 #include "gui/GrafikHandler.h"
-#include "protokoll/PaketManager.h"
+#include "protocol/PaketManager.h"
 #include "item/ItemManager.h"
 
 using namespace std;
