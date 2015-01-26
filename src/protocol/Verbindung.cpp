@@ -29,7 +29,7 @@
 
 #include "Verbindung.h"
 
-#include "paket/PacketFFDisconnectKick.h"
+#include "packet/PacketFFDisconnectKick.h"
 #include "../util/Debug.h"
 
 
