@@ -21,17 +21,17 @@ SOURCES		:=	src \
 				src/entity \
 				src/exception \
 				src/gui \
-				src/gui/bilder \
+				src/gui/pictures \
 				src/item \
 				src/item/block \
 				src/item/item \
-				src/menue \
+				src/menu \
 				src/net \
-				src/protokoll \
-				src/protocol/paket \
+				src/protocol \
+				src/protocol/packet \
 				src/thread \
 				src/util \
-				src/welt
+				src/world
 
 DATA		:=	data  
 INCLUDES	:=
