@@ -3,3 +3,4 @@ src/protokoll -> src/protocol
 src/protokoll/paket -> src/protocol/packet
 src/welt -> src/world
 src/gui/bilder -> src/gui/pictures
+src/gui/bilder/vorlagen -> src/gui/pictures/originals
