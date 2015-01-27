@@ -34,7 +34,7 @@
 #include "../exception/ExcGraphicNotFound.h"
 #include "Background.h"
 #include "BlockEngine.h"
-#include "pictures/bildMenueHintergrund.h"
+#include "pictures/pictureMenuBackground.h"
 #include "pictures/terrain.h"
 #include "pictures/logo_orbitalfrosch.h"
 #include "pictures/logo.h"
@@ -43,8 +43,8 @@
 #include "pictures/cursor2.h"
 #include "pictures/cursor3.h"
 #include "pictures/cursor4.h"
-#include "pictures/bild_ladebalken.h"
-#include "pictures/bild_button.h"
+#include "pictures/picture_loadingbar.h"
+#include "pictures/picture_button.h"
 #include "../util/ControllerHandler.h"
 
 #ifdef DEBUG_ON
