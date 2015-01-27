@@ -57,7 +57,7 @@ void Packet1AExperienceOrb::lesePacketInhalt(DataInputStream *in) {
 	this->x = in->leseInt();
 	this->y = in->leseInt();
 	this->z = in->leseInt();
-	this->count = in->leseShort();
+	this->count = in->readShort();
 }
 
 void Packet1AExperienceOrb::verarbeitePacket() {
@@ -69,6 +69,6 @@ void Packet1AExperienceOrb::verarbeitePacket() {
 	delete[] buffer;
 #endif
 
-	Entity::gebeEntity(this->entityId);
+	Entity::getEntity(this->entityId);
 	// TODO Packetverarbeitung implementieren
 }

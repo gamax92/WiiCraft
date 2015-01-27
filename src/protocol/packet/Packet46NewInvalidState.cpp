@@ -54,8 +54,8 @@ bool Packet46NewInvalidState::registierePacket() {
 }
 
 void Packet46NewInvalidState::lesePacketInhalt(DataInputStream *in) {
-	this->reason = in->leseByte();
-	this->gameMode = in->leseByte();
+	this->reason = in->readByte();
+	this->gameMode = in->readByte();
 }
 
 void Packet46NewInvalidState::verarbeitePacket() {
@@ -63,11 +63,11 @@ void Packet46NewInvalidState::verarbeitePacket() {
 		// Invalid Bed "tile.bed.notValid"
 		// wird ignoriert
 	} else if (this->reason == 1) {
-		Welt::gebeWelt()->setzeRegen(true);
+		World::gebeWelt()->setzeRegen(true);
 	} else if (this->reason == 2) {
-		Welt::gebeWelt()->setzeRegen(false);
+		World::gebeWelt()->setzeRegen(false);
 	} else if (this->reason == 3) {
-		Welt::gebeWelt()->setzeServerModus(this->gameMode);
+		World::gebeWelt()->setzeServerModus(this->gameMode);
 	} else if (this->reason == 4) {
 		// Credits
 		// wird ignoriert

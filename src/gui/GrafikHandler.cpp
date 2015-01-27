@@ -120,7 +120,7 @@ int GrafikHandler::exec() {
 				0xffffffff, 1, "Bloecke: %i", GrafikHandler::blockAnzahl);
 		GrafikHandler::blockAnzahl = 0;
 
-		Welt *welt = Welt::gebeWelt();
+		World *welt = World::gebeWelt();
 		if (welt != 0) {
 			string chunks = "Chunks: ";
 			ostringstream stream;
@@ -148,7 +148,7 @@ int GrafikHandler::exec() {
 					0xffffffff, 1, uhrzeit.data());
 		}
 
-		Spieler *spieler = Spieler::getSpieler();
+		Player *spieler = Player::getPlayer();
 		if (spieler != 0) {
 			string x_str = "x: ";
 			string y_str = "y: ";
@@ -157,9 +157,9 @@ int GrafikHandler::exec() {
 			ostringstream y_stream;
 			ostringstream z_stream;
 
-			x_stream << (float) spieler->gebeX();
-			y_stream << (float) spieler->gebeY() + 1.62f;
-			z_stream << (float) spieler->gebeZ();
+			x_stream << (float) spieler->getX();
+			y_stream << (float) spieler->getY() + 1.62f;
+			z_stream << (float) spieler->getZ();
 
 			x_str.append(x_stream.str().data());
 			y_str.append(y_stream.str().data());
@@ -176,13 +176,13 @@ int GrafikHandler::exec() {
 					0xffffffff, 1, z_str.data());
 			GRRLIB_Printf(0, 90,
 					GrafikHandler::gebeGrafikHandler()->gebeBild("font"),
-					0xffffffff, 1, "Chunk X: %i", spieler->gebeChunkX());
+					0xffffffff, 1, "Chunk X: %i", spieler->getChunkX());
 			GRRLIB_Printf(0, 100,
 					GrafikHandler::gebeGrafikHandler()->gebeBild("font"),
-					0xffffffff, 1, "Chunk Z: %i", spieler->gebeChunkZ());
+					0xffffffff, 1, "Chunk Z: %i", spieler->getChunkZ());
 
-			float pitch = spieler->gebeAbstand();
-			float yaw = spieler->gebeWinkel();
+			float pitch = spieler->getAbstand();
+			float yaw = spieler->getWinkel();
 
 			float viewX = -cos(pitch) * sin(yaw);
 			float viewY = -sin(pitch);
@@ -207,9 +207,9 @@ int GrafikHandler::exec() {
 
 			abstand_stream << pitch;
 			winkel_stream << yaw;
-			kamera_x_stream << (float) spieler->gebeX() + viewX;
-			kamera_y_stream << (float) spieler->gebeY() + viewY + 1.62f;
-			kamera_z_stream << (float) spieler->gebeZ() + viewZ;
+			kamera_x_stream << (float) spieler->getX() + viewX;
+			kamera_y_stream << (float) spieler->getY() + viewY + 1.62f;
+			kamera_z_stream << (float) spieler->getZ() + viewZ;
 			view_x_stream << viewX;
 			view_y_stream << viewY;
 			view_z_stream << viewZ;

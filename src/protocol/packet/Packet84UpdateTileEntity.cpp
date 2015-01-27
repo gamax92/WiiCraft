@@ -53,9 +53,9 @@ bool Packet84UpdateTileEntity::registierePacket() {
 
 void Packet84UpdateTileEntity::lesePacketInhalt(DataInputStream *in) {
 	this->x = in->leseInt();
-	this->y = in->leseShort();
+	this->y = in->readShort();
 	this->z = in->leseInt();
-	this->action = in->leseByte();
+	this->action = in->readByte();
 	this->custom1 = in->leseInt();
 	this->custom2 = in->leseInt();
 	this->custom3 = in->leseInt();

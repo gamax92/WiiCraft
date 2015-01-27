@@ -79,7 +79,7 @@ void Packet82UpdateSign::schreibePacketInhalt(DataOutputStream *out) {
 
 void Packet82UpdateSign::lesePacketInhalt(DataInputStream *in) {
 	this->x = in->leseInt();
-	this->y = in->leseShort();
+	this->y = in->readShort();
 	this->z = in->leseInt();
 
 	try {

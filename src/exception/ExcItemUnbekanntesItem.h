@@ -34,10 +34,10 @@
 
 namespace std {
 
-class ExcItemUnbekanntesItem: public ExcItem {
+class ExcItemUnknownItem: public ExcItem {
 public:
-	ExcItemUnbekanntesItem(short _itemId);
-	short gebeItemId();
+	ExcItemUnknownItem(short _itemId);
+	short getItemId();
 private:
 	short itemId;
 };

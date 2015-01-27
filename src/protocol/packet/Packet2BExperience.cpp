@@ -54,15 +54,15 @@ bool Packet2BExperience::registierePacket() {
 
 void Packet2BExperience::lesePacketInhalt(DataInputStream *in) {
 	this->experienceBar = in->leseFloat();
-	this->level = in->leseShort();
-	this->totalExperience = in->leseShort();
+	this->level = in->readShort();
+	this->totalExperience = in->readShort();
 }
 
 void Packet2BExperience::verarbeitePacket() {
-	Spieler::getSpieler()->setzeErfahrungsPunkteAktuelleStufe(
+	Player::getPlayer()->setExperiencePointsCurrentLevel(
 			this->experienceBar);
-	Spieler::getSpieler()->setzeLevel(this->level);
-	Spieler::getSpieler()->setzeErfahrungsPunkteGesamt(this->totalExperience);
+	Player::getPlayer()->setzeLevel(this->level);
+	Player::getPlayer()->setExperiencePointsTotal(this->totalExperience);
 
 #ifdef DEBUG_ON
 	char *buffer = new char[100];

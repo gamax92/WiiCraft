@@ -63,8 +63,8 @@ void Packet6BCreativeInventoryAction::schreibePacketInhalt(
 }
 
 void Packet6BCreativeInventoryAction::lesePacketInhalt(DataInputStream *in) {
-	this->slot = in->leseShort();
-	this->clickedItem = Slot::leseSlot(in);
+	this->slot = in->readShort();
+	this->clickedItem = Slot::readSlot(in);
 }
 
 void Packet6BCreativeInventoryAction::verarbeitePacket() {

@@ -55,28 +55,28 @@ bool Packet35BlockChange::registierePacket() {
 
 void Packet35BlockChange::lesePacketInhalt(DataInputStream *in) {
 	this->x = in->leseInt();
-	this->y = in->leseByte();
+	this->y = in->readByte();
 	this->z = in->leseInt();
-	this->blockType = in->leseByte();
-	this->blockMetadata = in->leseByte();
+	this->blockType = in->readByte();
+	this->blockMetadata = in->readByte();
 }
 
 void Packet35BlockChange::verarbeitePacket() {
 	int chunkX;
 	int chunkZ;
-	Welt::berechneChunkPosition(this->x, this->z, chunkX, chunkZ);
+	World::calculateChunkPosition(this->x, this->z, chunkX, chunkZ);
 
 	byte startX;
 	byte startY;
 	byte startZ;
-	Welt::gebeWelt()->gebeChunkPos(this->x, this->y, this->z, startX, startY,
+	World::gebeWelt()->gebeChunkPos(this->x, this->y, this->z, startX, startY,
 			startZ);
 
-	short index = Welt::gebeWelt()->berechneIndex(startX, startY, startZ);
+	short index = World::gebeWelt()->berechneIndex(startX, startY, startZ);
 
 	BlockAenderung * b = new BlockAenderung(index, this->blockType,
 			this->blockMetadata);
-	Welt::gebeWelt()->ergaenzeBlockAenderung(chunkX, chunkZ, b);
+	World::gebeWelt()->ergaenzeBlockAenderung(chunkX, chunkZ, b);
 
 #ifdef DEBUG_ON
 	char *buffer = new char[100];

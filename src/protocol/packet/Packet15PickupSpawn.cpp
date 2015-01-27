@@ -54,15 +54,15 @@ bool Packet15PickupSpawn::registierePacket() {
 
 void Packet15PickupSpawn::lesePacketInhalt(DataInputStream *in) {
 	this->entityId = in->leseInt();
-	this->item = in->leseShort();
-	this->count = in->leseByte();
-	this->damageData = in->leseShort();
+	this->item = in->readShort();
+	this->count = in->readByte();
+	this->damageData = in->readShort();
 	this->x = in->leseInt();
 	this->y = in->leseInt();
 	this->z = in->leseInt();
-	this->rotation = in->leseByte();
-	this->pitch = in->leseByte();
-	this->roll = in->leseByte();
+	this->rotation = in->readByte();
+	this->pitch = in->readByte();
+	this->roll = in->readByte();
 }
 
 void Packet15PickupSpawn::verarbeitePacket() {
@@ -77,6 +77,6 @@ void Packet15PickupSpawn::verarbeitePacket() {
 	delete[] buffer;
 #endif
 
-	Entity::gebeEntity(this->entityId);
+	Entity::getEntity(this->entityId);
 	// TODO Packetverarbeitung implementieren
 }

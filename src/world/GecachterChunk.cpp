@@ -76,7 +76,7 @@ void GecachterChunk::aktualisiereCacheWennNoetig() {
 
 	list<unsigned int> tmpList;
 
-	Welt *welt = Welt::gebeWelt();
+	World *welt = World::gebeWelt();
 
 	if (welt == NULL) {
 		return;
@@ -99,7 +99,7 @@ void GecachterChunk::aktualisiereCacheWennNoetig() {
 			continue;
 		}
 
-		Welt *welt = Welt::gebeWelt();
+		World *welt = World::gebeWelt();
 		int blockX;
 		int blockY;
 		int blockZ;
@@ -207,7 +207,7 @@ void GecachterChunk::zeichne() {
 	GRRLIB_ObjectView((this->chunk->gebeX() * 16), 0,
 			(this->chunk->gebeZ() * 16), 0, 0, 0, 1, 1, 1);
 
-	Welt *welt = Welt::gebeWelt();
+	World *welt = World::gebeWelt();
 
 	for (unsigned int durchlauf = 0;
 			durchlauf < this->anzahlZeichenbarerBloecke; durchlauf++) {

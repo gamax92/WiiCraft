@@ -54,7 +54,7 @@ bool Packet23EntityHeadLook::registierePacket() {
 
 void Packet23EntityHeadLook::lesePacketInhalt(DataInputStream *in) {
 	this->entityId = in->leseInt();
-	this->headYaw = in->leseByte();
+	this->headYaw = in->readByte();
 }
 
 void Packet23EntityHeadLook::verarbeitePacket() {
@@ -65,6 +65,6 @@ void Packet23EntityHeadLook::verarbeitePacket() {
 	delete[] buffer;
 #endif
 
-	Entity::gebeEntity(this->entityId);
+	Entity::getEntity(this->entityId);
 	// TODO Packetverarbeitung implementieren
 }

@@ -54,8 +54,8 @@ bool Packet20EntityLook::registierePacket() {
 
 void Packet20EntityLook::lesePacketInhalt(DataInputStream *in) {
 	this->entityId = in->leseInt();
-	this->yaw = in->leseByte();
-	this->pitch = in->leseByte();
+	this->yaw = in->readByte();
+	this->pitch = in->readByte();
 }
 
 void Packet20EntityLook::verarbeitePacket() {
@@ -67,6 +67,6 @@ void Packet20EntityLook::verarbeitePacket() {
 	delete[] buffer;
 #endif
 
-	Entity::gebeEntity(this->entityId);
+	Entity::getEntity(this->entityId);
 	// TODO Packetverarbeitung implementieren
 }

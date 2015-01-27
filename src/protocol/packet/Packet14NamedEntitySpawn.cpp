@@ -65,9 +65,9 @@ void Packet14NamedEntitySpawn::lesePacketInhalt(DataInputStream *in) {
 	this->x = in->leseInt();
 	this->y = in->leseInt();
 	this->z = in->leseInt();
-	this->rotation = in->leseByte();
-	this->pitch = in->leseByte();
-	this->currentItem = in->leseShort();
+	this->rotation = in->readByte();
+	this->pitch = in->readByte();
+	this->currentItem = in->readShort();
 }
 
 void Packet14NamedEntitySpawn::verarbeitePacket() {
@@ -82,6 +82,6 @@ void Packet14NamedEntitySpawn::verarbeitePacket() {
 	delete[] buffer;
 #endif
 
-	Entity::gebeEntity(this->entityId);
+	Entity::getEntity(this->entityId);
 	// TODO Packetverarbeitung implementieren
 }

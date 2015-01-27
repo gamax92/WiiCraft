@@ -46,12 +46,12 @@ class ChunkCacheManager;
 class KomprimierteChunkDaten;
 class BlockAenderung;
 
-class Welt {
+class World {
 public:
-	static void berechneChunkPosition(int x, int z, int &chunkX, int &chunkZ);
+	static void calculateChunkPosition(int x, int z, int &chunkX, int &chunkZ);
 	static void initialisiereWelt(int dimension, string levelTyp,
 			byte schwierigkeitsGrad, int serverModus, unsigned short weltHoehe);
-	static Welt *gebeWelt();
+	static World *gebeWelt();
 
 	void initialisiereChunk(int x, int z);
 	void loescheChunk(int x, int z);
@@ -76,7 +76,7 @@ public:
 	short gebeUhrzeit();
 	string gebeUhrzeitString();
 private:
-	static Welt *welt;
+	static World *welt;
 
 	bool regen;
 	map<int, map<int, Chunk *> > geladeneChunks;
@@ -100,9 +100,9 @@ private:
 	};
 	KompassPosition kompassPosition;
 
-	Welt(int _dimension, string _levelTyp, byte _schwierigkeitsGrad,
+	World(int _dimension, string _levelTyp, byte _schwierigkeitsGrad,
 			int _serverModus, unsigned short _weltHoehe);
-	~Welt();
+	~World();
 };
 
 }

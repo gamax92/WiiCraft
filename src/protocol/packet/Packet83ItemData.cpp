@@ -57,14 +57,14 @@ bool Packet83ItemData::registierePacket() {
 }
 
 void Packet83ItemData::lesePacketInhalt(DataInputStream *in) {
-	this->itemType = in->leseShort();
-	this->itemId = in->leseShort();
-	this->textLength = in->leseByte();
+	this->itemType = in->readShort();
+	this->itemId = in->readShort();
+	this->textLength = in->readByte();
 
 	this->text = new byte[this->textLength];
 
 	for (byte i = 0; i < this->textLength; i++) {
-		this->text[i] = in->leseByte();
+		this->text[i] = in->readByte();
 	}
 }
 

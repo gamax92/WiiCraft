@@ -44,45 +44,45 @@ Entity::Entity(int _id) {
 Entity::Entity() {
 }
 
-void Entity::initialisiere() {
+void Entity::initialize() {
 	pthread_mutex_init(&Entity::staticmutex, NULL);
 }
 
-void Entity::deinitialisiere() {
+void Entity::deinitialize() {
 	pthread_mutex_destroy(&Entity::staticmutex);
 }
 
-Entity *Entity::gebeEntity(int _id) {
-	Entity *gefundenEntity;
+Entity *Entity::getEntity(int _id) {
+	Entity *foundEntity;
 	pthread_mutex_lock(&Entity::staticmutex);
 	if (Entity::entities.count(_id) == 0) {
 		Entity::entities[_id] = new Entity(_id);
 	}
-	gefundenEntity = Entity::entities[_id];
+	foundEntity = Entity::entities[_id];
 	pthread_mutex_unlock(&Entity::staticmutex);
 
-	return gefundenEntity;
+	return foundEntity;
 }
 
-void Entity::setzeEntity(Entity *entity) {
+void Entity::setEntity(Entity *entity) {
 	pthread_mutex_lock(&Entity::staticmutex);
-	Entity::entities[entity->gebeId()] = entity;
+	Entity::entities[entity->getId()] = entity;
 	pthread_mutex_unlock(&Entity::staticmutex);
 }
 
-void Entity::loescheEntity(int _id) {
+void Entity::deleteEntity(int _id) {
 	pthread_mutex_lock(&Entity::staticmutex);
 	Entity::entities.erase(_id);
 	pthread_mutex_unlock(&Entity::staticmutex);
 }
 
-void Entity::setzeId(int _id) {
+void Entity::setId(int _id) {
 	pthread_mutex_lock(&this->mutex);
 	this->id = _id;
 	pthread_mutex_unlock(&this->mutex);
 }
 
-int Entity::gebeId() {
+int Entity::getId() {
 	int _id;
 	pthread_mutex_lock(&this->mutex);
 	_id = this->id;
@@ -91,18 +91,18 @@ int Entity::gebeId() {
 	return _id;
 }
 
-void Entity::setzeKoordinaten(double _x, double _y, double _z) {
+void Entity::setCoordinates(double _x, double _y, double _z) {
 	pthread_mutex_lock(&this->mutex);
 	this->x = _x;
 	this->y = _y;
 	this->z = _z;
 
-	Welt::berechneChunkPosition((int)this->x, (int)this->z, this->chunkX, this->chunkZ);
+	World::calculateChunkPosition((int)this->x, (int)this->z, this->chunkX, this->chunkZ);
 
 	pthread_mutex_unlock(&this->mutex);
 }
 
-double Entity::gebeX() {
+double Entity::getX() {
 	pthread_mutex_lock(&this->mutex);
 	double _x = this->x;
 	pthread_mutex_unlock(&this->mutex);
@@ -111,7 +111,7 @@ double Entity::gebeX() {
 
 }
 
-double Entity::gebeY() {
+double Entity::getY() {
 	pthread_mutex_lock(&this->mutex);
 	double _y = this->y;
 	pthread_mutex_unlock(&this->mutex);
@@ -119,7 +119,7 @@ double Entity::gebeY() {
 	return _y;
 }
 
-double Entity::gebeZ() {
+double Entity::getZ() {
 	pthread_mutex_lock(&this->mutex);
 	double _z = this->z;
 	pthread_mutex_unlock(&this->mutex);
@@ -127,7 +127,7 @@ double Entity::gebeZ() {
 	return _z;
 }
 
-int Entity::gebeChunkX() {
+int Entity::getChunkX() {
 	pthread_mutex_lock(&this->mutex);
 	int _x = this->chunkX;
 	pthread_mutex_unlock(&this->mutex);
@@ -136,7 +136,7 @@ int Entity::gebeChunkX() {
 
 }
 
-int Entity::gebeChunkZ() {
+int Entity::getChunkZ() {
 	pthread_mutex_lock(&this->mutex);
 	int _z = this->chunkZ;
 	pthread_mutex_unlock(&this->mutex);

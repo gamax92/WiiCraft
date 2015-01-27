@@ -38,7 +38,7 @@ class Item;
 
 class ItemManager {
 public:
-	static Item *getInstanz(short itemId);
+	static Item *getInstance(short itemId);
 	static void registriereItem(Item *item);
 	static void initialisiereItemListe();
 	static void zeichne(short itemId, float x, float y, float z, byte meta);

@@ -66,7 +66,7 @@ void Packet16CollectItem::verarbeitePacket() {
 	delete[] buffer;
 #endif
 
-	Entity::gebeEntity(this->collectedEntityId);
-	Entity::gebeEntity(this->collectorEntityId);
+	Entity::getEntity(this->collectedEntityId);
+	Entity::getEntity(this->collectorEntityId);
 	// TODO Packetverarbeitung implementieren
 }

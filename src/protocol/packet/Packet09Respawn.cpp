@@ -76,9 +76,9 @@ void Packet09Respawn::schreibePacketInhalt(DataOutputStream *out) {
 
 void Packet09Respawn::lesePacketInhalt(DataInputStream *in) {
 	this->dimension = in->leseInt();
-	this->difficulty = in->leseByte();
-	this->creativeMode = in->leseByte();
-	this->worldHeight = in->leseShort();
+	this->difficulty = in->readByte();
+	this->creativeMode = in->readByte();
+	this->worldHeight = in->readShort();
 
 	try {
 		this->levelType = in->leseString(16);
@@ -88,7 +88,7 @@ void Packet09Respawn::lesePacketInhalt(DataInputStream *in) {
 }
 
 void Packet09Respawn::verarbeitePacket() {
-	Welt::initialisiereWelt(this->dimension, this->levelType, this->difficulty,
+	World::initialisiereWelt(this->dimension, this->levelType, this->difficulty,
 			this->creativeMode, this->worldHeight);
 
 #ifdef DEBUG_ON

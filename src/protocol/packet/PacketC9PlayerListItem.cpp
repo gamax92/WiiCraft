@@ -61,7 +61,7 @@ void PacketC9PlayerListItem::lesePacketInhalt(DataInputStream *in) {
 	}
 
 	this->online = in->leseBoolean();
-	this->ping = in->leseShort();
+	this->ping = in->readShort();
 }
 
 void PacketC9PlayerListItem::verarbeitePacket() {

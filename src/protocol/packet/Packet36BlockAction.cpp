@@ -54,25 +54,25 @@ bool Packet36BlockAction::registierePacket() {
 
 void Packet36BlockAction::lesePacketInhalt(DataInputStream *in) {
 	this->x = in->leseInt();
-	this->y = in->leseShort();
+	this->y = in->readShort();
 	this->z = in->leseInt();
-	this->byte1 = in->leseByte();
-	this->byte2 = in->leseByte();
+	this->byte1 = in->readByte();
+	this->byte2 = in->readByte();
 }
 
 void Packet36BlockAction::verarbeitePacket() {
 	int chunkX;
 	int chunkZ;
-	Welt::berechneChunkPosition(this->x, this->z, chunkX, chunkZ);
+	World::calculateChunkPosition(this->x, this->z, chunkX, chunkZ);
 
 	byte startX;
 	byte startY;
 	byte startZ;
-	Welt::gebeWelt()->gebeChunkPos(this->x, this->y, this->z, startX, startY,
+	World::gebeWelt()->gebeChunkPos(this->x, this->y, this->z, startX, startY,
 			startZ);
 
 #ifdef DEBUG_ON
-	short index = Welt::gebeWelt()->berechneIndex(startX, startY, startZ);
+	short index = World::gebeWelt()->berechneIndex(startX, startY, startZ);
 
 	char *buffer = new char[100];
 	sprintf(buffer, "chunk: %ix%i, index: %i, b1: %x, b2: %x", chunkX, chunkZ,

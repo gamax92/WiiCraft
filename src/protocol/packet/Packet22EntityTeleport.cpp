@@ -57,8 +57,8 @@ void Packet22EntityTeleport::lesePacketInhalt(DataInputStream *in) {
 	this->x = in->leseInt();
 	this->y = in->leseInt();
 	this->z = in->leseInt();
-	this->yaw = in->leseByte();
-	this->pitch = in->leseByte();
+	this->yaw = in->readByte();
+	this->pitch = in->readByte();
 }
 
 void Packet22EntityTeleport::verarbeitePacket() {
@@ -70,6 +70,6 @@ void Packet22EntityTeleport::verarbeitePacket() {
 	delete[] buffer;
 #endif
 
-	Entity::gebeEntity(this->entityId);
+	Entity::getEntity(this->entityId);
 	// TODO Packetverarbeitung implementieren
 }

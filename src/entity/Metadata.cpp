@@ -41,17 +41,17 @@ using namespace std;
 Metadata *Metadata::leseDaten(DataInputStream *in) {
 	map<byte, MetadataZeile *> _inhalt;
 
-	byte x = in->leseByte();
+	byte x = in->readByte();
 	while (x != 127) {
 		byte typ = (x & 0xe0) >> 5;
 		byte index = x & 0x1f;
 
 		switch (typ) {
 		case 0:
-			_inhalt[index] = new MetadataZeile(in->leseByte());
+			_inhalt[index] = new MetadataZeile(in->readByte());
 			break;
 		case 1:
-			_inhalt[index] = new MetadataZeile(in->leseShort());
+			_inhalt[index] = new MetadataZeile(in->readShort());
 			break;
 		case 2:
 			_inhalt[index] = new MetadataZeile(in->leseInt());
@@ -63,8 +63,8 @@ Metadata *Metadata::leseDaten(DataInputStream *in) {
 			_inhalt[index] = new MetadataZeile(in->leseString(64));
 			break;
 		case 5:
-			_inhalt[index] = new MetadataZeile(in->leseShort(), in->leseByte(),
-					in->leseShort());
+			_inhalt[index] = new MetadataZeile(in->readShort(), in->readByte(),
+					in->readShort());
 			break;
 		case 6:
 			_inhalt[index] = new MetadataZeile(in->leseInt(), in->leseInt(),
@@ -74,7 +74,7 @@ Metadata *Metadata::leseDaten(DataInputStream *in) {
 			throw ExcMetadata(typ);
 		}
 
-		x = in->leseByte();
+		x = in->readByte();
 	}
 
 	return new Metadata(_inhalt);

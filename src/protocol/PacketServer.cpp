@@ -45,7 +45,7 @@ PacketServer::~PacketServer() {
 }
 
 bool PacketServer::lesePacket(DataInputStream *in) {
-	byte byte = in->leseByte();
+	byte byte = in->readByte();
 
 	PacketServer *p = NULL;
 	try {
@@ -54,12 +54,12 @@ bool PacketServer::lesePacket(DataInputStream *in) {
 #ifdef DEBUG_ON
 		char *buffer = new char[100];
 		sprintf(buffer, "unbekanntes Packet gefunden: 0x%x\n",
-				exception.gebeByte());
+				exception.getByte());
 		Debug::schreibeLog("sd:/apps/WiiCraft/Packet.log", buffer,
 				Debug::DATEI_ERWEITERN);
 		delete[] buffer;
 #endif
-		throw ExcPacketUnbekanntesPacket(exception.gebeByte(),
+		throw ExcPacketUnbekanntesPacket(exception.getByte(),
 				PacketServer::letztePacketId);
 	}
 

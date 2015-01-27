@@ -72,15 +72,15 @@ bool Packet17AddObjectVehicle::registierePacket() {
 
 void Packet17AddObjectVehicle::lesePacketInhalt(DataInputStream *in) {
 	this->entityId = in->leseInt();
-	this->type = in->leseByte();
+	this->type = in->readByte();
 	this->x = in->leseInt();
 	this->y = in->leseInt();
 	this->z = in->leseInt();
 	this->fireballThrowersEntityId = in->leseInt();
 	if (this->fireballThrowersEntityId > 0) {
-		this->speedX = in->leseShort();
-		this->speedY = in->leseShort();
-		this->speedZ = in->leseShort();
+		this->speedX = in->readShort();
+		this->speedY = in->readShort();
+		this->speedZ = in->readShort();
 	}
 }
 
@@ -125,6 +125,6 @@ void Packet17AddObjectVehicle::verarbeitePacket() {
 	delete[] buffer;
 #endif
 
-	Entity::gebeEntity(this->entityId);
+	Entity::getEntity(this->entityId);
 	// TODO Packetverarbeitung implementieren
 }

@@ -41,44 +41,44 @@
 
 using namespace std;
 
-vector<Slot *> Slot::leseSlotArray(DataInputStream *in, short count) {
+vector<Slot *> Slot::readSlotArray(DataInputStream *in, short count) {
 	vector<Slot *> slotArray;
 
 	for (short i = 0; i < count; i++) {
-		slotArray.push_back(Slot::leseSlot(in));
+		slotArray.push_back(Slot::readSlot(in));
 	}
 
 	return slotArray;
 }
 
-Slot *Slot::leseSlot(DataInputStream *in) {
-	short itemId = in->leseShort();
+Slot *Slot::readSlot(DataInputStream *in) {
+	short itemId = in->readShort();
 	if (itemId >= 0) {
-		byte stapelGroesse = in->leseByte();
-		short itemHaltbarkeit = in->leseShort();
+		byte stapelGroesse = in->readByte();
+		short itemDurability = in->readShort();
 
 		Item *item = NULL;
 
 		try {
-			item = ItemManager::getInstanz(itemId);
-		} catch (ExcItemUnbekanntesItem &exception) {
+			item = ItemManager::getInstance(itemId);
+		} catch (ExcItemUnknownItem &exception) {
 			stringstream ss;
-			ss << "Fehler: Item(";
-			ss << exception.gebeItemId();
+			ss << "Error: Item(";
+			ss << exception.getItemId();
 			ss << ") noch nicht eingebaut.";
-			FehlerMenue::initialisiere(ss.str());
-			FehlerMenue::zeigeFehlerMenue();
+			ErrorMenu::initialize(ss.str());
+			ErrorMenu::showErrorMenu();
 		}
 
-		item->setzeHaltbarkeit(itemHaltbarkeit);
+		item->setDurability(itemDurability);
 
-		if (item->istZerstoerbar()) {
-			short byteAnzahl = in->leseShort();
+		if (item->isDestructible()) {
+			short byteAnzahl = in->readShort();
 			if (byteAnzahl >= 0) {
 
 				byte *kartenDaten = new byte[byteAnzahl];
 				for (short i = 0; i < byteAnzahl; i++) {
-					kartenDaten[i] = in->leseByte();
+					kartenDaten[i] = in->readByte();
 				}
 
 				if (itemId == 0x166) {
@@ -96,8 +96,8 @@ Slot *Slot::leseSlot(DataInputStream *in) {
 	return new Slot();
 }
 
-void Slot::schreibeSlot(DataOutputStream *out, Slot *slot) {
-	// TODO muss noch umgesetzt werden
+void Slot::writeSlot(DataOutputStream *out, Slot *slot) {
+	// TODO needs to be implemented
 }
 
 Slot::Slot(Item *_item, byte _stapelGroesse) {

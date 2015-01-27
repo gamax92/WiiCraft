@@ -53,7 +53,7 @@ bool PacketC8IncrementStatistic::registierePacket() {
 
 void PacketC8IncrementStatistic::lesePacketInhalt(DataInputStream *in) {
 	this->statisticId = in->leseInt();
-	this->amount = in->leseByte();
+	this->amount = in->readByte();
 }
 
 void PacketC8IncrementStatistic::verarbeitePacket() {

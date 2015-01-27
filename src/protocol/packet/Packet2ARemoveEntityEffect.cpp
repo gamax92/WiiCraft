@@ -54,7 +54,7 @@ bool Packet2ARemoveEntityEffect::registierePacket() {
 
 void Packet2ARemoveEntityEffect::lesePacketInhalt(DataInputStream *in) {
 	this->entityId = in->leseInt();
-	this->effectId = in->leseByte();
+	this->effectId = in->readByte();
 }
 
 void Packet2ARemoveEntityEffect::verarbeitePacket() {
@@ -66,6 +66,6 @@ void Packet2ARemoveEntityEffect::verarbeitePacket() {
 	delete[] buffer;
 #endif
 
-	Entity::gebeEntity(this->entityId);
+	Entity::getEntity(this->entityId);
 	// TODO Packetverarbeitung implementieren
 }

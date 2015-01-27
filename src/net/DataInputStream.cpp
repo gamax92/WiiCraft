@@ -51,7 +51,7 @@ bool DataInputStream::leseBoolean() {
 	return read;
 }
 
-byte DataInputStream::leseByte() {
+byte DataInputStream::readByte() {
 	byte read;
 
 	this->socket->read(&read, sizeof(byte));
@@ -136,7 +136,7 @@ long long DataInputStream::leseLong() {
 	return read;
 }
 
-short DataInputStream::leseShort() {
+short DataInputStream::readShort() {
 	short read;
 
 	this->socket->read(&read, sizeof(short));
@@ -147,7 +147,7 @@ short DataInputStream::leseShort() {
 
 string DataInputStream::leseString(int maxLaenge) {
 	string ret;
-	short laenge = this->leseShort();
+	short laenge = this->readShort();
 
 	if (laenge > maxLaenge) {
 		throw ExcSocketStringLaengeUeberschritten(laenge, maxLaenge);

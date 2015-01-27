@@ -54,9 +54,9 @@ bool Packet68WindowItems::registierePacket() {
 }
 
 void Packet68WindowItems::lesePacketInhalt(DataInputStream *in) {
-	this->windowId = in->leseByte();
-	this->count = in->leseShort();
-	this->slotData = Slot::leseSlotArray(in, this->count);
+	this->windowId = in->readByte();
+	this->count = in->readShort();
+	this->slotData = Slot::readSlotArray(in, this->count);
 }
 
 void Packet68WindowItems::verarbeitePacket() {

@@ -66,9 +66,9 @@ void Packet3CExplosion::lesePacketInhalt(DataInputStream *in) {
 
 	for (int i = 0; i < recordCount; i++) {
 		int row = (i * 3);
-		this->records[row] = in->leseByte();
-		this->records[row + 1] = in->leseByte();
-		this->records[row + 2] = in->leseByte();
+		this->records[row] = in->readByte();
+		this->records[row + 1] = in->readByte();
+		this->records[row + 2] = in->readByte();
 	}
 }
 

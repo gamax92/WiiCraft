@@ -37,46 +37,46 @@
 
 using namespace std;
 
-Welt *Welt::welt = NULL;
+World *World::welt = NULL;
 
-void Welt::berechneChunkPosition(int x, int z, int &chunkX, int &chunkZ) {
+void World::calculateChunkPosition(int x, int z, int &chunkX, int &chunkZ) {
 	chunkX = x >> 4;
 	chunkZ = z >> 4;
 }
 
-void Welt::gebeChunkPos(int x, int y, int z, byte &xP, byte &yP, byte &zP) {
+void World::gebeChunkPos(int x, int y, int z, byte &xP, byte &yP, byte &zP) {
 	xP = x & 15;
 	yP = y & (this->gebeWeltHoehe() - 1);
 	zP = z & 15;
 }
 
-unsigned short Welt::berechneIndex(int x, int y, int z) {
+unsigned short World::berechneIndex(int x, int y, int z) {
 	short _weltHoehe = this->gebeWeltHoehe();
 	return y + (z * _weltHoehe) + (x * _weltHoehe * 16);
 }
 
-void Welt::berechnePosAusIndex(unsigned short index, int &x, int &y, int &z) {
+void World::berechnePosAusIndex(unsigned short index, int &x, int &y, int &z) {
 	short _weltHoehe = this->gebeWeltHoehe();
 	x = (index - (index % (_weltHoehe * 16))) / (_weltHoehe * 16);
 	z = ((index - (index % _weltHoehe)) / _weltHoehe) - (x * 16);
 	y = index - (z * _weltHoehe) - (x * _weltHoehe * 16);
 }
 
-void Welt::initialisiereWelt(int dimension, string levelTyp,
+void World::initialisiereWelt(int dimension, string levelTyp,
 		byte schwierigkeitsGrad, int serverModus, unsigned short weltHoehe) {
-	if (Welt::welt != NULL) {
-		delete Welt::welt;
+	if (World::welt != NULL) {
+		delete World::welt;
 	}
 
-	Welt::welt = new Welt(dimension, levelTyp, schwierigkeitsGrad, serverModus,
+	World::welt = new World(dimension, levelTyp, schwierigkeitsGrad, serverModus,
 			weltHoehe);
 }
 
-Welt *Welt::gebeWelt() {
-	return Welt::welt;
+World *World::gebeWelt() {
+	return World::welt;
 }
 
-Welt::Welt(int _dimension, string _levelTyp, byte _schwierigkeitsGrad,
+World::World(int _dimension, string _levelTyp, byte _schwierigkeitsGrad,
 		int _serverModus, unsigned short _weltHoehe) {
 
 	pthread_mutex_init(&this->mutexChunks, NULL);
@@ -106,7 +106,7 @@ Welt::Welt(int _dimension, string _levelTyp, byte _schwierigkeitsGrad,
 	pthread_mutex_unlock(&this->mutexWelthoehe);
 }
 
-Welt::~Welt() {
+World::~World() {
 	pthread_mutex_destroy(&this->mutexChunks);
 	pthread_mutex_destroy(&this->mutexGeladeneChunks);
 	pthread_mutex_destroy(&this->mutexUhrzeit);
@@ -126,13 +126,13 @@ Welt::~Welt() {
 	this->geladeneChunks.clear();
 }
 
-void Welt::initialisiereChunk(int x, int z) {
+void World::initialisiereChunk(int x, int z) {
 	pthread_mutex_lock(&this->mutexChunks);
 	this->chunks[x][z] = new Chunk(x, z);
 	pthread_mutex_unlock(&this->mutexChunks);
 }
 
-void Welt::loescheChunk(int x, int z) {
+void World::loescheChunk(int x, int z) {
 	pthread_mutex_lock(&this->mutexGeladeneChunks);
 	if (this->geladeneChunks.count(x) > 0
 			&& this->geladeneChunks[x].count(z) > 0) {
@@ -149,7 +149,7 @@ void Welt::loescheChunk(int x, int z) {
 	pthread_mutex_unlock(&this->mutexChunks);
 }
 
-void Welt::setzeChunkGeladen(int x, int z, bool laden) {
+void World::setzeChunkGeladen(int x, int z, bool laden) {
 	if (laden) {
 		pthread_mutex_lock(&this->mutexChunks);
 		if (this->chunks.count(x) > 0 && this->chunks[x].count(z) > 0) {
@@ -172,7 +172,7 @@ void Welt::setzeChunkGeladen(int x, int z, bool laden) {
 	}
 }
 
-bool Welt::istChunkGeladen(int x, int z) {
+bool World::istChunkGeladen(int x, int z) {
 	bool geladen = false;
 	pthread_mutex_lock(&this->mutexGeladeneChunks);
 	if (this->geladeneChunks.count(x) > 0
@@ -184,35 +184,35 @@ bool Welt::istChunkGeladen(int x, int z) {
 	return geladen;
 }
 
-void Welt::ergaenzeKomprimierteDaten(int chunkX, int chunkZ,
+void World::ergaenzeKomprimierteDaten(int chunkX, int chunkZ,
 		KomprimierteChunkDaten *komprimierteDaten) {
 	pthread_mutex_lock(&this->mutexChunks);
 	this->chunks[chunkX][chunkZ]->ergaenzeKomprimierteDaten(komprimierteDaten);
 	pthread_mutex_unlock(&this->mutexChunks);
 }
 
-void Welt::ergaenzeBlockAenderung(int chunkX, int chunkZ,
+void World::ergaenzeBlockAenderung(int chunkX, int chunkZ,
 		BlockAenderung *blockAenderung) {
 	pthread_mutex_lock(&this->mutexChunks);
 	this->chunks[chunkX][chunkZ]->ergaenzeBlockAenderung(blockAenderung);
 	pthread_mutex_unlock(&this->mutexChunks);
 }
 
-void Welt::setzeKompassPosition(int _x, int _y, int _z) {
+void World::setzeKompassPosition(int _x, int _y, int _z) {
 	this->kompassPosition.x = _x;
 	this->kompassPosition.y = _y;
 	this->kompassPosition.z = _z;
 }
 
-void Welt::setzeServerModus(byte _serverModus) {
+void World::setzeServerModus(byte _serverModus) {
 	this->serverModus = _serverModus;
 }
 
-void Welt::setzeRegen(bool _regen) {
+void World::setzeRegen(bool _regen) {
 	this->regen = _regen;
 }
 
-int Welt::gebeAnzahlGeladeneChunks() {
+int World::gebeAnzahlGeladeneChunks() {
 	int anzahl = 0;
 	map<int, map<int, Chunk *> >::iterator it1;
 
@@ -225,7 +225,7 @@ int Welt::gebeAnzahlGeladeneChunks() {
 	return anzahl;
 }
 
-int Welt::gebeAnzahlChunks() {
+int World::gebeAnzahlChunks() {
 	int anzahl = 0;
 	map<int, map<int, Chunk *> >::iterator it1;
 
@@ -237,11 +237,11 @@ int Welt::gebeAnzahlChunks() {
 	return anzahl;
 }
 
-void Welt::zeichne() {
+void World::zeichne() {
 	this->chunkCacheManager->zeichne();
 }
 
-unsigned short Welt::gebeWeltHoehe() {
+unsigned short World::gebeWeltHoehe() {
 	pthread_mutex_lock(&this->mutexWelthoehe);
 	short _weltHoehe = this->weltHoehe;
 	pthread_mutex_unlock(&this->mutexWelthoehe);
@@ -249,13 +249,13 @@ unsigned short Welt::gebeWeltHoehe() {
 	return _weltHoehe;
 }
 
-void Welt::setzeUhrzeit(short _uhrzeit) {
+void World::setzeUhrzeit(short _uhrzeit) {
 	pthread_mutex_lock(&this->mutexUhrzeit);
 	this->uhrzeit = _uhrzeit;
 	pthread_mutex_unlock(&this->mutexUhrzeit);
 }
 
-short Welt::gebeUhrzeit() {
+short World::gebeUhrzeit() {
 	pthread_mutex_lock(&this->mutexUhrzeit);
 	short _uhrzeit = this->uhrzeit;
 	pthread_mutex_unlock(&this->mutexUhrzeit);
@@ -263,7 +263,7 @@ short Welt::gebeUhrzeit() {
 	return _uhrzeit;
 }
 
-string Welt::gebeUhrzeitString() {
+string World::gebeUhrzeitString() {
 	pthread_mutex_lock(&this->mutexUhrzeit);
 	short _uhrzeit = this->uhrzeit;
 	pthread_mutex_unlock(&this->mutexUhrzeit);

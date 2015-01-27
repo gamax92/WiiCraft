@@ -34,7 +34,7 @@
 
 using namespace std;
 
-ExcItemUnbekanntesItem::ExcItemUnbekanntesItem(short _itemId) {
+ExcItemUnknownItem::ExcItemUnknownItem(short _itemId) {
 	this->itemId = _itemId;
 
 #ifdef DEBUG_ON
@@ -46,6 +46,6 @@ ExcItemUnbekanntesItem::ExcItemUnbekanntesItem(short _itemId) {
 #endif
 }
 
-short ExcItemUnbekanntesItem::gebeItemId() {
+short ExcItemUnknownItem::getItemId() {
 	return this->itemId;
 }

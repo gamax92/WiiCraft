@@ -54,9 +54,9 @@ bool Packet1FEntityRelativeMove::registierePacket() {
 
 void Packet1FEntityRelativeMove::lesePacketInhalt(DataInputStream *in) {
 	this->entityId = in->leseInt();
-	this->dX = in->leseByte();
-	this->dY = in->leseByte();
-	this->dZ = in->leseByte();
+	this->dX = in->readByte();
+	this->dY = in->readByte();
+	this->dZ = in->readByte();
 }
 
 void Packet1FEntityRelativeMove::verarbeitePacket() {
@@ -68,6 +68,6 @@ void Packet1FEntityRelativeMove::verarbeitePacket() {
 	delete[] buffer;
 #endif
 
-	Entity::gebeEntity(this->entityId);
+	Entity::getEntity(this->entityId);
 	// TODO Packetverarbeitung implementieren
 }

@@ -64,7 +64,7 @@ void Packet65CloseWindow::schreibePacketInhalt(DataOutputStream *out) {
 }
 
 void Packet65CloseWindow::lesePacketInhalt(DataInputStream *in) {
-	this->windowId = in->leseByte();
+	this->windowId = in->readByte();
 }
 
 void Packet65CloseWindow::verarbeitePacket() {

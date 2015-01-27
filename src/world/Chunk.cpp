@@ -107,7 +107,7 @@ void Chunk::ladeChunk() {
 
 	pthread_mutex_lock(&this->mutexGeladen);
 	if (!this->initialisiert) {
-		int datenmenge = Welt::gebeWelt()->gebeWeltHoehe() * 16 * 16;
+		int datenmenge = World::gebeWelt()->gebeWeltHoehe() * 16 * 16;
 
 		this->bloeckeTyp = new short[datenmenge];
 		this->bloeckeMeta = new byte[datenmenge];
@@ -166,7 +166,7 @@ void Chunk::ladeChunk() {
 		if (!this->geladen) {
 			this->geladen = true;
 
-			Welt::gebeWelt()->setzeChunkGeladen(this->gebeX(), this->gebeZ(),
+			World::gebeWelt()->setzeChunkGeladen(this->gebeX(), this->gebeZ(),
 					true);
 		}
 		pthread_mutex_unlock(&this->mutexGeladen);
@@ -179,7 +179,7 @@ void Chunk::speichereChunk() {
 	pthread_mutex_lock(&this->mutexGeladen);
 
 	this->geladen = false;
-	Welt::gebeWelt()->setzeChunkGeladen(this->gebeX(), this->gebeZ(), false);
+	World::gebeWelt()->setzeChunkGeladen(this->gebeX(), this->gebeZ(), false);
 
 	pthread_mutex_lock(&this->mutexDaten);
 	if (this->initialisiert) {
@@ -209,7 +209,7 @@ unsigned long Chunk::gebeVersionsNummer() {
 void Chunk::kopiereDaten(short *_bloeckeTyp, byte *_bloeckeMeta,
 		byte *_bloeckeLicht, byte *_bloeckeHimmelLicht) {
 
-	int datenmenge = Welt::gebeWelt()->gebeWeltHoehe() * 16 * 16;
+	int datenmenge = World::gebeWelt()->gebeWeltHoehe() * 16 * 16;
 
 	memcpy(_bloeckeTyp, this->bloeckeTyp, datenmenge * sizeof(short));
 	memcpy(_bloeckeMeta, this->bloeckeMeta, datenmenge * sizeof(byte));

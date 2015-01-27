@@ -94,14 +94,14 @@ void Packet01LoginRequest::lesePacketInhalt(DataInputStream *in) {
 
 	this->serverMode = in->leseInt();
 	this->dimension = in->leseInt();
-	this->difficulty = in->leseByte();
-	this->worldHeight = in->leseByte();
-	this->maxPlayers = in->leseByte();
+	this->difficulty = in->readByte();
+	this->worldHeight = in->readByte();
+	this->maxPlayers = in->readByte();
 }
 
 void Packet01LoginRequest::verarbeitePacket() {
-	Spieler::initialisiereSpieler(this->entityId);
-	Welt::initialisiereWelt(this->dimension, this->levelType, this->difficulty,
+	Player::initializePlayer(this->entityId);
+	World::initialisiereWelt(this->dimension, this->levelType, this->difficulty,
 			this->serverMode, this->worldHeight);
 	ServerInfo::initialisiereServerInfo(this->maxPlayers);
 	Chat::initialisiereChat();

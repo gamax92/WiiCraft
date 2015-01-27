@@ -53,8 +53,8 @@ bool Packet64OpenWindow::registierePacket() {
 }
 
 void Packet64OpenWindow::lesePacketInhalt(DataInputStream *in) {
-	this->windowId = in->leseByte();
-	this->inventoryType = in->leseByte();
+	this->windowId = in->readByte();
+	this->inventoryType = in->readByte();
 
 	try {
 		this->windowTitle = in->leseString(32);
@@ -62,7 +62,7 @@ void Packet64OpenWindow::lesePacketInhalt(DataInputStream *in) {
 		throw ExcSocketStringLaengeUeberschritten(PacketServer::id);
 	}
 
-	this->numberOfSlots = in->leseByte();
+	this->numberOfSlots = in->readByte();
 
 }
 

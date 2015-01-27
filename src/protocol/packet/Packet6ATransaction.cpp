@@ -69,8 +69,8 @@ void Packet6ATransaction::schreibePacketInhalt(DataOutputStream *out) {
 }
 
 void Packet6ATransaction::lesePacketInhalt(DataInputStream *in) {
-	this->windowId = in->leseByte();
-	this->actionNumber = in->leseShort();
+	this->windowId = in->readByte();
+	this->actionNumber = in->readShort();
 	this->accepted = in->leseBoolean();
 }
 

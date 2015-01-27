@@ -54,7 +54,7 @@ bool Packet26EntityStatus::registierePacket() {
 
 void Packet26EntityStatus::lesePacketInhalt(DataInputStream *in) {
 	this->entityId = in->leseInt();
-	this->entityStatus = in->leseByte();
+	this->entityStatus = in->readByte();
 }
 
 void Packet26EntityStatus::verarbeitePacket() {
@@ -66,6 +66,6 @@ void Packet26EntityStatus::verarbeitePacket() {
 	delete[] buffer;
 #endif
 
-	Entity::gebeEntity(this->entityId);
+	Entity::getEntity(this->entityId);
 	// TODO Packetverarbeitung implementieren
 }

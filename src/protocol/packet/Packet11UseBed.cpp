@@ -54,9 +54,9 @@ bool Packet11UseBed::registierePacket() {
 
 void Packet11UseBed::lesePacketInhalt(DataInputStream *in) {
 	this->entityId = in->leseInt();
-	this->inBed = in->leseByte();
+	this->inBed = in->readByte();
 	this->x = in->leseInt();
-	this->y = in->leseByte();
+	this->y = in->readByte();
 	this->z = in->leseInt();
 }
 
@@ -69,6 +69,6 @@ void Packet11UseBed::verarbeitePacket() {
 	delete[] buffer;
 #endif
 
-	Entity::gebeEntity(this->entityId);
+	Entity::getEntity(this->entityId);
 	// TODO Packetverarbeitung implementieren
 }

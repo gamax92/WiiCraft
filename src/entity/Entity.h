@@ -41,20 +41,20 @@ namespace std {
 
 class Entity {
 public:
-	static void initialisiere();
-	static void deinitialisiere();
-	static Entity *gebeEntity(int _id);
-	static void loescheEntity(int _id);
-	void setzeId(int _id);
-	void setzeKoordinaten(double _x, double _y, double _z);
-	static void setzeEntity(Entity *entity);
+	static void initialize();
+	static void deinitialize();
+	static Entity *getEntity(int _id);
+	static void deleteEntity(int _id);
+	void setId(int _id);
+	void setCoordinates(double _x, double _y, double _z);
+	static void setEntity(Entity *entity);
 
-	double gebeX();
-	double gebeY();
-	double gebeZ();
-	int gebeChunkX();
-	int gebeChunkZ();
-	int gebeId();
+	double getX();
+	double getY();
+	double getZ();
+	int getChunkX();
+	int getChunkZ();
+	int getId();
 protected:
 	static map<int, Entity *> entities;
 

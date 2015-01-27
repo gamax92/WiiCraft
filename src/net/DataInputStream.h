@@ -42,7 +42,7 @@ public:
 	DataInputStream(Socket * _socket);
 	virtual ~DataInputStream();
 	bool leseBoolean();
-	byte leseByte();
+	byte readByte();
 	byte *leseBytes(int anzahl);
 	char leseChar();
 	double leseDouble();
@@ -50,7 +50,7 @@ public:
 	byte *leseKomplett(int laenge);
 	int leseInt();
 	long long leseLong();
-	short leseShort();
+	short readShort();
 	string leseString(int maxLaenge);
 private:
 	Socket * socket;

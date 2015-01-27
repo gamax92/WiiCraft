@@ -65,11 +65,11 @@ int SpielThread::exec() {
 
 	// Chunks im vorraus laden
 	while (true) {
-		Welt *welt = Welt::gebeWelt();
+		World *welt = World::gebeWelt();
 		if (welt != 0) {
 			ChunkLaden::gebeChunkLaden()->aktualisiereChunks(
-					Spieler::getSpieler()->gebeChunkX(),
-					Spieler::getSpieler()->gebeChunkZ());
+					Player::getPlayer()->getChunkX(),
+					Player::getPlayer()->getChunkZ());
 
 			if (welt->gebeAnzahlGeladeneChunks()
 					== ChunkLaden::gebeMaximaleAnzahlGeladeneChunks()) {

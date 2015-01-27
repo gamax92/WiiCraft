@@ -58,8 +58,8 @@ void Packet33MapChunk::lesePacketInhalt(DataInputStream *in) {
 	this->chunkX = in->leseInt();
 	this->chunkZ = in->leseInt();
 	this->groundUpContiguous = in->leseBoolean();
-	this->primaryBitMap = in->leseShort();
-	this->addBitMap = in->leseShort();
+	this->primaryBitMap = in->readShort();
+	this->addBitMap = in->readShort();
 	this->compressedSize = in->leseInt();
 	in->leseInt();
 	this->compressedData = in->leseKomplett(this->compressedSize);
@@ -86,5 +86,5 @@ void Packet33MapChunk::verarbeitePacket() {
 	KomprimierteChunkDaten * k = new KomprimierteChunkDaten(
 			this->compressedData, this->compressedSize, this->primaryBitMap,
 			this->groundUpContiguous);
-	Welt::gebeWelt()->ergaenzeKomprimierteDaten(chunkX, chunkZ, k);
+	World::gebeWelt()->ergaenzeKomprimierteDaten(chunkX, chunkZ, k);
 }

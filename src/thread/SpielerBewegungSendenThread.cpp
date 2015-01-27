@@ -43,7 +43,7 @@
 
 using namespace std;
 
-SpielerBewegungSendenThread::SpielerBewegungSendenThread(Spieler *_spieler,
+PlayerMotionSendingThread::PlayerMotionSendingThread(Player *_spieler,
 		double initialX, double initialY, double initialZ,
 		double initialHaltung, float initialWinkel, float initialAbstand,
 		bool initialIstAufBoden, bool initialIstFliegend) {
@@ -65,13 +65,13 @@ SpielerBewegungSendenThread::SpielerBewegungSendenThread(Spieler *_spieler,
 	pthread_cond_init(&this->condWait, NULL);
 }
 
-SpielerBewegungSendenThread::~SpielerBewegungSendenThread() {
+PlayerMotionSendingThread::~PlayerMotionSendingThread() {
 	pthread_mutex_destroy(&this->mutexStop);
 	pthread_mutex_destroy(&this->mutexWait);
 	pthread_cond_destroy(&this->condWait);
 }
 
-int SpielerBewegungSendenThread::exec() {
+int PlayerMotionSendingThread::exec() {
 	pthread_mutex_lock(&this->mutexWait);
 	pthread_cond_wait(&this->condWait, &this->mutexWait);
 	pthread_mutex_unlock(&this->mutexWait);
@@ -81,13 +81,13 @@ int SpielerBewegungSendenThread::exec() {
 			break;
 		}
 
-		double aktuellX = this->spieler->gebeX();
-		double aktuellY = this->spieler->gebeY();
-		double aktuellZ = this->spieler->gebeZ();
-		double aktuellHaltung = this->spieler->gebeHaltung();
-		float aktuellWinkel = this->spieler->gebeWinkel();
-		float aktuellAbstand = this->spieler->gebeAbstand();
-		bool aktuellIstAufBoden = this->spieler->gebeIstAufBoden();
+		double aktuellX = this->spieler->getX();
+		double aktuellY = this->spieler->getY();
+		double aktuellZ = this->spieler->getZ();
+		double aktuellHaltung = this->spieler->getHaltung();
+		float aktuellWinkel = this->spieler->getWinkel();
+		float aktuellAbstand = this->spieler->getAbstand();
+		bool aktuellIstAufBoden = this->spieler->getIsOnGround();
 
 		// Position und Blickwinkel geaendert
 		if ((aktuellX != this->zuletztUebertragenX
@@ -143,12 +143,12 @@ int SpielerBewegungSendenThread::exec() {
 			this->zuletztUebertragenIstAufBoden = aktuellIstAufBoden;
 		}
 
-		bool aktuellIstFliegend = this->spieler->gebeIstFliegend();
+		bool aktuellIstFliegend = this->spieler->getIsFlying();
 		bool aktuellIstFliegenMoeglich =
-				this->spieler->gebeIstFliegenMoeglich();
+				this->spieler->getIstFliegenMoeglich();
 		bool aktuellIstEinfachesAbbauenAktiv =
-				this->spieler->gebeIstEinfachesAbbauenAktiv();
-		bool aktuellIstUnverwundbar = this->spieler->gebeIstUnverwundbar();
+				this->spieler->getIsEinfachesAbbauenAktiv();
+		bool aktuellIstUnverwundbar = this->spieler->getIsInvulnerable();
 
 		if (aktuellIstFliegend != this->zuletztUebertragenIstFliegend) {
 			PacketClient *p = new PacketCAPlayerAbilities(aktuellIstUnverwundbar,
@@ -159,8 +159,8 @@ int SpielerBewegungSendenThread::exec() {
 			this->zuletztUebertragenIstFliegend = aktuellIstFliegend;
 		}
 
-		int aktuellChunkX = this->spieler->gebeChunkX();
-		int aktuellChunkZ = this->spieler->gebeChunkZ();
+		int aktuellChunkX = this->spieler->getChunkX();
+		int aktuellChunkZ = this->spieler->getChunkZ();
 
 		if (aktuellChunkX != this->zuletztChunkX
 				|| aktuellChunkZ != this->zuletztChunkZ) {
@@ -183,13 +183,13 @@ int SpielerBewegungSendenThread::exec() {
 	return 0;
 }
 
-void SpielerBewegungSendenThread::stop() {
+void PlayerMotionSendingThread::stop() {
 	pthread_mutex_lock(&this->mutexStop);
 	this->gestoppt = true;
 	pthread_mutex_unlock(&this->mutexStop);
 }
 
-bool SpielerBewegungSendenThread::istGestopped() {
+bool PlayerMotionSendingThread::istGestopped() {
 	bool b = false;
 
 	pthread_mutex_lock(&this->mutexStop);
@@ -199,7 +199,7 @@ bool SpielerBewegungSendenThread::istGestopped() {
 	return b;
 }
 
-void SpielerBewegungSendenThread::aktualisieren() {
+void PlayerMotionSendingThread::update() {
 	pthread_mutex_lock(&this->mutexWait);
 	pthread_cond_signal(&this->condWait);
 	pthread_mutex_unlock(&this->mutexWait);

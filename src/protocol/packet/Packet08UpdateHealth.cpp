@@ -53,15 +53,15 @@ bool Packet08UpdateHealth::registierePacket() {
 }
 
 void Packet08UpdateHealth::lesePacketInhalt(DataInputStream *in) {
-	this->health = in->leseShort();
-	this->food = in->leseShort();
+	this->health = in->readShort();
+	this->food = in->readShort();
 	this->foodSaturation = in->leseFloat();
 }
 
 void Packet08UpdateHealth::verarbeitePacket() {
-	Spieler::getSpieler()->setzeLebensEnergie(this->health);
-	Spieler::getSpieler()->setzeSaettigung(this->food);
-	Spieler::getSpieler()->setzeUeberSaettigung(this->foodSaturation);
+	Player::getPlayer()->setzeLebensEnergie(this->health);
+	Player::getPlayer()->setzeSaettigung(this->food);
+	Player::getPlayer()->setzeUeberSaettigung(this->foodSaturation);
 
 #ifdef DEBUG_ON
 	char *buffer = new char[100];

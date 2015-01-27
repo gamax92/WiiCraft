@@ -54,9 +54,9 @@ bool Packet1CEntityVelocity::registierePacket() {
 
 void Packet1CEntityVelocity::lesePacketInhalt(DataInputStream *in) {
 	this->entityId = in->leseInt();
-	this->velocityX = in->leseShort();
-	this->velocityY = in->leseShort();
-	this->velocityZ = in->leseShort();
+	this->velocityX = in->readShort();
+	this->velocityY = in->readShort();
+	this->velocityZ = in->readShort();
 }
 
 void Packet1CEntityVelocity::verarbeitePacket() {
@@ -68,6 +68,6 @@ void Packet1CEntityVelocity::verarbeitePacket() {
 	delete[] buffer;
 #endif
 
-	Entity::gebeEntity(this->entityId);
+	Entity::getEntity(this->entityId);
 	// TODO Packetverarbeitung implementieren
 }

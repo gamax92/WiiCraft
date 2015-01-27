@@ -349,11 +349,11 @@ void ItemManager::initialisiereItemListe() {
 	Item177Spinnenauge::registiereItem();
 }
 
-Item *ItemManager::getInstanz(short itemId) {
+Item *ItemManager::getInstance(short itemId) {
 	ItemDummy *itemDummy =
 			dynamic_cast<ItemDummy *>(ItemManager::itemListe[itemId]);
 	if (itemDummy != 0) {
-		throw ExcItemUnbekanntesItem(itemId);
+		throw ExcItemUnknownItem(itemId);
 	}
 
 	return ItemManager::itemListe[itemId]->gebeInstanz();
@@ -367,7 +367,7 @@ void ItemManager::zeichne(short itemId, float x, float y, float z, byte meta) {
 	ItemDummy *itemDummy =
 			dynamic_cast<ItemDummy *>(ItemManager::itemListe[itemId]);
 	if (itemDummy != 0) {
-		throw ExcItemUnbekanntesItem(itemId);
+		throw ExcItemUnknownItem(itemId);
 	}
 
 	ItemBlock *itemBlock =
@@ -381,7 +381,7 @@ bool ItemManager::istDurchsichtig(short itemId) {
 	ItemDummy *itemDummy =
 			dynamic_cast<ItemDummy *>(ItemManager::itemListe[itemId]);
 	if (itemDummy != 0) {
-		throw ExcItemUnbekanntesItem(itemId);
+		throw ExcItemUnknownItem(itemId);
 	}
 
 	ItemBlock *itemBlock =

@@ -54,9 +54,9 @@ bool Packet05EntityEquipment::registierePacket() {
 
 void Packet05EntityEquipment::lesePacketInhalt(DataInputStream *in) {
 	this->entityId = in->leseInt();
-	this->slot = in->leseShort();
-	this->itemId = in->leseShort();
-	this->damage = in->leseShort();
+	this->slot = in->readShort();
+	this->itemId = in->readShort();
+	this->damage = in->readShort();
 }
 
 void Packet05EntityEquipment::verarbeitePacket() {
@@ -68,6 +68,6 @@ void Packet05EntityEquipment::verarbeitePacket() {
 	delete[] buffer;
 #endif
 
-	Entity::gebeEntity(this->entityId);
+	Entity::getEntity(this->entityId);
 	// TODO Packetverarbeitung implementieren
 }

@@ -39,87 +39,87 @@
 
 using namespace std;
 
-Spieler *Spieler::spieler = NULL;
+Player *Player::player = NULL;
 
-Spieler::Spieler(int entityId) {
+Player::Player(int entityId) {
 	pthread_mutex_init(&this->mutex, NULL);
 
-	this->setzeId(entityId);
+	this->setId(entityId);
 
-	Entity::setzeKoordinaten(0, 0, 0);
+	Entity::setCoordinates(0, 0, 0);
 
 	this->winkel = 0;
 	this->abstand = 0;
 	this->haltung = 0;
-	this->istAufBoden = false;
-	this->istFliegend = false;
-	this->istFliegenMoeglich = false;
-	this->istEinfachesAbbauenAktiv = false;
+	this->isOnGround = false;
+	this->isFlying = false;
+	this->isFliegenMoeglich = false;
+	this->isEinfachesAbbauenAktiv = false;
 
-	this->istUnverwundbar = false;
+	this->isInvulnerable = false;
 	this->lebensEnergie = 0;
 	this->saettigung = 0;
 	this->ueberSaettigung = 0;
 
-	this->erfahrungsPunkteAktuelleStufe = 0;
+	this->experiencePointsCurrentLevel = 0;
 	this->level = 0;
-	this->erfahrungsPunkteGesamt = 0;
+	this->experiencePointsTotal = 0;
 
-	this->spielerBewegungSendenThread = new SpielerBewegungSendenThread(this,
+	this->playerMotionSendingThread = new PlayerMotionSendingThread(this,
 			this->x, this->y, this->z, this->winkel, this->abstand,
-			this->haltung, this->istAufBoden, this->istFliegend);
-	this->spielerBewegungSendenThread->start();
+			this->haltung, this->isOnGround, this->isFlying);
+	this->playerMotionSendingThread->start();
 
-	Entity::setzeEntity(this);
+	Entity::setEntity(this);
 }
 
-Spieler::~Spieler() {
-	this->spielerBewegungSendenThread->stop();
-	this->spielerBewegungSendenThread->join();
+Player::~Player() {
+	this->playerMotionSendingThread->stop();
+	this->playerMotionSendingThread->join();
 
 	pthread_mutex_destroy(&this->mutex);
 }
 
-Spieler *Spieler::getSpieler() {
-	return Spieler::spieler;
+Player *Player::getPlayer() {
+	return Player::player;
 }
 
-void Spieler::initialisiereSpieler(int entityId) {
-	if (Spieler::spieler != NULL) {
-		delete Spieler::spieler;
-		Entity::deinitialisiere();
+void Player::initializePlayer(int entityId) {
+	if (Player::player != NULL) {
+		delete Player::player;
+		Entity::deinitialize();
 	}
 
-	Entity::initialisiere();
-	Spieler::spieler = new Spieler(entityId);
+	Entity::initialize();
+	Player::player = new Player(entityId);
 }
 
-void Spieler::setzeKoordinaten(double _x, double _y, double _z) {
-	Entity::setzeKoordinaten(_x, _y, _z);
+void Player::setCoordinates(double _x, double _y, double _z) {
+	Entity::setCoordinates(_x, _y, _z);
 
-	this->spielerBewegungSendenThread->aktualisieren();
+	this->playerMotionSendingThread->update();
 }
 
-void Spieler::setzeBlickfeld(float _winkel, float _abstand) {
+void Player::setBlickfeld(float _winkel, float _abstand) {
 	pthread_mutex_lock(&this->mutex);
 	this->winkel = _winkel;
 	this->abstand = _abstand;
 	pthread_mutex_unlock(&this->mutex);
 }
 
-void Spieler::setzeHaltung(double _haltung) {
+void Player::setHaltung(double _haltung) {
 	pthread_mutex_lock(&this->mutex);
 	this->haltung = _haltung;
 	pthread_mutex_unlock(&this->mutex);
 }
 
-void Spieler::setzeAufBoden(bool _istAufBoden) {
+void Player::setOnGround(bool _isOnGround) {
 	pthread_mutex_lock(&this->mutex);
-	this->istAufBoden = _istAufBoden;
+	this->isOnGround = _isOnGround;
 	pthread_mutex_unlock(&this->mutex);
 }
 
-double Spieler::gebeHaltung() {
+double Player::getHaltung() {
 	pthread_mutex_lock(&this->mutex);
 	double _haltung = this->haltung;
 	pthread_mutex_unlock(&this->mutex);
@@ -127,7 +127,7 @@ double Spieler::gebeHaltung() {
 	return _haltung;
 }
 
-float Spieler::gebeWinkel() {
+float Player::getWinkel() {
 	pthread_mutex_lock(&this->mutex);
 	float _winkel = this->winkel;
 	pthread_mutex_unlock(&this->mutex);
@@ -135,7 +135,7 @@ float Spieler::gebeWinkel() {
 	return _winkel;
 }
 
-float Spieler::gebeAbstand() {
+float Player::getAbstand() {
 	pthread_mutex_lock(&this->mutex);
 	double _abstand = this->abstand;
 	pthread_mutex_unlock(&this->mutex);
@@ -143,89 +143,89 @@ float Spieler::gebeAbstand() {
 	return _abstand;
 }
 
-bool Spieler::gebeIstAufBoden() {
+bool Player::getIsOnGround() {
 	pthread_mutex_lock(&this->mutex);
-	bool _istAufBoden = this->istAufBoden;
+	bool _isOnGround = this->isOnGround;
 	pthread_mutex_unlock(&this->mutex);
 
-	return _istAufBoden;
+	return _isOnGround;
 }
 
-bool Spieler::gebeIstFliegend() {
+bool Player::getIsFlying() {
 	pthread_mutex_lock(&this->mutex);
-	bool _istFliegend = this->istFliegend;
+	bool _isFlying = this->isFlying;
 	pthread_mutex_unlock(&this->mutex);
 
-	return _istFliegend;
+	return _isFlying;
 }
 
-bool Spieler::gebeIstFliegenMoeglich() {
+bool Player::getIstFliegenMoeglich() {
 	pthread_mutex_lock(&this->mutex);
-	bool _istFliegenMoeglich = this->istFliegenMoeglich;
+	bool _isFliegenMoeglich = this->isFliegenMoeglich;
 	pthread_mutex_unlock(&this->mutex);
 
-	return _istFliegenMoeglich;
+	return _isFliegenMoeglich;
 }
 
-bool Spieler::gebeIstEinfachesAbbauenAktiv() {
+bool Player::getIsEinfachesAbbauenAktiv() {
 	pthread_mutex_lock(&this->mutex);
-	bool _istEinfachesAbbauenAktiv = this->istEinfachesAbbauenAktiv;
+	bool _isEinfachesAbbauenAktiv = this->isEinfachesAbbauenAktiv;
 	pthread_mutex_unlock(&this->mutex);
 
-	return _istEinfachesAbbauenAktiv;
+	return _isEinfachesAbbauenAktiv;
 }
 
-bool Spieler::gebeIstUnverwundbar() {
+bool Player::getIsInvulnerable() {
 	pthread_mutex_lock(&this->mutex);
-	bool _istUnverwundbar = this->istUnverwundbar;
+	bool _isInvulnerable = this->isInvulnerable;
 	pthread_mutex_unlock(&this->mutex);
 
-	return _istUnverwundbar;
+	return _isInvulnerable;
 }
 
-void Spieler::setzeFaehigkeit(bool _istFliegend, bool _istFliegenMoeglich,
-		bool _istEinfachesAbbauenAktiv, bool _istUnverwundbar) {
+void Player::setFaehigkeit(bool _isFlying, bool _isFliegenMoeglich,
+		bool _isEinfachesAbbauenAktiv, bool _isInvulnerable) {
 	pthread_mutex_lock(&this->mutex);
-	this->istFliegend = _istFliegend;
-	this->istFliegenMoeglich = _istFliegenMoeglich;
-	this->istEinfachesAbbauenAktiv = _istEinfachesAbbauenAktiv;
-	this->istUnverwundbar = _istUnverwundbar;
+	this->isFlying = _isFlying;
+	this->isFliegenMoeglich = _isFliegenMoeglich;
+	this->isEinfachesAbbauenAktiv = _isEinfachesAbbauenAktiv;
+	this->isInvulnerable = _isInvulnerable;
 	pthread_mutex_unlock(&this->mutex);
 }
 
-void Spieler::setzeLebensEnergie(short _lebensEnergie) {
+void Player::setzeLebensEnergie(short _lebensEnergie) {
 	pthread_mutex_lock(&this->mutex);
 	this->lebensEnergie = _lebensEnergie;
 	pthread_mutex_unlock(&this->mutex);
 }
 
-void Spieler::setzeSaettigung(short _saettigung) {
+void Player::setzeSaettigung(short _saettigung) {
 	pthread_mutex_lock(&this->mutex);
 	this->saettigung = _saettigung;
 	pthread_mutex_unlock(&this->mutex);
 }
 
-void Spieler::setzeUeberSaettigung(float _ueberSaettigung) {
+void Player::setzeUeberSaettigung(float _ueberSaettigung) {
 	pthread_mutex_lock(&this->mutex);
 	this->ueberSaettigung = _ueberSaettigung;
 	pthread_mutex_unlock(&this->mutex);
 }
 
-void Spieler::setzeErfahrungsPunkteAktuelleStufe(
-		float _erfahrungsPunkteAktuelleStufe) {
+void Player::setExperiencePointsCurrentLevel(
+		float _experiencePointsCurrentLevel) {
 	pthread_mutex_lock(&this->mutex);
-	this->erfahrungsPunkteAktuelleStufe = _erfahrungsPunkteAktuelleStufe;
+	this->experiencePointsCurrentLevel = _experiencePointsCurrentLevel;
 	pthread_mutex_unlock(&this->mutex);
 }
 
-void Spieler::setzeLevel(short _level) {
+void Player::setzeLevel(short _level) {
 	pthread_mutex_lock(&this->mutex);
 	this->level = _level;
 	pthread_mutex_unlock(&this->mutex);
 }
 
-void Spieler::setzeErfahrungsPunkteGesamt(short _erfahrungsPunkteGesamt) {
+void Player::setExperiencePointsTotal(short _experiencePointsTotal) {
 	pthread_mutex_lock(&this->mutex);
-	this->erfahrungsPunkteGesamt = _erfahrungsPunkteGesamt;
+	this->experiencePointsTotal = _experiencePointsTotal;
 	pthread_mutex_unlock(&this->mutex);
 }

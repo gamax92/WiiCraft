@@ -89,13 +89,13 @@ bool Packet18MobSpawn::registierePacket() {
 
 void Packet18MobSpawn::lesePacketInhalt(DataInputStream *in) {
 	this->entityId = in->leseInt();
-	this->type = (in->leseByte() & 0xff);
+	this->type = (in->readByte() & 0xff);
 	this->x = in->leseInt();
 	this->y = in->leseInt();
 	this->z = in->leseInt();
-	this->yaw = in->leseByte();
-	this->pitch = in->leseByte();
-	this->headYaw = in->leseByte();
+	this->yaw = in->readByte();
+	this->pitch = in->readByte();
+	this->headYaw = in->readByte();
 	try {
 		this->metaData = Metadata::leseDaten(in);
 	} catch (ExcSocketStringLaengeUeberschritten &exception) {
@@ -201,6 +201,6 @@ void Packet18MobSpawn::verarbeitePacket() {
 	delete[] buffer;
 #endif
 
-	Entity::gebeEntity(this->entityId);
+	Entity::getEntity(this->entityId);
 	// TODO Packetverarbeitung implementieren
 }

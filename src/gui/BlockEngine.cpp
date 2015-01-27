@@ -65,15 +65,15 @@ void BlockEngine::zeichneElement() {
 }
 
 void BlockEngine::zeichne3DElemente() {
-	Spieler *spieler = Spieler::getSpieler();
+	Player *spieler = Player::getPlayer();
 
 	if (spieler != NULL) {
-		float spielerX = (float) spieler->gebeX();
-		float spielerY = ((float) spieler->gebeY()) + 1.62f;
-		float spielerZ = (float) spieler->gebeZ();
+		float spielerX = (float) spieler->getX();
+		float spielerY = ((float) spieler->getY()) + 1.62f;
+		float spielerZ = (float) spieler->getZ();
 
-		float abstand = spieler->gebeAbstand() * PI / 180;
-		float winkel = spieler->gebeWinkel() * PI / 180;
+		float abstand = spieler->getAbstand() * PI / 180;
+		float winkel = spieler->getWinkel() * PI / 180;
 
 		float viewX = -cos(abstand) * sin(winkel);
 		float viewY = -sin(abstand);
@@ -86,7 +86,7 @@ void BlockEngine::zeichne3DElemente() {
 		GrrlibErsatz::GRRLIB_SetTexture(
 				GrafikHandler::gebeGrafikHandler()->gebeBild("terrain"), 0);
 
-		Welt *welt = Welt::gebeWelt();
+		World *welt = World::gebeWelt();
 		if (welt != NULL) {
 			welt->zeichne();
 		}
@@ -105,11 +105,11 @@ void BlockEngine::setzeCursorPosition(float x, float y, float angle) {
 		y_zentrum = 0;
 	}
 
-	Spieler *spieler = Spieler::getSpieler();
+	Player *spieler = Player::getPlayer();
 
 	if (spieler != NULL) {
-		float abstand = spieler->gebeAbstand() + (0.007 * y_zentrum);
-		float winkel = spieler->gebeWinkel() + (0.007 * x_zentrum);
+		float abstand = spieler->getAbstand() + (0.007 * y_zentrum);
+		float winkel = spieler->getWinkel() + (0.007 * x_zentrum);
 
 		if (abstand > 90)
 			abstand = 90;
@@ -120,6 +120,6 @@ void BlockEngine::setzeCursorPosition(float x, float y, float angle) {
 		if (winkel < -180)
 			winkel += 360;
 
-		spieler->setzeBlickfeld(winkel, abstand);
+		spieler->setBlickfeld(winkel, abstand);
 	}
 }

@@ -83,7 +83,7 @@ bool Packet3DSoundParticleEffect::registierePacket() {
 void Packet3DSoundParticleEffect::lesePacketInhalt(DataInputStream *in) {
 	this->effectId = in->leseInt();
 	this->x = in->leseInt();
-	this->y = in->leseByte();
+	this->y = in->readByte();
 	this->z = in->leseInt();
 	this->data = in->leseInt();
 }

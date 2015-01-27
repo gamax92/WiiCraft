@@ -76,9 +76,9 @@ bool Packet29EntityEffect::registierePacket() {
 
 void Packet29EntityEffect::lesePacketInhalt(DataInputStream *in) {
 	this->entityId = in->leseInt();
-	this->effectId = in->leseByte();
-	this->amplifier = in->leseByte();
-	this->duration = in->leseShort();
+	this->effectId = in->readByte();
+	this->amplifier = in->readByte();
+	this->duration = in->readShort();
 }
 
 void Packet29EntityEffect::verarbeitePacket() {
@@ -90,6 +90,6 @@ void Packet29EntityEffect::verarbeitePacket() {
 	delete[] buffer;
 #endif
 
-	Entity::gebeEntity(this->entityId);
+	Entity::getEntity(this->entityId);
 	// TODO Packetverarbeitung implementieren
 }

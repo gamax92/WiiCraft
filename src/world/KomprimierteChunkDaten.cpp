@@ -108,7 +108,7 @@ void KomprimierteChunkDaten::ladeDaten(short *bloeckeTyp, byte *bloeckeMeta,
 		for (int iY = 0; iY < 16; iY++) {
 			for (int iZ = 0; iZ < 16; iZ++) {
 				for (int iX = 0; iX < 16; iX++) {
-					unsigned short index = Welt::gebeWelt()->berechneIndex(iX,
+					unsigned short index = World::gebeWelt()->berechneIndex(iX,
 							iY + (i * 16), iZ);
 
 					short ganzesA =

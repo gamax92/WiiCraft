@@ -62,7 +62,7 @@ bool Packet34MultiBlockChange::registierePacket() {
 void Packet34MultiBlockChange::lesePacketInhalt(DataInputStream *in) {
 	this->chunkX = in->leseInt();
 	this->chunkZ = in->leseInt();
-	this->recordCount = in->leseShort() & 0xffff;
+	this->recordCount = in->readShort() & 0xffff;
 	this->dataSize = in->leseInt();
 
 	this->data = new byte[this->dataSize];
@@ -102,7 +102,7 @@ void Packet34MultiBlockChange::verarbeitePacket() {
 		byte z = (byte0 & 0x0f);
 		byte y = byte1;
 
-		short index = Welt::gebeWelt()->berechneIndex(x, y, z);
+		short index = World::gebeWelt()->berechneIndex(x, y, z);
 
 #ifdef DEBUG_ON
 		char *buffer = new char[100];
@@ -116,7 +116,7 @@ void Packet34MultiBlockChange::verarbeitePacket() {
 #endif
 
 		BlockAenderung * b = new BlockAenderung(index, blockTyp, blockMetadata);
-		Welt::gebeWelt()->ergaenzeBlockAenderung(this->chunkX, this->chunkZ, b);
+		World::gebeWelt()->ergaenzeBlockAenderung(this->chunkX, this->chunkZ, b);
 
 		datenPosition += 4;
 	}

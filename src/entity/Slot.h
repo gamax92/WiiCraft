@@ -41,9 +41,9 @@ class Item;
 
 class Slot {
 public:
-	static vector<Slot *> leseSlotArray(DataInputStream *in, short count);
-	static Slot *leseSlot(DataInputStream *in);
-	static void schreibeSlot(DataOutputStream *out, Slot *slot);
+	static vector<Slot *> readSlotArray(DataInputStream *in, short count);
+	static Slot *readSlot(DataInputStream *in);
+	static void writeSlot(DataOutputStream *out, Slot *slot);
 private:
 	Slot(Item *_item, byte _stapelGroesse);
 	Slot();

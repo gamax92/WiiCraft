@@ -58,9 +58,9 @@ bool Packet67SetSlot::registierePacket() {
 }
 
 void Packet67SetSlot::lesePacketInhalt(DataInputStream *in) {
-	this->windowId = in->leseByte();
-	this->slotNr = in->leseShort();
-	this->slot = Slot::leseSlot(in);
+	this->windowId = in->readByte();
+	this->slotNr = in->readShort();
+	this->slot = Slot::readSlot(in);
 }
 
 void Packet67SetSlot::verarbeitePacket() {

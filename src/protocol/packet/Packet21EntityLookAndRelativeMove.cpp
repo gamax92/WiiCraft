@@ -54,11 +54,11 @@ bool Packet21EntityLookAndRelativeMove::registierePacket() {
 
 void Packet21EntityLookAndRelativeMove::lesePacketInhalt(DataInputStream *in) {
 	this->entityId = in->leseInt();
-	this->dX = in->leseByte();
-	this->dY = in->leseByte();
-	this->dZ = in->leseByte();
-	this->yaw = in->leseByte();
-	this->pitch = in->leseByte();
+	this->dX = in->readByte();
+	this->dY = in->readByte();
+	this->dZ = in->readByte();
+	this->yaw = in->readByte();
+	this->pitch = in->readByte();
 }
 
 void Packet21EntityLookAndRelativeMove::verarbeitePacket() {
@@ -71,6 +71,6 @@ void Packet21EntityLookAndRelativeMove::verarbeitePacket() {
 	delete[] buffer;
 #endif
 
-	Entity::gebeEntity(this->entityId);
+	Entity::getEntity(this->entityId);
 	// TODO Packetverarbeitung implementieren
 }

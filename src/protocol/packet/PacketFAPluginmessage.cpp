@@ -83,11 +83,11 @@ void PacketFAPluginmessage::lesePacketInhalt(DataInputStream *in) {
 		throw ExcSocketStringLaengeUeberschritten(PacketServer::id);
 	}
 
-	this->length = in->leseShort();
+	this->length = in->readShort();
 	this->data = new byte[this->length];
 
 	for (short i = 0; i < this->length; i++) {
-		this->data[i] = in->leseByte();
+		this->data[i] = in->readByte();
 	}
 }
 

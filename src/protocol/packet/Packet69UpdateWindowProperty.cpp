@@ -52,9 +52,9 @@ bool Packet69UpdateWindowProperty::registierePacket() {
 }
 
 void Packet69UpdateWindowProperty::lesePacketInhalt(DataInputStream *in) {
-	this->windowId = in->leseByte();
-	this->property = in->leseShort();
-	this->value = in->leseShort();
+	this->windowId = in->readByte();
+	this->property = in->readShort();
+	this->value = in->readShort();
 }
 
 void Packet69UpdateWindowProperty::verarbeitePacket() {

@@ -83,7 +83,7 @@ void Packet12Animation::schreibePacketInhalt(DataOutputStream *out) {
 
 void Packet12Animation::lesePacketInhalt(DataInputStream *in) {
 	this->entityId = in->leseInt();
-	this->animation = in->leseByte();
+	this->animation = in->readByte();
 }
 
 void Packet12Animation::verarbeitePacket() {
@@ -95,6 +95,6 @@ void Packet12Animation::verarbeitePacket() {
 	delete[] buffer;
 #endif
 
-	Entity::gebeEntity(this->entityId);
+	Entity::getEntity(this->entityId);
 	// TODO Packetverarbeitung implementieren
 }
