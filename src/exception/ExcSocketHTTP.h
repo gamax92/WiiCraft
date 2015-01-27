@@ -39,7 +39,7 @@ class ExcSocketHTTP: public std::ExcSocket {
 public:
 	ExcSocketHTTP();
 	ExcSocketHTTP(string _fehler);
-	string gebeFehler();
+	string getFehler();
 protected:
 	string fehler;
 };

@@ -39,7 +39,7 @@ class ExcPacketUnbekanntesPacket: public ExcPacket {
 public:
 	ExcPacketUnbekanntesPacket(byte _pbyte);
 	ExcPacketUnbekanntesPacket(byte _pbyte, byte _lbyte);
-	byte gebeByte();
+	byte getByte();
 private:
 	byte pbyte;
 	byte lbyte;

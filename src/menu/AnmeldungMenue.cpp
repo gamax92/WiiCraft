@@ -137,7 +137,7 @@ void AnmeldungMenue::zeigeAnmeldungMenue() {
 		} catch (ExcSocketHTTPServerLoginFehlgeschlagen &exception) {
 
 			AnmeldungMenue::anmeldungMenue->textFehler->setzeText(
-					exception.gebeFehler());
+					exception.getFehler());
 			AnmeldungMenue::anmeldungMenue->hintergrund->setzeTastaturAnzeigen(
 					true);
 			AnmeldungMenue::anmeldungMenue->textFehler->sichtbarkeit(true);

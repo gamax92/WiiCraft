@@ -32,9 +32,9 @@
 
 namespace std {
 
-class ExcDateiOeffnen {
+class ExcFileOpen {
 public:
-	ExcDateiOeffnen(const char *t);
+	ExcFileOpen(const char *t);
 };
 
 }

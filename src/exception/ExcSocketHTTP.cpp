@@ -54,6 +54,6 @@ ExcSocketHTTP::ExcSocketHTTP(string _fehler) {
 }
 
 
-string ExcSocketHTTP::gebeFehler() {
+string ExcSocketHTTP::getFehler() {
 	return this->fehler;
 }

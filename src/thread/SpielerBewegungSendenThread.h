@@ -39,18 +39,18 @@
 
 namespace std {
 
-class Spieler;
+class Player;
 
-class SpielerBewegungSendenThread: public Thread {
+class PlayerMotionSendingThread: public Thread {
 public:
-	SpielerBewegungSendenThread(Spieler *_spieler, double initialX,
+	PlayerMotionSendingThread(Player *_spieler, double initialX,
 			double initialY, double initialZ, double initialHaltung,
 			float initialWinkel, float initialAbstand, bool initialIstAufBoden,
 			bool initialIstFliegend);
-	virtual ~SpielerBewegungSendenThread();
+	virtual ~PlayerMotionSendingThread();
 	int exec();
 	void stop();
-	void aktualisieren();
+	void update();
 private:
 	double zuletztUebertragenX;
 	double zuletztUebertragenY;
@@ -62,7 +62,7 @@ private:
 	bool zuletztUebertragenIstFliegend;
 	int zuletztChunkX;
 	int zuletztChunkZ;
-	Spieler *spieler;
+	Player *spieler;
 	bool gestoppt;
 
 	pthread_mutex_t mutexStop;

@@ -56,5 +56,5 @@ void Packet0FPlayerBlockPlacement::schreibePacketInhalt(DataOutputStream *out) {
 	out->schreibeByte(this->y);
 	out->schreibeInt(this->z);
 	out->schreibeByte(this->direction);
-	Slot::schreibeSlot(out, this->heldItem);
+	Slot::writeSlot(out, this->heldItem);
 }

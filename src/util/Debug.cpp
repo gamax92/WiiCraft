@@ -64,7 +64,7 @@ void Debug::schreibeLog(string dateiName, string nachricht, bool flag) {
 
 		fclose(pFile);
 	} else {
-		throw ExcDateiOeffnen(dateiName.data());
+		throw ExcFileOpen(dateiName.data());
 	}
 }
 

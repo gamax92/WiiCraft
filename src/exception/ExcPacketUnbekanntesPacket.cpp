@@ -61,6 +61,6 @@ ExcPacketUnbekanntesPacket::ExcPacketUnbekanntesPacket(byte _pbyte, byte _lbyte)
 #endif
 }
 
-byte ExcPacketUnbekanntesPacket::gebeByte() {
+byte ExcPacketUnbekanntesPacket::getByte() {
 	return this->pbyte;
 }

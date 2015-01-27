@@ -89,6 +89,6 @@ void PacketCAPlayerAbilities::verarbeitePacket() {
 	delete[] buffer;
 #endif
 
-	Spieler::getSpieler()->setzeFaehigkeit(this->isFlying, this->canFly,
+	Player::getPlayer()->setFaehigkeit(this->isFlying, this->canFly,
 			this->instantDestroy, this->invulnerability);
 }

@@ -59,5 +59,5 @@ void Packet66WindowClick::schreibePacketInhalt(DataOutputStream *out) {
 	out->schreibeByte(this->rightClick);
 	out->schreibeShort(this->actionNumber);
 	out->schreibeBoolean(this->shift);
-	Slot::schreibeSlot(out, this->clickedItem);
+	Slot::writeSlot(out, this->clickedItem);
 }

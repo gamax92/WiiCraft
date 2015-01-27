@@ -33,6 +33,6 @@
 
 using namespace std;
 
-ExcDateiOeffnen::ExcDateiOeffnen(const char *t) {
-	printf("ExcDateiOeffnen: %s\n", t);
+ExcFileOpen::ExcFileOpen(const char *t) {
+	printf("ExcFileOpen: %s\n", t);
 }

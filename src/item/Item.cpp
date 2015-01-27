@@ -34,7 +34,7 @@ using namespace std;
 Item::~Item() {
 }
 
-bool Item::istZerstoerbar() {
+bool Item::isDestructible() {
 	return this->maximaleHaltbarkeit > 0 && !this->hatKindTypen;
 }
 
@@ -47,6 +47,6 @@ void Item::setzeStandardWerte() {
 	this->hatKindTypen = false;
 }
 
-void Item::setzeHaltbarkeit(int _haltbarkeit) {
+void Item::setDurability(int _haltbarkeit) {
 	this->haltbarkeit = _haltbarkeit;
 }

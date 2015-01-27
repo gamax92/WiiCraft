@@ -40,17 +40,17 @@
 
 using namespace std;
 
-FehlerMenue *FehlerMenue::fehlerMenue;
+ErrorMenu *ErrorMenu::fehlerMenue;
 
-void FehlerMenue::initialisiere(string fehlerText) {
-	FehlerMenue::fehlerMenue = new FehlerMenue(fehlerText);
+void ErrorMenu::initialize(string fehlerText) {
+	ErrorMenu::fehlerMenue = new ErrorMenu(fehlerText);
 }
 
-void FehlerMenue::deinitialisiere() {
-	delete FehlerMenue::fehlerMenue;
+void ErrorMenu::deinitialisiere() {
+	delete ErrorMenu::fehlerMenue;
 }
 
-FehlerMenue::FehlerMenue(string fehlerText) {
+ErrorMenu::ErrorMenu(string fehlerText) {
 	pthread_mutex_init(&this->mutexWait, NULL);
 	pthread_cond_init(&this->condWait, NULL);
 
@@ -61,44 +61,44 @@ FehlerMenue::FehlerMenue(string fehlerText) {
 	this->textFehler->sichtbarkeit(true);
 
 	this->buttonOk = new Button(254, 220, "Ok");
-	this->buttonOk->setzeBeimKlicken(&FehlerMenue::ok);
+	this->buttonOk->setzeBeimKlicken(&ErrorMenu::ok);
 
 	this->hintergrund->fuegeUnterElementHinzu(this->textFehler);
 	this->hintergrund->fuegeUnterElementHinzu(this->buttonOk);
 }
 
-FehlerMenue::~FehlerMenue() {
+ErrorMenu::~ErrorMenu() {
 	pthread_mutex_destroy(&this->mutexWait);
 	pthread_cond_destroy(&this->condWait);
 }
 
-void FehlerMenue::zeigeFehlerMenue() {
+void ErrorMenu::showErrorMenu() {
 	GrafikHandler::gebeGrafikHandler()->setzeAnzeigeElement(
-			FehlerMenue::fehlerMenue->hintergrund);
+			ErrorMenu::fehlerMenue->hintergrund);
 
 	while (true) {
 #if defined _WIN32 || defined __CYGWIN__
 		string input = "";
 		getline(cin, input);
 
-		FehlerMenue::fehlerMenue->buttonOk->beimKlicken(0);
+		ErrorMenu::fehlerMenue->buttonOk->beimKlicken(0);
 #else
-		pthread_mutex_lock(&FehlerMenue::fehlerMenue->mutexWait);
-		pthread_cond_wait(&FehlerMenue::fehlerMenue->condWait,
-				&FehlerMenue::fehlerMenue->mutexWait);
-		pthread_mutex_unlock(&FehlerMenue::fehlerMenue->mutexWait);
+		pthread_mutex_lock(&ErrorMenu::fehlerMenue->mutexWait);
+		pthread_cond_wait(&ErrorMenu::fehlerMenue->condWait,
+				&ErrorMenu::fehlerMenue->mutexWait);
+		pthread_mutex_unlock(&ErrorMenu::fehlerMenue->mutexWait);
 #endif
 
-		FehlerMenue::fehlerMenue->hintergrund->setzeTastaturAnzeigen(false);
-		FehlerMenue::fehlerMenue->textFehler->sichtbarkeit(false);
-		FehlerMenue::fehlerMenue->buttonOk->sichtbarkeit(false);
+		ErrorMenu::fehlerMenue->hintergrund->setzeTastaturAnzeigen(false);
+		ErrorMenu::fehlerMenue->textFehler->sichtbarkeit(false);
+		ErrorMenu::fehlerMenue->buttonOk->sichtbarkeit(false);
 
 		exit(0);
 	}
 }
 
-void FehlerMenue::ok() {
-	pthread_mutex_lock(&FehlerMenue::fehlerMenue->mutexWait);
-	pthread_cond_signal(&FehlerMenue::fehlerMenue->condWait);
-	pthread_mutex_unlock(&FehlerMenue::fehlerMenue->mutexWait);
+void ErrorMenu::ok() {
+	pthread_mutex_lock(&ErrorMenu::fehlerMenue->mutexWait);
+	pthread_cond_signal(&ErrorMenu::fehlerMenue->condWait);
+	pthread_mutex_unlock(&ErrorMenu::fehlerMenue->mutexWait);
 }

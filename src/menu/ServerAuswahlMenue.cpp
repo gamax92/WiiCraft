@@ -164,7 +164,7 @@ void ServerAuswahlMenue::zeigeServerAuswahlMenue() {
 		} catch (ExcSocketHTTPServerLoginFehlgeschlagen &exception) {
 
 			ServerAuswahlMenue::serverAuswahlMenue->textFehler->setzeText(
-					exception.gebeFehler());
+					exception.getFehler());
 			ServerAuswahlMenue::serverAuswahlMenue->hintergrund->setzeTastaturAnzeigen(
 					true);
 			ServerAuswahlMenue::serverAuswahlMenue->textFehler->sichtbarkeit(

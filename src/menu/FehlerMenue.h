@@ -43,16 +43,16 @@ class Hintergrund;
 class Text;
 class Button;
 
-class FehlerMenue {
+class ErrorMenu {
 public:
-	static void initialisiere(string fehlerText);
+	static void initialize(string fehlerText);
 	static void deinitialisiere();
-	static void zeigeFehlerMenue();
+	static void showErrorMenu();
 	static void ok();
 private:
-	static FehlerMenue *fehlerMenue;
-	FehlerMenue(string fehlerText);
-	~FehlerMenue();
+	static ErrorMenu *fehlerMenue;
+	ErrorMenu(string fehlerText);
+	~ErrorMenu();
 
 	Hintergrund *hintergrund;
 	Text *textFehler;

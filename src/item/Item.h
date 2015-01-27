@@ -36,9 +36,9 @@ class Item {
 public:
 	virtual ~Item();
 	virtual Item *gebeInstanz() = 0;
-	bool istZerstoerbar();
+	bool isDestructible();
 	short gebeItemId();
-	void setzeHaltbarkeit(int _haltbarkeit);
+	void setDurability(int _haltbarkeit);
 protected:
 	short id;
 	int maximaleHaltbarkeit;

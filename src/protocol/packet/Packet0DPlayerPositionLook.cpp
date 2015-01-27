@@ -98,8 +98,8 @@ void Packet0DPlayerPositionLook::verarbeitePacket() {
 	delete[] buffer;
 #endif
 
-	Spieler::getSpieler()->setzeHaltung(this->stance);
-	Spieler::getSpieler()->setzeBlickfeld(this->yaw, this->pitch);
-	Spieler::getSpieler()->setzeAufBoden(this->onGround);
-	Spieler::getSpieler()->setzeKoordinaten(this->x, this->y, this->z);
+	Player::getPlayer()->setHaltung(this->stance);
+	Player::getPlayer()->setBlickfeld(this->yaw, this->pitch);
+	Player::getPlayer()->setOnGround(this->onGround);
+	Player::getPlayer()->setCoordinates(this->x, this->y, this->z);
 }

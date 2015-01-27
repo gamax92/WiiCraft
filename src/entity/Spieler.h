@@ -34,64 +34,64 @@
 
 namespace std {
 
-class SpielerBewegungSendenThread;
+class PlayerMotionSendingThread;
 
-class Spieler: public Entity {
+class Player: public Entity {
 public:
-	static void initialisiereSpieler(int entityId);
-	static Spieler *getSpieler();
+	static void initializePlayer(int entityId);
+	static Player *getPlayer();
 
-	void setzeKoordinaten(double _x, double _y, double _z);
-	void setzeBlickfeld(float _winkel, float _abstand);
-	void setzeHaltung(double _haltung);
-	void setzeAufBoden(bool _istAufBoden);
-	void setzeFaehigkeit(bool _istFliegend, bool _istFliegenMoeglich,
-			bool _istEinfachesAbbauenAktiv, bool _istUnverwundbar);
+	void setCoordinates(double _x, double _y, double _z);
+	void setBlickfeld(float _winkel, float _abstand);
+	void setHaltung(double _haltung);
+	void setOnGround(bool _isOnGround);
+	void setFaehigkeit(bool _isFlying, bool _isFliegenMoeglich,
+			bool _isEinfachesAbbauenAktiv, bool _isInvulnerable);
 
-	double gebeHaltung();
-	float gebeWinkel();
-	float gebeAbstand();
-	bool gebeIstAufBoden();
-	bool gebeIstFliegend();
-	bool gebeIstFliegenMoeglich();
-	bool gebeIstEinfachesAbbauenAktiv();
-	bool gebeIstUnverwundbar();
+	double getHaltung();
+	float getWinkel();
+	float getAbstand();
+	bool getIsOnGround();
+	bool getIsFlying();
+	bool getIstFliegenMoeglich();
+	bool getIsEinfachesAbbauenAktiv();
+	bool getIsInvulnerable();
 
 	void setzeLebensEnergie(short _lebensEnergie);
 	void setzeSaettigung(short _saettigung);
 	void setzeUeberSaettigung(float _ueberSaettigung);
 
-	void setzeErfahrungsPunkteAktuelleStufe(
-			float _erfahrungsPunkteAktuelleStufe);
+	void setExperiencePointsCurrentLevel(
+			float _experiencePointsCurrentLevel);
 	void setzeLevel(short _level);
-	void setzeErfahrungsPunkteGesamt(short _erfahrungsPunkteGesamt);
+	void setExperiencePointsTotal(short _experiencePointsTotal);
 
 private:
-	static Spieler *spieler;
+	static Player *player;
 
-	SpielerBewegungSendenThread *spielerBewegungSendenThread;
-	bool spielerBewegungSendenThreadGestartet;
+	PlayerMotionSendingThread *playerMotionSendingThread;
+	bool playerMotionSendingThreadStarted;
 
 	double haltung;
 	float winkel;
 	float abstand;
-	bool istAufBoden;
+	bool isOnGround;
 
-	bool istFliegend;
-	bool istFliegenMoeglich;
-	bool istEinfachesAbbauenAktiv;
-	bool istUnverwundbar;
+	bool isFlying;
+	bool isFliegenMoeglich;
+	bool isEinfachesAbbauenAktiv;
+	bool isInvulnerable;
 
 	short lebensEnergie;
 	short saettigung;
 	float ueberSaettigung;
 
-	float erfahrungsPunkteAktuelleStufe;
+	float experiencePointsCurrentLevel;
 	short level;
-	short erfahrungsPunkteGesamt;
+	short experiencePointsTotal;
 
-	Spieler(int entityId);
-	~Spieler();
+	Player(int entityId);
+	~Player();
 };
 }
 #endif /* SPIELER_H_ */
