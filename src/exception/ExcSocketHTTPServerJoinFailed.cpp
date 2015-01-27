@@ -27,25 +27,25 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "ExcSocketHTTPServerJoinFehlgeschlagen.h"
+#include "ExcSocketHTTPServerJoinFailed.h"
 
 #include <cstdio>
 #include "../util/Debug.h"
 
 using namespace std;
 
-ExcSocketHTTPServerJoinFehlgeschlagen::ExcSocketHTTPServerJoinFehlgeschlagen() {
+ExcSocketHTTPServerJoinFailed::ExcSocketHTTPServerJoinFailed() {
 #ifdef DEBUG_ON
 	Debug::schreibeLog("sd:/apps/WiiCraft/exception.log",
-			"ExcSocketHTTPServerJoinFehlgeschlagen\n", Debug::DATEI_ERWEITERN);
+			"ExcSocketHTTPServerJoinFailed\n", Debug::DATEI_ERWEITERN);
 #endif
 }
 
-ExcSocketHTTPServerJoinFehlgeschlagen::ExcSocketHTTPServerJoinFehlgeschlagen(
+ExcSocketHTTPServerJoinFailed::ExcSocketHTTPServerJoinFailed(
 		string nachricht) {
 #ifdef DEBUG_ON
 	char *buffer = new char[1000];
-	sprintf(buffer, "ExcSocketHTTPServerJoinFehlgeschlagen; nachricht=%s\n",
+	sprintf(buffer, "ExcSocketHTTPServerJoinFailed; nachricht=%s\n",
 			nachricht.data());
 	Debug::schreibeLog("sd:/apps/WiiCraft/exception.log", buffer,
 			Debug::DATEI_ERWEITERN);

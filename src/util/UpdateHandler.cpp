@@ -33,7 +33,7 @@
 #include <fstream>
 #include "../net/HTTP.h"
 #include "../exception/ExcSocketHTTP.h"
-#include "../exception/ExcSocketHTTPServerLoginFehlgeschlagen.h"
+#include "../exception/ExcSocketHTTPServerLoginFailed.h"
 #include "../util/Pfad.h"
 #include "../gui/LadeBalken.h"
 
@@ -48,7 +48,7 @@ bool UpdateHandler::istUpdateVorhanden() {
 	try {
 		response = h->get("freielancommunity.de", 80, get);
 	} catch (ExcSocketHTTP &exception) {
-		throw ExcSocketHTTPServerLoginFehlgeschlagen(
+		throw ExcSocketHTTPServerLoginFailed(
 				"Verbindung zu freielancommunity.de nicht moeglich");
 	}
 
@@ -116,7 +116,7 @@ bool UpdateHandler::ladeXML(LadeBalken *l) {
 	try {
 		return h->getFile("freielancommunity.de", 80, get, pfad, l);
 	} catch (ExcSocketHTTP &exception) {
-		throw ExcSocketHTTPServerLoginFehlgeschlagen(
+		throw ExcSocketHTTPServerLoginFailed(
 				"Verbindung zu freielancommunity.de nicht moeglich");
 	}
 
@@ -134,7 +134,7 @@ bool UpdateHandler::ladeIcon(LadeBalken *l) {
 	try {
 		return h->getFile("freielancommunity.de", 80, get, pfad, l);
 	} catch (ExcSocketHTTP &exception) {
-		throw ExcSocketHTTPServerLoginFehlgeschlagen(
+		throw ExcSocketHTTPServerLoginFailed(
 				"Verbindung zu freielancommunity.de nicht moeglich");
 	}
 
@@ -152,7 +152,7 @@ bool UpdateHandler::ladeDol(LadeBalken *l) {
 	try {
 		return h->getFile("freielancommunity.de", 80, get, pfad, l);
 	} catch (ExcSocketHTTP &exception) {
-		throw ExcSocketHTTPServerLoginFehlgeschlagen(
+		throw ExcSocketHTTPServerLoginFailed(
 				"Verbindung zu freielancommunity.de nicht moeglich");
 	}
 

@@ -33,7 +33,7 @@
 #include <cstdlib>
 #include "../../net/DataOutputStream.h"
 #include "../../net/DataInputStream.h"
-#include "../../exception/ExcSocketStringLaengeUeberschritten.h"
+#include "../../exception/ExcSocketStringTooLong.h"
 #include "../PacketManager.h"
 #include "../../util/Debug.h"
 
@@ -79,8 +79,8 @@ void PacketFAPluginmessage::schreibePacketInhalt(DataOutputStream *out) {
 void PacketFAPluginmessage::lesePacketInhalt(DataInputStream *in) {
 	try {
 		this->channel = in->leseString(16);
-	} catch (ExcSocketStringLaengeUeberschritten &exception) {
-		throw ExcSocketStringLaengeUeberschritten(PacketServer::id);
+	} catch (ExcSocketStringTooLong &exception) {
+		throw ExcSocketStringTooLong(PacketServer::id);
 	}
 
 	this->length = in->readShort();

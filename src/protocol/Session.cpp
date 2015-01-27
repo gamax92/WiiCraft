@@ -38,9 +38,9 @@
 #include <sstream>
 #include "../net/HTTP.h"
 #include "../exception/ExcSocketHTTP.h"
-#include "../exception/ExcSocketHTTPServerLoginFehlgeschlagen.h"
-#include "../exception/ExcSocketHTTPServerJoinFehlgeschlagen.h"
-#include "../exception/ExcSocketHTTPServerRefreshFehlgeschlagen.h"
+#include "../exception/ExcSocketHTTPServerLoginFailed.h"
+#include "../exception/ExcSocketHTTPServerJoinFailed.h"
+#include "../exception/ExcSocketHTTPServerRefreshFailed.h"
 #include "../util/ClientInfo.h"
 
 using namespace std;
@@ -66,29 +66,29 @@ void Session::anmelden(string benutzer, string passwort) {
 	 *try {
 	 *	response = h->get("login.minecraft.net", 80, get);
 	 *} catch (ExcSocketHTTP &exception) {
-	 *	throw ExcSocketHTTPServerLoginFehlgeschlagen(
+	 *	throw ExcSocketHTTPServerLoginFailed(
 	 *			"Verbindung zu login.minecraft.net nicht moeglich");
 	 *}
   **
 	 *if (response == "Old version") {
-	 *	throw ExcSocketHTTPServerLoginFehlgeschlagen("Client-Launcher zu alt");
+	 *	throw ExcSocketHTTPServerLoginFailed("Client-Launcher zu alt");
 	 *} else if (response == "Bad login") {
-	 *	throw ExcSocketHTTPServerLoginFehlgeschlagen("Benutzer oder Passwort falsch");
+	 *	throw ExcSocketHTTPServerLoginFailed("Benutzer oder Passwort falsch");
 	 *}
   **
 	 *short pos1 = response.find(':');
 	 *if ((unsigned) pos1 == string::npos) {
-	 *	throw ExcSocketHTTPServerLoginFehlgeschlagen("Login Fehler #1");
+	 *	throw ExcSocketHTTPServerLoginFailed("Login Fehler #1");
 	 *}
   **
 	 *short pos2 = response.find(':', pos1 + 1);
 	 *if ((unsigned) pos2 == string::npos) {
-	 *	throw ExcSocketHTTPServerLoginFehlgeschlagen("Login Fehler #2");
+	 *	throw ExcSocketHTTPServerLoginFailed("Login Fehler #2");
 	 *}
   **
 	 *short pos3 = response.find(':', pos2 + 1);
 	 *if ((unsigned) pos3 == string::npos) {
-	 *	throw ExcSocketHTTPServerLoginFehlgeschlagen("Login Fehler #3");
+	 *	throw ExcSocketHTTPServerLoginFailed("Login Fehler #3");
 	 *}
   **
 	 *Session::currentVersion = response.substr(0, pos1);
@@ -100,19 +100,19 @@ void Session::anmelden(string benutzer, string passwort) {
 	 *		|| Session::downloadTicket.length() == 0
 	 *		|| Session::caseCorrectUsername.length() == 0
 	 *		|| Session::sessionId.length() == 0) {
-	 *	throw ExcSocketHTTPServerLoginFehlgeschlagen("Login Fehler #4");
+	 *	throw ExcSocketHTTPServerLoginFailed("Login Fehler #4");
 	 *}
   **
 	 *std::istringstream s(Session::currentVersion);
 	 *double currentVersionD;
 	 *if (!(s >> currentVersionD)) {
-	 *	throw ExcSocketHTTPServerLoginFehlgeschlagen(
+	 *	throw ExcSocketHTTPServerLoginFailed(
 	 *			"Server-Version konnte nicht erkannt werden");
 	 *}
 	 *std::istringstream c(ClientInfo::clientVersion);
 	 *double clientVersionD;
 	 *if (!(c >> clientVersionD)) {
-	 *	throw ExcSocketHTTPServerLoginFehlgeschlagen(
+	 *	throw ExcSocketHTTPServerLoginFailed(
 	 *			"Client-Version konnte nicht erkannt werden");
 	 *}
   **
@@ -122,14 +122,14 @@ void Session::anmelden(string benutzer, string passwort) {
 	 *	fehler.append(" Client: ");
 		fehler.append(ClientInfo::clientVersion);
 
-		throw ExcSocketHTTPServerLoginFehlgeschlagen(fehler);
+		throw ExcSocketHTTPServerLoginFailed(fehler);
 	} else if (clientVersionD < currentVersionD) {
 		string fehler = "Client-Version zu alt, Server: ";
 		fehler.append(Session::currentVersion);
 		fehler.append(" Client: ");
 		fehler.append(ClientInfo::clientVersion);
 
-		throw ExcSocketHTTPServerLoginFehlgeschlagen(fehler);
+		throw ExcSocketHTTPServerLoginFailed(fehler);
 		}
 	 */
 
@@ -150,7 +150,7 @@ void Session::tretteServerBei(string serverHash) {
 	 *try {
 	 *	response = h->get("session.minecraft.net", 80, get);
 	 *} catch (ExcSocketHTTP &exception) {
-	 *	throw ExcSocketHTTPServerJoinFehlgeschlagen(
+	 *	throw ExcSocketHTTPServerJoinFailed(
 	 *			"Verbindung zu session.minecraft.net nicht moeglich");
 	 *}
   **
@@ -158,7 +158,7 @@ void Session::tretteServerBei(string serverHash) {
 	 *	string ergebnis = "Response: ";
 	 *	ergebnis.append(response);
 
-		throw ExcSocketHTTPServerJoinFehlgeschlagen(ergebnis);
+		throw ExcSocketHTTPServerJoinFailed(ergebnis);
 	}
 	 */
 
@@ -177,7 +177,7 @@ void Session::bleibeVerbunden() {
 	 *	// Rueckgabe wird nicht ausgewertet
 	 *	h->get("login.minecraft.net", 80, get);
 	 *} catch (ExcSocketHTTP &exception) {
-	 *	throw ExcSocketHTTPServerRefreshFehlgeschlagen(
+	 *	throw ExcSocketHTTPServerRefreshFailed(
 				"Verbindung zu login.minecraft.net nicht moeglich");
 	}
 	 */

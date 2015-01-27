@@ -32,7 +32,7 @@
 #include <stddef.h>
 #include <stdlib.h>
 #include "PacketServer.h"
-#include "../exception/ExcPacketUnbekanntesPacket.h"
+#include "../exception/ExcPacketUnknownPacket.h"
 #include "packet/Packet00KeepAlive.h"
 #include "packet/Packet01LoginRequest.h"
 #include "packet/Packet02Handshake.h"
@@ -172,7 +172,7 @@ PacketServer *PacketManager::getInstanz(byte byte) {
 	PacketDummy *paketServer =
 			dynamic_cast<PacketDummy *>(PacketManager::paketListe[byte]);
 	if (paketServer != 0) {
-		throw ExcPacketUnbekanntesPacket(byte);
+		throw ExcPacketUnknownPacket(byte);
 	}
 
 	return PacketManager::paketListe[byte]->gebeInstanz();

@@ -40,7 +40,7 @@
 #include "../gui/Bild.h"
 #include "../gui/GrafikHandler.h"
 #include "../protocol/Session.h"
-#include "../exception/ExcSocketHTTPServerLoginFehlgeschlagen.h"
+#include "../exception/ExcSocketHTTPServerLoginFailed.h"
 #include "../thread/HTTPSessionAktualisierenThread.h"
 
 using namespace std;
@@ -134,7 +134,7 @@ void AnmeldungMenue::zeigeAnmeldungMenue() {
 			Session::anmelden(
 					AnmeldungMenue::anmeldungMenue->textFeldBenutzer->gebeText(),
 					AnmeldungMenue::anmeldungMenue->textFeldPasswort->gebeText());
-		} catch (ExcSocketHTTPServerLoginFehlgeschlagen &exception) {
+		} catch (ExcSocketHTTPServerLoginFailed &exception) {
 
 			AnmeldungMenue::anmeldungMenue->textFehler->setzeText(
 					exception.getFehler());

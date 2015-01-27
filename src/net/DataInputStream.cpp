@@ -32,7 +32,7 @@
 #include <cstdlib>
 #include "Socket.h"
 #include "../util/Endian.h"
-#include "../exception/ExcSocketStringLaengeUeberschritten.h"
+#include "../exception/ExcSocketStringTooLong.h"
 
 using namespace std;
 
@@ -150,7 +150,7 @@ string DataInputStream::leseString(int maxLaenge) {
 	short laenge = this->readShort();
 
 	if (laenge > maxLaenge) {
-		throw ExcSocketStringLaengeUeberschritten(laenge, maxLaenge);
+		throw ExcSocketStringTooLong(laenge, maxLaenge);
 	}
 
 	for (short i = 0; i < laenge; i++) {

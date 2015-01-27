@@ -34,10 +34,10 @@
 
 namespace std {
 
-class ExcSocketHTTPServerJoinFehlgeschlagen: public ExcSocketHTTP {
+class ExcSocketHTTPServerJoinFailed: public ExcSocketHTTP {
 public:
-	ExcSocketHTTPServerJoinFehlgeschlagen(string nachricht);
-	ExcSocketHTTPServerJoinFehlgeschlagen();
+	ExcSocketHTTPServerJoinFailed(string nachricht);
+	ExcSocketHTTPServerJoinFailed();
 };
 
 }

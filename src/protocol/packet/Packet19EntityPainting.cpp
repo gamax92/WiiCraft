@@ -31,7 +31,7 @@
 
 #include <cstdio>
 #include "../../net/DataInputStream.h"
-#include "../../exception/ExcSocketStringLaengeUeberschritten.h"
+#include "../../exception/ExcSocketStringTooLong.h"
 #include "../../entity/Entity.h"
 #include "../PacketManager.h"
 #include "../../util/Debug.h"
@@ -58,8 +58,8 @@ void Packet19EntityPainting::lesePacketInhalt(DataInputStream *in) {
 
 	try {
 		this->title = in->leseString(13);
-	} catch (ExcSocketStringLaengeUeberschritten &exception) {
-		throw ExcSocketStringLaengeUeberschritten(PacketServer::id);
+	} catch (ExcSocketStringTooLong &exception) {
+		throw ExcSocketStringTooLong(PacketServer::id);
 	}
 
 	this->x = in->leseInt();

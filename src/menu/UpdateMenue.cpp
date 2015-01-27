@@ -40,7 +40,7 @@
 #include "../gui/GrafikHandler.h"
 #include "../util/UpdateHandler.h"
 #include "../util/KontrollerHandler.h"
-#include "../exception/ExcSocketHTTPServerLoginFehlgeschlagen.h"
+#include "../exception/ExcSocketHTTPServerLoginFailed.h"
 
 using namespace std;
 
@@ -100,7 +100,7 @@ void UpdateMenue::zeigeUpdateMenue() {
 	bool updateVorhanden;
 	try {
 		updateVorhanden = UpdateHandler::istUpdateVorhanden();
-	} catch (ExcSocketHTTPServerLoginFehlgeschlagen &exception) {
+	} catch (ExcSocketHTTPServerLoginFailed &exception) {
 		updateVorhanden = false;
 	}
 

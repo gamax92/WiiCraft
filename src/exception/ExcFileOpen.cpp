@@ -27,7 +27,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "ExcDateiOeffnen.h"
+#include "ExcFileOpen.h"
 
 #include <cstdio>
 

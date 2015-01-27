@@ -33,7 +33,7 @@
 #include <cstdlib>
 #include "../../net/DataInputStream.h"
 #include "../../entity/Metadata.h"
-#include "../../exception/ExcSocketStringLaengeUeberschritten.h"
+#include "../../exception/ExcSocketStringTooLong.h"
 #include "../../exception/ExcMetadata.h"
 #include "../../entity/Entity.h"
 #include "../PacketManager.h"
@@ -64,8 +64,8 @@ void Packet28EntityMetadata::lesePacketInhalt(DataInputStream *in) {
 	this->entityId = in->leseInt();
 	try {
 		this->entityMetadata = Metadata::leseDaten(in);
-	} catch (ExcSocketStringLaengeUeberschritten &exception) {
-		throw ExcSocketStringLaengeUeberschritten(PacketServer::id);
+	} catch (ExcSocketStringTooLong &exception) {
+		throw ExcSocketStringTooLong(PacketServer::id);
 	} catch (ExcMetadata &exception) {
 		throw ExcMetadata(PacketServer::id);
 	}

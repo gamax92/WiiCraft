@@ -31,7 +31,7 @@
 
 #include <cstdio>
 #include "../../net/DataInputStream.h"
-#include "../../exception/ExcSocketStringLaengeUeberschritten.h"
+#include "../../exception/ExcSocketStringTooLong.h"
 #include "../ServerInfo.h"
 #include "../PacketManager.h"
 #include "../../util/Debug.h"
@@ -56,8 +56,8 @@ bool PacketC9PlayerListItem::registierePacket() {
 void PacketC9PlayerListItem::lesePacketInhalt(DataInputStream *in) {
 	try {
 		this->playerName = in->leseString(16);
-	} catch (ExcSocketStringLaengeUeberschritten &exception) {
-		throw ExcSocketStringLaengeUeberschritten(PacketServer::id);
+	} catch (ExcSocketStringTooLong &exception) {
+		throw ExcSocketStringTooLong(PacketServer::id);
 	}
 
 	this->online = in->leseBoolean();

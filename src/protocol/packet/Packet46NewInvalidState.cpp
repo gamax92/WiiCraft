@@ -32,7 +32,7 @@
 #include <cstdio>
 #include "../../net/DataInputStream.h"
 #include "../../world/Welt.h"
-#include "../../exception/ExcPacketUnbekannerGrund.h"
+#include "../../exception/ExcPacketUnknownReason.h"
 #include "../PacketManager.h"
 #include "../../util/Debug.h"
 
@@ -72,7 +72,7 @@ void Packet46NewInvalidState::verarbeitePacket() {
 		// Credits
 		// wird ignoriert
 	} else {
-		throw ExcPacketUnbekannerGrund(this->reason, this->gameMode);
+		throw ExcPacketUnknownReason(this->reason, this->gameMode);
 	}
 
 #ifdef DEBUG_ON

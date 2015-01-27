@@ -35,10 +35,10 @@
 
 namespace std {
 
-class ExcSocketStringLaengeUeberschritten: public ExcSocket {
+class ExcSocketStringTooLong: public ExcSocket {
 public:
-	ExcSocketStringLaengeUeberschritten(short _laenge, int _maxLaenge);
-	ExcSocketStringLaengeUeberschritten(byte _pbyte);
+	ExcSocketStringTooLong(short _laenge, int _maxLaenge);
+	ExcSocketStringTooLong(byte _pbyte);
 private:
 	short laenge;
 	int maxLaenge;

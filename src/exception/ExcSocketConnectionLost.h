@@ -35,9 +35,9 @@
 
 namespace std {
 
-class ExcSocketVerbindungVerloren: public ExcSocket {
+class ExcSocketConnectionLost: public ExcSocket {
 public:
-	ExcSocketVerbindungVerloren(signed int _errno, string _methode, int _laenge);
+	ExcSocketConnectionLost(signed int _errno, string _methode, int _laenge);
 private:
 	signed int errno;
 	string methode;

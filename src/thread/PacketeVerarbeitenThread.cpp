@@ -31,7 +31,7 @@
 
 #include <cstdio>
 #include "../protocol/PacketServer.h"
-#include "../exception/ExcThreadGestoppt.h"
+#include "../exception/ExcThreadStopped.h"
 #include "../util/Debug.h"
 
 using namespace std;

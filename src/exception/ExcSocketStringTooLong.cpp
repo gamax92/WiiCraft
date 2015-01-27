@@ -27,14 +27,14 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "ExcSocketStringLaengeUeberschritten.h"
+#include "ExcSocketStringTooLong.h"
 
 #include <cstdio>
 #include "../util/Debug.h"
 
 using namespace std;
 
-ExcSocketStringLaengeUeberschritten::ExcSocketStringLaengeUeberschritten(
+ExcSocketStringTooLong::ExcSocketStringTooLong(
 		short _laenge, int _maxLaenge) {
 	this->laenge = _laenge;
 	this->maxLaenge = _maxLaenge;
@@ -42,7 +42,7 @@ ExcSocketStringLaengeUeberschritten::ExcSocketStringLaengeUeberschritten(
 #ifdef DEBUG_ON
 	char *buffer = new char[100];
 	sprintf(buffer,
-			"ExcSocketStringLaengeUeberschritten; laenge=%i, maxLaenge=%i\n",
+			"ExcSocketStringTooLong; laenge=%i, maxLaenge=%i\n",
 			this->laenge, this->maxLaenge);
 	Debug::schreibeLog("sd:/apps/WiiCraft/exception.log", buffer,
 			Debug::DATEI_ERWEITERN);
@@ -50,13 +50,13 @@ ExcSocketStringLaengeUeberschritten::ExcSocketStringLaengeUeberschritten(
 #endif
 }
 
-ExcSocketStringLaengeUeberschritten::ExcSocketStringLaengeUeberschritten(
+ExcSocketStringTooLong::ExcSocketStringTooLong(
 		byte _pbyte) {
 	this->pbyte = _pbyte;
 
 #ifdef DEBUG_ON
 	char *buffer = new char[100];
-	sprintf(buffer, "ExcSocketStringLaengeUeberschritten; id=%i\n",
+	sprintf(buffer, "ExcSocketStringTooLong; id=%i\n",
 			this->pbyte);
 	Debug::schreibeLog("sd:/apps/WiiCraft/exception.log", buffer,
 			Debug::DATEI_ERWEITERN);

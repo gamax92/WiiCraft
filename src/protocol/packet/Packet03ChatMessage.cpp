@@ -32,7 +32,7 @@
 #include <cstdio>
 #include "../../net/DataOutputStream.h"
 #include "../../net/DataInputStream.h"
-#include "../../exception/ExcSocketStringLaengeUeberschritten.h"
+#include "../../exception/ExcSocketStringTooLong.h"
 #include "../../protocol/Chat.h"
 #include "../PacketManager.h"
 #include "../../util/Debug.h"
@@ -68,13 +68,13 @@ void Packet03ChatMessage::schreibePacketInhalt(DataOutputStream *out) {
 void Packet03ChatMessage::lesePacketInhalt(DataInputStream *in) {
 	try {
 		this->message = in->leseString(119);
-	} catch (ExcSocketStringLaengeUeberschritten &exception) {
-		throw ExcSocketStringLaengeUeberschritten(PacketServer::id);
+	} catch (ExcSocketStringTooLong &exception) {
+		throw ExcSocketStringTooLong(PacketServer::id);
 	}
 }
 
 void Packet03ChatMessage::verarbeitePacket() {
-	// Steuerzeichen §
+	// Steuerzeichen ï¿½
 	//this->message.substr(0, 1);
 
 	// Farbcode

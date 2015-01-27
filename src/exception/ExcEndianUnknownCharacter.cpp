@@ -27,18 +27,18 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "ExcEndianUnbekanntesZeichen.h"
+#include "ExcEndianUnknownCharacter.h"
 
 #include <cstdio>
 #include "../util/Debug.h"
 
 using namespace std;
 
-ExcEndianUnbekanntesZeichen::ExcEndianUnbekanntesZeichen(unsigned char c1,
+ExcEndianUnknownCharacter::ExcEndianUnknownCharacter(unsigned char c1,
 		unsigned char c2) {
 #ifdef DEBUG_ON
 	char *buffer = new char[100];
-	sprintf(buffer, "ExcEndianUnbekanntesZeichen; char1=%x, char2=%x\n", c1,
+	sprintf(buffer, "ExcEndianUnknownCharacter; char1=%x, char2=%x\n", c1,
 			c2);
 	Debug::schreibeLog("sd:/apps/WiiCraft/exception.log", buffer,
 			Debug::DATEI_ERWEITERN);

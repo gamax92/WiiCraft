@@ -42,7 +42,7 @@
 #include <ogc/lwp_watchdog.h>
 #endif
 #include "NetzwerkKonfigurator.h"
-#include "../exception/ExcSocketVerbindungVerloren.h"
+#include "../exception/ExcSocketConnectionLost.h"
 
 using namespace std;
 
@@ -104,7 +104,7 @@ int Socket::write(const void *buf, int len) {
 
 	// Verbindung verloren
 	if (anzahlGeschriebeneByte <= 0) {
-		throw ExcSocketVerbindungVerloren(errno, "write", len);
+		throw ExcSocketConnectionLost(errno, "write", len);
 	}
 
 	return anzahlGeschriebeneByte;
@@ -129,7 +129,7 @@ int Socket::read(void *buf, int len) {
 
 	// Verbindung verloren
 	if (anzahlGeleseneByte <= 0) {
-		throw ExcSocketVerbindungVerloren(errno, "read", len);
+		throw ExcSocketConnectionLost(errno, "read", len);
 	}
 
 	return anzahlGeleseneByte;

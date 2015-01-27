@@ -27,27 +27,27 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "ExcSocketHTTPServerLoginFehlgeschlagen.h"
+#include "ExcSocketHTTPServerLoginFailed.h"
 
 #include <cstdio>
 #include "../util/Debug.h"
 
 using namespace std;
 
-ExcSocketHTTPServerLoginFehlgeschlagen::ExcSocketHTTPServerLoginFehlgeschlagen() {
+ExcSocketHTTPServerLoginFailed::ExcSocketHTTPServerLoginFailed() {
 #ifdef DEBUG_ON
 	Debug::schreibeLog("sd:/apps/WiiCraft/exception.log",
-			"ExcSocketHTTPServerLoginFehlgeschlagen\n", Debug::DATEI_ERWEITERN);
+			"ExcSocketHTTPServerLoginFailed\n", Debug::DATEI_ERWEITERN);
 #endif
 }
 
-ExcSocketHTTPServerLoginFehlgeschlagen::ExcSocketHTTPServerLoginFehlgeschlagen(
+ExcSocketHTTPServerLoginFailed::ExcSocketHTTPServerLoginFailed(
 		string _fehler) {
 	this->fehler = _fehler;
 
 #ifdef DEBUG_ON
 	char *buffer = new char[1000];
-	sprintf(buffer, "ExcSocketHTTPServerLoginFehlgeschlagen; nachricht=%s\n",
+	sprintf(buffer, "ExcSocketHTTPServerLoginFailed; nachricht=%s\n",
 			this->fehler.data());
 	Debug::schreibeLog("sd:/apps/WiiCraft/exception.log", buffer,
 			Debug::DATEI_ERWEITERN);

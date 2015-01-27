@@ -32,7 +32,7 @@
 #include <cstdio>
 #include "../../net/DataOutputStream.h"
 #include "../../net/DataInputStream.h"
-#include "../../exception/ExcSocketStringLaengeUeberschritten.h"
+#include "../../exception/ExcSocketStringTooLong.h"
 #include "../../world/Welt.h"
 #include "../PacketManager.h"
 #include "../../util/Debug.h"
@@ -82,8 +82,8 @@ void Packet09Respawn::lesePacketInhalt(DataInputStream *in) {
 
 	try {
 		this->levelType = in->leseString(16);
-	} catch (ExcSocketStringLaengeUeberschritten &exception) {
-		throw ExcSocketStringLaengeUeberschritten(PacketServer::id);
+	} catch (ExcSocketStringTooLong &exception) {
+		throw ExcSocketStringTooLong(PacketServer::id);
 	}
 }
 

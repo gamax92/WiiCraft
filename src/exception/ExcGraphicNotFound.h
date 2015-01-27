@@ -34,9 +34,9 @@
 
 namespace std {
 
-class ExcGrafikNichtGefunden {
+class ExcGraphicNotFound {
 public:
-	ExcGrafikNichtGefunden(string _text);
+	ExcGraphicNotFound(string _text);
 private:
 	string text;
 };

@@ -32,9 +32,9 @@
 
 namespace std {
 
-class ExcEndianUnbekanntesZeichen {
+class ExcEndianUnknownCharacter {
 public:
-	ExcEndianUnbekanntesZeichen(unsigned char c1, unsigned char c2);
+	ExcEndianUnknownCharacter(unsigned char c1, unsigned char c2);
 };
 
 }

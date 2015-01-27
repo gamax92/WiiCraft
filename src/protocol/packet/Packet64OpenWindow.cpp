@@ -31,7 +31,7 @@
 
 #include <cstdio>
 #include "../../net/DataInputStream.h"
-#include "../../exception/ExcSocketStringLaengeUeberschritten.h"
+#include "../../exception/ExcSocketStringTooLong.h"
 #include "../PacketManager.h"
 #include "../../util/Debug.h"
 
@@ -58,8 +58,8 @@ void Packet64OpenWindow::lesePacketInhalt(DataInputStream *in) {
 
 	try {
 		this->windowTitle = in->leseString(32);
-	} catch (ExcSocketStringLaengeUeberschritten &exception) {
-		throw ExcSocketStringLaengeUeberschritten(PacketServer::id);
+	} catch (ExcSocketStringTooLong &exception) {
+		throw ExcSocketStringTooLong(PacketServer::id);
 	}
 
 	this->numberOfSlots = in->readByte();

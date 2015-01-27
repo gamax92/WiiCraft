@@ -27,19 +27,19 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "ExcGrafikNichtGefunden.h"
+#include "ExcGraphicNotFound.h"
 
 #include <cstdio>
 #include "../util/Debug.h"
 
 using namespace std;
 
-ExcGrafikNichtGefunden::ExcGrafikNichtGefunden(string _text) {
+ExcGraphicNotFound::ExcGraphicNotFound(string _text) {
 	this->text = _text;
 
 #ifdef DEBUG_ON
 	char *buffer = new char[100];
-	sprintf(buffer, "ExcGrafikNichtGefunden; name=%s\n", _text.data());
+	sprintf(buffer, "ExcGraphicNotFound; name=%s\n", _text.data());
 	Debug::schreibeLog("sd:/apps/WiiCraft/exception.log", buffer,
 			Debug::DATEI_ERWEITERN);
 	delete[] buffer;

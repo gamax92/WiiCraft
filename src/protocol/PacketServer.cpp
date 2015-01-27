@@ -31,10 +31,10 @@
 
 #include <cstdio>
 #include "../net/DataInputStream.h"
-#include "../exception/ExcSocketVerbindungVerloren.h"
+#include "../exception/ExcSocketConnectionLost.h"
 #include "PacketManager.h"
 #include "../util/Debug.h"
-#include "../exception/ExcPacketUnbekanntesPacket.h"
+#include "../exception/ExcPacketUnknownPacket.h"
 #include "Verbindung.h"
 
 using namespace std;
@@ -50,7 +50,7 @@ bool PacketServer::lesePacket(DataInputStream *in) {
 	PacketServer *p = NULL;
 	try {
 		p = PacketManager::getInstanz(byte);
-	} catch (ExcPacketUnbekanntesPacket &exception) {
+	} catch (ExcPacketUnknownPacket &exception) {
 #ifdef DEBUG_ON
 		char *buffer = new char[100];
 		sprintf(buffer, "unbekanntes Packet gefunden: 0x%x\n",
@@ -59,7 +59,7 @@ bool PacketServer::lesePacket(DataInputStream *in) {
 				Debug::DATEI_ERWEITERN);
 		delete[] buffer;
 #endif
-		throw ExcPacketUnbekanntesPacket(exception.getByte(),
+		throw ExcPacketUnknownPacket(exception.getByte(),
 				PacketServer::letztePacketId);
 	}
 

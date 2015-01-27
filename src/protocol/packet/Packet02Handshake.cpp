@@ -34,8 +34,8 @@
 #include "../../net/DataOutputStream.h"
 #include "../../net/DataInputStream.h"
 #include "Packet01LoginRequest.h"
-#include "../../exception/ExcSocketStringLaengeUeberschritten.h"
-#include "../../exception/ExcSocketHTTPServerJoinFehlgeschlagen.h"
+#include "../../exception/ExcSocketStringTooLong.h"
+#include "../../exception/ExcSocketHTTPServerJoinFailed.h"
 #include "../Session.h"
 #include "../../util/ClientInfo.h"
 #include "../PacketManager.h"
@@ -72,8 +72,8 @@ void Packet02Handshake::schreibePacketInhalt(DataOutputStream *out) {
 void Packet02Handshake::lesePacketInhalt(DataInputStream *in) {
 	try {
 		this->connectionHash = in->leseString(32);
-	} catch (ExcSocketStringLaengeUeberschritten &exception) {
-		throw ExcSocketStringLaengeUeberschritten(PacketServer::id);
+	} catch (ExcSocketStringTooLong &exception) {
+		throw ExcSocketStringTooLong(PacketServer::id);
 	}
 }
 

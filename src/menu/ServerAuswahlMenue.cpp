@@ -42,7 +42,7 @@
 #include "../gui/Bild.h"
 #include "../gui/GrafikHandler.h"
 #include "../protocol/Session.h"
-#include "../exception/ExcSocketHTTPServerLoginFehlgeschlagen.h"
+#include "../exception/ExcSocketHTTPServerLoginFailed.h"
 
 using namespace std;
 
@@ -158,10 +158,10 @@ void ServerAuswahlMenue::zeigeServerAuswahlMenue() {
 				PacketClient *p = new Packet02Handshake(benutzerUndHost);
 				Verbindung::zuVerschickendenPacketenHinzufuegen(p);
 			} else {
-				throw ExcSocketHTTPServerLoginFehlgeschlagen(
+				throw ExcSocketHTTPServerLoginFailed(
 						"Verbindung zum Server konnte nicht hergestellt werden.");
 			}
-		} catch (ExcSocketHTTPServerLoginFehlgeschlagen &exception) {
+		} catch (ExcSocketHTTPServerLoginFailed &exception) {
 
 			ServerAuswahlMenue::serverAuswahlMenue->textFehler->setzeText(
 					exception.getFehler());

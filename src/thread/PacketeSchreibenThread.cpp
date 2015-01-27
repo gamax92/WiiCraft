@@ -33,7 +33,7 @@
 #include "../net/Socket.h"
 #include "../net/DataOutputStream.h"
 #include "../protocol/PacketClient.h"
-#include "../exception/ExcThreadGestoppt.h"
+#include "../exception/ExcThreadStopped.h"
 #include "../util/Debug.h"
 
 using namespace std;

@@ -32,7 +32,7 @@
 #include <cstdio>
 #include "../../net/DataOutputStream.h"
 #include "../../net/DataInputStream.h"
-#include "../../exception/ExcSocketStringLaengeUeberschritten.h"
+#include "../../exception/ExcSocketStringTooLong.h"
 #include "../../entity/Spieler.h"
 #include "../../world/Welt.h"
 #include "../../protocol/Chat.h"
@@ -82,14 +82,14 @@ void Packet01LoginRequest::lesePacketInhalt(DataInputStream *in) {
 
 	try {
 		in->leseString(16);
-	} catch (ExcSocketStringLaengeUeberschritten &exception) {
-		throw ExcSocketStringLaengeUeberschritten(PacketServer::id);
+	} catch (ExcSocketStringTooLong &exception) {
+		throw ExcSocketStringTooLong(PacketServer::id);
 	}
 
 	try {
 		this->levelType = in->leseString(16);
-	} catch (ExcSocketStringLaengeUeberschritten &exception) {
-		throw ExcSocketStringLaengeUeberschritten(PacketServer::id);
+	} catch (ExcSocketStringTooLong &exception) {
+		throw ExcSocketStringTooLong(PacketServer::id);
 	}
 
 	this->serverMode = in->leseInt();

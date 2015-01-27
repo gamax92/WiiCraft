@@ -35,7 +35,7 @@
 #include <fat.h>
 #include <stdio.h>
 #endif
-#include "../exception/ExcDateiOeffnen.h"
+#include "../exception/ExcFileOpen.h"
 
 using namespace std;
 

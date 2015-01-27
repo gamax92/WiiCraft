@@ -27,7 +27,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "ExcItemUnbekanntesItem.h"
+#include "ExcItemUnknownItem.h"
 
 #include <cstdio>
 #include "../util/Debug.h"
@@ -39,7 +39,7 @@ ExcItemUnknownItem::ExcItemUnknownItem(short _itemId) {
 
 #ifdef DEBUG_ON
 	char *buffer = new char[100];
-	sprintf(buffer, "ExcItemUnbekanntesItem; id=%i\n", this->itemId);
+	sprintf(buffer, "ExcItemUnknownItem; id=%i\n", this->itemId);
 	Debug::schreibeLog("sd:/apps/WiiCraft/exception.log", buffer,
 			Debug::DATEI_ERWEITERN);
 	delete[] buffer;

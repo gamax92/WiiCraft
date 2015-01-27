@@ -27,19 +27,19 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "ExcThreadGestoppt.h"
+#include "ExcThreadStopped.h"
 
 #include <cstdio>
 #include "../util/Debug.h"
 
 using namespace std;
 
-ExcThreadGestoppt::ExcThreadGestoppt(string _threadName) {
+ExcThreadStopped::ExcThreadStopped(string _threadName) {
 	this->threadName = _threadName;
 
 #ifdef DEBUG_ON
 	char *buffer = new char[100];
-	sprintf(buffer, "ExcThreadGestoppt; name=%s\n", _threadName.data());
+	sprintf(buffer, "ExcThreadStopped; name=%s\n", _threadName.data());
 	Debug::schreibeLog("sd:/apps/WiiCraft/exception.log", buffer,
 			Debug::DATEI_ERWEITERN);
 	delete[] buffer;

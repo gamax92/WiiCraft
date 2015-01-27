@@ -32,7 +32,7 @@
 #include "../../net/DataOutputStream.h"
 #include "../../net/DataInputStream.h"
 #include "../Verbindung.h"
-#include "../../exception/ExcSocketStringLaengeUeberschritten.h"
+#include "../../exception/ExcSocketStringTooLong.h"
 #include "../PacketManager.h"
 #include "../../util/Debug.h"
 
@@ -69,8 +69,8 @@ void PacketFFDisconnectKick::schreibePacketInhalt(DataOutputStream *out) {
 void PacketFFDisconnectKick::lesePacketInhalt(DataInputStream *in) {
 	try {
 		this->reason = in->leseString(256);
-	} catch (ExcSocketStringLaengeUeberschritten &exception) {
-		throw ExcSocketStringLaengeUeberschritten(PacketServer::id);
+	} catch (ExcSocketStringTooLong &exception) {
+		throw ExcSocketStringTooLong(PacketServer::id);
 	}
 }
 

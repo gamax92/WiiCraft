@@ -32,7 +32,7 @@
 #include <cstdio>
 #include "../../net/DataOutputStream.h"
 #include "../../net/DataInputStream.h"
-#include "../../exception/ExcSocketStringLaengeUeberschritten.h"
+#include "../../exception/ExcSocketStringTooLong.h"
 #include "../PacketManager.h"
 #include "../../util/Debug.h"
 
@@ -87,8 +87,8 @@ void Packet82UpdateSign::lesePacketInhalt(DataInputStream *in) {
 		this->text2 = in->leseString(15);
 		this->text3 = in->leseString(15);
 		this->text4 = in->leseString(15);
-	} catch (ExcSocketStringLaengeUeberschritten &exception) {
-		throw ExcSocketStringLaengeUeberschritten(PacketServer::id);
+	} catch (ExcSocketStringTooLong &exception) {
+		throw ExcSocketStringTooLong(PacketServer::id);
 	}
 }
 

@@ -32,7 +32,7 @@
 #if defined _WIN32 || defined __CYGWIN__
 #include "WiiFunction.h"
 #endif
-#include "../exception/ExcEndianUnbekanntesZeichen.h"
+#include "../exception/ExcEndianUnknownCharacter.h"
 
 using namespace std;
 
@@ -288,6 +288,6 @@ char Endian::getSpezialChar(unsigned short c) {
 		} dat;
 
 		dat.c = c;
-		throw ExcEndianUnbekanntesZeichen(dat.b[0], dat.b[1]);
+		throw ExcEndianUnknownCharacter(dat.b[0], dat.b[1]);
 	}
 }

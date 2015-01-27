@@ -35,10 +35,10 @@
 
 namespace std {
 
-class ExcPacketUnbekanntesPacket: public ExcPacket {
+class ExcPacketUnknownPacket: public ExcPacket {
 public:
-	ExcPacketUnbekanntesPacket(byte _pbyte);
-	ExcPacketUnbekanntesPacket(byte _pbyte, byte _lbyte);
+	ExcPacketUnknownPacket(byte _pbyte);
+	ExcPacketUnknownPacket(byte _pbyte, byte _lbyte);
 	byte getByte();
 private:
 	byte pbyte;

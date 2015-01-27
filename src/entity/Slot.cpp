@@ -34,7 +34,7 @@
 #include "../item/ItemManager.h"
 #include "../item/Item.h"
 #include "../item/item/Item166Karte.h"
-#include "../exception/ExcItemUnbekanntesItem.h"
+#include "../exception/ExcItemUnknownItem.h"
 #include "../exception/ExcSlot.h"
 #include "../menu/FehlerMenue.h"
 #include "../util/Debug.h"

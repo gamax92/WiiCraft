@@ -27,26 +27,26 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "ExcSocketHTTPServerRefreshFehlgeschlagen.h"
+#include "ExcSocketHTTPServerRefreshFailed.h"
 
 #include <cstdio>
 #include "../util/Debug.h"
 
 using namespace std;
 
-ExcSocketHTTPServerRefreshFehlgeschlagen::ExcSocketHTTPServerRefreshFehlgeschlagen() {
+ExcSocketHTTPServerRefreshFailed::ExcSocketHTTPServerRefreshFailed() {
 #ifdef DEBUG_ON
 	Debug::schreibeLog("sd:/apps/WiiCraft/exception.log",
-			"ExcSocketHTTPServerRefreshFehlgeschlagen\n",
+			"ExcSocketHTTPServerRefreshFailed\n",
 			Debug::DATEI_ERWEITERN);
 #endif
 }
 
-ExcSocketHTTPServerRefreshFehlgeschlagen::ExcSocketHTTPServerRefreshFehlgeschlagen(
+ExcSocketHTTPServerRefreshFailed::ExcSocketHTTPServerRefreshFailed(
 		string nachricht) {
 #ifdef DEBUG_ON
 	char *buffer = new char[1000];
-	sprintf(buffer, "ExcSocketHTTPServerRefreshFehlgeschlagen; nachricht=%s\n",
+	sprintf(buffer, "ExcSocketHTTPServerRefreshFailed; nachricht=%s\n",
 			nachricht.data());
 	Debug::schreibeLog("sd:/apps/WiiCraft/exception.log", buffer,
 			Debug::DATEI_ERWEITERN);

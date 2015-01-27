@@ -34,10 +34,10 @@
 
 namespace std {
 
-class ExcSocketHTTPServerRefreshFehlgeschlagen: public ExcSocketHTTP {
+class ExcSocketHTTPServerRefreshFailed: public ExcSocketHTTP {
 public:
-	ExcSocketHTTPServerRefreshFehlgeschlagen(string nachricht);
-	ExcSocketHTTPServerRefreshFehlgeschlagen();
+	ExcSocketHTTPServerRefreshFailed(string nachricht);
+	ExcSocketHTTPServerRefreshFailed();
 };
 
 }

@@ -32,8 +32,8 @@
 #include "../net/Socket.h"
 #include "../net/DataInputStream.h"
 #include "../protocol/PacketServer.h"
-#include "../exception/ExcSocketVerbindungVerloren.h"
-#include "../exception/ExcPacketUnbekanntesPacket.h"
+#include "../exception/ExcSocketConnectionLost.h"
+#include "../exception/ExcPacketUnknownPacket.h"
 #include "../protocol/Verbindung.h"
 
 using namespace std;
@@ -59,11 +59,11 @@ int PacketeLesenThread::exec() {
 
 		try {
 			ok = PacketServer::lesePacket(this->iStream);
-		} catch (ExcSocketVerbindungVerloren &exception) {
+		} catch (ExcSocketConnectionLost &exception) {
 			this->stop();
 			Verbindung::beenden(false);
 			break;
-		} catch (ExcPacketUnbekanntesPacket &exception) {
+		} catch (ExcPacketUnknownPacket &exception) {
 			this->stop();
 			Verbindung::beenden(true);
 			break;

@@ -31,7 +31,7 @@
 
 #include <cmath>
 #include <sstream>
-#include "../exception/ExcGrafikNichtGefunden.h"
+#include "../exception/ExcGraphicNotFound.h"
 #include "Hintergrund.h"
 #include "BlockEngine.h"
 #include "pictures/bildMenueHintergrund.h"

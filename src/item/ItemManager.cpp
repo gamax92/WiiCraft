@@ -33,7 +33,7 @@
 #include <stdlib.h>
 #include "Item.h"
 #include "ItemBlock.h"
-#include "../exception/ExcItemUnbekanntesItem.h"
+#include "../exception/ExcItemUnknownItem.h"
 #include "block/Block001Stein.h"
 #include "block/Block002Gras.h"
 #include "block/Block003Erde.h"

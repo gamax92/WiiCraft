@@ -34,9 +34,9 @@
 
 namespace std {
 
-class ExcThreadGestoppt {
+class ExcThreadStopped {
 public:
-	ExcThreadGestoppt(string _threadName);
+	ExcThreadStopped(string _threadName);
 private:
 	string threadName;
 };

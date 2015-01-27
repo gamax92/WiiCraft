@@ -31,7 +31,7 @@
 
 #include <unistd.h>
 #include "../protocol/Session.h"
-#include "../exception/ExcSocketHTTPServerRefreshFehlgeschlagen.h"
+#include "../exception/ExcSocketHTTPServerRefreshFailed.h"
 
 using namespace std;
 
@@ -69,12 +69,12 @@ int HTTPSessionAktualisierenThread::exec() {
 		if (!this->istGestopped()) {
 			try {
 				Session::bleibeVerbunden();
-			} catch (ExcSocketHTTPServerRefreshFehlgeschlagen &exception) {
+			} catch (ExcSocketHTTPServerRefreshFailed &exception) {
 				ok = false;
 			}
 		}
 
-		// alle 5 Sekunden prüfen ob der Thread beendet werden muss
+		// alle 5 Sekunden prï¿½fen ob der Thread beendet werden muss
 		for (short i = 0; i < 60 && ok; i++) {
 			if (this->istGestopped()) {
 				ok = false;

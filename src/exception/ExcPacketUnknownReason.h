@@ -35,9 +35,9 @@
 
 namespace std {
 
-class ExcPacketUnbekannerGrund: public ExcPacket {
+class ExcPacketUnknownReason: public ExcPacket {
 public:
-	ExcPacketUnbekannerGrund(byte _grund, byte _aenderung);
+	ExcPacketUnknownReason(byte _grund, byte _aenderung);
 private:
 	byte grund;
 	byte aenderung;

@@ -27,14 +27,14 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "ExcSocketVerbindungVerloren.h"
+#include "ExcSocketConnectionLost.h"
 
 #include <cstdio>
 #include "../util/Debug.h"
 
 using namespace std;
 
-ExcSocketVerbindungVerloren::ExcSocketVerbindungVerloren(signed int _errno, string _methode, int _laenge) {
+ExcSocketConnectionLost::ExcSocketConnectionLost(signed int _errno, string _methode, int _laenge) {
 	this->errno = _errno;
 	this->methode = _methode;
 	this->laenge = _laenge;
@@ -291,7 +291,7 @@ ExcSocketVerbindungVerloren::ExcSocketVerbindungVerloren(signed int _errno, stri
 	}
 
 	char *buffer = new char[200];
-	sprintf(buffer, "ExcSocketVerbindungVerloren; errno=%i, text=%s, methode=%s, laenge=%i\n", _errno,
+	sprintf(buffer, "ExcSocketConnectionLost; errno=%i, text=%s, methode=%s, laenge=%i\n", _errno,
 			errtext.data(), _methode.data(), _laenge);
 	Debug::schreibeLog("sd:/apps/WiiCraft/exception.log", buffer,
 			Debug::DATEI_ERWEITERN);
