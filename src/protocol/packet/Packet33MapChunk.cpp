@@ -32,8 +32,8 @@
 #include <cstdio>
 #include <cstdlib>
 #include "../../net/DataInputStream.h"
-#include "../../world/Welt.h"
-#include "../../world/KomprimierteChunkDaten.h"
+#include "../../world/World.h"
+#include "../../world/CompressedChunkData.h"
 #include "../PacketManager.h"
 #include "../../util/Debug.h"
 

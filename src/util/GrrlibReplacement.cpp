@@ -27,7 +27,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "GrrlibErsatz.h"
+#include "GrrlibReplacement.h"
 
 #include "../gui/GraphicHandler.h"
 

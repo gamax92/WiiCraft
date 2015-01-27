@@ -27,7 +27,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "KontrollerHandler.h"
+#include "ControllerHandler.h"
 
 #include <cstdlib>
 #if defined _WIN32 || defined __CYGWIN__

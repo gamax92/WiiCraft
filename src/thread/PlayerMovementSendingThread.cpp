@@ -27,18 +27,18 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "SpielerBewegungSendenThread.h"
+#include "PlayerMovementSendingThread.h"
 
 #include <unistd.h>
 #include "../entity/Player.h"
-#include "../world/ChunkLaden.h"
+#include "../world/ChunkLoading.h"
 #include "../protocol/PacketClient.h"
 #include "../protocol/packet/Packet0APlayer.h"
 #include "../protocol/packet/Packet0BPlayerPosition.h"
 #include "../protocol/packet/Packet0CPlayerLook.h"
 #include "../protocol/packet/Packet0DPlayerPositionLook.h"
 #include "../protocol/packet/PacketCAPlayerAbilities.h"
-#include "../protocol/Verbindung.h"
+#include "../protocol/Connection.h"
 #include "../util/Debug.h"
 
 using namespace std;

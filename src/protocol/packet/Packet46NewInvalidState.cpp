@@ -31,7 +31,7 @@
 
 #include <cstdio>
 #include "../../net/DataInputStream.h"
-#include "../../world/Welt.h"
+#include "../../world/World.h"
 #include "../../exception/ExcPacketUnknownReason.h"
 #include "../PacketManager.h"
 #include "../../util/Debug.h"

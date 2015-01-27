@@ -29,7 +29,7 @@
 
 #include "ChunkCacheManager.h"
 
-#include "GecachterChunk.h"
+#include "CachedChunk.h"
 #include "Chunk.h"
 
 using namespace std;

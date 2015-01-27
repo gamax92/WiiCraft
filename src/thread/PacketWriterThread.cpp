@@ -27,7 +27,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "PacketeSchreibenThread.h"
+#include "PacketWriterThread.h"
 
 #include <cstdio>
 #include "../net/Socket.h"

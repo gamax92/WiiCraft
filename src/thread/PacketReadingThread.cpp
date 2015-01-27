@@ -27,14 +27,14 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "PacketeLesenThread.h"
+#include "PacketReadingThread.h"
 
 #include "../net/Socket.h"
 #include "../net/DataInputStream.h"
 #include "../protocol/PacketServer.h"
 #include "../exception/ExcSocketConnectionLost.h"
 #include "../exception/ExcPacketUnknownPacket.h"
-#include "../protocol/Verbindung.h"
+#include "../protocol/Connection.h"
 
 using namespace std;
 

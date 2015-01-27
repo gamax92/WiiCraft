@@ -27,10 +27,10 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "KomprimierteChunkDaten.h"
+#include "CompressedChunkData.h"
 
 #include <cmath>
-#include "Welt.h"
+#include "World.h"
 #include "../exception/ExcZip.h"
 #include "../util/Zip.h"
 

@@ -32,7 +32,7 @@
 #include <cstdio>
 #include "../../net/DataOutputStream.h"
 #include "../../net/DataInputStream.h"
-#include "../Verbindung.h"
+#include "../Connection.h"
 #include "../PacketManager.h"
 #include "../../util/Debug.h"
 

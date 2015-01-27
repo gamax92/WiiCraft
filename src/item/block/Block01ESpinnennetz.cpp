@@ -29,7 +29,7 @@
 
 #include "Block01ESpinnennetz.h"
 
-#include "../../util/GrrlibErsatz.h"
+#include "../../util/GrrlibReplacement.h"
 #include "../ItemManager.h"
 
 using namespace std;

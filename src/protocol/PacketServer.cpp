@@ -35,7 +35,7 @@
 #include "PacketManager.h"
 #include "../util/Debug.h"
 #include "../exception/ExcPacketUnknownPacket.h"
-#include "Verbindung.h"
+#include "Connection.h"
 
 using namespace std;
 

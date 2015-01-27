@@ -30,7 +30,7 @@
 #include "Packet02Handshake.h"
 
 #include <cstdio>
-#include "../Verbindung.h"
+#include "../Connection.h"
 #include "../../net/DataOutputStream.h"
 #include "../../net/DataInputStream.h"
 #include "Packet01LoginRequest.h"

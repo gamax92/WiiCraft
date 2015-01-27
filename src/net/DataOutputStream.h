@@ -31,7 +31,7 @@
 #define DATAOUTPUTSTREAM_H_
 
 #include <string>
-#include "../util/Datentypen.h"
+#include "../util/Datentypes.h"
 
 namespace std {
 

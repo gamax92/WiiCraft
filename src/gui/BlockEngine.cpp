@@ -35,11 +35,11 @@
 #else /* __wii__ */
 #include <grrlib.h>
 #endif /* __wii__ */
-#include "../world/Welt.h"
+#include "../world/World.h"
 #include "../entity/Player.h"
-#include "../world/ChunkLaden.h"
+#include "../world/ChunkLoading.h"
 #include "GraphicHandler.h"
-#include "../util/GrrlibErsatz.h"
+#include "../util/GrrlibReplacement.h"
 
 #define PI 3.14159265
 

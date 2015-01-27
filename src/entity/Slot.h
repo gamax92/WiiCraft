@@ -31,7 +31,7 @@
 #define SLOT_H_
 
 #include <vector>
-#include "../util/Datentypen.h"
+#include "../util/Datentypes.h"
 
 namespace std {
 

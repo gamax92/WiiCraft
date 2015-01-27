@@ -30,7 +30,7 @@
 #ifndef EXCMETADATA_H_
 #define EXCMETADATA_H_
 
-#include "../util/Datentypen.h"
+#include "../util/Datentypes.h"
 
 namespace std {
 

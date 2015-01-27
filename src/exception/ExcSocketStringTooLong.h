@@ -31,7 +31,7 @@
 #define EXCSOCKETSTRINGLAENGEUEBERSCHRITTEN_H_
 
 #include "ExcSocket.h"
-#include "../util/Datentypen.h"
+#include "../util/Datentypes.h"
 
 namespace std {
 

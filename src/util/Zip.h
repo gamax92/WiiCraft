@@ -30,7 +30,7 @@
 #ifndef ZIP_H_
 #define ZIP_H_
 
-#include "Datentypen.h"
+#include "Datentypes.h"
 
 namespace std {
 

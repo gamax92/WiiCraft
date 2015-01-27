@@ -41,7 +41,7 @@
 #include <network.h>
 #include <ogc/lwp_watchdog.h>
 #endif
-#include "NetzwerkKonfigurator.h"
+#include "NetworkConfigurator.h"
 #include "../exception/ExcSocketConnectionLost.h"
 
 using namespace std;

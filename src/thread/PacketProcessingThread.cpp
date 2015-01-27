@@ -27,7 +27,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "PacketeVerarbeitenThread.h"
+#include "PacketProcessingThread.h"
 
 #include <cstdio>
 #include "../protocol/PacketServer.h"

@@ -35,7 +35,7 @@
 #else
 #include "../util/pthread.h"
 #endif
-#include "../thread/SpielerBewegungSendenThread.h"
+#include "../thread/PlayerMovementSendingThread.h"
 
 using namespace std;
 

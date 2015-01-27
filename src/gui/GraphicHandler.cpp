@@ -45,11 +45,11 @@
 #include "pictures/cursor4.h"
 #include "pictures/bild_ladebalken.h"
 #include "pictures/bild_button.h"
-#include "../util/KontrollerHandler.h"
+#include "../util/ControllerHandler.h"
 
 #ifdef DEBUG_ON
 #include <time.h>
-#include "../world/Welt.h"
+#include "../world/World.h"
 #include "../entity/Player.h"
 #endif
 

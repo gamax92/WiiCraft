@@ -27,7 +27,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "BlockAenderung.h"
+#include "BlockChange.h"
 
 using namespace std;
 

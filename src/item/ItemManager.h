@@ -30,7 +30,7 @@
 #ifndef ITEMMANAGER_H_
 #define ITEMMANAGER_H_
 
-#include "../util/Datentypen.h"
+#include "../util/Datentypes.h"
 
 namespace std {
 

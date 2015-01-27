@@ -27,7 +27,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Anzeige3D.h"
+#include "Display3D.h"
 
 #include "../gui/BlockEngine.h"
 #include "../gui/Background.h"

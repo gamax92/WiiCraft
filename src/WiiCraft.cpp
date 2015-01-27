@@ -27,10 +27,10 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "util/Pfad.h"
+#include "util/Path.h"
 #include "util/Debug.h"
-#include "thread/SpielThread.h"
-#include "util/KontrollerHandler.h"
+#include "thread/GameThread.h"
+#include "util/ControllerHandler.h"
 #include "gui/GraphicHandler.h"
 #include "protocol/PacketManager.h"
 #include "item/ItemManager.h"

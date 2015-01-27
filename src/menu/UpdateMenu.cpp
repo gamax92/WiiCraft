@@ -27,7 +27,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "UpdateMenue.h"
+#include "UpdateMenu.h"
 
 #include <stdlib.h>
 #if defined _WIN32 || defined __CYGWIN__
@@ -39,7 +39,7 @@
 #include "../gui/Button.h"
 #include "../gui/GraphicHandler.h"
 #include "../util/UpdateHandler.h"
-#include "../util/KontrollerHandler.h"
+#include "../util/ControllerHandler.h"
 #include "../exception/ExcSocketHTTPServerLoginFailed.h"
 
 using namespace std;

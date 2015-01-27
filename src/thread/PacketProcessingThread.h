@@ -37,7 +37,7 @@
 #else
 #include "../util/pthread.h"
 #endif
-#include "../protocol/PacketVergleicher.h"
+#include "../protocol/PacketMatcher.h"
 
 namespace std {
 

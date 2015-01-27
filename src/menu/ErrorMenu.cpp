@@ -27,7 +27,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "FehlerMenue.h"
+#include "ErrorMenu.h"
 
 #if defined _WIN32 || defined __CYGWIN__
 #include <iostream>

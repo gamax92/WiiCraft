@@ -27,13 +27,13 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "ServerAuswahlMenue.h"
+#include "ServerSelectionMenu.h"
 
 #include <cstdlib>
 #if defined _WIN32 || defined __CYGWIN__
 #include <iostream>
 #endif
-#include "../protocol/Verbindung.h"
+#include "../protocol/Connection.h"
 #include "../protocol/packet/Packet02Handshake.h"
 #include "../gui/Background.h"
 #include "../gui/TextField.h"

@@ -30,7 +30,7 @@
 #include "ItemBlock.h"
 
 #include "../gui/GraphicHandler.h"
-#include "../util/GrrlibErsatz.h"
+#include "../util/GrrlibReplacement.h"
 #if defined _WIN32 || defined __CYGWIN__
 #include "../util/WiiFunction.h"
 #else /* __wii__ */

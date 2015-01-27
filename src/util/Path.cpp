@@ -27,7 +27,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Pfad.h"
+#include "Path.h"
 
 #include "Debug.h"
 

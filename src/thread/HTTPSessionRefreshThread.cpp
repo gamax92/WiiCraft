@@ -27,7 +27,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "HTTPSessionAktualisierenThread.h"
+#include "HTTPSessionRefreshThread.h"
 
 #include <unistd.h>
 #include "../protocol/Session.h"

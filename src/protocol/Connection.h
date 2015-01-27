@@ -33,9 +33,9 @@
 #include "../net/Socket.h"
 #include "PacketClient.h"
 #include "PacketServer.h"
-#include "../thread/PacketeLesenThread.h"
-#include "../thread/PacketeSchreibenThread.h"
-#include "../thread/PacketeVerarbeitenThread.h"
+#include "../thread/PacketReadingThread.h"
+#include "../thread/PacketWriterThread.h"
+#include "../thread/PacketProcessingThread.h"
 
 namespace std {
 

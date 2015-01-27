@@ -31,10 +31,10 @@
 
 #include <cstring>
 #include <string.h>
-#include "KomprimierteChunkDaten.h"
-#include "BlockAenderung.h"
-#include "ChunkLaden.h"
-#include "Welt.h"
+#include "CompressedChunkData.h"
+#include "BlockChange.h"
+#include "ChunkLoading.h"
+#include "World.h"
 
 using namespace std;
 

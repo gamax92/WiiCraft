@@ -27,7 +27,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "AnmeldungMenue.h"
+#include "LoginMenu.h"
 
 #if defined _WIN32 || defined __CYGWIN__
 #include <iostream>
@@ -41,7 +41,7 @@
 #include "../gui/GraphicHandler.h"
 #include "../protocol/Session.h"
 #include "../exception/ExcSocketHTTPServerLoginFailed.h"
-#include "../thread/HTTPSessionAktualisierenThread.h"
+#include "../thread/HTTPSessionRefreshThread.h"
 
 using namespace std;
 

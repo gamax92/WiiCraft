@@ -38,7 +38,7 @@
 #else
 #include "../util/pthread.h"
 #endif
-#include "../util/Datentypen.h"
+#include "../util/Datentypes.h"
 
 namespace std {
 

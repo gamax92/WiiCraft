@@ -31,7 +31,7 @@
 #define EXCPAKETUNBEKANNERGRUND_H_
 
 #include "ExcPacket.h"
-#include "../util/Datentypen.h"
+#include "../util/Datentypes.h"
 
 namespace std {
 

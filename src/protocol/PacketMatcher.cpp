@@ -27,7 +27,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "PacketVergleicher.h"
+#include "PacketMatcher.h"
 
 #include "Packet.h"
 

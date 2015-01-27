@@ -31,8 +31,8 @@
 
 #include <cstdio>
 #include "../../net/DataInputStream.h"
-#include "../../world/Welt.h"
-#include "../../world/BlockAenderung.h"
+#include "../../world/World.h"
+#include "../../world/BlockChange.h"
 #include "../PacketManager.h"
 #include "../../util/Debug.h"
 

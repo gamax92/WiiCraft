@@ -32,7 +32,7 @@
 
 #include <map>
 #include <string>
-#include "../util/Datentypen.h"
+#include "../util/Datentypes.h"
 #if defined _WIN32 || defined __CYGWIN__
 #include <pthread.h>
 #else

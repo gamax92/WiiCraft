@@ -31,7 +31,7 @@
 #define KOMPRIMIERTECHUNKDATEN_H_
 
 #include <map>
-#include "../util/Datentypen.h"
+#include "../util/Datentypes.h"
 
 namespace std {
 

@@ -34,7 +34,7 @@
 #include "../net/HTTP.h"
 #include "../exception/ExcSocketHTTP.h"
 #include "../exception/ExcSocketHTTPServerLoginFailed.h"
-#include "../util/Pfad.h"
+#include "../util/Path.h"
 #include "../gui/LoadingBar.h"
 
 using namespace std;

@@ -34,7 +34,7 @@
 #include "../../net/DataInputStream.h"
 #include "../../exception/ExcSocketStringTooLong.h"
 #include "../../entity/Player.h"
-#include "../../world/Welt.h"
+#include "../../world/World.h"
 #include "../../protocol/Chat.h"
 #include "../../protocol/ServerInfo.h"
 #include "../PacketManager.h"

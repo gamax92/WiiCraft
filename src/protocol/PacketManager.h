@@ -30,7 +30,7 @@
 #ifndef PAKETMANAGER_H_
 #define PAKETMANAGER_H_
 
-#include "../util/Datentypen.h"
+#include "../util/Datentypes.h"
 
 namespace std {
 

@@ -32,7 +32,7 @@
 
 #include <map>
 #include <string>
-#include "../util/Datentypen.h"
+#include "../util/Datentypes.h"
 
 namespace std {
 

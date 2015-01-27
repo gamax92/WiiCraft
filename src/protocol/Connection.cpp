@@ -27,7 +27,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Verbindung.h"
+#include "Connection.h"
 
 #include "packet/PacketFFDisconnectKick.h"
 #include "../util/Debug.h"

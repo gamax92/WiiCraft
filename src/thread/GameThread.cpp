@@ -27,17 +27,17 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "SpielThread.h"
+#include "GameThread.h"
 
 #include <unistd.h>
-#include "../protocol/Verbindung.h"
+#include "../protocol/Connection.h"
 #include "../menu/Intro.h"
-#include "../menu/UpdateMenue.h"
-#include "../menu/AnmeldungMenue.h"
-#include "../menu/ServerAuswahlMenue.h"
-#include "../menu/Anzeige3D.h"
-#include "../world/Welt.h"
-#include "../world/ChunkLaden.h"
+#include "../menu/UpdateMenu.h"
+#include "../menu/LoginMenu.h"
+#include "../menu/ServerSelectionMenu.h"
+#include "../menu/Display3D.h"
+#include "../world/World.h"
+#include "../world/ChunkLoading.h"
 #include "../entity/Player.h"
 
 using namespace std;

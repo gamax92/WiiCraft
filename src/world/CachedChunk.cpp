@@ -27,7 +27,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "GecachterChunk.h"
+#include "CachedChunk.h"
 
 #include <stddef.h>
 #if defined _WIN32 || defined __CYGWIN__
@@ -36,7 +36,7 @@
 #include <grrlib.h>
 #endif /* __wii__ */
 #include "Chunk.h"
-#include "Welt.h"
+#include "World.h"
 #include "../item/ItemManager.h"
 
 using namespace std;

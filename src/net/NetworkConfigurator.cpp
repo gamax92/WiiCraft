@@ -27,7 +27,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "NetzwerkKonfigurator.h"
+#include "NetworkConfigurator.h"
 
 #if defined _WIN32 || defined __CYGWIN__
 #elif defined __wii__
