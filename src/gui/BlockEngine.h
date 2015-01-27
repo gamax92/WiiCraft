@@ -41,7 +41,7 @@
 
 namespace std {
 
-class Tastatur;
+class Keyboard;
 
 class BlockEngine: public ContainerElement {
 public:

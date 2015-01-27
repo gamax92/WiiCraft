@@ -30,11 +30,11 @@
 #ifndef ITEMSCHAUFEL_H_
 #define ITEMSCHAUFEL_H_
 
-#include "ItemWerkzeug.h"
+#include "ItemTools.h"
 
 namespace std {
 
-class ItemSchaufel: public ItemWerkzeug {
+class ItemShovel: public ItemTools {
 };
 
 }

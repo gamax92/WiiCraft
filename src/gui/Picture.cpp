@@ -27,9 +27,9 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Bild.h"
+#include "Picture.h"
 
-#include "GrafikHandler.h"
+#include "GraphicHandler.h"
 #if defined _WIN32 || defined __CYGWIN__
 #include "../util/WiiFunction.h"
 #else /* __wii__ */
@@ -45,10 +45,10 @@ Bild::Bild(float _x, float _y, string _textur, float _drehung,
 	this->setzeX(_x);
 	this->setzeY(_y);
 	this->setzeHoehe(
-			GrafikHandler::gebeGrafikHandler()->gebeBild(_textur)->h
+			GraphicHandler::getGraphicHandler()->gebeBild(_textur)->h
 					* _skralierungY);
 	this->setzeBreite(
-			GrafikHandler::gebeGrafikHandler()->gebeBild(_textur)->w
+			GraphicHandler::getGraphicHandler()->gebeBild(_textur)->w
 					* _skralierungX);
 	this->textur = _textur;
 	this->drehung = _drehung;
@@ -62,8 +62,8 @@ Bild::Bild(float _x, float _y, string _textur) {
 
 	this->setzeX(_x);
 	this->setzeY(_y);
-	this->setzeHoehe(GrafikHandler::gebeGrafikHandler()->gebeBild(_textur)->h);
-	this->setzeBreite(GrafikHandler::gebeGrafikHandler()->gebeBild(_textur)->w);
+	this->setzeHoehe(GraphicHandler::getGraphicHandler()->gebeBild(_textur)->h);
+	this->setzeBreite(GraphicHandler::getGraphicHandler()->gebeBild(_textur)->w);
 	this->textur = _textur;
 	this->drehung = 0;
 	this->skralierungX = 1;
@@ -78,7 +78,7 @@ void Bild::zeichneElement() {
 	if (this->istSichtbar()) {
 		GRRLIB_2dMode();
 		GRRLIB_DrawImg(this->gebeX(), this->gebeY(),
-				GrafikHandler::gebeGrafikHandler()->gebeBild(this->textur),
+				GraphicHandler::getGraphicHandler()->gebeBild(this->textur),
 				this->drehung, this->skralierungX, this->skralierungY,
 				this->farbe);
 	}

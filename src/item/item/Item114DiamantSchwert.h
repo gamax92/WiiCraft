@@ -30,11 +30,11 @@
 #ifndef ITEM114DIAMANTSCHWERT_H_
 #define ITEM114DIAMANTSCHWERT_H_
 
-#include "../ItemSchwert.h"
+#include "../ItemSword.h"
 
 namespace std {
 
-class Item114DiamantSchwert: public ItemSchwert {
+class Item114DiamantSchwert: public ItemSword {
 public:
 	Item114DiamantSchwert();
 	Item *gebeInstanz();

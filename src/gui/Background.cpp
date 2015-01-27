@@ -27,10 +27,10 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Hintergrund.h"
+#include "Background.h"
 
-#include "GrafikHandler.h"
-#include "Tastatur.h"
+#include "GraphicHandler.h"
+#include "Keyboard.h"
 #if defined _WIN32 || defined __CYGWIN__
 #include "../util/WiiFunction.h"
 #else /* __wii__ */
@@ -39,37 +39,37 @@
 
 using namespace std;
 
-Hintergrund::Hintergrund() {
+Background::Background() {
 	ContainerElement::setzeStandardWerte();
 
-	this->tastatur = Tastatur::gebeTastatur();
+	this->tastatur = Keyboard::gebeKeyboard();
 	this->setzeX(0);
 	this->setzeY(0);
 	this->setzeHoehe(480);
 	this->setzeBreite(640);
-	this->setzeTastaturAnzeigen(false);
+	this->setzeKeyboardAnzeigen(false);
 
 	this->fuegeUnterElementHinzu(this->tastatur);
 }
 
-Hintergrund::Hintergrund(string _textur) {
+Background::Background(string _textur) {
 	ContainerElement::setzeStandardWerte();
 
-	this->tastatur = Tastatur::gebeTastatur();
+	this->tastatur = Keyboard::gebeKeyboard();
 	this->textur = _textur;
 	this->setzeX(0);
 	this->setzeY(0);
 	this->setzeHoehe(480);
 	this->setzeBreite(640);
-	this->setzeTastaturAnzeigen(false);
+	this->setzeKeyboardAnzeigen(false);
 
 	this->fuegeUnterElementHinzu(this->tastatur);
 }
 
-Hintergrund::~Hintergrund() {
+Background::~Background() {
 }
 
-void Hintergrund::zeichneElement() {
+void Background::zeichneElement() {
 	if (this->istSichtbar()) {
 		GRRLIB_2dMode();
 
@@ -79,7 +79,7 @@ void Hintergrund::zeichneElement() {
 					GRRLIB_DrawImg(
 							breite,
 							hoehe,
-							GrafikHandler::gebeGrafikHandler()->gebeBild(
+							GraphicHandler::getGraphicHandler()->gebeBild(
 									this->textur), 0, 2, 2, 0xFFFFFFFF);
 				}
 			}
@@ -95,10 +95,10 @@ void Hintergrund::zeichneElement() {
 	}
 }
 
-void Hintergrund::setzeTastaturAnzeigen(bool _tastaturAnzeigen) {
+void Background::setzeKeyboardAnzeigen(bool _tastaturAnzeigen) {
 	this->tastatur->sichtbarkeit(_tastaturAnzeigen);
 }
 
-bool Hintergrund::zeigeTastatur() {
+bool Background::zeigeKeyboard() {
 	return this->tastatur->istSichtbar();
 }

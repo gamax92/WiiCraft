@@ -27,7 +27,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Spieler.h"
+#include "Player.h"
 
 #include <stdlib.h>
 #if defined _WIN32 || defined __CYGWIN__

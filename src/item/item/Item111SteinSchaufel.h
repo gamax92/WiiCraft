@@ -30,11 +30,11 @@
 #ifndef ITEM111STEINSCHAUFEL_H_
 #define ITEM111STEINSCHAUFEL_H_
 
-#include "../ItemSchaufel.h"
+#include "../ItemShovel.h"
 
 namespace std {
 
-class Item111SteinSchaufel: public ItemSchaufel {
+class Item111SteinSchaufel: public ItemShovel {
 public:
 	Item111SteinSchaufel();
 	Item *gebeInstanz();

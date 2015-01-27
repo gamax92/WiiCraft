@@ -30,27 +30,27 @@
 #include "Anzeige3D.h"
 
 #include "../gui/BlockEngine.h"
-#include "../gui/Hintergrund.h"
-#include "../gui/GrafikHandler.h"
+#include "../gui/Background.h"
+#include "../gui/GraphicHandler.h"
 
 using namespace std;
 
 Anzeige3D *Anzeige3D::anzeige3D;
 
-void Anzeige3D::initialisiere() {
+void Anzeige3D::initialize() {
 	Anzeige3D::anzeige3D = new Anzeige3D();
 }
 
-void Anzeige3D::deinitialisiere() {
+void Anzeige3D::deinitialize() {
 	delete Anzeige3D::anzeige3D;
 }
 
 Anzeige3D::Anzeige3D() {
 	this->blockEngine = new BlockEngine();
 
-	this->hintergrund = new Hintergrund();
+	this->hintergrund = new Background();
 	this->hintergrund->sichtbarkeit(false);
-	this->hintergrund->setzeTastaturAnzeigen(false);
+	this->hintergrund->setzeKeyboardAnzeigen(false);
 	this->hintergrund->setzeCursorAnzeigen(false);
 
 	this->blockEngine->fuegeUnterElementHinzu(this->hintergrund);
@@ -60,6 +60,6 @@ Anzeige3D::~Anzeige3D() {
 }
 
 void Anzeige3D::zeigeAnzeige3D() {
-	GrafikHandler::gebeGrafikHandler()->setzeAnzeigeElement(
+	GraphicHandler::getGraphicHandler()->setzeAnzeigeElement(
 			Anzeige3D::anzeige3D->blockEngine);
 }

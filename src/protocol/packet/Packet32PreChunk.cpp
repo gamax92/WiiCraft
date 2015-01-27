@@ -60,9 +60,9 @@ void Packet32PreChunk::lesePacketInhalt(DataInputStream *in) {
 
 void Packet32PreChunk::verarbeitePacket() {
 	if (this->mode == 1) {
-		World::gebeWelt()->initialisiereChunk(this->x, this->z);
+		World::getWorld()->initializeChunk(this->x, this->z);
 	} else {
-		World::gebeWelt()->loescheChunk(this->x, this->z);
+		World::getWorld()->loescheChunk(this->x, this->z);
 	}
 
 #ifdef DEBUG_ON

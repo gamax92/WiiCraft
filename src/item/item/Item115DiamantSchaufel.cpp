@@ -44,7 +44,7 @@ bool Item115DiamantSchaufel::registiereItem() {
 }
 
 Item115DiamantSchaufel::Item115DiamantSchaufel() {
-	ItemWerkzeug::setzeStandardWerte();
+	ItemTools::setzeStandardWerte();
 
 	Item::id = 0x115;
 }

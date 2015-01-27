@@ -31,9 +31,9 @@
 
 #include <unistd.h>
 #include <time.h>
-#include "../gui/GrafikHandler.h"
-#include "../gui/Hintergrund.h"
-#include "../gui/Bild.h"
+#include "../gui/GraphicHandler.h"
+#include "../gui/Background.h"
+#include "../gui/Picture.h"
 #include "../gui/Text.h"
 
 using namespace std;
@@ -42,8 +42,8 @@ bool Intro::abbruch = false;
 
 void Intro::zeigeIntro() {
 
-	Hintergrund *h1 = new Hintergrund();
-	Hintergrund *h2 = new Hintergrund();
+	Background *h1 = new Background();
+	Background *h2 = new Background();
 
 	h1->setzeBeimKlicken(&Intro::abbrechen);
 	h2->setzeBeimKlicken(&Intro::abbrechen);
@@ -58,7 +58,7 @@ void Intro::zeigeIntro() {
 	h1->fuegeUnterElementHinzu(t1);
 	h1->fuegeUnterElementHinzu(t2);
 
-	GrafikHandler::gebeGrafikHandler()->setzeAnzeigeElement(h1);
+	GraphicHandler::getGraphicHandler()->setzeAnzeigeElement(h1);
 
 	time_t start;
 	time_t ende;
@@ -75,7 +75,7 @@ void Intro::zeigeIntro() {
 	}
 
 	Intro::abbruch = false;
-	GrafikHandler::gebeGrafikHandler()->setzeAnzeigeElement(h2);
+	GraphicHandler::getGraphicHandler()->setzeAnzeigeElement(h2);
 
 	time(&start);
 

@@ -58,7 +58,7 @@ void Packet04TimeUpdate::lesePacketInhalt(DataInputStream *in) {
 
 void Packet04TimeUpdate::verarbeitePacket() {
 	unsigned short uhrzeit = this->time % 24000;
-	World::gebeWelt()->setzeUhrzeit(uhrzeit);
+	World::getWorld()->setzeUhrzeit(uhrzeit);
 
 #ifdef DEBUG_ON
 	char *buffer = new char[100];

@@ -30,13 +30,13 @@
 #ifndef TEXTELEMENT_H_
 #define TEXTELEMENT_H_
 
-#include "GrafikElement.h"
+#include "GraphicElement.h"
 
 #include <string>
 
 namespace std {
 
-class TextElement: public GrafikElement {
+class TextElement: public GraphicElement {
 public:
 	virtual ~TextElement();
 

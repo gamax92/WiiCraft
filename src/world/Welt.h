@@ -49,11 +49,11 @@ class BlockAenderung;
 class World {
 public:
 	static void calculateChunkPosition(int x, int z, int &chunkX, int &chunkZ);
-	static void initialisiereWelt(int dimension, string levelTyp,
+	static void initializeWorld(int dimension, string levelTyp,
 			byte schwierigkeitsGrad, int serverModus, unsigned short weltHoehe);
-	static World *gebeWelt();
+	static World *getWorld();
 
-	void initialisiereChunk(int x, int z);
+	void initializeChunk(int x, int z);
 	void loescheChunk(int x, int z);
 	void ergaenzeKomprimierteDaten(int chunkX, int chunkZ,
 			KomprimierteChunkDaten *komprimierteDaten);
@@ -65,7 +65,7 @@ public:
 	void setzeRegen(bool _regen);
 	void setzeChunkGeladen(int x, int z, bool laden);
 	bool istChunkGeladen(int x, int z);
-	void gebeChunkPos(int x, int y, int z, byte &xP, byte &yP, byte &zP);
+	void getChunkPos(int x, int y, int z, byte &xP, byte &yP, byte &zP);
 	unsigned short berechneIndex(int x, int y, int z);
 	void berechnePosAusIndex(unsigned short index, int &x, int &y, int &z);
 	void berechneIndex(unsigned short index, int &x, int &y, int &z);
@@ -76,7 +76,7 @@ public:
 	short gebeUhrzeit();
 	string gebeUhrzeitString();
 private:
-	static World *welt;
+	static World *world;
 
 	bool regen;
 	map<int, map<int, Chunk *> > geladeneChunks;
@@ -89,7 +89,7 @@ private:
 	int serverModus;
 	ChunkCacheManager *chunkCacheManager;
 	pthread_mutex_t mutexChunks;
-	pthread_mutex_t mutexGeladeneChunks;
+	pthread_mutex_t mutexLoadedChunks;
 	pthread_mutex_t mutexUhrzeit;
 	pthread_mutex_t mutexWelthoehe;
 

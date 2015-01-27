@@ -40,7 +40,7 @@ class PacketManager {
 public:
 	static PacketServer *getInstanz(byte byte);
 	static void registrierePacket(PacketServer * paket);
-	static void initialisierePacketListe();
+	static void initializePacketListe();
 private:
 	static PacketServer **paketListe;
 };

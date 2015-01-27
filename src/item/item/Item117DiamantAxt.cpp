@@ -44,7 +44,7 @@ bool Item117DiamantAxt::registiereItem() {
 }
 
 Item117DiamantAxt::Item117DiamantAxt() {
-	ItemWerkzeug::setzeStandardWerte();
+	ItemTools::setzeStandardWerte();
 
 	Item::id = 0x117;
 }

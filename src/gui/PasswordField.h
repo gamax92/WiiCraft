@@ -27,8 +27,8 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef PasswortFeld_H_
-#define PasswortFeld_H_
+#ifndef PasswordField_H_
+#define PasswordField_H_
 
 #include "TextElement.h"
 
@@ -36,11 +36,11 @@
 
 namespace std {
 
-class PasswortFeld: public TextElement {
+class PasswordField: public TextElement {
 public:
-	PasswortFeld(float _x, float _y);
-	PasswortFeld(float _x, float _y, string _text);
-	~PasswortFeld();
+	PasswordField(float _x, float _y);
+	PasswordField(float _x, float _y, string _text);
+	~PasswordField();
 	void zeichneElement();
 protected:
 	void berechneAusmasse();
@@ -49,4 +49,4 @@ private:
 };
 
 }
-#endif /* PasswortFeld_H_ */
+#endif /* PasswordField_H_ */

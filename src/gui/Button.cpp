@@ -30,7 +30,7 @@
 #include "Button.h"
 
 #include <cmath>
-#include "GrafikHandler.h"
+#include "GraphicHandler.h"
 #if defined _WIN32 || defined __CYGWIN__
 #include "../util/WiiFunction.h"
 #else /* __wii__ */
@@ -85,7 +85,7 @@ void Button::zeichneElement() {
 		if (_text.size() > 0) {
 			// Bild fuer Buttonanfang
 			GRRLIB_DrawTile(_x, _y,
-					GrafikHandler::gebeGrafikHandler()->gebeBild("bild_button"),
+					GraphicHandler::getGraphicHandler()->gebeBild("bild_button"),
 					0, 1, 1, 0xffffffff, index);
 
 			// dynamische Anzahl an Bilder fuer Buttonmitte
@@ -93,14 +93,14 @@ void Button::zeichneElement() {
 				GRRLIB_DrawTile(
 						_x + 16 + i * 16,
 						_y,
-						GrafikHandler::gebeGrafikHandler()->gebeBild(
+						GraphicHandler::getGraphicHandler()->gebeBild(
 								"bild_button"), 0, 1, 1, 0xffffffff,
 						index + 1 + (i % 10));
 			}
 
 			// Bild fuer Buttonende
 			GRRLIB_DrawTile(_x + this->gebeBreite() - 16, _y,
-					GrafikHandler::gebeGrafikHandler()->gebeBild("bild_button"),
+					GraphicHandler::getGraphicHandler()->gebeBild("bild_button"),
 					0, 1, 1, 0xffffffff, index + 11);
 
 			_text = this->konvertiereAnzeigeText(_text);
@@ -108,13 +108,13 @@ void Button::zeichneElement() {
 			// Textschatten
 			if (!deaktiviert) {
 				GRRLIB_Printf(_x + 17, _y + 5,
-						GrafikHandler::gebeGrafikHandler()->gebeBild("font"),
+						GraphicHandler::getGraphicHandler()->gebeBild("font"),
 						textFarbeSchatten, 1, _text.data());
 			}
 
 			// Text
 			GRRLIB_Printf(_x + 16, _y + 4,
-					GrafikHandler::gebeGrafikHandler()->gebeBild("font"),
+					GraphicHandler::getGraphicHandler()->gebeBild("font"),
 					textFarbe, 1, _text.data());
 		}
 	}

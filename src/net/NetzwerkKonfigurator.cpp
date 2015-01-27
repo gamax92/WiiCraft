@@ -39,12 +39,12 @@ using namespace std;
 char NetzwerkKonfigurator::localip[16];
 char NetzwerkKonfigurator::netmask[16];
 char NetzwerkKonfigurator::gateway[16];
-bool NetzwerkKonfigurator::istInitialisieren;
+bool NetzwerkKonfigurator::istInitializing;
 
-bool NetzwerkKonfigurator::initialisieren() {
+bool NetzwerkKonfigurator::initializing() {
 	signed int ret;
 
-	if (NetzwerkKonfigurator::istInitialisieren) {
+	if (NetzwerkKonfigurator::istInitializing) {
 		return true;
 	}
 
@@ -54,10 +54,10 @@ bool NetzwerkKonfigurator::initialisieren() {
 	ret = 0;
 #endif
 	if (ret >= 0) {
-		NetzwerkKonfigurator::istInitialisieren = true;
+		NetzwerkKonfigurator::istInitializing = true;
 		return true;
 	} else {
-		NetzwerkKonfigurator::istInitialisieren = false;
+		NetzwerkKonfigurator::istInitializing = false;
 		return false;
 	}
 }

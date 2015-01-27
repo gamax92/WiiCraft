@@ -27,6 +27,6 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "ItemSpitzhacke.h"
+#include "ItemPickaxe.h"
 
 using namespace std;

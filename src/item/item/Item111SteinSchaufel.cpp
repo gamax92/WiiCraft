@@ -44,7 +44,7 @@ bool Item111SteinSchaufel::registiereItem() {
 }
 
 Item111SteinSchaufel::Item111SteinSchaufel() {
-	ItemWerkzeug::setzeStandardWerte();
+	ItemTools::setzeStandardWerte();
 
 	Item::id = 0x111;
 }

@@ -30,11 +30,11 @@
 #ifndef ITEM14AEISENTUER_H_
 #define ITEM14AEISENTUER_H_
 
-#include "../ItemTuer.h"
+#include "../ItemDoor.h"
 
 namespace std {
 
-class Item14AEisentuer: public ItemTuer {
+class Item14AEisentuer: public ItemDoor {
 public:
 	Item14AEisentuer();
 	Item *gebeInstanz();

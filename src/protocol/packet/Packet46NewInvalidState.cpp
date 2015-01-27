@@ -63,11 +63,11 @@ void Packet46NewInvalidState::verarbeitePacket() {
 		// Invalid Bed "tile.bed.notValid"
 		// wird ignoriert
 	} else if (this->reason == 1) {
-		World::gebeWelt()->setzeRegen(true);
+		World::getWorld()->setzeRegen(true);
 	} else if (this->reason == 2) {
-		World::gebeWelt()->setzeRegen(false);
+		World::getWorld()->setzeRegen(false);
 	} else if (this->reason == 3) {
-		World::gebeWelt()->setzeServerModus(this->gameMode);
+		World::getWorld()->setzeServerModus(this->gameMode);
 	} else if (this->reason == 4) {
 		// Credits
 		// wird ignoriert

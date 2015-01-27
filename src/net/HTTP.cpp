@@ -39,7 +39,7 @@
 #include <cstring>
 #include "Socket.h"
 #include "../exception/ExcSocketHTTP.h"
-#include "../gui/LadeBalken.h"
+#include "../gui/LoadingBar.h"
 
 using namespace std;
 
@@ -163,7 +163,7 @@ string HTTP::get(string server, short port, string site) {
 	return returnStr;
 }
 
-bool HTTP::getFile(string server, short port, string site, string dateiname, LadeBalken *l) {
+bool HTTP::getFile(string server, short port, string site, string dateiname, LoadingBar *l) {
 	int gelesen = 0;
 	Socket *socket = new Socket();
 

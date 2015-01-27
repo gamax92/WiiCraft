@@ -38,24 +38,24 @@ namespace std {
 
 class ServerInfo {
 public:
-	static void initialisiereServerInfo(byte maximaleAnzahlSpieler);
+	static void initializeServerInfo(byte maximaleAnzahlPlayer);
 	static ServerInfo *gebeServerInfo();
 
-	void aktualisiereSpielerStatus(string _spieler, bool _online, short _ping);
+	void aktualisierePlayerStatus(string _spieler, bool _online, short _ping);
 private:
 	static ServerInfo *serverInfo;
 
-	byte maximaleAnzahlSpieler;
+	byte maximaleAnzahlPlayer;
 
-	ServerInfo(byte _maximaleAnzahlSpieler);
+	ServerInfo(byte _maximaleAnzahlPlayer);
 
-	struct Spieler {
+	struct Player {
 		string spieler;
 		bool online;
 		short ping;
 	};
 
-	map<string, Spieler> spieler;
+	map<string, Player> spieler;
 };
 
 }

@@ -52,7 +52,7 @@ Block012Blaetter::Block012Blaetter() {
 void Block012Blaetter::zeichne(float x, float y, float z, byte meta) {
 	// Wie auch beim Baumstamm entscheidet der Wert ueber die Baumart. Zusaetzlich
 	// springt der Wert auf 8, wenn ein Block neben den Blaettern updated. In
-	// diesem Fall wird ueberprueft, ob die Blaetter decayen sollen. Vom Spieler
+	// diesem Fall wird ueberprueft, ob die Blaetter decayen sollen. Vom Player
 	// platzierte Blaetter haben den Wert 4. Dieser Wert verhindert das Decayen
 	// der Blaetter und ueberschreibt den Wert 8.
 

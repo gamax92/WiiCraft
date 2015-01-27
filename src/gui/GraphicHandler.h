@@ -42,7 +42,7 @@
 #endif /* __wii__ */
 #include "../util/Debug.h"
 
-#include "GrafikElement.h"
+#include "GraphicElement.h"
 
 namespace std {
 
@@ -53,38 +53,38 @@ struct TexturMatrix {
 	f32 t2;
 };
 
-class GrafikHandler: public Thread {
+class GraphicHandler: public Thread {
 public:
 #ifdef DEBUG_ON
 	static int blockAnzahl;
 #endif
 
-	static void initialisiere();
-	static GrafikHandler *gebeGrafikHandler();
+	static void initialize();
+	static GraphicHandler *getGraphicHandler();
 
 	int exec();
 	void stop();
-	virtual ~GrafikHandler();
-	void setzeAnzeigeElement(GrafikElement *neuesElement);
+	virtual ~GraphicHandler();
+	void setzeAnzeigeElement(GraphicElement *neuesElement);
 	GRRLIB_texImg *gebeBild(string name);
 	TexturMatrix gebeTexturMatrix(int nr);
 	void setzeCursorPosition(float x, float y, float angle);
-	void setzeAusgewaehltesElement(GrafikElement *_ausgewaehltesElement);
-	GrafikElement *gebeAusgewaehltesElement();
+	void setzeAusgewaehltesElement(GraphicElement *_ausgewaehltesElement);
+	GraphicElement *gebeAusgewaehltesElement();
 	void gedrueckt(u32 gedrueckt);
 private:
-	static GrafikHandler *grafikHandler;
+	static GraphicHandler *grafikHandler;
 
 	bool gestoppt;
-	GrafikElement *element;
-	GrafikElement *ausgewaehltesElement;
+	GraphicElement *element;
+	GraphicElement *ausgewaehltesElement;
 	map<string, GRRLIB_texImg *> bilder;
 	TexturMatrix *texturMatrix;
 	pthread_mutex_t mutexStop;
 	pthread_mutex_t mutexZeichne;
 
 	bool istGestopped();
-	GrafikHandler();
+	GraphicHandler();
 	void ladeBilder();
 	void ladeTexturMatrix();
 };

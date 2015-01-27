@@ -27,29 +27,29 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Tastatur.h"
+#include "Keyboard.h"
 
 #include <string>
-#include "GrafikHandler.h"
+#include "GraphicHandler.h"
 #include "Button.h"
 
 using namespace std;
 
-bool Tastatur::initialisiert = false;
-Tastatur *Tastatur::tastatur;
+bool Keyboard::initialisiert = false;
+Keyboard *Keyboard::tastatur;
 
-Tastatur::~Tastatur() {
+Keyboard::~Keyboard() {
 }
 
-Tastatur *Tastatur::gebeTastatur() {
-	if (!Tastatur::initialisiert) {
-		Tastatur::tastatur = new Tastatur();
-		Tastatur::initialisiert = true;
+Keyboard *Keyboard::gebeKeyboard() {
+	if (!Keyboard::initialisiert) {
+		Keyboard::tastatur = new Keyboard();
+		Keyboard::initialisiert = true;
 	}
-	return Tastatur::tastatur;
+	return Keyboard::tastatur;
 }
 
-Tastatur::Tastatur() {
+Keyboard::Keyboard() {
 	ContainerElement::setzeStandardWerte();
 
 	this->setzeX(0);
@@ -173,7 +173,7 @@ Tastatur::Tastatur() {
 	buchstabeS = new string(&buchstabe);
 	this->buttonae = new Button(520, 390, *buchstabeS);
 	this->buttonae->deaktivieren(true);
-	//this->buttonsz = new Button(570, 390, "ß");
+	//this->buttonsz = new Button(570, 390, "ï¿½");
 
 	this->buttonGrossKlein = new Button(20, 420, "ABC/abc");
 	this->buttonLeertaste = new Button(200, 420, "                      ");
@@ -184,105 +184,105 @@ Tastatur::Tastatur() {
 
 	// Event hinzufuegen
 	this->buttonAusrufeZeichen->setzeBeimKlicken(
-			&Tastatur::drueckeAusrufeZeichen);
-	this->button1->setzeBeimKlicken(&Tastatur::druecke1);
-	this->buttonAt->setzeBeimKlicken(&Tastatur::drueckeAt);
-	this->button2->setzeBeimKlicken(&Tastatur::druecke2);
-	this->buttonRaute->setzeBeimKlicken(&Tastatur::drueckeRaute);
-	this->button3->setzeBeimKlicken(&Tastatur::druecke3);
-	this->buttonDollar->setzeBeimKlicken(&Tastatur::drueckeDollar);
-	this->button4->setzeBeimKlicken(&Tastatur::druecke4);
-	this->buttonProzent->setzeBeimKlicken(&Tastatur::drueckeProzent);
-	this->button5->setzeBeimKlicken(&Tastatur::druecke5);
-	this->buttonDach->setzeBeimKlicken(&Tastatur::drueckeDach);
-	this->button6->setzeBeimKlicken(&Tastatur::druecke6);
-	this->buttonUnd->setzeBeimKlicken(&Tastatur::drueckeUnd);
-	this->button7->setzeBeimKlicken(&Tastatur::druecke7);
-	this->buttonStern->setzeBeimKlicken(&Tastatur::drueckeStern);
-	this->button8->setzeBeimKlicken(&Tastatur::druecke8);
-	this->buttonKlammerAuf->setzeBeimKlicken(&Tastatur::drueckeKlammerAuf);
-	this->button9->setzeBeimKlicken(&Tastatur::druecke9);
-	this->buttonKlammerZu->setzeBeimKlicken(&Tastatur::drueckeKlammerZu);
-	this->button0->setzeBeimKlicken(&Tastatur::druecke0);
-	this->buttonRueckschritt->setzeBeimKlicken(&Tastatur::drueckeRueckschritt);
+			&Keyboard::drueckeAusrufeZeichen);
+	this->button1->setzeBeimKlicken(&Keyboard::druecke1);
+	this->buttonAt->setzeBeimKlicken(&Keyboard::drueckeAt);
+	this->button2->setzeBeimKlicken(&Keyboard::druecke2);
+	this->buttonRaute->setzeBeimKlicken(&Keyboard::drueckeRaute);
+	this->button3->setzeBeimKlicken(&Keyboard::druecke3);
+	this->buttonDollar->setzeBeimKlicken(&Keyboard::drueckeDollar);
+	this->button4->setzeBeimKlicken(&Keyboard::druecke4);
+	this->buttonProzent->setzeBeimKlicken(&Keyboard::drueckeProzent);
+	this->button5->setzeBeimKlicken(&Keyboard::druecke5);
+	this->buttonDach->setzeBeimKlicken(&Keyboard::drueckeDach);
+	this->button6->setzeBeimKlicken(&Keyboard::druecke6);
+	this->buttonUnd->setzeBeimKlicken(&Keyboard::drueckeUnd);
+	this->button7->setzeBeimKlicken(&Keyboard::druecke7);
+	this->buttonStern->setzeBeimKlicken(&Keyboard::drueckeStern);
+	this->button8->setzeBeimKlicken(&Keyboard::druecke8);
+	this->buttonKlammerAuf->setzeBeimKlicken(&Keyboard::drueckeKlammerAuf);
+	this->button9->setzeBeimKlicken(&Keyboard::druecke9);
+	this->buttonKlammerZu->setzeBeimKlicken(&Keyboard::drueckeKlammerZu);
+	this->button0->setzeBeimKlicken(&Keyboard::druecke0);
+	this->buttonRueckschritt->setzeBeimKlicken(&Keyboard::drueckeRueckschritt);
 
-	this->buttonQ->setzeBeimKlicken(&Tastatur::drueckeQ);
-	this->buttonq->setzeBeimKlicken(&Tastatur::drueckeq);
-	this->buttonW->setzeBeimKlicken(&Tastatur::drueckeW);
-	this->buttonw->setzeBeimKlicken(&Tastatur::drueckew);
-	this->buttonE->setzeBeimKlicken(&Tastatur::drueckeE);
-	this->buttone->setzeBeimKlicken(&Tastatur::drueckee);
-	this->buttonR->setzeBeimKlicken(&Tastatur::drueckeR);
-	this->buttonr->setzeBeimKlicken(&Tastatur::druecker);
-	this->buttonT->setzeBeimKlicken(&Tastatur::drueckeT);
-	this->buttont->setzeBeimKlicken(&Tastatur::druecket);
-	this->buttonY->setzeBeimKlicken(&Tastatur::drueckeY);
-	this->buttony->setzeBeimKlicken(&Tastatur::drueckey);
-	this->buttonU->setzeBeimKlicken(&Tastatur::drueckeU);
-	this->buttonu->setzeBeimKlicken(&Tastatur::drueckeu);
-	this->buttonI->setzeBeimKlicken(&Tastatur::drueckeI);
-	this->buttoni->setzeBeimKlicken(&Tastatur::drueckei);
-	this->buttonO->setzeBeimKlicken(&Tastatur::drueckeO);
-	this->buttono->setzeBeimKlicken(&Tastatur::drueckeo);
-	this->buttonP->setzeBeimKlicken(&Tastatur::drueckeP);
-	this->buttonp->setzeBeimKlicken(&Tastatur::drueckep);
-	this->buttonUnterstrich->setzeBeimKlicken(&Tastatur::drueckeUnterstrich);
-	this->buttonBindestrich->setzeBeimKlicken(&Tastatur::drueckeBindestrich);
-	//this->buttonUe->setzeBeimKlicken(&Tastatur::drueckeUe);
-	//this->buttonue->setzeBeimKlicken(&Tastatur::drueckeue);
+	this->buttonQ->setzeBeimKlicken(&Keyboard::drueckeQ);
+	this->buttonq->setzeBeimKlicken(&Keyboard::drueckeq);
+	this->buttonW->setzeBeimKlicken(&Keyboard::drueckeW);
+	this->buttonw->setzeBeimKlicken(&Keyboard::drueckew);
+	this->buttonE->setzeBeimKlicken(&Keyboard::drueckeE);
+	this->buttone->setzeBeimKlicken(&Keyboard::drueckee);
+	this->buttonR->setzeBeimKlicken(&Keyboard::drueckeR);
+	this->buttonr->setzeBeimKlicken(&Keyboard::druecker);
+	this->buttonT->setzeBeimKlicken(&Keyboard::drueckeT);
+	this->buttont->setzeBeimKlicken(&Keyboard::druecket);
+	this->buttonY->setzeBeimKlicken(&Keyboard::drueckeY);
+	this->buttony->setzeBeimKlicken(&Keyboard::drueckey);
+	this->buttonU->setzeBeimKlicken(&Keyboard::drueckeU);
+	this->buttonu->setzeBeimKlicken(&Keyboard::drueckeu);
+	this->buttonI->setzeBeimKlicken(&Keyboard::drueckeI);
+	this->buttoni->setzeBeimKlicken(&Keyboard::drueckei);
+	this->buttonO->setzeBeimKlicken(&Keyboard::drueckeO);
+	this->buttono->setzeBeimKlicken(&Keyboard::drueckeo);
+	this->buttonP->setzeBeimKlicken(&Keyboard::drueckeP);
+	this->buttonp->setzeBeimKlicken(&Keyboard::drueckep);
+	this->buttonUnterstrich->setzeBeimKlicken(&Keyboard::drueckeUnterstrich);
+	this->buttonBindestrich->setzeBeimKlicken(&Keyboard::drueckeBindestrich);
+	//this->buttonUe->setzeBeimKlicken(&Keyboard::drueckeUe);
+	//this->buttonue->setzeBeimKlicken(&Keyboard::drueckeue);
 
-	this->buttonA->setzeBeimKlicken(&Tastatur::drueckeA);
-	this->buttona->setzeBeimKlicken(&Tastatur::drueckea);
-	this->buttonS->setzeBeimKlicken(&Tastatur::drueckeS);
-	this->buttons->setzeBeimKlicken(&Tastatur::drueckes);
-	this->buttonD->setzeBeimKlicken(&Tastatur::drueckeD);
-	this->buttond->setzeBeimKlicken(&Tastatur::druecked);
-	this->buttonF->setzeBeimKlicken(&Tastatur::drueckeF);
-	this->buttonf->setzeBeimKlicken(&Tastatur::drueckef);
-	this->buttonG->setzeBeimKlicken(&Tastatur::drueckeG);
-	this->buttong->setzeBeimKlicken(&Tastatur::drueckeg);
-	this->buttonH->setzeBeimKlicken(&Tastatur::drueckeH);
-	this->buttonh->setzeBeimKlicken(&Tastatur::drueckeh);
-	this->buttonJ->setzeBeimKlicken(&Tastatur::drueckeJ);
-	this->buttonj->setzeBeimKlicken(&Tastatur::drueckej);
-	this->buttonK->setzeBeimKlicken(&Tastatur::drueckeK);
-	this->buttonk->setzeBeimKlicken(&Tastatur::drueckek);
-	this->buttonL->setzeBeimKlicken(&Tastatur::drueckeL);
-	this->buttonl->setzeBeimKlicken(&Tastatur::drueckel);
-	this->buttonDoppelpunkt->setzeBeimKlicken(&Tastatur::drueckeDoppelpunkt);
-	this->buttonSemikolon->setzeBeimKlicken(&Tastatur::drueckeSemikolon);
+	this->buttonA->setzeBeimKlicken(&Keyboard::drueckeA);
+	this->buttona->setzeBeimKlicken(&Keyboard::drueckea);
+	this->buttonS->setzeBeimKlicken(&Keyboard::drueckeS);
+	this->buttons->setzeBeimKlicken(&Keyboard::drueckes);
+	this->buttonD->setzeBeimKlicken(&Keyboard::drueckeD);
+	this->buttond->setzeBeimKlicken(&Keyboard::druecked);
+	this->buttonF->setzeBeimKlicken(&Keyboard::drueckeF);
+	this->buttonf->setzeBeimKlicken(&Keyboard::drueckef);
+	this->buttonG->setzeBeimKlicken(&Keyboard::drueckeG);
+	this->buttong->setzeBeimKlicken(&Keyboard::drueckeg);
+	this->buttonH->setzeBeimKlicken(&Keyboard::drueckeH);
+	this->buttonh->setzeBeimKlicken(&Keyboard::drueckeh);
+	this->buttonJ->setzeBeimKlicken(&Keyboard::drueckeJ);
+	this->buttonj->setzeBeimKlicken(&Keyboard::drueckej);
+	this->buttonK->setzeBeimKlicken(&Keyboard::drueckeK);
+	this->buttonk->setzeBeimKlicken(&Keyboard::drueckek);
+	this->buttonL->setzeBeimKlicken(&Keyboard::drueckeL);
+	this->buttonl->setzeBeimKlicken(&Keyboard::drueckel);
+	this->buttonDoppelpunkt->setzeBeimKlicken(&Keyboard::drueckeDoppelpunkt);
+	this->buttonSemikolon->setzeBeimKlicken(&Keyboard::drueckeSemikolon);
 	this->buttonAnfuehrungsstriche->setzeBeimKlicken(
-			&Tastatur::drueckeAnfuehrungsstriche);
-	this->buttonHochkomma->setzeBeimKlicken(&Tastatur::drueckeHochkomma);
-	//this->buttonOe->setzeBeimKlicken(&Tastatur::drueckeOe);
-	//this->buttonoe->setzeBeimKlicken(&Tastatur::drueckeoe);
+			&Keyboard::drueckeAnfuehrungsstriche);
+	this->buttonHochkomma->setzeBeimKlicken(&Keyboard::drueckeHochkomma);
+	//this->buttonOe->setzeBeimKlicken(&Keyboard::drueckeOe);
+	//this->buttonoe->setzeBeimKlicken(&Keyboard::drueckeoe);
 
-	this->buttonZ->setzeBeimKlicken(&Tastatur::drueckeZ);
-	this->buttonz->setzeBeimKlicken(&Tastatur::drueckez);
-	this->buttonX->setzeBeimKlicken(&Tastatur::drueckeX);
-	this->buttonx->setzeBeimKlicken(&Tastatur::drueckex);
-	this->buttonC->setzeBeimKlicken(&Tastatur::drueckeC);
-	this->buttonc->setzeBeimKlicken(&Tastatur::drueckec);
-	this->buttonV->setzeBeimKlicken(&Tastatur::drueckeV);
-	this->buttonv->setzeBeimKlicken(&Tastatur::drueckev);
-	this->buttonB->setzeBeimKlicken(&Tastatur::drueckeB);
-	this->buttonb->setzeBeimKlicken(&Tastatur::drueckeb);
-	this->buttonN->setzeBeimKlicken(&Tastatur::drueckeN);
-	this->buttonn->setzeBeimKlicken(&Tastatur::druecken);
-	this->buttonM->setzeBeimKlicken(&Tastatur::drueckeM);
-	this->buttonm->setzeBeimKlicken(&Tastatur::drueckem);
-	this->buttonKleinerAls->setzeBeimKlicken(&Tastatur::drueckeKleinerAls);
-	this->buttonKomma->setzeBeimKlicken(&Tastatur::drueckeKomma);
-	this->buttonGroesserAls->setzeBeimKlicken(&Tastatur::drueckeGroesserAls);
-	this->buttonPunkt->setzeBeimKlicken(&Tastatur::drueckePunkt);
-	this->buttonFragezeichen->setzeBeimKlicken(&Tastatur::drueckeFragezeichen);
-	this->buttonSlash->setzeBeimKlicken(&Tastatur::drueckeSlash);
-	//this->buttonAe->setzeBeimKlicken(&Tastatur::drueckeAe);
-	//this->buttonae->setzeBeimKlicken(&Tastatur::drueckeae);
-	//this->buttonsz->setzeBeimKlicken(&Tastatur::drueckesz);
+	this->buttonZ->setzeBeimKlicken(&Keyboard::drueckeZ);
+	this->buttonz->setzeBeimKlicken(&Keyboard::drueckez);
+	this->buttonX->setzeBeimKlicken(&Keyboard::drueckeX);
+	this->buttonx->setzeBeimKlicken(&Keyboard::drueckex);
+	this->buttonC->setzeBeimKlicken(&Keyboard::drueckeC);
+	this->buttonc->setzeBeimKlicken(&Keyboard::drueckec);
+	this->buttonV->setzeBeimKlicken(&Keyboard::drueckeV);
+	this->buttonv->setzeBeimKlicken(&Keyboard::drueckev);
+	this->buttonB->setzeBeimKlicken(&Keyboard::drueckeB);
+	this->buttonb->setzeBeimKlicken(&Keyboard::drueckeb);
+	this->buttonN->setzeBeimKlicken(&Keyboard::drueckeN);
+	this->buttonn->setzeBeimKlicken(&Keyboard::druecken);
+	this->buttonM->setzeBeimKlicken(&Keyboard::drueckeM);
+	this->buttonm->setzeBeimKlicken(&Keyboard::drueckem);
+	this->buttonKleinerAls->setzeBeimKlicken(&Keyboard::drueckeKleinerAls);
+	this->buttonKomma->setzeBeimKlicken(&Keyboard::drueckeKomma);
+	this->buttonGroesserAls->setzeBeimKlicken(&Keyboard::drueckeGroesserAls);
+	this->buttonPunkt->setzeBeimKlicken(&Keyboard::drueckePunkt);
+	this->buttonFragezeichen->setzeBeimKlicken(&Keyboard::drueckeFragezeichen);
+	this->buttonSlash->setzeBeimKlicken(&Keyboard::drueckeSlash);
+	//this->buttonAe->setzeBeimKlicken(&Keyboard::drueckeAe);
+	//this->buttonae->setzeBeimKlicken(&Keyboard::drueckeae);
+	//this->buttonsz->setzeBeimKlicken(&Keyboard::drueckesz);
 
-	this->buttonGrossKlein->setzeBeimKlicken(&Tastatur::drueckeGrossKlein);
-	this->buttonLeertaste->setzeBeimKlicken(&Tastatur::drueckeLeertaste);
+	this->buttonGrossKlein->setzeBeimKlicken(&Keyboard::drueckeGrossKlein);
+	this->buttonLeertaste->setzeBeimKlicken(&Keyboard::drueckeLeertaste);
 
 	// Button hinzufuegen
 	this->fuegeUnterElementHinzu(this->buttonAusrufeZeichen);
@@ -385,13 +385,13 @@ Tastatur::Tastatur() {
 	this->fuegeUnterElementHinzu(this->buttonLeertaste);
 }
 
-void Tastatur::zeichneElement() {
+void Keyboard::zeichneElement() {
 	if (this->istSichtbar()) {
 		this->zeichneUnterElement();
 	}
 }
 
-void Tastatur::aendereGrossKlein() {
+void Keyboard::aendereGrossKlein() {
 	this->kleinSchreiben = !this->kleinSchreiben;
 
 	if (this->kleinSchreiben) {
@@ -585,189 +585,189 @@ void Tastatur::aendereGrossKlein() {
 	}
 }
 
-void Tastatur::drueckeAusrufeZeichen() {
+void Keyboard::drueckeAusrufeZeichen() {
 	TextElement *textElement =
-			dynamic_cast<TextElement *>(GrafikHandler::gebeGrafikHandler()->gebeAusgewaehltesElement());
+			dynamic_cast<TextElement *>(GraphicHandler::getGraphicHandler()->gebeAusgewaehltesElement());
 	if (textElement != 0) {
 		string text = textElement->gebeText();
 		text.append("!");
 		textElement->setzeText(text);
 	}
 }
-void Tastatur::druecke1() {
+void Keyboard::druecke1() {
 	TextElement *textElement =
-			dynamic_cast<TextElement *>(GrafikHandler::gebeGrafikHandler()->gebeAusgewaehltesElement());
+			dynamic_cast<TextElement *>(GraphicHandler::getGraphicHandler()->gebeAusgewaehltesElement());
 	if (textElement != 0) {
 		string text = textElement->gebeText();
 		text.append("1");
 		textElement->setzeText(text);
 	}
 }
-void Tastatur::drueckeAt() {
+void Keyboard::drueckeAt() {
 	TextElement *textElement =
-			dynamic_cast<TextElement *>(GrafikHandler::gebeGrafikHandler()->gebeAusgewaehltesElement());
+			dynamic_cast<TextElement *>(GraphicHandler::getGraphicHandler()->gebeAusgewaehltesElement());
 	if (textElement != 0) {
 		string text = textElement->gebeText();
 		text.append("@");
 		textElement->setzeText(text);
 	}
 }
-void Tastatur::druecke2() {
+void Keyboard::druecke2() {
 	TextElement *textElement =
-			dynamic_cast<TextElement *>(GrafikHandler::gebeGrafikHandler()->gebeAusgewaehltesElement());
+			dynamic_cast<TextElement *>(GraphicHandler::getGraphicHandler()->gebeAusgewaehltesElement());
 	if (textElement != 0) {
 		string text = textElement->gebeText();
 		text.append("2");
 		textElement->setzeText(text);
 	}
 }
-void Tastatur::drueckeRaute() {
+void Keyboard::drueckeRaute() {
 	TextElement *textElement =
-			dynamic_cast<TextElement *>(GrafikHandler::gebeGrafikHandler()->gebeAusgewaehltesElement());
+			dynamic_cast<TextElement *>(GraphicHandler::getGraphicHandler()->gebeAusgewaehltesElement());
 	if (textElement != 0) {
 		string text = textElement->gebeText();
 		text.append("#");
 		textElement->setzeText(text);
 	}
 }
-void Tastatur::druecke3() {
+void Keyboard::druecke3() {
 	TextElement *textElement =
-			dynamic_cast<TextElement *>(GrafikHandler::gebeGrafikHandler()->gebeAusgewaehltesElement());
+			dynamic_cast<TextElement *>(GraphicHandler::getGraphicHandler()->gebeAusgewaehltesElement());
 	if (textElement != 0) {
 		string text = textElement->gebeText();
 		text.append("3");
 		textElement->setzeText(text);
 	}
 }
-void Tastatur::drueckeDollar() {
+void Keyboard::drueckeDollar() {
 	TextElement *textElement =
-			dynamic_cast<TextElement *>(GrafikHandler::gebeGrafikHandler()->gebeAusgewaehltesElement());
+			dynamic_cast<TextElement *>(GraphicHandler::getGraphicHandler()->gebeAusgewaehltesElement());
 	if (textElement != 0) {
 		string text = textElement->gebeText();
 		text.append("$");
 		textElement->setzeText(text);
 	}
 }
-void Tastatur::druecke4() {
+void Keyboard::druecke4() {
 	TextElement *textElement =
-			dynamic_cast<TextElement *>(GrafikHandler::gebeGrafikHandler()->gebeAusgewaehltesElement());
+			dynamic_cast<TextElement *>(GraphicHandler::getGraphicHandler()->gebeAusgewaehltesElement());
 	if (textElement != 0) {
 		string text = textElement->gebeText();
 		text.append("4");
 		textElement->setzeText(text);
 	}
 }
-void Tastatur::drueckeProzent() {
+void Keyboard::drueckeProzent() {
 	TextElement *textElement =
-			dynamic_cast<TextElement *>(GrafikHandler::gebeGrafikHandler()->gebeAusgewaehltesElement());
+			dynamic_cast<TextElement *>(GraphicHandler::getGraphicHandler()->gebeAusgewaehltesElement());
 	if (textElement != 0) {
 		string text = textElement->gebeText();
 		text.append("%");
 		textElement->setzeText(text);
 	}
 }
-void Tastatur::druecke5() {
+void Keyboard::druecke5() {
 	TextElement *textElement =
-			dynamic_cast<TextElement *>(GrafikHandler::gebeGrafikHandler()->gebeAusgewaehltesElement());
+			dynamic_cast<TextElement *>(GraphicHandler::getGraphicHandler()->gebeAusgewaehltesElement());
 	if (textElement != 0) {
 		string text = textElement->gebeText();
 		text.append("5");
 		textElement->setzeText(text);
 	}
 }
-void Tastatur::drueckeDach() {
+void Keyboard::drueckeDach() {
 	TextElement *textElement =
-			dynamic_cast<TextElement *>(GrafikHandler::gebeGrafikHandler()->gebeAusgewaehltesElement());
+			dynamic_cast<TextElement *>(GraphicHandler::getGraphicHandler()->gebeAusgewaehltesElement());
 	if (textElement != 0) {
 		string text = textElement->gebeText();
 		text.append("^");
 		textElement->setzeText(text);
 	}
 }
-void Tastatur::druecke6() {
+void Keyboard::druecke6() {
 	TextElement *textElement =
-			dynamic_cast<TextElement *>(GrafikHandler::gebeGrafikHandler()->gebeAusgewaehltesElement());
+			dynamic_cast<TextElement *>(GraphicHandler::getGraphicHandler()->gebeAusgewaehltesElement());
 	if (textElement != 0) {
 		string text = textElement->gebeText();
 		text.append("6");
 		textElement->setzeText(text);
 	}
 }
-void Tastatur::drueckeUnd() {
+void Keyboard::drueckeUnd() {
 	TextElement *textElement =
-			dynamic_cast<TextElement *>(GrafikHandler::gebeGrafikHandler()->gebeAusgewaehltesElement());
+			dynamic_cast<TextElement *>(GraphicHandler::getGraphicHandler()->gebeAusgewaehltesElement());
 	if (textElement != 0) {
 		string text = textElement->gebeText();
 		text.append("&");
 		textElement->setzeText(text);
 	}
 }
-void Tastatur::druecke7() {
+void Keyboard::druecke7() {
 	TextElement *textElement =
-			dynamic_cast<TextElement *>(GrafikHandler::gebeGrafikHandler()->gebeAusgewaehltesElement());
+			dynamic_cast<TextElement *>(GraphicHandler::getGraphicHandler()->gebeAusgewaehltesElement());
 	if (textElement != 0) {
 		string text = textElement->gebeText();
 		text.append("7");
 		textElement->setzeText(text);
 	}
 }
-void Tastatur::drueckeStern() {
+void Keyboard::drueckeStern() {
 	TextElement *textElement =
-			dynamic_cast<TextElement *>(GrafikHandler::gebeGrafikHandler()->gebeAusgewaehltesElement());
+			dynamic_cast<TextElement *>(GraphicHandler::getGraphicHandler()->gebeAusgewaehltesElement());
 	if (textElement != 0) {
 		string text = textElement->gebeText();
 		text.append("*");
 		textElement->setzeText(text);
 	}
 }
-void Tastatur::druecke8() {
+void Keyboard::druecke8() {
 	TextElement *textElement =
-			dynamic_cast<TextElement *>(GrafikHandler::gebeGrafikHandler()->gebeAusgewaehltesElement());
+			dynamic_cast<TextElement *>(GraphicHandler::getGraphicHandler()->gebeAusgewaehltesElement());
 	if (textElement != 0) {
 		string text = textElement->gebeText();
 		text.append("8");
 		textElement->setzeText(text);
 	}
 }
-void Tastatur::drueckeKlammerAuf() {
+void Keyboard::drueckeKlammerAuf() {
 	TextElement *textElement =
-			dynamic_cast<TextElement *>(GrafikHandler::gebeGrafikHandler()->gebeAusgewaehltesElement());
+			dynamic_cast<TextElement *>(GraphicHandler::getGraphicHandler()->gebeAusgewaehltesElement());
 	if (textElement != 0) {
 		string text = textElement->gebeText();
 		text.append("(");
 		textElement->setzeText(text);
 	}
 }
-void Tastatur::druecke9() {
+void Keyboard::druecke9() {
 	TextElement *textElement =
-			dynamic_cast<TextElement *>(GrafikHandler::gebeGrafikHandler()->gebeAusgewaehltesElement());
+			dynamic_cast<TextElement *>(GraphicHandler::getGraphicHandler()->gebeAusgewaehltesElement());
 	if (textElement != 0) {
 		string text = textElement->gebeText();
 		text.append("9");
 		textElement->setzeText(text);
 	}
 }
-void Tastatur::drueckeKlammerZu() {
+void Keyboard::drueckeKlammerZu() {
 	TextElement *textElement =
-			dynamic_cast<TextElement *>(GrafikHandler::gebeGrafikHandler()->gebeAusgewaehltesElement());
+			dynamic_cast<TextElement *>(GraphicHandler::getGraphicHandler()->gebeAusgewaehltesElement());
 	if (textElement != 0) {
 		string text = textElement->gebeText();
 		text.append(")");
 		textElement->setzeText(text);
 	}
 }
-void Tastatur::druecke0() {
+void Keyboard::druecke0() {
 	TextElement *textElement =
-			dynamic_cast<TextElement *>(GrafikHandler::gebeGrafikHandler()->gebeAusgewaehltesElement());
+			dynamic_cast<TextElement *>(GraphicHandler::getGraphicHandler()->gebeAusgewaehltesElement());
 	if (textElement != 0) {
 		string text = textElement->gebeText();
 		text.append("0");
 		textElement->setzeText(text);
 	}
 }
-void Tastatur::drueckeRueckschritt() {
+void Keyboard::drueckeRueckschritt() {
 	TextElement *textElement =
-			dynamic_cast<TextElement *>(GrafikHandler::gebeGrafikHandler()->gebeAusgewaehltesElement());
+			dynamic_cast<TextElement *>(GraphicHandler::getGraphicHandler()->gebeAusgewaehltesElement());
 	if (textElement != 0) {
 		string text = textElement->gebeText();
 		if (text.size() > 0) {
@@ -777,654 +777,654 @@ void Tastatur::drueckeRueckschritt() {
 	}
 }
 
-void Tastatur::drueckeQ() {
+void Keyboard::drueckeQ() {
 	TextElement *textElement =
-			dynamic_cast<TextElement *>(GrafikHandler::gebeGrafikHandler()->gebeAusgewaehltesElement());
+			dynamic_cast<TextElement *>(GraphicHandler::getGraphicHandler()->gebeAusgewaehltesElement());
 	if (textElement != 0) {
 		string text = textElement->gebeText();
 		text.append("Q");
 		textElement->setzeText(text);
 	}
 }
-void Tastatur::drueckeq() {
+void Keyboard::drueckeq() {
 	TextElement *textElement =
-			dynamic_cast<TextElement *>(GrafikHandler::gebeGrafikHandler()->gebeAusgewaehltesElement());
+			dynamic_cast<TextElement *>(GraphicHandler::getGraphicHandler()->gebeAusgewaehltesElement());
 	if (textElement != 0) {
 		string text = textElement->gebeText();
 		text.append("q");
 		textElement->setzeText(text);
 	}
 }
-void Tastatur::drueckeW() {
+void Keyboard::drueckeW() {
 	TextElement *textElement =
-			dynamic_cast<TextElement *>(GrafikHandler::gebeGrafikHandler()->gebeAusgewaehltesElement());
+			dynamic_cast<TextElement *>(GraphicHandler::getGraphicHandler()->gebeAusgewaehltesElement());
 	if (textElement != 0) {
 		string text = textElement->gebeText();
 		text.append("W");
 		textElement->setzeText(text);
 	}
 }
-void Tastatur::drueckew() {
+void Keyboard::drueckew() {
 	TextElement *textElement =
-			dynamic_cast<TextElement *>(GrafikHandler::gebeGrafikHandler()->gebeAusgewaehltesElement());
+			dynamic_cast<TextElement *>(GraphicHandler::getGraphicHandler()->gebeAusgewaehltesElement());
 	if (textElement != 0) {
 		string text = textElement->gebeText();
 		text.append("w");
 		textElement->setzeText(text);
 	}
 }
-void Tastatur::drueckeE() {
+void Keyboard::drueckeE() {
 	TextElement *textElement =
-			dynamic_cast<TextElement *>(GrafikHandler::gebeGrafikHandler()->gebeAusgewaehltesElement());
+			dynamic_cast<TextElement *>(GraphicHandler::getGraphicHandler()->gebeAusgewaehltesElement());
 	if (textElement != 0) {
 		string text = textElement->gebeText();
 		text.append("E");
 		textElement->setzeText(text);
 	}
 }
-void Tastatur::drueckee() {
+void Keyboard::drueckee() {
 	TextElement *textElement =
-			dynamic_cast<TextElement *>(GrafikHandler::gebeGrafikHandler()->gebeAusgewaehltesElement());
+			dynamic_cast<TextElement *>(GraphicHandler::getGraphicHandler()->gebeAusgewaehltesElement());
 	if (textElement != 0) {
 		string text = textElement->gebeText();
 		text.append("e");
 		textElement->setzeText(text);
 	}
 }
-void Tastatur::drueckeR() {
+void Keyboard::drueckeR() {
 	TextElement *textElement =
-			dynamic_cast<TextElement *>(GrafikHandler::gebeGrafikHandler()->gebeAusgewaehltesElement());
+			dynamic_cast<TextElement *>(GraphicHandler::getGraphicHandler()->gebeAusgewaehltesElement());
 	if (textElement != 0) {
 		string text = textElement->gebeText();
 		text.append("R");
 		textElement->setzeText(text);
 	}
 }
-void Tastatur::druecker() {
+void Keyboard::druecker() {
 	TextElement *textElement =
-			dynamic_cast<TextElement *>(GrafikHandler::gebeGrafikHandler()->gebeAusgewaehltesElement());
+			dynamic_cast<TextElement *>(GraphicHandler::getGraphicHandler()->gebeAusgewaehltesElement());
 	if (textElement != 0) {
 		string text = textElement->gebeText();
 		text.append("r");
 		textElement->setzeText(text);
 	}
 }
-void Tastatur::drueckeT() {
+void Keyboard::drueckeT() {
 	TextElement *textElement =
-			dynamic_cast<TextElement *>(GrafikHandler::gebeGrafikHandler()->gebeAusgewaehltesElement());
+			dynamic_cast<TextElement *>(GraphicHandler::getGraphicHandler()->gebeAusgewaehltesElement());
 	if (textElement != 0) {
 		string text = textElement->gebeText();
 		text.append("T");
 		textElement->setzeText(text);
 	}
 }
-void Tastatur::druecket() {
+void Keyboard::druecket() {
 	TextElement *textElement =
-			dynamic_cast<TextElement *>(GrafikHandler::gebeGrafikHandler()->gebeAusgewaehltesElement());
+			dynamic_cast<TextElement *>(GraphicHandler::getGraphicHandler()->gebeAusgewaehltesElement());
 	if (textElement != 0) {
 		string text = textElement->gebeText();
 		text.append("t");
 		textElement->setzeText(text);
 	}
 }
-void Tastatur::drueckeY() {
+void Keyboard::drueckeY() {
 	TextElement *textElement =
-			dynamic_cast<TextElement *>(GrafikHandler::gebeGrafikHandler()->gebeAusgewaehltesElement());
+			dynamic_cast<TextElement *>(GraphicHandler::getGraphicHandler()->gebeAusgewaehltesElement());
 	if (textElement != 0) {
 		string text = textElement->gebeText();
 		text.append("Y");
 		textElement->setzeText(text);
 	}
 }
-void Tastatur::drueckey() {
+void Keyboard::drueckey() {
 	TextElement *textElement =
-			dynamic_cast<TextElement *>(GrafikHandler::gebeGrafikHandler()->gebeAusgewaehltesElement());
+			dynamic_cast<TextElement *>(GraphicHandler::getGraphicHandler()->gebeAusgewaehltesElement());
 	if (textElement != 0) {
 		string text = textElement->gebeText();
 		text.append("y");
 		textElement->setzeText(text);
 	}
 }
-void Tastatur::drueckeU() {
+void Keyboard::drueckeU() {
 	TextElement *textElement =
-			dynamic_cast<TextElement *>(GrafikHandler::gebeGrafikHandler()->gebeAusgewaehltesElement());
+			dynamic_cast<TextElement *>(GraphicHandler::getGraphicHandler()->gebeAusgewaehltesElement());
 	if (textElement != 0) {
 		string text = textElement->gebeText();
 		text.append("U");
 		textElement->setzeText(text);
 	}
 }
-void Tastatur::drueckeu() {
+void Keyboard::drueckeu() {
 	TextElement *textElement =
-			dynamic_cast<TextElement *>(GrafikHandler::gebeGrafikHandler()->gebeAusgewaehltesElement());
+			dynamic_cast<TextElement *>(GraphicHandler::getGraphicHandler()->gebeAusgewaehltesElement());
 	if (textElement != 0) {
 		string text = textElement->gebeText();
 		text.append("u");
 		textElement->setzeText(text);
 	}
 }
-void Tastatur::drueckeI() {
+void Keyboard::drueckeI() {
 	TextElement *textElement =
-			dynamic_cast<TextElement *>(GrafikHandler::gebeGrafikHandler()->gebeAusgewaehltesElement());
+			dynamic_cast<TextElement *>(GraphicHandler::getGraphicHandler()->gebeAusgewaehltesElement());
 	if (textElement != 0) {
 		string text = textElement->gebeText();
 		text.append("I");
 		textElement->setzeText(text);
 	}
 }
-void Tastatur::drueckei() {
+void Keyboard::drueckei() {
 	TextElement *textElement =
-			dynamic_cast<TextElement *>(GrafikHandler::gebeGrafikHandler()->gebeAusgewaehltesElement());
+			dynamic_cast<TextElement *>(GraphicHandler::getGraphicHandler()->gebeAusgewaehltesElement());
 	if (textElement != 0) {
 		string text = textElement->gebeText();
 		text.append("i");
 		textElement->setzeText(text);
 	}
 }
-void Tastatur::drueckeO() {
+void Keyboard::drueckeO() {
 	TextElement *textElement =
-			dynamic_cast<TextElement *>(GrafikHandler::gebeGrafikHandler()->gebeAusgewaehltesElement());
+			dynamic_cast<TextElement *>(GraphicHandler::getGraphicHandler()->gebeAusgewaehltesElement());
 	if (textElement != 0) {
 		string text = textElement->gebeText();
 		text.append("O");
 		textElement->setzeText(text);
 	}
 }
-void Tastatur::drueckeo() {
+void Keyboard::drueckeo() {
 	TextElement *textElement =
-			dynamic_cast<TextElement *>(GrafikHandler::gebeGrafikHandler()->gebeAusgewaehltesElement());
+			dynamic_cast<TextElement *>(GraphicHandler::getGraphicHandler()->gebeAusgewaehltesElement());
 	if (textElement != 0) {
 		string text = textElement->gebeText();
 		text.append("o");
 		textElement->setzeText(text);
 	}
 }
-void Tastatur::drueckeP() {
+void Keyboard::drueckeP() {
 	TextElement *textElement =
-			dynamic_cast<TextElement *>(GrafikHandler::gebeGrafikHandler()->gebeAusgewaehltesElement());
+			dynamic_cast<TextElement *>(GraphicHandler::getGraphicHandler()->gebeAusgewaehltesElement());
 	if (textElement != 0) {
 		string text = textElement->gebeText();
 		text.append("P");
 		textElement->setzeText(text);
 	}
 }
-void Tastatur::drueckep() {
+void Keyboard::drueckep() {
 	TextElement *textElement =
-			dynamic_cast<TextElement *>(GrafikHandler::gebeGrafikHandler()->gebeAusgewaehltesElement());
+			dynamic_cast<TextElement *>(GraphicHandler::getGraphicHandler()->gebeAusgewaehltesElement());
 	if (textElement != 0) {
 		string text = textElement->gebeText();
 		text.append("p");
 		textElement->setzeText(text);
 	}
 }
-void Tastatur::drueckeUnterstrich() {
+void Keyboard::drueckeUnterstrich() {
 	TextElement *textElement =
-			dynamic_cast<TextElement *>(GrafikHandler::gebeGrafikHandler()->gebeAusgewaehltesElement());
+			dynamic_cast<TextElement *>(GraphicHandler::getGraphicHandler()->gebeAusgewaehltesElement());
 	if (textElement != 0) {
 		string text = textElement->gebeText();
 		text.append("_");
 		textElement->setzeText(text);
 	}
 }
-void Tastatur::drueckeBindestrich() {
+void Keyboard::drueckeBindestrich() {
 	TextElement *textElement =
-			dynamic_cast<TextElement *>(GrafikHandler::gebeGrafikHandler()->gebeAusgewaehltesElement());
+			dynamic_cast<TextElement *>(GraphicHandler::getGraphicHandler()->gebeAusgewaehltesElement());
 	if (textElement != 0) {
 		string text = textElement->gebeText();
 		text.append("-");
 		textElement->setzeText(text);
 	}
 }
-/*void Tastatur::drueckeUe() {
+/*void Keyboard::drueckeUe() {
  TextElement *textElement =
- dynamic_cast<TextElement *>(GrafikHandler::gebeGrafikHandler()->gebeAusgewaehltesElement());
+ dynamic_cast<TextElement *>(GraphicHandler::getGraphicHandler()->gebeAusgewaehltesElement());
  if (textElement != 0) {
  string text = textElement->gebeText();
- text.append("Ü");
+ text.append("ï¿½");
  textElement->setzeText(text);
  }
  }
- void Tastatur::drueckeue() {
+ void Keyboard::drueckeue() {
  TextElement *textElement =
- dynamic_cast<TextElement *>(GrafikHandler::gebeGrafikHandler()->gebeAusgewaehltesElement());
+ dynamic_cast<TextElement *>(GraphicHandler::getGraphicHandler()->gebeAusgewaehltesElement());
  if (textElement != 0) {
  string text = textElement->gebeText();
- text.append("ü");
+ text.append("ï¿½");
  textElement->setzeText(text);
  }
  }*/
 
-void Tastatur::drueckeA() {
+void Keyboard::drueckeA() {
 	TextElement *textElement =
-			dynamic_cast<TextElement *>(GrafikHandler::gebeGrafikHandler()->gebeAusgewaehltesElement());
+			dynamic_cast<TextElement *>(GraphicHandler::getGraphicHandler()->gebeAusgewaehltesElement());
 	if (textElement != 0) {
 		string text = textElement->gebeText();
 		text.append("A");
 		textElement->setzeText(text);
 	}
 }
-void Tastatur::drueckea() {
+void Keyboard::drueckea() {
 	TextElement *textElement =
-			dynamic_cast<TextElement *>(GrafikHandler::gebeGrafikHandler()->gebeAusgewaehltesElement());
+			dynamic_cast<TextElement *>(GraphicHandler::getGraphicHandler()->gebeAusgewaehltesElement());
 	if (textElement != 0) {
 		string text = textElement->gebeText();
 		text.append("a");
 		textElement->setzeText(text);
 	}
 }
-void Tastatur::drueckeS() {
+void Keyboard::drueckeS() {
 	TextElement *textElement =
-			dynamic_cast<TextElement *>(GrafikHandler::gebeGrafikHandler()->gebeAusgewaehltesElement());
+			dynamic_cast<TextElement *>(GraphicHandler::getGraphicHandler()->gebeAusgewaehltesElement());
 	if (textElement != 0) {
 		string text = textElement->gebeText();
 		text.append("S");
 		textElement->setzeText(text);
 	}
 }
-void Tastatur::drueckes() {
+void Keyboard::drueckes() {
 	TextElement *textElement =
-			dynamic_cast<TextElement *>(GrafikHandler::gebeGrafikHandler()->gebeAusgewaehltesElement());
+			dynamic_cast<TextElement *>(GraphicHandler::getGraphicHandler()->gebeAusgewaehltesElement());
 	if (textElement != 0) {
 		string text = textElement->gebeText();
 		text.append("s");
 		textElement->setzeText(text);
 	}
 }
-void Tastatur::drueckeD() {
+void Keyboard::drueckeD() {
 	TextElement *textElement =
-			dynamic_cast<TextElement *>(GrafikHandler::gebeGrafikHandler()->gebeAusgewaehltesElement());
+			dynamic_cast<TextElement *>(GraphicHandler::getGraphicHandler()->gebeAusgewaehltesElement());
 	if (textElement != 0) {
 		string text = textElement->gebeText();
 		text.append("D");
 		textElement->setzeText(text);
 	}
 }
-void Tastatur::druecked() {
+void Keyboard::druecked() {
 	TextElement *textElement =
-			dynamic_cast<TextElement *>(GrafikHandler::gebeGrafikHandler()->gebeAusgewaehltesElement());
+			dynamic_cast<TextElement *>(GraphicHandler::getGraphicHandler()->gebeAusgewaehltesElement());
 	if (textElement != 0) {
 		string text = textElement->gebeText();
 		text.append("d");
 		textElement->setzeText(text);
 	}
 }
-void Tastatur::drueckeF() {
+void Keyboard::drueckeF() {
 	TextElement *textElement =
-			dynamic_cast<TextElement *>(GrafikHandler::gebeGrafikHandler()->gebeAusgewaehltesElement());
+			dynamic_cast<TextElement *>(GraphicHandler::getGraphicHandler()->gebeAusgewaehltesElement());
 	if (textElement != 0) {
 		string text = textElement->gebeText();
 		text.append("F");
 		textElement->setzeText(text);
 	}
 }
-void Tastatur::drueckef() {
+void Keyboard::drueckef() {
 	TextElement *textElement =
-			dynamic_cast<TextElement *>(GrafikHandler::gebeGrafikHandler()->gebeAusgewaehltesElement());
+			dynamic_cast<TextElement *>(GraphicHandler::getGraphicHandler()->gebeAusgewaehltesElement());
 	if (textElement != 0) {
 		string text = textElement->gebeText();
 		text.append("f");
 		textElement->setzeText(text);
 	}
 }
-void Tastatur::drueckeG() {
+void Keyboard::drueckeG() {
 	TextElement *textElement =
-			dynamic_cast<TextElement *>(GrafikHandler::gebeGrafikHandler()->gebeAusgewaehltesElement());
+			dynamic_cast<TextElement *>(GraphicHandler::getGraphicHandler()->gebeAusgewaehltesElement());
 	if (textElement != 0) {
 		string text = textElement->gebeText();
 		text.append("G");
 		textElement->setzeText(text);
 	}
 }
-void Tastatur::drueckeg() {
+void Keyboard::drueckeg() {
 	TextElement *textElement =
-			dynamic_cast<TextElement *>(GrafikHandler::gebeGrafikHandler()->gebeAusgewaehltesElement());
+			dynamic_cast<TextElement *>(GraphicHandler::getGraphicHandler()->gebeAusgewaehltesElement());
 	if (textElement != 0) {
 		string text = textElement->gebeText();
 		text.append("g");
 		textElement->setzeText(text);
 	}
 }
-void Tastatur::drueckeH() {
+void Keyboard::drueckeH() {
 	TextElement *textElement =
-			dynamic_cast<TextElement *>(GrafikHandler::gebeGrafikHandler()->gebeAusgewaehltesElement());
+			dynamic_cast<TextElement *>(GraphicHandler::getGraphicHandler()->gebeAusgewaehltesElement());
 	if (textElement != 0) {
 		string text = textElement->gebeText();
 		text.append("H");
 		textElement->setzeText(text);
 	}
 }
-void Tastatur::drueckeh() {
+void Keyboard::drueckeh() {
 	TextElement *textElement =
-			dynamic_cast<TextElement *>(GrafikHandler::gebeGrafikHandler()->gebeAusgewaehltesElement());
+			dynamic_cast<TextElement *>(GraphicHandler::getGraphicHandler()->gebeAusgewaehltesElement());
 	if (textElement != 0) {
 		string text = textElement->gebeText();
 		text.append("h");
 		textElement->setzeText(text);
 	}
 }
-void Tastatur::drueckeJ() {
+void Keyboard::drueckeJ() {
 	TextElement *textElement =
-			dynamic_cast<TextElement *>(GrafikHandler::gebeGrafikHandler()->gebeAusgewaehltesElement());
+			dynamic_cast<TextElement *>(GraphicHandler::getGraphicHandler()->gebeAusgewaehltesElement());
 	if (textElement != 0) {
 		string text = textElement->gebeText();
 		text.append("J");
 		textElement->setzeText(text);
 	}
 }
-void Tastatur::drueckej() {
+void Keyboard::drueckej() {
 	TextElement *textElement =
-			dynamic_cast<TextElement *>(GrafikHandler::gebeGrafikHandler()->gebeAusgewaehltesElement());
+			dynamic_cast<TextElement *>(GraphicHandler::getGraphicHandler()->gebeAusgewaehltesElement());
 	if (textElement != 0) {
 		string text = textElement->gebeText();
 		text.append("j");
 		textElement->setzeText(text);
 	}
 }
-void Tastatur::drueckeK() {
+void Keyboard::drueckeK() {
 	TextElement *textElement =
-			dynamic_cast<TextElement *>(GrafikHandler::gebeGrafikHandler()->gebeAusgewaehltesElement());
+			dynamic_cast<TextElement *>(GraphicHandler::getGraphicHandler()->gebeAusgewaehltesElement());
 	if (textElement != 0) {
 		string text = textElement->gebeText();
 		text.append("K");
 		textElement->setzeText(text);
 	}
 }
-void Tastatur::drueckek() {
+void Keyboard::drueckek() {
 	TextElement *textElement =
-			dynamic_cast<TextElement *>(GrafikHandler::gebeGrafikHandler()->gebeAusgewaehltesElement());
+			dynamic_cast<TextElement *>(GraphicHandler::getGraphicHandler()->gebeAusgewaehltesElement());
 	if (textElement != 0) {
 		string text = textElement->gebeText();
 		text.append("k");
 		textElement->setzeText(text);
 	}
 }
-void Tastatur::drueckeL() {
+void Keyboard::drueckeL() {
 	TextElement *textElement =
-			dynamic_cast<TextElement *>(GrafikHandler::gebeGrafikHandler()->gebeAusgewaehltesElement());
+			dynamic_cast<TextElement *>(GraphicHandler::getGraphicHandler()->gebeAusgewaehltesElement());
 	if (textElement != 0) {
 		string text = textElement->gebeText();
 		text.append("L");
 		textElement->setzeText(text);
 	}
 }
-void Tastatur::drueckel() {
+void Keyboard::drueckel() {
 	TextElement *textElement =
-			dynamic_cast<TextElement *>(GrafikHandler::gebeGrafikHandler()->gebeAusgewaehltesElement());
+			dynamic_cast<TextElement *>(GraphicHandler::getGraphicHandler()->gebeAusgewaehltesElement());
 	if (textElement != 0) {
 		string text = textElement->gebeText();
 		text.append("l");
 		textElement->setzeText(text);
 	}
 }
-void Tastatur::drueckeDoppelpunkt() {
+void Keyboard::drueckeDoppelpunkt() {
 	TextElement *textElement =
-			dynamic_cast<TextElement *>(GrafikHandler::gebeGrafikHandler()->gebeAusgewaehltesElement());
+			dynamic_cast<TextElement *>(GraphicHandler::getGraphicHandler()->gebeAusgewaehltesElement());
 	if (textElement != 0) {
 		string text = textElement->gebeText();
 		text.append(":");
 		textElement->setzeText(text);
 	}
 }
-void Tastatur::drueckeSemikolon() {
+void Keyboard::drueckeSemikolon() {
 	TextElement *textElement =
-			dynamic_cast<TextElement *>(GrafikHandler::gebeGrafikHandler()->gebeAusgewaehltesElement());
+			dynamic_cast<TextElement *>(GraphicHandler::getGraphicHandler()->gebeAusgewaehltesElement());
 	if (textElement != 0) {
 		string text = textElement->gebeText();
 		text.append(";");
 		textElement->setzeText(text);
 	}
 }
-void Tastatur::drueckeAnfuehrungsstriche() {
+void Keyboard::drueckeAnfuehrungsstriche() {
 	TextElement *textElement =
-			dynamic_cast<TextElement *>(GrafikHandler::gebeGrafikHandler()->gebeAusgewaehltesElement());
+			dynamic_cast<TextElement *>(GraphicHandler::getGraphicHandler()->gebeAusgewaehltesElement());
 	if (textElement != 0) {
 		string text = textElement->gebeText();
 		text.append("\"");
 		textElement->setzeText(text);
 	}
 }
-void Tastatur::drueckeHochkomma() {
+void Keyboard::drueckeHochkomma() {
 	TextElement *textElement =
-			dynamic_cast<TextElement *>(GrafikHandler::gebeGrafikHandler()->gebeAusgewaehltesElement());
+			dynamic_cast<TextElement *>(GraphicHandler::getGraphicHandler()->gebeAusgewaehltesElement());
 	if (textElement != 0) {
 		string text = textElement->gebeText();
 		text.append("'");
 		textElement->setzeText(text);
 	}
 }
-/*void Tastatur::drueckeOe() {
+/*void Keyboard::drueckeOe() {
  TextElement *textElement =
- dynamic_cast<TextElement *>(GrafikHandler::gebeGrafikHandler()->gebeAusgewaehltesElement());
+ dynamic_cast<TextElement *>(GraphicHandler::getGraphicHandler()->gebeAusgewaehltesElement());
  if (textElement != 0) {
  string text = textElement->gebeText();
- text.append("Ö");
+ text.append("ï¿½");
  textElement->setzeText(text);
  }
  }
- void Tastatur::drueckeoe() {
+ void Keyboard::drueckeoe() {
  TextElement *textElement =
- dynamic_cast<TextElement *>(GrafikHandler::gebeGrafikHandler()->gebeAusgewaehltesElement());
+ dynamic_cast<TextElement *>(GraphicHandler::getGraphicHandler()->gebeAusgewaehltesElement());
  if (textElement != 0) {
  string text = textElement->gebeText();
- text.append("ö");
+ text.append("ï¿½");
  textElement->setzeText(text);
  }
  }*/
 
-void Tastatur::drueckeZ() {
+void Keyboard::drueckeZ() {
 	TextElement *textElement =
-			dynamic_cast<TextElement *>(GrafikHandler::gebeGrafikHandler()->gebeAusgewaehltesElement());
+			dynamic_cast<TextElement *>(GraphicHandler::getGraphicHandler()->gebeAusgewaehltesElement());
 	if (textElement != 0) {
 		string text = textElement->gebeText();
 		text.append("Z");
 		textElement->setzeText(text);
 	}
 }
-void Tastatur::drueckez() {
+void Keyboard::drueckez() {
 	TextElement *textElement =
-			dynamic_cast<TextElement *>(GrafikHandler::gebeGrafikHandler()->gebeAusgewaehltesElement());
+			dynamic_cast<TextElement *>(GraphicHandler::getGraphicHandler()->gebeAusgewaehltesElement());
 	if (textElement != 0) {
 		string text = textElement->gebeText();
 		text.append("z");
 		textElement->setzeText(text);
 	}
 }
-void Tastatur::drueckeX() {
+void Keyboard::drueckeX() {
 	TextElement *textElement =
-			dynamic_cast<TextElement *>(GrafikHandler::gebeGrafikHandler()->gebeAusgewaehltesElement());
+			dynamic_cast<TextElement *>(GraphicHandler::getGraphicHandler()->gebeAusgewaehltesElement());
 	if (textElement != 0) {
 		string text = textElement->gebeText();
 		text.append("X");
 		textElement->setzeText(text);
 	}
 }
-void Tastatur::drueckex() {
+void Keyboard::drueckex() {
 	TextElement *textElement =
-			dynamic_cast<TextElement *>(GrafikHandler::gebeGrafikHandler()->gebeAusgewaehltesElement());
+			dynamic_cast<TextElement *>(GraphicHandler::getGraphicHandler()->gebeAusgewaehltesElement());
 	if (textElement != 0) {
 		string text = textElement->gebeText();
 		text.append("x");
 		textElement->setzeText(text);
 	}
 }
-void Tastatur::drueckeC() {
+void Keyboard::drueckeC() {
 	TextElement *textElement =
-			dynamic_cast<TextElement *>(GrafikHandler::gebeGrafikHandler()->gebeAusgewaehltesElement());
+			dynamic_cast<TextElement *>(GraphicHandler::getGraphicHandler()->gebeAusgewaehltesElement());
 	if (textElement != 0) {
 		string text = textElement->gebeText();
 		text.append("C");
 		textElement->setzeText(text);
 	}
 }
-void Tastatur::drueckec() {
+void Keyboard::drueckec() {
 	TextElement *textElement =
-			dynamic_cast<TextElement *>(GrafikHandler::gebeGrafikHandler()->gebeAusgewaehltesElement());
+			dynamic_cast<TextElement *>(GraphicHandler::getGraphicHandler()->gebeAusgewaehltesElement());
 	if (textElement != 0) {
 		string text = textElement->gebeText();
 		text.append("c");
 		textElement->setzeText(text);
 	}
 }
-void Tastatur::drueckeV() {
+void Keyboard::drueckeV() {
 	TextElement *textElement =
-			dynamic_cast<TextElement *>(GrafikHandler::gebeGrafikHandler()->gebeAusgewaehltesElement());
+			dynamic_cast<TextElement *>(GraphicHandler::getGraphicHandler()->gebeAusgewaehltesElement());
 	if (textElement != 0) {
 		string text = textElement->gebeText();
 		text.append("V");
 		textElement->setzeText(text);
 	}
 }
-void Tastatur::drueckev() {
+void Keyboard::drueckev() {
 	TextElement *textElement =
-			dynamic_cast<TextElement *>(GrafikHandler::gebeGrafikHandler()->gebeAusgewaehltesElement());
+			dynamic_cast<TextElement *>(GraphicHandler::getGraphicHandler()->gebeAusgewaehltesElement());
 	if (textElement != 0) {
 		string text = textElement->gebeText();
 		text.append("v");
 		textElement->setzeText(text);
 	}
 }
-void Tastatur::drueckeB() {
+void Keyboard::drueckeB() {
 	TextElement *textElement =
-			dynamic_cast<TextElement *>(GrafikHandler::gebeGrafikHandler()->gebeAusgewaehltesElement());
+			dynamic_cast<TextElement *>(GraphicHandler::getGraphicHandler()->gebeAusgewaehltesElement());
 	if (textElement != 0) {
 		string text = textElement->gebeText();
 		text.append("B");
 		textElement->setzeText(text);
 	}
 }
-void Tastatur::drueckeb() {
+void Keyboard::drueckeb() {
 	TextElement *textElement =
-			dynamic_cast<TextElement *>(GrafikHandler::gebeGrafikHandler()->gebeAusgewaehltesElement());
+			dynamic_cast<TextElement *>(GraphicHandler::getGraphicHandler()->gebeAusgewaehltesElement());
 	if (textElement != 0) {
 		string text = textElement->gebeText();
 		text.append("b");
 		textElement->setzeText(text);
 	}
 }
-void Tastatur::drueckeN() {
+void Keyboard::drueckeN() {
 	TextElement *textElement =
-			dynamic_cast<TextElement *>(GrafikHandler::gebeGrafikHandler()->gebeAusgewaehltesElement());
+			dynamic_cast<TextElement *>(GraphicHandler::getGraphicHandler()->gebeAusgewaehltesElement());
 	if (textElement != 0) {
 		string text = textElement->gebeText();
 		text.append("N");
 		textElement->setzeText(text);
 	}
 }
-void Tastatur::druecken() {
+void Keyboard::druecken() {
 	TextElement *textElement =
-			dynamic_cast<TextElement *>(GrafikHandler::gebeGrafikHandler()->gebeAusgewaehltesElement());
+			dynamic_cast<TextElement *>(GraphicHandler::getGraphicHandler()->gebeAusgewaehltesElement());
 	if (textElement != 0) {
 		string text = textElement->gebeText();
 		text.append("n");
 		textElement->setzeText(text);
 	}
 }
-void Tastatur::drueckeM() {
+void Keyboard::drueckeM() {
 	TextElement *textElement =
-			dynamic_cast<TextElement *>(GrafikHandler::gebeGrafikHandler()->gebeAusgewaehltesElement());
+			dynamic_cast<TextElement *>(GraphicHandler::getGraphicHandler()->gebeAusgewaehltesElement());
 	if (textElement != 0) {
 		string text = textElement->gebeText();
 		text.append("M");
 		textElement->setzeText(text);
 	}
 }
-void Tastatur::drueckem() {
+void Keyboard::drueckem() {
 	TextElement *textElement =
-			dynamic_cast<TextElement *>(GrafikHandler::gebeGrafikHandler()->gebeAusgewaehltesElement());
+			dynamic_cast<TextElement *>(GraphicHandler::getGraphicHandler()->gebeAusgewaehltesElement());
 	if (textElement != 0) {
 		string text = textElement->gebeText();
 		text.append("m");
 		textElement->setzeText(text);
 	}
 }
-void Tastatur::drueckeKleinerAls() {
+void Keyboard::drueckeKleinerAls() {
 	TextElement *textElement =
-			dynamic_cast<TextElement *>(GrafikHandler::gebeGrafikHandler()->gebeAusgewaehltesElement());
+			dynamic_cast<TextElement *>(GraphicHandler::getGraphicHandler()->gebeAusgewaehltesElement());
 	if (textElement != 0) {
 		string text = textElement->gebeText();
 		text.append("<");
 		textElement->setzeText(text);
 	}
 }
-void Tastatur::drueckeKomma() {
+void Keyboard::drueckeKomma() {
 	TextElement *textElement =
-			dynamic_cast<TextElement *>(GrafikHandler::gebeGrafikHandler()->gebeAusgewaehltesElement());
+			dynamic_cast<TextElement *>(GraphicHandler::getGraphicHandler()->gebeAusgewaehltesElement());
 	if (textElement != 0) {
 		string text = textElement->gebeText();
 		text.append(",");
 		textElement->setzeText(text);
 	}
 }
-void Tastatur::drueckeGroesserAls() {
+void Keyboard::drueckeGroesserAls() {
 	TextElement *textElement =
-			dynamic_cast<TextElement *>(GrafikHandler::gebeGrafikHandler()->gebeAusgewaehltesElement());
+			dynamic_cast<TextElement *>(GraphicHandler::getGraphicHandler()->gebeAusgewaehltesElement());
 	if (textElement != 0) {
 		string text = textElement->gebeText();
 		text.append(">");
 		textElement->setzeText(text);
 	}
 }
-void Tastatur::drueckePunkt() {
+void Keyboard::drueckePunkt() {
 	TextElement *textElement =
-			dynamic_cast<TextElement *>(GrafikHandler::gebeGrafikHandler()->gebeAusgewaehltesElement());
+			dynamic_cast<TextElement *>(GraphicHandler::getGraphicHandler()->gebeAusgewaehltesElement());
 	if (textElement != 0) {
 		string text = textElement->gebeText();
 		text.append(".");
 		textElement->setzeText(text);
 	}
 }
-void Tastatur::drueckeFragezeichen() {
+void Keyboard::drueckeFragezeichen() {
 	TextElement *textElement =
-			dynamic_cast<TextElement *>(GrafikHandler::gebeGrafikHandler()->gebeAusgewaehltesElement());
+			dynamic_cast<TextElement *>(GraphicHandler::getGraphicHandler()->gebeAusgewaehltesElement());
 	if (textElement != 0) {
 		string text = textElement->gebeText();
 		text.append("?");
 		textElement->setzeText(text);
 	}
 }
-void Tastatur::drueckeSlash() {
+void Keyboard::drueckeSlash() {
 	TextElement *textElement =
-			dynamic_cast<TextElement *>(GrafikHandler::gebeGrafikHandler()->gebeAusgewaehltesElement());
+			dynamic_cast<TextElement *>(GraphicHandler::getGraphicHandler()->gebeAusgewaehltesElement());
 	if (textElement != 0) {
 		string text = textElement->gebeText();
 		text.append("/");
 		textElement->setzeText(text);
 	}
 }
-/*void Tastatur::drueckeAe() {
+/*void Keyboard::drueckeAe() {
  TextElement *textElement =
- dynamic_cast<TextElement *>(GrafikHandler::gebeGrafikHandler()->gebeAusgewaehltesElement());
+ dynamic_cast<TextElement *>(GraphicHandler::getGraphicHandler()->gebeAusgewaehltesElement());
  if (textElement != 0) {
  string text = textElement->gebeText();
- text.append("Ä");
+ text.append("ï¿½");
  textElement->setzeText(text);
  }
  }
- void Tastatur::drueckeae() {
+ void Keyboard::drueckeae() {
  TextElement *textElement =
- dynamic_cast<TextElement *>(GrafikHandler::gebeGrafikHandler()->gebeAusgewaehltesElement());
+ dynamic_cast<TextElement *>(GraphicHandler::getGraphicHandler()->gebeAusgewaehltesElement());
  if (textElement != 0) {
  string text = textElement->gebeText();
- text.append("ä");
+ text.append("ï¿½");
  textElement->setzeText(text);
  }
  }
- void Tastatur::drueckesz() {
+ void Keyboard::drueckesz() {
  TextElement *textElement =
- dynamic_cast<TextElement *>(GrafikHandler::gebeGrafikHandler()->gebeAusgewaehltesElement());
+ dynamic_cast<TextElement *>(GraphicHandler::getGraphicHandler()->gebeAusgewaehltesElement());
  if (textElement != 0) {
  string text = textElement->gebeText();
- text.append("ß");
+ text.append("ï¿½");
  textElement->setzeText(text);
  }
  }*/
 
-void Tastatur::drueckeGrossKlein() {
-	Tastatur::gebeTastatur()->aendereGrossKlein();
+void Keyboard::drueckeGrossKlein() {
+	Keyboard::gebeKeyboard()->aendereGrossKlein();
 }
-void Tastatur::drueckeLeertaste() {
+void Keyboard::drueckeLeertaste() {
 	TextElement *textElement =
-			dynamic_cast<TextElement *>(GrafikHandler::gebeGrafikHandler()->gebeAusgewaehltesElement());
+			dynamic_cast<TextElement *>(GraphicHandler::getGraphicHandler()->gebeAusgewaehltesElement());
 	if (textElement != 0) {
 		string text = textElement->gebeText();
 		text.append(" ");

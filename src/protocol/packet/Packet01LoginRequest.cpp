@@ -33,7 +33,7 @@
 #include "../../net/DataOutputStream.h"
 #include "../../net/DataInputStream.h"
 #include "../../exception/ExcSocketStringTooLong.h"
-#include "../../entity/Spieler.h"
+#include "../../entity/Player.h"
 #include "../../world/Welt.h"
 #include "../../protocol/Chat.h"
 #include "../../protocol/ServerInfo.h"
@@ -101,10 +101,10 @@ void Packet01LoginRequest::lesePacketInhalt(DataInputStream *in) {
 
 void Packet01LoginRequest::verarbeitePacket() {
 	Player::initializePlayer(this->entityId);
-	World::initialisiereWelt(this->dimension, this->levelType, this->difficulty,
+	World::initializeWorld(this->dimension, this->levelType, this->difficulty,
 			this->serverMode, this->worldHeight);
-	ServerInfo::initialisiereServerInfo(this->maxPlayers);
-	Chat::initialisiereChat();
+	ServerInfo::initializeServerInfo(this->maxPlayers);
+	Chat::initializeChat();
 
 #ifdef DEBUG_ON
 	char *buffer = new char[1000];

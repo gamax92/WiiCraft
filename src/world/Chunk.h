@@ -80,7 +80,7 @@ private:
 	pthread_mutex_t mutexIndex;
 	pthread_mutex_t mutexGeladen;
 
-	void initialisiere();
+	void initialize();
 };
 
 }

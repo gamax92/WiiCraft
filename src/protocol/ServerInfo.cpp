@@ -35,23 +35,23 @@ using namespace std;
 
 ServerInfo *ServerInfo::serverInfo = NULL;
 
-void ServerInfo::initialisiereServerInfo(byte maximaleAnzahlSpieler) {
+void ServerInfo::initializeServerInfo(byte maximaleAnzahlPlayer) {
 	if (ServerInfo::serverInfo != NULL) {
 		delete ServerInfo::serverInfo;
 	}
 
-	ServerInfo::serverInfo = new ServerInfo(maximaleAnzahlSpieler);
+	ServerInfo::serverInfo = new ServerInfo(maximaleAnzahlPlayer);
 }
 
 ServerInfo *ServerInfo::gebeServerInfo() {
 	return ServerInfo::serverInfo;
 }
 
-ServerInfo::ServerInfo(byte _maximaleAnzahlSpieler) {
-	this->maximaleAnzahlSpieler = _maximaleAnzahlSpieler;
+ServerInfo::ServerInfo(byte _maximaleAnzahlPlayer) {
+	this->maximaleAnzahlPlayer = _maximaleAnzahlPlayer;
 }
 
-void ServerInfo::aktualisiereSpielerStatus(string _spieler, bool _online,
+void ServerInfo::aktualisierePlayerStatus(string _spieler, bool _online,
 		short _ping) {
 	if (!_online && this->spieler.count(_spieler) > 0) {
 		this->spieler.erase(_spieler);

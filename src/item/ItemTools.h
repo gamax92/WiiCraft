@@ -34,7 +34,7 @@
 
 namespace std {
 
-class ItemWerkzeug: public Item {
+class ItemTools: public Item {
 protected:
 	void setzeStandardWerte();
 };

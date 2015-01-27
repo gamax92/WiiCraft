@@ -59,7 +59,7 @@ void Packet06SpawnPosition::lesePacketInhalt(DataInputStream *in) {
 }
 
 void Packet06SpawnPosition::verarbeitePacket() {
-	World::gebeWelt()->setzeKompassPosition(this->x, this->y, this->z);
+	World::getWorld()->setzeKompassPosition(this->x, this->y, this->z);
 
 #ifdef DEBUG_ON
 	char *buffer = new char[100];

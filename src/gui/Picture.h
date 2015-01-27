@@ -30,13 +30,13 @@
 #ifndef BILD_H_
 #define BILD_H_
 
-#include "GrafikElement.h"
+#include "GraphicElement.h"
 
 #include <string>
 
 namespace std {
 
-class Bild: public GrafikElement {
+class Bild: public GraphicElement {
 public:
 	Bild(float _x, float _y, string textur, float _drehung, float _skralierungX,
 			float _skralierungY, unsigned int _farbe);

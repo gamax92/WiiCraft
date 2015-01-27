@@ -27,6 +27,6 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "ItemSchaufel.h"
+#include "ItemShovel.h"
 
 using namespace std;

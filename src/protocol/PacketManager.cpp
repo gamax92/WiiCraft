@@ -101,7 +101,7 @@ void PacketManager::registrierePacket(PacketServer *paket) {
 	PacketManager::paketListe[paket->gebePacketId()] = paket;
 }
 
-void PacketManager::initialisierePacketListe() {
+void PacketManager::initializePacketListe() {
 	PacketManager::paketListe = (PacketServer **) malloc(
 			sizeof(PacketServer *) * 256);
 

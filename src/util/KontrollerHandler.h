@@ -38,7 +38,7 @@ namespace std {
 
 class KontrollerHandler {
 public:
-	static void initialisiere();
+	static void initialize();
 	static KontrollerHandler *gebeKontrollerHandler();
 
 	void aktualisiere();

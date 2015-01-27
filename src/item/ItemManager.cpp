@@ -182,7 +182,7 @@
 #include "item/ItemDummy.h"
 #include "../util/Debug.h"
 #ifdef DEBUG_ON
-#include "../gui/GrafikHandler.h"
+#include "../gui/GraphicHandler.h"
 #endif
 
 using namespace std;
@@ -195,7 +195,7 @@ void ItemManager::registriereItem(Item *item) {
 	ItemManager::itemListe[item->gebeItemId()] = item;
 }
 
-void ItemManager::initialisiereItemListe() {
+void ItemManager::initializeItemListe() {
 	ItemManager::itemListe = (Item **) malloc(sizeof(Item *) * 2048);
 
 	for (short i = 0; i < 2048; i++) {
@@ -361,7 +361,7 @@ Item *ItemManager::getInstance(short itemId) {
 
 void ItemManager::zeichne(short itemId, float x, float y, float z, byte meta) {
 #ifdef DEBUG_ON
-	GrafikHandler::blockAnzahl++;
+	GraphicHandler::blockAnzahl++;
 #endif
 
 	ItemDummy *itemDummy =

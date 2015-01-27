@@ -38,16 +38,16 @@
 
 namespace std {
 
-class Hintergrund;
+class Background;
 class Text;
-class TextFeld;
-class PasswortFeld;
+class TextField;
+class PasswordField;
 class Button;
 
 class AnmeldungMenue {
 public:
-	static void initialisiere();
-	static void deinitialisiere();
+	static void initialize();
+	static void deinitialize();
 	static void zeigeAnmeldungMenue();
 	static void anmelden();
 	static void auswaehlenBunutzer();
@@ -57,13 +57,13 @@ private:
 	AnmeldungMenue();
 	~AnmeldungMenue();
 
-	Hintergrund *hintergrund;
+	Background *hintergrund;
 	Text *textBenutzer;
 	Text *textPasswort;
 	Text *textFehler;
 	Text *textAnmelden;
-	TextFeld *textFeldBenutzer;
-	PasswortFeld *textFeldPasswort;
+	TextField *textFeldBenutzer;
+	PasswordField *textFeldPasswort;
 	Button *buttonAnmelden;
 
 	pthread_mutex_t mutexwait;

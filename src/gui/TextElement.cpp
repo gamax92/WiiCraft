@@ -36,7 +36,7 @@ TextElement::~TextElement() {
 }
 
 void TextElement::setzeStandardWerte() {
-	GrafikElement::setzeStandardWerte();
+	GraphicElement::setzeStandardWerte();
 
 	pthread_mutex_init(&this->mutexText, NULL);
 }

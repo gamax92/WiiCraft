@@ -27,11 +27,11 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "ItemWerkzeug.h"
+#include "ItemTools.h"
 
 using namespace std;
 
-void ItemWerkzeug::setzeStandardWerte() {
+void ItemTools::setzeStandardWerte() {
 	Item::setzeStandardWerte();
 
 	// TODO maximaleHaltbarkeit an Hand des Materials festlegen

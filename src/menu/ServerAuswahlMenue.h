@@ -38,15 +38,15 @@
 
 namespace std {
 
-class Hintergrund;
+class Background;
 class Text;
-class TextFeld;
+class TextField;
 class Button;
 
 class ServerAuswahlMenue {
 public:
-	static void initialisiere();
-	static void deinitialisiere();
+	static void initialize();
+	static void deinitialize();
 	static void zeigeServerAuswahlMenue();
 	static void betreten();
 	static void auswaehlenServer();
@@ -56,13 +56,13 @@ private:
 	ServerAuswahlMenue();
 	~ServerAuswahlMenue();
 
-	Hintergrund *hintergrund;
+	Background *hintergrund;
 	Text *textServer;
 	Text *textPort;
 	Text *textFehler;
 	Text *textBetreten;
-	TextFeld *textFeldServer;
-	TextFeld *textFeldPort;
+	TextField *textFeldServer;
+	TextField *textFeldPort;
 	Button *buttonBetreten;
 
 	pthread_mutex_t mutexwait;

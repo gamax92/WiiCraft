@@ -44,7 +44,7 @@ bool Item113SteinAxt::registiereItem() {
 }
 
 Item113SteinAxt::Item113SteinAxt() {
-	ItemWerkzeug::setzeStandardWerte();
+	ItemTools::setzeStandardWerte();
 
 	Item::id = 0x113;
 }

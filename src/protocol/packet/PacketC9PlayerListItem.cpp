@@ -65,7 +65,7 @@ void PacketC9PlayerListItem::lesePacketInhalt(DataInputStream *in) {
 }
 
 void PacketC9PlayerListItem::verarbeitePacket() {
-	ServerInfo::gebeServerInfo()->aktualisiereSpielerStatus(this->playerName,
+	ServerInfo::gebeServerInfo()->aktualisierePlayerStatus(this->playerName,
 			this->online, this->ping);
 
 #ifdef DEBUG_ON

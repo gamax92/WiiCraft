@@ -44,7 +44,7 @@ bool Item114DiamantSchwert::registiereItem() {
 }
 
 Item114DiamantSchwert::Item114DiamantSchwert() {
-	ItemWerkzeug::setzeStandardWerte();
+	ItemTools::setzeStandardWerte();
 
 	Item::id = 0x114;
 }

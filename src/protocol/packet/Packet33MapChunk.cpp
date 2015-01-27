@@ -86,5 +86,5 @@ void Packet33MapChunk::verarbeitePacket() {
 	KomprimierteChunkDaten * k = new KomprimierteChunkDaten(
 			this->compressedData, this->compressedSize, this->primaryBitMap,
 			this->groundUpContiguous);
-	World::gebeWelt()->ergaenzeKomprimierteDaten(chunkX, chunkZ, k);
+	World::getWorld()->ergaenzeKomprimierteDaten(chunkX, chunkZ, k);
 }

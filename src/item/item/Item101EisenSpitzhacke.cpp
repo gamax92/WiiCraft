@@ -44,7 +44,7 @@ bool Item101EisenSpitzhacke::registiereItem() {
 }
 
 Item101EisenSpitzhacke::Item101EisenSpitzhacke() {
-	ItemWerkzeug::setzeStandardWerte();
+	ItemTools::setzeStandardWerte();
 
 	Item::id = 0x101;
 }

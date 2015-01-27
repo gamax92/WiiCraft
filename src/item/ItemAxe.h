@@ -30,11 +30,11 @@
 #ifndef ITEMAXT_H_
 #define ITEMAXT_H_
 
-#include "ItemWerkzeug.h"
+#include "ItemTools.h"
 
 namespace std {
 
-class ItemAxt: public ItemWerkzeug {
+class ItemAxe: public ItemTools {
 };
 
 }

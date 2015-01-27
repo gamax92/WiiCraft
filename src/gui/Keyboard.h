@@ -36,12 +36,12 @@ namespace std {
 
 class Button;
 
-class Tastatur: public ContainerElement {
+class Keyboard: public ContainerElement {
 public:
-	virtual ~Tastatur();
+	virtual ~Keyboard();
 	void zeichneElement();
 	void aendereGrossKlein();
-	static Tastatur *gebeTastatur();
+	static Keyboard *gebeKeyboard();
 	static void drueckeAusrufeZeichen();
 	static void druecke1();
 	static void drueckeAt();
@@ -142,9 +142,9 @@ public:
 	static void drueckeLeertaste();
 private:
 	static bool initialisiert;
-	static Tastatur* tastatur;
+	static Keyboard* tastatur;
 
-	Tastatur();bool kleinSchreiben;
+	Keyboard();bool kleinSchreiben;
 
 	Button *buttonAusrufeZeichen;
 	Button *button1;

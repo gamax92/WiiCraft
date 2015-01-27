@@ -102,7 +102,7 @@ void Packet34MultiBlockChange::verarbeitePacket() {
 		byte z = (byte0 & 0x0f);
 		byte y = byte1;
 
-		short index = World::gebeWelt()->berechneIndex(x, y, z);
+		short index = World::getWorld()->berechneIndex(x, y, z);
 
 #ifdef DEBUG_ON
 		char *buffer = new char[100];
@@ -116,7 +116,7 @@ void Packet34MultiBlockChange::verarbeitePacket() {
 #endif
 
 		BlockAenderung * b = new BlockAenderung(index, blockTyp, blockMetadata);
-		World::gebeWelt()->ergaenzeBlockAenderung(this->chunkX, this->chunkZ, b);
+		World::getWorld()->ergaenzeBlockAenderung(this->chunkX, this->chunkZ, b);
 
 		datenPosition += 4;
 	}

@@ -38,15 +38,15 @@
 
 namespace std {
 
-class Hintergrund;
+class Background;
 class Text;
-class LadeBalken;
+class LoadingBar;
 class Button;
 
 class UpdateMenue {
 public:
-	static void initialisiere();
-	static void deinitialisiere();
+	static void initialize();
+	static void deinitialize();
 	static void zeigeUpdateMenue();
 	static void keinUpdate();
 	static void starteUpdate();
@@ -56,9 +56,9 @@ private:
 	UpdateMenue();
 	~UpdateMenue();
 
-	Hintergrund *hintergrund;
+	Background *hintergrund;
 	Text *text;
-	LadeBalken *ladeBalken;
+	LoadingBar *ladeBalken;
 	Button *buttonJa;
 	Button *buttonNein;
 

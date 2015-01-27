@@ -35,15 +35,15 @@
 
 namespace std {
 
-class MetadataZeile {
+class MetadataLine {
 public:
-	MetadataZeile(byte wert1);
-	MetadataZeile(short wert1);
-	MetadataZeile(int wert1);
-	MetadataZeile(float wert1);
-	MetadataZeile(string wert1);
-	MetadataZeile(short wert1, byte wert2, short wert3);
-	MetadataZeile(int wert1, int wert2, int wert3);
+	MetadataLine(byte wert1);
+	MetadataLine(short wert1);
+	MetadataLine(int wert1);
+	MetadataLine(float wert1);
+	MetadataLine(string wert1);
+	MetadataLine(short wert1, byte wert2, short wert3);
+	MetadataLine(int wert1, int wert2, int wert3);
 private:
 	byte typ;
 	byte typ0;

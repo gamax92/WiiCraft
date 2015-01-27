@@ -36,16 +36,16 @@
 namespace std {
 
 class DataInputStream;
-class MetadataZeile;
+class MetadataLine;
 
 class Metadata {
 public:
 	static Metadata *leseDaten(DataInputStream *in);
 
-	Metadata(map<byte, MetadataZeile *> _inhalt);
+	Metadata(map<byte, MetadataLine *> _inhalt);
 	~Metadata();
 private:
-	map<byte, MetadataZeile *> inhalt;
+	map<byte, MetadataLine *> inhalt;
 };
 }
 #endif /* METADATA_H_ */

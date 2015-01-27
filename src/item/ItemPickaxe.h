@@ -30,11 +30,11 @@
 #ifndef ITEMSPITZHACKE_H_
 #define ITEMSPITZHACKE_H_
 
-#include "ItemWerkzeug.h"
+#include "ItemTools.h"
 
 namespace std {
 
-class ItemSpitzhacke: public ItemWerkzeug {
+class ItemPickaxe: public ItemTools {
 };
 
 }

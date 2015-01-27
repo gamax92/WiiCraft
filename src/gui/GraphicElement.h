@@ -39,9 +39,9 @@
 
 namespace std {
 
-class GrafikElement {
+class GraphicElement {
 public:
-	virtual ~GrafikElement();
+	virtual ~GraphicElement();
 
 	bool istSichtbar();
 	bool istDeaktiviert();

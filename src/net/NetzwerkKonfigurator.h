@@ -34,13 +34,13 @@ namespace std {
 
 class NetzwerkKonfigurator {
 public:
-	static bool initialisieren();
+	static bool initializing();
 
 private:
 	static char localip[16];
 	static char gateway[16];
 	static char netmask[16];
-	static bool istInitialisieren;
+	static bool istInitializing;
 };
 }
 #endif /* NETZWERKKONFIGURATOR_H_ */

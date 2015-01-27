@@ -39,14 +39,14 @@
 
 namespace std {
 
-class Hintergrund;
+class Background;
 class Text;
 class Button;
 
 class ErrorMenu {
 public:
 	static void initialize(string fehlerText);
-	static void deinitialisiere();
+	static void deinitialize();
 	static void showErrorMenu();
 	static void ok();
 private:
@@ -54,7 +54,7 @@ private:
 	ErrorMenu(string fehlerText);
 	~ErrorMenu();
 
-	Hintergrund *hintergrund;
+	Background *hintergrund;
 	Text *textFehler;
 	Button *buttonOk;
 

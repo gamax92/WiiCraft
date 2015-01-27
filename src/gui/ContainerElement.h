@@ -30,7 +30,7 @@
 #ifndef CONTAINERELEMENT_H_
 #define CONTAINERELEMENT_H_
 
-#include "GrafikElement.h"
+#include "GraphicElement.h"
 
 #include <list>
 #if defined _WIN32 || defined __CYGWIN__
@@ -41,11 +41,11 @@
 
 namespace std {
 
-class ContainerElement: public GrafikElement {
+class ContainerElement: public GraphicElement {
 public:
 	virtual ~ContainerElement();
 
-	void fuegeUnterElementHinzu(GrafikElement *neuesElement);
+	void fuegeUnterElementHinzu(GraphicElement *neuesElement);
 	void setzeCursorPosition(float x, float y, float angle);
 	void setzeCursorAnzeigen(bool _anzeigen);
 	void gedrueckt(u32 gedrueckt);
@@ -55,7 +55,7 @@ protected:
 	void zeichneUnterElement();
 	void zeichneCursor();
 private:
-	list<GrafikElement *> unterElemente;
+	list<GraphicElement *> unterElemente;
 	pthread_mutex_t mutexUnterElemente;
 	pthread_mutex_t mutexCursor;
 	pthread_mutex_t mutexCursorAnzeigbar;

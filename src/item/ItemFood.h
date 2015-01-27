@@ -34,7 +34,7 @@
 
 namespace std {
 
-class ItemEssen: public std::Item {
+class ItemFood: public std::Item {
 };
 
 }

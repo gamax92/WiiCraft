@@ -34,13 +34,13 @@
 
 namespace std {
 
-class LadeBalken;
+class LoadingBar;
 
 class HTTP {
 public:
 	string get(string server, short port, string site);
 	bool getFile(string server, short port, string site, string dateiname,
-			LadeBalken *l);
+			LoadingBar *l);
 };
 
 }

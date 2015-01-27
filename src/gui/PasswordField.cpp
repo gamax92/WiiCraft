@@ -27,10 +27,10 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "PasswortFeld.h"
+#include "PasswordField.h"
 
 #include <cmath>
-#include "GrafikHandler.h"
+#include "GraphicHandler.h"
 #if defined _WIN32 || defined __CYGWIN__
 #include "../util/WiiFunction.h"
 #else /* __wii__ */
@@ -39,7 +39,7 @@
 
 using namespace std;
 
-PasswortFeld::PasswortFeld(float _x, float _y) {
+PasswordField::PasswordField(float _x, float _y) {
 	TextElement::setzeStandardWerte();
 
 	this->setzeX(_x);
@@ -48,7 +48,7 @@ PasswortFeld::PasswortFeld(float _x, float _y) {
 	time(&this->cursorZeit);
 }
 
-PasswortFeld::PasswortFeld(float _x, float _y, string _text) {
+PasswordField::PasswordField(float _x, float _y, string _text) {
 	TextElement::setzeStandardWerte();
 
 	this->setzeX(_x);
@@ -58,15 +58,15 @@ PasswortFeld::PasswortFeld(float _x, float _y, string _text) {
 	time(&this->cursorZeit);
 }
 
-PasswortFeld::~PasswortFeld() {
+PasswordField::~PasswordField() {
 }
 
-void PasswortFeld::berechneAusmasse() {
+void PasswordField::berechneAusmasse() {
 	this->setzeHoehe(18);
 	this->setzeBreite(104);
 }
 
-void PasswortFeld::zeichneElement() {
+void PasswordField::zeichneElement() {
 	if (this->istSichtbar()) {
 		GRRLIB_2dMode();
 
@@ -112,13 +112,13 @@ void PasswortFeld::zeichneElement() {
 			// Textschatten
 			if (!deaktiviert) {
 				GRRLIB_Printf(_x + 3, _y + 5,
-						GrafikHandler::gebeGrafikHandler()->gebeBild("font"),
+						GraphicHandler::getGraphicHandler()->gebeBild("font"),
 						textFarbeSchatten, 1, _text.data());
 			}
 
 			// Text
 			GRRLIB_Printf(_x + 2, _y + 4,
-					GrafikHandler::gebeGrafikHandler()->gebeBild("font"),
+					GraphicHandler::getGraphicHandler()->gebeBild("font"),
 					textFarbe, 1, _text.data());
 		}
 	}

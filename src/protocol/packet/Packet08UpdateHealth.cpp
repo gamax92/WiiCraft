@@ -31,7 +31,7 @@
 
 #include <cstdio>
 #include "../../net/DataInputStream.h"
-#include "../../entity/Spieler.h"
+#include "../../entity/Player.h"
 #include "../PacketManager.h"
 #include "../../util/Debug.h"
 

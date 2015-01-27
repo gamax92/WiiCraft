@@ -27,10 +27,10 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "TextFeld.h"
+#include "TextField.h"
 
 #include <cmath>
-#include "GrafikHandler.h"
+#include "GraphicHandler.h"
 #if defined _WIN32 || defined __CYGWIN__
 #include "../util/WiiFunction.h"
 #else /* __wii__ */
@@ -39,7 +39,7 @@
 
 using namespace std;
 
-TextFeld::TextFeld(float _x, float _y) {
+TextField::TextField(float _x, float _y) {
 	TextElement::setzeStandardWerte();
 
 	this->setzeX(_x);
@@ -48,7 +48,7 @@ TextFeld::TextFeld(float _x, float _y) {
 	time(&this->cursorZeit);
 }
 
-TextFeld::TextFeld(float _x, float _y, string _text) {
+TextField::TextField(float _x, float _y, string _text) {
 	TextElement::setzeStandardWerte();
 
 	this->setzeX(_x);
@@ -58,15 +58,15 @@ TextFeld::TextFeld(float _x, float _y, string _text) {
 	time(&this->cursorZeit);
 }
 
-TextFeld::~TextFeld() {
+TextField::~TextField() {
 }
 
-void TextFeld::berechneAusmasse() {
+void TextField::berechneAusmasse() {
 	this->setzeHoehe(18);
 	this->setzeBreite(104);
 }
 
-void TextFeld::zeichneElement() {
+void TextField::zeichneElement() {
 	if (this->istSichtbar()) {
 		GRRLIB_2dMode();
 
@@ -109,13 +109,13 @@ void TextFeld::zeichneElement() {
 			// Textschatten
 			if (!deaktiviert) {
 				GRRLIB_Printf(_x + 3, _y + 5,
-						GrafikHandler::gebeGrafikHandler()->gebeBild("font"),
+						GraphicHandler::getGraphicHandler()->gebeBild("font"),
 						textFarbeSchatten, 1, _text.data());
 			}
 
 			// Text
 			GRRLIB_Printf(_x + 2, _y + 4,
-					GrafikHandler::gebeGrafikHandler()->gebeBild("font"),
+					GraphicHandler::getGraphicHandler()->gebeBild("font"),
 					textFarbe, 1, _text.data());
 		}
 	}

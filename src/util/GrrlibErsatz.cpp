@@ -29,7 +29,7 @@
 
 #include "GrrlibErsatz.h"
 
-#include "../gui/GrafikHandler.h"
+#include "../gui/GraphicHandler.h"
 
 #if defined _WIN32 || defined __CYGWIN__
 GXRModeObj *rmode;
@@ -113,7 +113,7 @@ void GrrlibErsatz::GRRLIB_DrawImgQuadTile(const guVector pos[4],
 
 	//GX_LoadPosMtxImm(mv, GX_PNMTX0);
 
-	//TexturMatrix texturMatrix = GrafikHandler::gebeGrafikHandler()->gebeTexturMatrix(frame);
+	//TexturMatrix texturMatrix = GraphicHandler::getGraphicHandler()->gebeTexturMatrix(frame);
 
 	GX_Begin(GX_QUADS, GX_VTXFMT0, 4);
 	GX_Position3f32(pos[0].x, pos[0].y, pos[0].z);

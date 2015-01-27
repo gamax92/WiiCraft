@@ -27,6 +27,6 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "ItemSchwert.h"
+#include "ItemSword.h"
 
 using namespace std;

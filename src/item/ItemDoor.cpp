@@ -27,6 +27,6 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "ItemTuer.h"
+#include "ItemDoor.h"
 
 using namespace std;

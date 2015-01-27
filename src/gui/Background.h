@@ -41,20 +41,20 @@
 
 namespace std {
 
-class Tastatur;
+class Keyboard;
 
-class Hintergrund: public ContainerElement {
+class Background: public ContainerElement {
 public:
-	Hintergrund();
-	Hintergrund(string _textur);
+	Background();
+	Background(string _textur);
 
-	bool zeigeTastatur();
-	virtual ~Hintergrund();
+	bool zeigeKeyboard();
+	virtual ~Background();
 	void zeichneElement();
-	void setzeTastaturAnzeigen(bool _tastaturAnzeigen);
+	void setzeKeyboardAnzeigen(bool _tastaturAnzeigen);
 private:
 	string textur;
-	Tastatur *tastatur;
+	Keyboard *tastatur;
 };
 
 }

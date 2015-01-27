@@ -39,12 +39,12 @@
 namespace std {
 
 class BlockEngine;
-class Hintergrund;
+class Background;
 
 class Anzeige3D {
 public:
-	static void initialisiere();
-	static void deinitialisiere();
+	static void initialize();
+	static void deinitialize();
 	static void zeigeAnzeige3D();
 private:
 	static Anzeige3D *anzeige3D;
@@ -52,7 +52,7 @@ private:
 	~Anzeige3D();
 
 	BlockEngine *blockEngine;
-	Hintergrund *hintergrund;
+	Background *hintergrund;
 };
 
 }

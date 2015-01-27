@@ -30,11 +30,11 @@
 #ifndef ITEM113STEINAXT_H_
 #define ITEM113STEINAXT_H_
 
-#include "../ItemAxt.h"
+#include "../ItemAxe.h"
 
 namespace std {
 
-class Item113SteinAxt: public ItemAxt {
+class Item113SteinAxt: public ItemAxe {
 public:
 	Item113SteinAxt();
 	Item *gebeInstanz();

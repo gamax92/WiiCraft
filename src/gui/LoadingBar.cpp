@@ -27,9 +27,9 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "LadeBalken.h"
+#include "LoadingBar.h"
 
-#include "GrafikHandler.h"
+#include "GraphicHandler.h"
 #if defined _WIN32 || defined __CYGWIN__
 #include "../util/WiiFunction.h"
 #else /* __wii__ */
@@ -38,7 +38,7 @@
 
 using namespace std;
 
-LadeBalken::LadeBalken(float _x, float _y) {
+LoadingBar::LoadingBar(float _x, float _y) {
 	this->setzeStandardWerte();
 
 	pthread_mutex_init(&this->mutexfortschritt, NULL);
@@ -50,11 +50,11 @@ LadeBalken::LadeBalken(float _x, float _y) {
 	this->setzeFortschritt(0);
 }
 
-LadeBalken::~LadeBalken() {
+LoadingBar::~LoadingBar() {
 	pthread_mutex_destroy(&this->mutexfortschritt);
 }
 
-void LadeBalken::zeichneElement() {
+void LoadingBar::zeichneElement() {
 	if (this->istSichtbar()) {
 		float _x = this->gebeX();
 		float _y = this->gebeY();
@@ -64,26 +64,26 @@ void LadeBalken::zeichneElement() {
 
 		GRRLIB_2dMode();
 
-		// zeichne LadeBalken Hintergrund
+		// zeichne LoadingBar Background
 		GRRLIB_Rectangle(_x, _y, _breite, _hoehe, 0x000000ff, 1);
 
-		// zeichne LadeBalken fortschritt, anhand des Tiles
+		// zeichne LoadingBar fortschritt, anhand des Tiles
 		if (_fortschritt > 0 && _fortschritt <= 100) {
 			GRRLIB_DrawTile(_x, _y,
-					GrafikHandler::gebeGrafikHandler()->gebeBild(
+					GraphicHandler::getGraphicHandler()->gebeBild(
 							"bild_ladebalken"), 0, _breite / 100.0,
 					_hoehe / 4.0, 0xffffffff, _fortschritt);
 		}
 	}
 }
 
-void LadeBalken::setzeFortschritt(int _fortschritt) {
+void LoadingBar::setzeFortschritt(int _fortschritt) {
 	pthread_mutex_lock(&this->mutexfortschritt);
 	this->fortschritt = _fortschritt;
 	pthread_mutex_unlock(&this->mutexfortschritt);
 }
 
-int LadeBalken::gebeFortschritt() {
+int LoadingBar::gebeFortschritt() {
 	pthread_mutex_lock(&this->mutexfortschritt);
 	int _fortschritt = this->fortschritt;
 	pthread_mutex_unlock(&this->mutexfortschritt);

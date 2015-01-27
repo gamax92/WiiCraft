@@ -30,11 +30,11 @@
 #ifndef ITEM116DIAMANTSPITZHACKE_H_
 #define ITEM116DIAMANTSPITZHACKE_H_
 
-#include "../ItemSpitzhacke.h"
+#include "../ItemPickaxe.h"
 
 namespace std {
 
-class Item116DiamantSpitzhacke: public ItemSpitzhacke {
+class Item116DiamantSpitzhacke: public ItemPickaxe {
 public:
 	Item116DiamantSpitzhacke();
 	Item *gebeInstanz();

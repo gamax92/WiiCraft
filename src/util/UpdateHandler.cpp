@@ -35,7 +35,7 @@
 #include "../exception/ExcSocketHTTP.h"
 #include "../exception/ExcSocketHTTPServerLoginFailed.h"
 #include "../util/Pfad.h"
-#include "../gui/LadeBalken.h"
+#include "../gui/LoadingBar.h"
 
 using namespace std;
 
@@ -91,7 +91,7 @@ bool UpdateHandler::istUpdateVorhanden() {
 	return false;
 }
 
-bool UpdateHandler::ladeUpdate(LadeBalken *l) {
+bool UpdateHandler::ladeUpdate(LoadingBar *l) {
 	if (!UpdateHandler::ladeDol(l)) {
 		return false;
 	}
@@ -105,7 +105,7 @@ bool UpdateHandler::ladeUpdate(LadeBalken *l) {
 	return true;
 }
 
-bool UpdateHandler::ladeXML(LadeBalken *l) {
+bool UpdateHandler::ladeXML(LoadingBar *l) {
 	string get = "/wiicraft/meta.xml";
 
 	HTTP * h = new HTTP();
@@ -123,7 +123,7 @@ bool UpdateHandler::ladeXML(LadeBalken *l) {
 	return false;
 }
 
-bool UpdateHandler::ladeIcon(LadeBalken *l) {
+bool UpdateHandler::ladeIcon(LoadingBar *l) {
 	string get = "/wiicraft/icon.png";
 
 	HTTP * h = new HTTP();
@@ -141,7 +141,7 @@ bool UpdateHandler::ladeIcon(LadeBalken *l) {
 	return false;
 }
 
-bool UpdateHandler::ladeDol(LadeBalken *l) {
+bool UpdateHandler::ladeDol(LoadingBar *l) {
 	string get = "/wiicraft/WiiCraft.dol";
 
 	HTTP * h = new HTTP();

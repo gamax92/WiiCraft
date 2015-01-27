@@ -33,10 +33,10 @@
 #include <iostream>
 #endif
 #include <stdlib.h>
-#include "../gui/Hintergrund.h"
+#include "../gui/Background.h"
 #include "../gui/Text.h"
 #include "../gui/Button.h"
-#include "../gui/GrafikHandler.h"
+#include "../gui/GraphicHandler.h"
 
 using namespace std;
 
@@ -46,7 +46,7 @@ void ErrorMenu::initialize(string fehlerText) {
 	ErrorMenu::fehlerMenue = new ErrorMenu(fehlerText);
 }
 
-void ErrorMenu::deinitialisiere() {
+void ErrorMenu::deinitialize() {
 	delete ErrorMenu::fehlerMenue;
 }
 
@@ -54,7 +54,7 @@ ErrorMenu::ErrorMenu(string fehlerText) {
 	pthread_mutex_init(&this->mutexWait, NULL);
 	pthread_cond_init(&this->condWait, NULL);
 
-	this->hintergrund = new Hintergrund("bildMenueHintergrund");
+	this->hintergrund = new Background("bildMenueHintergrund");
 	this->hintergrund->setzeCursorAnzeigen(true);
 
 	this->textFehler = new Text(200, 160, fehlerText);
@@ -73,7 +73,7 @@ ErrorMenu::~ErrorMenu() {
 }
 
 void ErrorMenu::showErrorMenu() {
-	GrafikHandler::gebeGrafikHandler()->setzeAnzeigeElement(
+	GraphicHandler::getGraphicHandler()->setzeAnzeigeElement(
 			ErrorMenu::fehlerMenue->hintergrund);
 
 	while (true) {
@@ -89,7 +89,7 @@ void ErrorMenu::showErrorMenu() {
 		pthread_mutex_unlock(&ErrorMenu::fehlerMenue->mutexWait);
 #endif
 
-		ErrorMenu::fehlerMenue->hintergrund->setzeTastaturAnzeigen(false);
+		ErrorMenu::fehlerMenue->hintergrund->setzeKeyboardAnzeigen(false);
 		ErrorMenu::fehlerMenue->textFehler->sichtbarkeit(false);
 		ErrorMenu::fehlerMenue->buttonOk->sichtbarkeit(false);
 

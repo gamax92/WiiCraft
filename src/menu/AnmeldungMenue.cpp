@@ -32,13 +32,13 @@
 #if defined _WIN32 || defined __CYGWIN__
 #include <iostream>
 #endif
-#include "../gui/Hintergrund.h"
-#include "../gui/TextFeld.h"
-#include "../gui/PasswortFeld.h"
+#include "../gui/Background.h"
+#include "../gui/TextField.h"
+#include "../gui/PasswordField.h"
 #include "../gui/Text.h"
 #include "../gui/Button.h"
-#include "../gui/Bild.h"
-#include "../gui/GrafikHandler.h"
+#include "../gui/Picture.h"
+#include "../gui/GraphicHandler.h"
 #include "../protocol/Session.h"
 #include "../exception/ExcSocketHTTPServerLoginFailed.h"
 #include "../thread/HTTPSessionAktualisierenThread.h"
@@ -47,11 +47,11 @@ using namespace std;
 
 AnmeldungMenue *AnmeldungMenue::anmeldungMenue;
 
-void AnmeldungMenue::initialisiere() {
+void AnmeldungMenue::initialize() {
 	AnmeldungMenue::anmeldungMenue = new AnmeldungMenue();
 }
 
-void AnmeldungMenue::deinitialisiere() {
+void AnmeldungMenue::deinitialize() {
 	delete AnmeldungMenue::anmeldungMenue;
 }
 
@@ -59,22 +59,22 @@ AnmeldungMenue::AnmeldungMenue() {
 	pthread_mutex_init(&this->mutexwait, NULL);
 	pthread_cond_init(&this->condwait, NULL);
 
-	this->hintergrund = new Hintergrund("bildMenueHintergrund");
-	this->hintergrund->setzeTastaturAnzeigen(true);
+	this->hintergrund = new Background("bildMenueHintergrund");
+	this->hintergrund->setzeKeyboardAnzeigen(true);
 	this->hintergrund->setzeCursorAnzeigen(true);
 
 	Bild *bild = new Bild(144, 20, "logo");
 	this->textFehler = new Text(250, 260, "");
-	this->textFehler->setzeHintergrundFarbe(0xff33337f);
+	this->textFehler->setzeBackgroundFarbe(0xff33337f);
 	this->textAnmelden = new Text(200, 160, "am Minecraft Server anmelden...");
 	this->textAnmelden->sichtbarkeit(false);
 
 	this->textBenutzer = new Text(250, 124, "Benutzer:");
-	this->textFeldBenutzer = new TextFeld(250, 140, "");
+	this->textFeldBenutzer = new TextField(250, 140, "");
 	this->textFeldBenutzer->setzeBeimKlicken(
 			&AnmeldungMenue::auswaehlenBunutzer);
 	this->textPasswort = new Text(250, 164, "Passwort:");
-	this->textFeldPasswort = new PasswortFeld(250, 180, "");
+	this->textFeldPasswort = new PasswordField(250, 180, "");
 	this->textFeldPasswort->setzeBeimKlicken(
 			&AnmeldungMenue::auswaehlenPasswort);
 	this->buttonAnmelden = new Button(254, 220, "Anmelden");
@@ -96,9 +96,9 @@ AnmeldungMenue::~AnmeldungMenue() {
 }
 
 void AnmeldungMenue::zeigeAnmeldungMenue() {
-	GrafikHandler::gebeGrafikHandler()->setzeAnzeigeElement(
+	GraphicHandler::getGraphicHandler()->setzeAnzeigeElement(
 			AnmeldungMenue::anmeldungMenue->hintergrund);
-	GrafikHandler::gebeGrafikHandler()->setzeAusgewaehltesElement(
+	GraphicHandler::getGraphicHandler()->setzeAusgewaehltesElement(
 			AnmeldungMenue::anmeldungMenue->textFeldBenutzer);
 
 	while (true) {
@@ -120,7 +120,7 @@ void AnmeldungMenue::zeigeAnmeldungMenue() {
 		pthread_mutex_unlock(&AnmeldungMenue::anmeldungMenue->mutexwait);
 #endif
 
-		AnmeldungMenue::anmeldungMenue->hintergrund->setzeTastaturAnzeigen(
+		AnmeldungMenue::anmeldungMenue->hintergrund->setzeKeyboardAnzeigen(
 				false);
 		AnmeldungMenue::anmeldungMenue->textFehler->sichtbarkeit(false);
 		AnmeldungMenue::anmeldungMenue->textBenutzer->sichtbarkeit(false);
@@ -138,7 +138,7 @@ void AnmeldungMenue::zeigeAnmeldungMenue() {
 
 			AnmeldungMenue::anmeldungMenue->textFehler->setzeText(
 					exception.getFehler());
-			AnmeldungMenue::anmeldungMenue->hintergrund->setzeTastaturAnzeigen(
+			AnmeldungMenue::anmeldungMenue->hintergrund->setzeKeyboardAnzeigen(
 					true);
 			AnmeldungMenue::anmeldungMenue->textFehler->sichtbarkeit(true);
 			AnmeldungMenue::anmeldungMenue->textBenutzer->sichtbarkeit(true);
@@ -166,11 +166,11 @@ void AnmeldungMenue::anmelden() {
 }
 
 void AnmeldungMenue::auswaehlenBunutzer() {
-	GrafikHandler::gebeGrafikHandler()->setzeAusgewaehltesElement(
+	GraphicHandler::getGraphicHandler()->setzeAusgewaehltesElement(
 			AnmeldungMenue::anmeldungMenue->textFeldBenutzer);
 }
 
 void AnmeldungMenue::auswaehlenPasswort() {
-	GrafikHandler::gebeGrafikHandler()->setzeAusgewaehltesElement(
+	GraphicHandler::getGraphicHandler()->setzeAusgewaehltesElement(
 			AnmeldungMenue::anmeldungMenue->textFeldPasswort);
 }

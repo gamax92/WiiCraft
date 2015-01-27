@@ -37,14 +37,14 @@
 
 using namespace std;
 
-World *World::welt = NULL;
+World *World::world = NULL;
 
 void World::calculateChunkPosition(int x, int z, int &chunkX, int &chunkZ) {
 	chunkX = x >> 4;
 	chunkZ = z >> 4;
 }
 
-void World::gebeChunkPos(int x, int y, int z, byte &xP, byte &yP, byte &zP) {
+void World::getChunkPos(int x, int y, int z, byte &xP, byte &yP, byte &zP) {
 	xP = x & 15;
 	yP = y & (this->gebeWeltHoehe() - 1);
 	zP = z & 15;
@@ -62,25 +62,25 @@ void World::berechnePosAusIndex(unsigned short index, int &x, int &y, int &z) {
 	y = index - (z * _weltHoehe) - (x * _weltHoehe * 16);
 }
 
-void World::initialisiereWelt(int dimension, string levelTyp,
+void World::initializeWorld(int dimension, string levelTyp,
 		byte schwierigkeitsGrad, int serverModus, unsigned short weltHoehe) {
-	if (World::welt != NULL) {
-		delete World::welt;
+	if (World::world != NULL) {
+		delete World::world;
 	}
 
-	World::welt = new World(dimension, levelTyp, schwierigkeitsGrad, serverModus,
+	World::world = new World(dimension, levelTyp, schwierigkeitsGrad, serverModus,
 			weltHoehe);
 }
 
-World *World::gebeWelt() {
-	return World::welt;
+World *World::getWorld() {
+	return World::world;
 }
 
 World::World(int _dimension, string _levelTyp, byte _schwierigkeitsGrad,
 		int _serverModus, unsigned short _weltHoehe) {
 
 	pthread_mutex_init(&this->mutexChunks, NULL);
-	pthread_mutex_init(&this->mutexGeladeneChunks, NULL);
+	pthread_mutex_init(&this->mutexLoadedChunks, NULL);
 	pthread_mutex_init(&this->mutexUhrzeit, NULL);
 	pthread_mutex_init(&this->mutexWelthoehe, NULL);
 
@@ -108,7 +108,7 @@ World::World(int _dimension, string _levelTyp, byte _schwierigkeitsGrad,
 
 World::~World() {
 	pthread_mutex_destroy(&this->mutexChunks);
-	pthread_mutex_destroy(&this->mutexGeladeneChunks);
+	pthread_mutex_destroy(&this->mutexLoadedChunks);
 	pthread_mutex_destroy(&this->mutexUhrzeit);
 	pthread_mutex_destroy(&this->mutexWelthoehe);
 
@@ -126,19 +126,19 @@ World::~World() {
 	this->geladeneChunks.clear();
 }
 
-void World::initialisiereChunk(int x, int z) {
+void World::initializeChunk(int x, int z) {
 	pthread_mutex_lock(&this->mutexChunks);
 	this->chunks[x][z] = new Chunk(x, z);
 	pthread_mutex_unlock(&this->mutexChunks);
 }
 
 void World::loescheChunk(int x, int z) {
-	pthread_mutex_lock(&this->mutexGeladeneChunks);
+	pthread_mutex_lock(&this->mutexLoadedChunks);
 	if (this->geladeneChunks.count(x) > 0
 			&& this->geladeneChunks[x].count(z) > 0) {
 		this->geladeneChunks[x].erase(z);
 	}
-	pthread_mutex_unlock(&this->mutexGeladeneChunks);
+	pthread_mutex_unlock(&this->mutexLoadedChunks);
 
 	pthread_mutex_lock(&this->mutexChunks);
 	if (this->chunks.count(x) > 0 && this->chunks[x].count(z) > 0) {
@@ -153,33 +153,33 @@ void World::setzeChunkGeladen(int x, int z, bool laden) {
 	if (laden) {
 		pthread_mutex_lock(&this->mutexChunks);
 		if (this->chunks.count(x) > 0 && this->chunks[x].count(z) > 0) {
-			pthread_mutex_lock(&this->mutexGeladeneChunks);
+			pthread_mutex_lock(&this->mutexLoadedChunks);
 			this->geladeneChunks[x][z] = this->chunks[x][z];
-			pthread_mutex_unlock(&this->mutexGeladeneChunks);
+			pthread_mutex_unlock(&this->mutexLoadedChunks);
 
 			this->chunkCacheManager->fuegeChunkHinzu(this->chunks[x][z]);
 		}
 		pthread_mutex_unlock(&this->mutexChunks);
 	} else {
-		pthread_mutex_lock(&this->mutexGeladeneChunks);
+		pthread_mutex_lock(&this->mutexLoadedChunks);
 		if (this->geladeneChunks.count(x) > 0
 				&& this->geladeneChunks[x].count(z) > 0) {
 			this->chunkCacheManager->loescheChunk(this->geladeneChunks[x][z]);
 
 			this->geladeneChunks[x].erase(z);
 		}
-		pthread_mutex_unlock(&this->mutexGeladeneChunks);
+		pthread_mutex_unlock(&this->mutexLoadedChunks);
 	}
 }
 
 bool World::istChunkGeladen(int x, int z) {
 	bool geladen = false;
-	pthread_mutex_lock(&this->mutexGeladeneChunks);
+	pthread_mutex_lock(&this->mutexLoadedChunks);
 	if (this->geladeneChunks.count(x) > 0
 			&& this->geladeneChunks[x].count(z) > 0) {
 		geladen = true;
 	}
-	pthread_mutex_unlock(&this->mutexGeladeneChunks);
+	pthread_mutex_unlock(&this->mutexLoadedChunks);
 
 	return geladen;
 }
@@ -216,12 +216,12 @@ int World::gebeAnzahlGeladeneChunks() {
 	int anzahl = 0;
 	map<int, map<int, Chunk *> >::iterator it1;
 
-	pthread_mutex_lock(&this->mutexGeladeneChunks);
+	pthread_mutex_lock(&this->mutexLoadedChunks);
 	for (it1 = this->geladeneChunks.begin(); it1 != this->geladeneChunks.end();
 			it1++) {
 		anzahl += (*it1).second.size();
 	}
-	pthread_mutex_unlock(&this->mutexGeladeneChunks);
+	pthread_mutex_unlock(&this->mutexLoadedChunks);
 	return anzahl;
 }
 

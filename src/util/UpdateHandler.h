@@ -32,17 +32,17 @@
 
 namespace std {
 
-class LadeBalken;
+class LoadingBar;
 
 class UpdateHandler {
 public:
 	static bool istUpdateVorhanden();
-	static bool ladeUpdate(LadeBalken *l);
+	static bool ladeUpdate(LoadingBar *l);
 
 private:
-	static bool ladeXML(LadeBalken *l);
-	static bool ladeIcon(LadeBalken *l);
-	static bool ladeDol(LadeBalken *l);
+	static bool ladeXML(LoadingBar *l);
+	static bool ladeIcon(LoadingBar *l);
+	static bool ladeDol(LoadingBar *l);
 };
 
 }

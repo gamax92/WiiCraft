@@ -30,7 +30,7 @@
 #ifndef LADEBALKEN_H_
 #define LADEBALKEN_H_
 
-#include "GrafikElement.h"
+#include "GraphicElement.h"
 
 #if defined _WIN32 || defined __CYGWIN__
 #include <pthread.h>
@@ -40,10 +40,10 @@
 
 namespace std {
 
-class LadeBalken: public GrafikElement {
+class LoadingBar: public GraphicElement {
 public:
-	LadeBalken(float _x, float _y);
-	~LadeBalken();
+	LoadingBar(float _x, float _y);
+	~LoadingBar();
 	void zeichneElement();
 	void setzeFortschritt(int _fortschritt);
 	int gebeFortschritt();

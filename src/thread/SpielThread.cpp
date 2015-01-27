@@ -38,7 +38,7 @@
 #include "../menu/Anzeige3D.h"
 #include "../world/Welt.h"
 #include "../world/ChunkLaden.h"
-#include "../entity/Spieler.h"
+#include "../entity/Player.h"
 
 using namespace std;
 
@@ -51,27 +51,27 @@ SpielThread::~SpielThread() {
 int SpielThread::exec() {
 	Intro::zeigeIntro();
 
-	UpdateMenue::initialisiere();
+	UpdateMenue::initialize();
 	UpdateMenue::zeigeUpdateMenue();
 
-	AnmeldungMenue::initialisiere();
+	AnmeldungMenue::initialize();
 	AnmeldungMenue::zeigeAnmeldungMenue();
 
-	UpdateMenue::deinitialisiere();
+	UpdateMenue::deinitialize();
 
-	ServerAuswahlMenue::initialisiere();
+	ServerAuswahlMenue::initialize();
 	ServerAuswahlMenue::zeigeServerAuswahlMenue();
-	AnmeldungMenue::deinitialisiere();
+	AnmeldungMenue::deinitialize();
 
 	// Chunks im vorraus laden
 	while (true) {
-		World *welt = World::gebeWelt();
-		if (welt != 0) {
+		World *world = World::getWorld();
+		if (world != 0) {
 			ChunkLaden::gebeChunkLaden()->aktualisiereChunks(
 					Player::getPlayer()->getChunkX(),
 					Player::getPlayer()->getChunkZ());
 
-			if (welt->gebeAnzahlGeladeneChunks()
+			if (world->gebeAnzahlGeladeneChunks()
 					== ChunkLaden::gebeMaximaleAnzahlGeladeneChunks()) {
 				break;
 			}
@@ -79,9 +79,9 @@ int SpielThread::exec() {
 		usleep(50);
 	}
 
-	Anzeige3D::initialisiere();
+	Anzeige3D::initialize();
 	Anzeige3D::zeigeAnzeige3D();
-	ServerAuswahlMenue::deinitialisiere();
+	ServerAuswahlMenue::deinitialize();
 
 	Verbindung::warte();
 

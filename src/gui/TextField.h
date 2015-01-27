@@ -36,11 +36,11 @@
 
 namespace std {
 
-class TextFeld: public TextElement {
+class TextField: public TextElement {
 public:
-	TextFeld(float _x, float _y);
-	TextFeld(float _x, float _y, string _text);
-	~TextFeld();
+	TextField(float _x, float _y);
+	TextField(float _x, float _y, string _text);
+	~TextField();
 	void zeichneElement();
 protected:
 	void berechneAusmasse();

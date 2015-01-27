@@ -35,12 +35,12 @@
 #endif
 #include "../protocol/Verbindung.h"
 #include "../protocol/packet/Packet02Handshake.h"
-#include "../gui/Hintergrund.h"
-#include "../gui/TextFeld.h"
+#include "../gui/Background.h"
+#include "../gui/TextField.h"
 #include "../gui/Text.h"
 #include "../gui/Button.h"
-#include "../gui/Bild.h"
-#include "../gui/GrafikHandler.h"
+#include "../gui/Picture.h"
+#include "../gui/GraphicHandler.h"
 #include "../protocol/Session.h"
 #include "../exception/ExcSocketHTTPServerLoginFailed.h"
 
@@ -48,11 +48,11 @@ using namespace std;
 
 ServerAuswahlMenue *ServerAuswahlMenue::serverAuswahlMenue;
 
-void ServerAuswahlMenue::initialisiere() {
+void ServerAuswahlMenue::initialize() {
 	ServerAuswahlMenue::serverAuswahlMenue = new ServerAuswahlMenue();
 }
 
-void ServerAuswahlMenue::deinitialisiere() {
+void ServerAuswahlMenue::deinitialize() {
 	delete ServerAuswahlMenue::serverAuswahlMenue;
 }
 
@@ -60,22 +60,22 @@ ServerAuswahlMenue::ServerAuswahlMenue() {
 	pthread_mutex_init(&this->mutexwait, NULL);
 	pthread_cond_init(&this->condwait, NULL);
 
-	this->hintergrund = new Hintergrund("bildMenueHintergrund");
-	this->hintergrund->setzeTastaturAnzeigen(true);
+	this->hintergrund = new Background("bildMenueHintergrund");
+	this->hintergrund->setzeKeyboardAnzeigen(true);
 	this->hintergrund->setzeCursorAnzeigen(true);
 
 	Bild *bild = new Bild(144, 20, "logo");
 	this->textFehler = new Text(250, 260, "");
-	this->textFehler->setzeHintergrundFarbe(0xff33337f);
+	this->textFehler->setzeBackgroundFarbe(0xff33337f);
 	this->textBetreten = new Text(200, 160, "Server betreten...");
 	this->textBetreten->sichtbarkeit(false);
 
 	this->textServer = new Text(250, 124, "Server:");
-	this->textFeldServer = new TextFeld(250, 140, "");
+	this->textFeldServer = new TextField(250, 140, "");
 	this->textFeldServer->setzeBeimKlicken(
 			&ServerAuswahlMenue::auswaehlenServer);
 	this->textPort = new Text(250, 164, "Port:");
-	this->textFeldPort = new TextFeld(250, 180, "25565");
+	this->textFeldPort = new TextField(250, 180, "25565");
 	this->textFeldPort->setzeBeimKlicken(&ServerAuswahlMenue::auswaehlenPort);
 	this->buttonBetreten = new Button(254, 220, "Betreten");
 	this->buttonBetreten->setzeBeimKlicken(&ServerAuswahlMenue::betreten);
@@ -96,9 +96,9 @@ ServerAuswahlMenue::~ServerAuswahlMenue() {
 }
 
 void ServerAuswahlMenue::zeigeServerAuswahlMenue() {
-	GrafikHandler::gebeGrafikHandler()->setzeAnzeigeElement(
+	GraphicHandler::getGraphicHandler()->setzeAnzeigeElement(
 			ServerAuswahlMenue::serverAuswahlMenue->hintergrund);
-	GrafikHandler::gebeGrafikHandler()->setzeAusgewaehltesElement(
+	GraphicHandler::getGraphicHandler()->setzeAusgewaehltesElement(
 			ServerAuswahlMenue::serverAuswahlMenue->textFeldServer);
 
 	while (true) {
@@ -123,7 +123,7 @@ void ServerAuswahlMenue::zeigeServerAuswahlMenue() {
 		pthread_mutex_unlock(
 				&ServerAuswahlMenue::serverAuswahlMenue->mutexwait);
 #endif
-		ServerAuswahlMenue::serverAuswahlMenue->hintergrund->setzeTastaturAnzeigen(
+		ServerAuswahlMenue::serverAuswahlMenue->hintergrund->setzeKeyboardAnzeigen(
 				false);
 		ServerAuswahlMenue::serverAuswahlMenue->textFehler->sichtbarkeit(false);
 		ServerAuswahlMenue::serverAuswahlMenue->textServer->sichtbarkeit(false);
@@ -165,7 +165,7 @@ void ServerAuswahlMenue::zeigeServerAuswahlMenue() {
 
 			ServerAuswahlMenue::serverAuswahlMenue->textFehler->setzeText(
 					exception.getFehler());
-			ServerAuswahlMenue::serverAuswahlMenue->hintergrund->setzeTastaturAnzeigen(
+			ServerAuswahlMenue::serverAuswahlMenue->hintergrund->setzeKeyboardAnzeigen(
 					true);
 			ServerAuswahlMenue::serverAuswahlMenue->textFehler->sichtbarkeit(
 					true);
@@ -194,11 +194,11 @@ void ServerAuswahlMenue::betreten() {
 }
 
 void ServerAuswahlMenue::auswaehlenServer() {
-	GrafikHandler::gebeGrafikHandler()->setzeAusgewaehltesElement(
+	GraphicHandler::getGraphicHandler()->setzeAusgewaehltesElement(
 			ServerAuswahlMenue::serverAuswahlMenue->textFeldServer);
 }
 
 void ServerAuswahlMenue::auswaehlenPort() {
-	GrafikHandler::gebeGrafikHandler()->setzeAusgewaehltesElement(
+	GraphicHandler::getGraphicHandler()->setzeAusgewaehltesElement(
 			ServerAuswahlMenue::serverAuswahlMenue->textFeldPort);
 }

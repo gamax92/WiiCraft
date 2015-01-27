@@ -36,9 +36,9 @@
 #include <grrlib.h>
 #endif /* __wii__ */
 #include "../world/Welt.h"
-#include "../entity/Spieler.h"
+#include "../entity/Player.h"
 #include "../world/ChunkLaden.h"
-#include "GrafikHandler.h"
+#include "GraphicHandler.h"
 #include "../util/GrrlibErsatz.h"
 
 #define PI 3.14159265
@@ -84,11 +84,11 @@ void BlockEngine::zeichne3DElemente() {
 		GRRLIB_3dMode(0.001, 48, 70, 0, 0);
 
 		GrrlibErsatz::GRRLIB_SetTexture(
-				GrafikHandler::gebeGrafikHandler()->gebeBild("terrain"), 0);
+				GraphicHandler::getGraphicHandler()->gebeBild("terrain"), 0);
 
-		World *welt = World::gebeWelt();
-		if (welt != NULL) {
-			welt->zeichne();
+		World *world = World::getWorld();
+		if (world != NULL) {
+			world->zeichne();
 		}
 	}
 }

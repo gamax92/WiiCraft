@@ -27,41 +27,41 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "MetadataZeile.h"
+#include "MetadataLine.h"
 
 using namespace std;
 
-MetadataZeile::MetadataZeile(byte wert1) {
+MetadataLine::MetadataLine(byte wert1) {
 	this->typ = 0;
 
 	this->typ0 = wert1;
 }
 
-MetadataZeile::MetadataZeile(short wert1) {
+MetadataLine::MetadataLine(short wert1) {
 	this->typ = 1;
 
 	this->typ1 = wert1;
 }
 
-MetadataZeile::MetadataZeile(int wert1) {
+MetadataLine::MetadataLine(int wert1) {
 	this->typ = 2;
 
 	this->typ2 = wert1;
 }
 
-MetadataZeile::MetadataZeile(float wert1) {
+MetadataLine::MetadataLine(float wert1) {
 	this->typ = 3;
 
 	this->typ3 = wert1;
 }
 
-MetadataZeile::MetadataZeile(string wert1) {
+MetadataLine::MetadataLine(string wert1) {
 	this->typ = 4;
 
 	this->typ4 = wert1;
 }
 
-MetadataZeile::MetadataZeile(short wert1, byte wert2, short wert3) {
+MetadataLine::MetadataLine(short wert1, byte wert2, short wert3) {
 	this->typ = 5;
 
 	this->typ5a = wert1;
@@ -69,7 +69,7 @@ MetadataZeile::MetadataZeile(short wert1, byte wert2, short wert3) {
 	this->typ5c = wert3;
 }
 
-MetadataZeile::MetadataZeile(int wert1, int wert2, int wert3) {
+MetadataLine::MetadataLine(int wert1, int wert2, int wert3) {
 	this->typ = 6;
 
 	this->typ6a = wert1;

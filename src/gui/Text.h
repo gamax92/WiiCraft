@@ -47,9 +47,9 @@ public:
 	~Text();
 	void zeichneElement();
 	void setzeTextFarbe(u32 _textFarbe);
-	void setzeHintergrundFarbe(u32 _hintergrundFarbe);
+	void setzeBackgroundFarbe(u32 _hintergrundFarbe);
 	u32 gebeTextFarbe();
-	u32 gebeHintergrundFarbe();
+	u32 gebeBackgroundFarbe();
 protected:
 	void berechneAusmasse();
 private:

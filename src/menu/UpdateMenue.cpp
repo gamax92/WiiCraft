@@ -33,11 +33,11 @@
 #if defined _WIN32 || defined __CYGWIN__
 #include <iostream>
 #endif
-#include "../gui/Hintergrund.h"
+#include "../gui/Background.h"
 #include "../gui/Text.h"
-#include "../gui/LadeBalken.h"
+#include "../gui/LoadingBar.h"
 #include "../gui/Button.h"
-#include "../gui/GrafikHandler.h"
+#include "../gui/GraphicHandler.h"
 #include "../util/UpdateHandler.h"
 #include "../util/KontrollerHandler.h"
 #include "../exception/ExcSocketHTTPServerLoginFailed.h"
@@ -46,11 +46,11 @@ using namespace std;
 
 UpdateMenue *UpdateMenue::updateMenue;
 
-void UpdateMenue::initialisiere() {
+void UpdateMenue::initialize() {
 	UpdateMenue::updateMenue = new UpdateMenue();
 }
 
-void UpdateMenue::deinitialisiere() {
+void UpdateMenue::deinitialize() {
 	delete UpdateMenue::updateMenue;
 }
 
@@ -60,11 +60,11 @@ UpdateMenue::UpdateMenue() {
 
 	this->updateHerunterlanden = false;
 
-	this->hintergrund = new Hintergrund("bildMenueHintergrund");
+	this->hintergrund = new Background("bildMenueHintergrund");
 	this->hintergrund->setzeCursorAnzeigen(true);
 
 	this->text = new Text(250, 200, "Suche nach Update");
-	this->ladeBalken = new LadeBalken(270, 220);
+	this->ladeBalken = new LoadingBar(270, 220);
 	this->ladeBalken->sichtbarkeit(false);
 
 	this->buttonJa = new Button(250, 240, "Ja");
@@ -94,7 +94,7 @@ UpdateMenue::~UpdateMenue() {
 }
 
 void UpdateMenue::zeigeUpdateMenue() {
-	GrafikHandler::gebeGrafikHandler()->setzeAnzeigeElement(
+	GraphicHandler::getGraphicHandler()->setzeAnzeigeElement(
 			UpdateMenue::updateMenue->hintergrund);
 
 	bool updateVorhanden;
@@ -129,10 +129,10 @@ void UpdateMenue::zeigeUpdateMenue() {
 
 			UpdateHandler::ladeUpdate(UpdateMenue::updateMenue->ladeBalken);
 
-			GrafikHandler::gebeGrafikHandler()->stop();
-			GrafikHandler::gebeGrafikHandler()->join();
+			GraphicHandler::getGraphicHandler()->stop();
+			GraphicHandler::getGraphicHandler()->join();
 
-			delete GrafikHandler::gebeGrafikHandler();
+			delete GraphicHandler::getGraphicHandler();
 			delete KontrollerHandler::gebeKontrollerHandler();
 
 			exit(0);

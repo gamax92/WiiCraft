@@ -30,7 +30,7 @@
 #include "SpielerBewegungSendenThread.h"
 
 #include <unistd.h>
-#include "../entity/Spieler.h"
+#include "../entity/Player.h"
 #include "../world/ChunkLaden.h"
 #include "../protocol/PacketClient.h"
 #include "../protocol/packet/Packet0APlayer.h"
@@ -135,7 +135,7 @@ int PlayerMotionSendingThread::exec() {
 			this->zuletztUebertragenAbstand = aktuellAbstand;
 			this->zuletztUebertragenIstAufBoden = aktuellIstAufBoden;
 
-			// keine Bewegung des Spielers
+			// keine Bewegung des Players
 		} else {
 			PacketClient *p = new Packet0APlayer(aktuellIstAufBoden);
 			Verbindung::zuVerschickendenPacketenHinzufuegen(p);

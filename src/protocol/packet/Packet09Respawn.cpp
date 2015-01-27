@@ -88,7 +88,7 @@ void Packet09Respawn::lesePacketInhalt(DataInputStream *in) {
 }
 
 void Packet09Respawn::verarbeitePacket() {
-	World::initialisiereWelt(this->dimension, this->levelType, this->difficulty,
+	World::initializeWorld(this->dimension, this->levelType, this->difficulty,
 			this->creativeMode, this->worldHeight);
 
 #ifdef DEBUG_ON

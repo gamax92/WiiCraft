@@ -68,11 +68,11 @@ void Packet36BlockAction::verarbeitePacket() {
 	byte startX;
 	byte startY;
 	byte startZ;
-	World::gebeWelt()->gebeChunkPos(this->x, this->y, this->z, startX, startY,
+	World::getWorld()->getChunkPos(this->x, this->y, this->z, startX, startY,
 			startZ);
 
 #ifdef DEBUG_ON
-	short index = World::gebeWelt()->berechneIndex(startX, startY, startZ);
+	short index = World::getWorld()->berechneIndex(startX, startY, startZ);
 
 	char *buffer = new char[100];
 	sprintf(buffer, "chunk: %ix%i, index: %i, b1: %x, b2: %x", chunkX, chunkZ,

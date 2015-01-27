@@ -30,11 +30,11 @@
 #ifndef ITEM101EISENSPITZHACKE_H_
 #define ITEM101EISENSPITZHACKE_H_
 
-#include "../ItemSpitzhacke.h"
+#include "../ItemPickaxe.h"
 
 namespace std {
 
-class Item101EisenSpitzhacke: public ItemSpitzhacke {
+class Item101EisenSpitzhacke: public ItemPickaxe {
 public:
 	Item101EisenSpitzhacke();
 	Item *gebeInstanz();

@@ -31,7 +31,7 @@
 #include "util/Debug.h"
 #include "thread/SpielThread.h"
 #include "util/KontrollerHandler.h"
-#include "gui/GrafikHandler.h"
+#include "gui/GraphicHandler.h"
 #include "protocol/PacketManager.h"
 #include "item/ItemManager.h"
 
@@ -42,19 +42,19 @@ int main(int argc, char **argv) {
 #ifdef DEBUG_ON
 	Debug::start();
 #endif
-	GrafikHandler::initialisiere();
-	PacketManager::initialisierePacketListe();
-	ItemManager::initialisiereItemListe();
+	GraphicHandler::initialize();
+	PacketManager::initializePacketListe();
+	ItemManager::initializeItemListe();
 
 	SpielThread *spiel = new SpielThread();
 	spiel->start();
 	spiel->join();
 	delete spiel;
 
-	GrafikHandler::gebeGrafikHandler()->stop();
-	GrafikHandler::gebeGrafikHandler()->join();
+	GraphicHandler::getGraphicHandler()->stop();
+	GraphicHandler::getGraphicHandler()->join();
 
-	delete GrafikHandler::gebeGrafikHandler();
+	delete GraphicHandler::getGraphicHandler();
 	delete KontrollerHandler::gebeKontrollerHandler();
 
 	return 0;

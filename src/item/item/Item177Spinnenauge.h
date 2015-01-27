@@ -30,11 +30,11 @@
 #ifndef ITEM177SPINNENAUGE_H_
 #define ITEM177SPINNENAUGE_H_
 
-#include "../ItemEssen.h"
+#include "../ItemFood.h"
 
 namespace std {
 
-class Item177Spinnenauge: public ItemEssen {
+class Item177Spinnenauge: public ItemFood {
 public:
 	Item177Spinnenauge();
 	Item *gebeInstanz();

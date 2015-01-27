@@ -41,7 +41,7 @@ Chat::~Chat() {
 	pthread_mutex_destroy(&this->mutex);
 }
 
-void Chat::initialisiereChat() {
+void Chat::initializeChat() {
 	if (Chat::chat != NULL) {
 		delete Chat::chat;
 	}

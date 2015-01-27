@@ -69,14 +69,14 @@ void Packet35BlockChange::verarbeitePacket() {
 	byte startX;
 	byte startY;
 	byte startZ;
-	World::gebeWelt()->gebeChunkPos(this->x, this->y, this->z, startX, startY,
+	World::getWorld()->getChunkPos(this->x, this->y, this->z, startX, startY,
 			startZ);
 
-	short index = World::gebeWelt()->berechneIndex(startX, startY, startZ);
+	short index = World::getWorld()->berechneIndex(startX, startY, startZ);
 
 	BlockAenderung * b = new BlockAenderung(index, this->blockType,
 			this->blockMetadata);
-	World::gebeWelt()->ergaenzeBlockAenderung(chunkX, chunkZ, b);
+	World::getWorld()->ergaenzeBlockAenderung(chunkX, chunkZ, b);
 
 #ifdef DEBUG_ON
 	char *buffer = new char[100];

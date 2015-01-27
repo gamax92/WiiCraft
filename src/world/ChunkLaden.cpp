@@ -54,7 +54,7 @@ void ChunkLaden::aktualisiereChunks(int x, int z) {
 		if (x + MAX_ENTFERNUNG >= _chunk->gebeX()
 				&& x - MAX_ENTFERNUNG <= _chunk->gebeX()
 				&& z + MAX_ENTFERNUNG >= _chunk->gebeZ()
-				&& z - MAX_ENTFERNUNG <= _chunk->gebeZ()) { // Spieler Chunk hat sich geaendert
+				&& z - MAX_ENTFERNUNG <= _chunk->gebeZ()) { // Player Chunk hat sich geaendert
 			if (!_chunk->istGeladen()) { // Chunk laden
 				_chunk->ladeChunk();
 			}

@@ -44,7 +44,7 @@ bool Item116DiamantSpitzhacke::registiereItem() {
 }
 
 Item116DiamantSpitzhacke::Item116DiamantSpitzhacke() {
-	ItemWerkzeug::setzeStandardWerte();
+	ItemTools::setzeStandardWerte();
 
 	Item::id = 0x116;
 }

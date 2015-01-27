@@ -30,11 +30,11 @@
 #ifndef ITEM16FFAULIGESFLEISCH_H_
 #define ITEM16FFAULIGESFLEISCH_H_
 
-#include "../ItemEssen.h"
+#include "../ItemFood.h"
 
 namespace std {
 
-class Item16FFauligesFleisch: public ItemEssen {
+class Item16FFauligesFleisch: public ItemFood {
 public:
 	Item16FFauligesFleisch();
 	Item *gebeInstanz();

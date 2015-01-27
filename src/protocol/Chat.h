@@ -42,7 +42,7 @@ namespace std {
 
 class Chat {
 public:
-	static void initialisiereChat();
+	static void initializeChat();
 	static Chat *gebeChat();
 
 	void fuegeNachrichtHinzu(string nachricht, string farbe);

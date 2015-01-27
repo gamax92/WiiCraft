@@ -34,7 +34,7 @@
 
 namespace std {
 
-class ItemTuer: public std::Item {
+class ItemDoor: public std::Item {
 };
 
 }

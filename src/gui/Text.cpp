@@ -29,7 +29,7 @@
 
 #include "Text.h"
 
-#include "GrafikHandler.h"
+#include "GraphicHandler.h"
 #if defined _WIN32 || defined __CYGWIN__
 #include "../util/WiiFunction.h"
 #else /* __wii__ */
@@ -48,7 +48,7 @@ Text::Text(float _x, float _y, string _text) {
 	this->setzeText(_text);
 	this->berechneAusmasse();
 	this->setzeTextFarbe(0xffffffff);
-	this->setzeHintergrundFarbe(0);
+	this->setzeBackgroundFarbe(0);
 }
 
 Text::~Text() {
@@ -67,7 +67,7 @@ void Text::zeichneElement() {
 		string _text = this->gebeText();
 		_text = this->konvertiereAnzeigeText(_text);
 		u32 _textFarbe = this->gebeTextFarbe();
-		u32 _hintergrundFarbe = this->gebeHintergrundFarbe();
+		u32 _hintergrundFarbe = this->gebeBackgroundFarbe();
 
 		float _x = this->gebeX();
 		float _y = this->gebeY();
@@ -79,7 +79,7 @@ void Text::zeichneElement() {
 			GRRLIB_Rectangle(_x, _y, _breite, _hoehe, _hintergrundFarbe, 1);
 		}
 		GRRLIB_Printf(_x, _y,
-				GrafikHandler::gebeGrafikHandler()->gebeBild("font"),
+				GraphicHandler::getGraphicHandler()->gebeBild("font"),
 				_textFarbe, 1, _text.data());
 	}
 }
@@ -98,13 +98,13 @@ u32 Text::gebeTextFarbe() {
 	return _textFarbe;
 }
 
-void Text::setzeHintergrundFarbe(u32 _hintergrundFarbe) {
+void Text::setzeBackgroundFarbe(u32 _hintergrundFarbe) {
 	pthread_mutex_lock(&this->mutexFarbe);
 	this->hintergrundFarbe = _hintergrundFarbe;
 	pthread_mutex_unlock(&this->mutexFarbe);
 }
 
-u32 Text::gebeHintergrundFarbe() {
+u32 Text::gebeBackgroundFarbe() {
 	pthread_mutex_lock(&this->mutexFarbe);
 	u32 _hintergrundFarbe = this->hintergrundFarbe;
 	pthread_mutex_unlock(&this->mutexFarbe);

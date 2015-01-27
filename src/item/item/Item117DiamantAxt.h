@@ -30,11 +30,11 @@
 #ifndef ITEM117DIAMANTAXT_H_
 #define ITEM117DIAMANTAXT_H_
 
-#include "../ItemAxt.h"
+#include "../ItemAxe.h"
 
 namespace std {
 
-class Item117DiamantAxt: public ItemAxt {
+class Item117DiamantAxt: public ItemAxe {
 public:
 	Item117DiamantAxt();
 	Item *gebeInstanz();

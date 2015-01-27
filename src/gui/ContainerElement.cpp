@@ -30,7 +30,7 @@
 #include "ContainerElement.h"
 
 #include <cmath>
-#include "GrafikHandler.h"
+#include "GraphicHandler.h"
 #if defined _WIN32 || defined __CYGWIN__
 #include "../util/WiiFunction.h"
 #else /* __wii__ */
@@ -46,7 +46,7 @@ ContainerElement::~ContainerElement() {
 }
 
 void ContainerElement::setzeStandardWerte() {
-	GrafikElement::setzeStandardWerte();
+	GraphicElement::setzeStandardWerte();
 
 	pthread_mutex_init(&this->mutexUnterElemente, NULL);
 	pthread_mutex_init(&this->mutexCursor, NULL);
@@ -55,7 +55,7 @@ void ContainerElement::setzeStandardWerte() {
 	this->setzeCursorAnzeigen(false);
 }
 
-void ContainerElement::fuegeUnterElementHinzu(GrafikElement *neuesElement) {
+void ContainerElement::fuegeUnterElementHinzu(GraphicElement *neuesElement) {
 	pthread_mutex_lock(&this->mutexUnterElemente);
 	this->unterElemente.push_back(neuesElement);
 	pthread_mutex_unlock(&this->mutexUnterElemente);
@@ -64,7 +64,7 @@ void ContainerElement::fuegeUnterElementHinzu(GrafikElement *neuesElement) {
 void ContainerElement::zeichneUnterElement() {
 	pthread_mutex_lock(&this->mutexUnterElemente);
 	if (!this->unterElemente.empty()) {
-		for (list<GrafikElement *>::iterator it = this->unterElemente.begin();
+		for (list<GraphicElement *>::iterator it = this->unterElemente.begin();
 				it != this->unterElemente.end(); ++it) {
 			(*it)->zeichneElement();
 		}
@@ -102,7 +102,7 @@ void ContainerElement::informiereUnterElementeUeberCursorDarueber() {
 	if (!this->unterElemente.empty()) {
 		bool gefunden = false;
 
-		for (std::list<GrafikElement*>::reverse_iterator it =
+		for (std::list<GraphicElement*>::reverse_iterator it =
 				this->unterElemente.rbegin(); it != this->unterElemente.rend();
 				++it) {
 			if (!(*it)->istSichtbar()) {
@@ -145,7 +145,7 @@ void ContainerElement::gedrueckt(u32 gedrueckt) {
 	pthread_mutex_lock(&this->mutexUnterElemente);
 	if (!this->unterElemente.empty()) {
 
-		for (std::list<GrafikElement*>::reverse_iterator it =
+		for (std::list<GraphicElement*>::reverse_iterator it =
 				this->unterElemente.rbegin(); it != this->unterElemente.rend();
 				++it) {
 			if (!(*it)->istSichtbar()) {
@@ -184,16 +184,16 @@ void ContainerElement::zeichneCursor() {
 	pthread_mutex_unlock(&this->mutexCursor);
 
 	GRRLIB_DrawImg(_x, _y,
-			GrafikHandler::gebeGrafikHandler()->gebeBild("cursor1"),
+			GraphicHandler::getGraphicHandler()->gebeBild("cursor1"),
 			fmod(angle + 180, 360), 1, 1, 0xffffffff);
 	GRRLIB_DrawImg(_x, _y,
-			GrafikHandler::gebeGrafikHandler()->gebeBild("cursor2"),
+			GraphicHandler::getGraphicHandler()->gebeBild("cursor2"),
 			fmod(angle + 270, 360), 1, 1, 0xffffffff);
 	GRRLIB_DrawImg(_x, _y,
-			GrafikHandler::gebeGrafikHandler()->gebeBild("cursor3"),
+			GraphicHandler::getGraphicHandler()->gebeBild("cursor3"),
 			fmod(angle + 90, 360), 1, 1, 0xffffffff);
 	GRRLIB_DrawImg(_x, _y,
-			GrafikHandler::gebeGrafikHandler()->gebeBild("cursor4"), angle, 1,
+			GraphicHandler::getGraphicHandler()->gebeBild("cursor4"), angle, 1,
 			1, 0xffffffff);
 }
 

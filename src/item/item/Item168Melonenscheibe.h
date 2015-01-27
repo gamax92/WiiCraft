@@ -30,11 +30,11 @@
 #ifndef ITEM168MELONENSCHEIBE_H_
 #define ITEM168MELONENSCHEIBE_H_
 
-#include "../ItemEssen.h"
+#include "../ItemFood.h"
 
 namespace std {
 
-class Item168Melonenscheibe: public ItemEssen {
+class Item168Melonenscheibe: public ItemFood {
 public:
 	Item168Melonenscheibe();
 	Item *gebeInstanz();

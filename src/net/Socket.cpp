@@ -48,7 +48,7 @@ using namespace std;
 
 bool Socket::connect(const char *host, const u16 port) {
 
-	if (!NetzwerkKonfigurator::initialisieren()) {
+	if (!NetzwerkKonfigurator::initializing()) {
 		return false;
 	}
 

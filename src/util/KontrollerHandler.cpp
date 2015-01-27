@@ -34,7 +34,7 @@
 #else /* __wii__ */
 #include <wiiuse/wpad.h>
 #endif /* __wii__ */
-#include "../gui/GrafikHandler.h"
+#include "../gui/GraphicHandler.h"
 
 using namespace std;
 
@@ -78,9 +78,9 @@ void KontrollerHandler::aktualisiere() {
 }
 
 void KontrollerHandler::setzeCursorPosition(float x, float y, float angle) {
-	GrafikHandler::gebeGrafikHandler()->setzeCursorPosition(x, y, angle);
+	GraphicHandler::getGraphicHandler()->setzeCursorPosition(x, y, angle);
 }
 
 void KontrollerHandler::gedrueckt(u32 gedrueckt) {
-	GrafikHandler::gebeGrafikHandler()->gedrueckt(gedrueckt);
+	GraphicHandler::getGraphicHandler()->gedrueckt(gedrueckt);
 }

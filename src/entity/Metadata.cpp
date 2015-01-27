@@ -33,13 +33,13 @@
 #include <stdio.h>
 #include "../net/DataInputStream.h"
 #include "../exception/ExcMetadata.h"
-#include "MetadataZeile.h"
+#include "MetadataLine.h"
 #include "../util/Debug.h"
 
 using namespace std;
 
 Metadata *Metadata::leseDaten(DataInputStream *in) {
-	map<byte, MetadataZeile *> _inhalt;
+	map<byte, MetadataLine *> _inhalt;
 
 	byte x = in->readByte();
 	while (x != 127) {
@@ -48,26 +48,26 @@ Metadata *Metadata::leseDaten(DataInputStream *in) {
 
 		switch (typ) {
 		case 0:
-			_inhalt[index] = new MetadataZeile(in->readByte());
+			_inhalt[index] = new MetadataLine(in->readByte());
 			break;
 		case 1:
-			_inhalt[index] = new MetadataZeile(in->readShort());
+			_inhalt[index] = new MetadataLine(in->readShort());
 			break;
 		case 2:
-			_inhalt[index] = new MetadataZeile(in->leseInt());
+			_inhalt[index] = new MetadataLine(in->leseInt());
 			break;
 		case 3:
-			_inhalt[index] = new MetadataZeile(in->leseFloat());
+			_inhalt[index] = new MetadataLine(in->leseFloat());
 			break;
 		case 4:
-			_inhalt[index] = new MetadataZeile(in->leseString(64));
+			_inhalt[index] = new MetadataLine(in->leseString(64));
 			break;
 		case 5:
-			_inhalt[index] = new MetadataZeile(in->readShort(), in->readByte(),
+			_inhalt[index] = new MetadataLine(in->readShort(), in->readByte(),
 					in->readShort());
 			break;
 		case 6:
-			_inhalt[index] = new MetadataZeile(in->leseInt(), in->leseInt(),
+			_inhalt[index] = new MetadataLine(in->leseInt(), in->leseInt(),
 					in->leseInt());
 			break;
 		default:
@@ -80,12 +80,12 @@ Metadata *Metadata::leseDaten(DataInputStream *in) {
 	return new Metadata(_inhalt);
 }
 
-Metadata::Metadata(map<byte, MetadataZeile *> _inhalt) {
+Metadata::Metadata(map<byte, MetadataLine *> _inhalt) {
 	this->inhalt = _inhalt;
 }
 
 Metadata::~Metadata() {
-	for (map<byte, MetadataZeile *>::iterator zeile = this->inhalt.begin();
+	for (map<byte, MetadataLine *>::iterator zeile = this->inhalt.begin();
 			zeile != this->inhalt.end(); ++zeile) {
 		delete zeile->second;
 	}
