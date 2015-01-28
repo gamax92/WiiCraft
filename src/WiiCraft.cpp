@@ -55,7 +55,7 @@ int main(int argc, char **argv) {
 	GraphicHandler::getGraphicHandler()->join();
 
 	delete GraphicHandler::getGraphicHandler();
-	delete KontrollerHandler::gebeKontrollerHandler();
+	delete ControllerHandler::getControllerHandler();
 
 	return 0;
 }

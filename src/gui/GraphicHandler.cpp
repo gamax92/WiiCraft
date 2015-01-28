@@ -104,7 +104,7 @@ int GraphicHandler::exec() {
 #endif
 
 	while (!this->istGestopped()) {
-		KontrollerHandler::gebeKontrollerHandler()->aktualisiere();
+		ControllerHandler::getControllerHandler()->aktualisiere();
 
 		pthread_mutex_lock(&this->mutexZeichne);
 		this->element->zeichneElement();
@@ -330,7 +330,7 @@ GRRLIB_texImg *GraphicHandler::gebeBild(string name) {
 	return this->bilder[name];
 }
 
-void GraphicHandler::setzeCursorPosition(float x, float y, float angle) {
+void GraphicHandler::setCursorPosition(float x, float y, float angle) {
 	BlockEngine *blockEngine = dynamic_cast<BlockEngine *>(this->element);
 	if (blockEngine != 0) {
 		blockEngine->setzeCursorPosition(x, y, angle);

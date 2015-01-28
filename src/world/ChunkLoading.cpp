@@ -35,17 +35,17 @@
 
 using namespace std;
 
-ChunkLaden *ChunkLaden::chunkLaden = new ChunkLaden();
+ChunkLoading *ChunkLoading::chunkLaden = new ChunkLoading();
 
-ChunkLaden::ChunkLaden() {
+ChunkLoading::ChunkLoading() {
 	pthread_mutex_init(&this->mutexChunk, NULL);
 }
 
-ChunkLaden::~ChunkLaden() {
+ChunkLoading::~ChunkLoading() {
 	pthread_mutex_destroy(&this->mutexChunk);
 }
 
-void ChunkLaden::aktualisiereChunks(int x, int z) {
+void ChunkLoading::aktualisiereChunks(int x, int z) {
 	pthread_mutex_lock(&this->mutexChunk);
 	vector<Chunk *>::iterator it1;
 	for (it1 = this->chunks.begin(); it1 < this->chunks.end(); it1++) {
@@ -65,17 +65,17 @@ void ChunkLaden::aktualisiereChunks(int x, int z) {
 	pthread_mutex_unlock(&this->mutexChunk);
 }
 
-ChunkLaden *ChunkLaden::gebeChunkLaden() {
-	return ChunkLaden::chunkLaden;
+ChunkLoading *ChunkLoading::gebeChunkLaden() {
+	return ChunkLoading::chunkLaden;
 }
 
-void ChunkLaden::fuegeChunkHinzu(Chunk *_chunk) {
+void ChunkLoading::fuegeChunkHinzu(Chunk *_chunk) {
 	pthread_mutex_lock(&this->mutexChunk);
 	this->chunks.push_back(_chunk);
 	pthread_mutex_unlock(&this->mutexChunk);
 }
 
-void ChunkLaden::loescheChunk(Chunk *_chunk) {
+void ChunkLoading::loescheChunk(Chunk *_chunk) {
 	pthread_mutex_lock(&this->mutexChunk);
 	vector<Chunk *>::iterator it;
 	for (it = this->chunks.begin(); it < this->chunks.end(); it++) {
@@ -89,6 +89,6 @@ void ChunkLaden::loescheChunk(Chunk *_chunk) {
 	pthread_mutex_unlock(&this->mutexChunk);
 }
 
-short ChunkLaden::gebeMaximaleAnzahlGeladeneChunks() {
+short ChunkLoading::gebeMaximaleAnzahlGeladeneChunks() {
 	return (MAX_ENTFERNUNG * 4) + ((MAX_ENTFERNUNG * MAX_ENTFERNUNG) * 4) + 1;
 }

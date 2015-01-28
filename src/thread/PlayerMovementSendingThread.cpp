@@ -43,7 +43,7 @@
 
 using namespace std;
 
-PlayerMotionSendingThread::PlayerMotionSendingThread(Player *_spieler,
+PlayerMovementSendingThread::PlayerMovementSendingThread(Player *_spieler,
 		double initialX, double initialY, double initialZ,
 		double initialHaltung, float initialWinkel, float initialAbstand,
 		bool initialIstAufBoden, bool initialIstFliegend) {
@@ -65,13 +65,13 @@ PlayerMotionSendingThread::PlayerMotionSendingThread(Player *_spieler,
 	pthread_cond_init(&this->condWait, NULL);
 }
 
-PlayerMotionSendingThread::~PlayerMotionSendingThread() {
+PlayerMovementSendingThread::~PlayerMovementSendingThread() {
 	pthread_mutex_destroy(&this->mutexStop);
 	pthread_mutex_destroy(&this->mutexWait);
 	pthread_cond_destroy(&this->condWait);
 }
 
-int PlayerMotionSendingThread::exec() {
+int PlayerMovementSendingThread::exec() {
 	pthread_mutex_lock(&this->mutexWait);
 	pthread_cond_wait(&this->condWait, &this->mutexWait);
 	pthread_mutex_unlock(&this->mutexWait);
@@ -164,7 +164,7 @@ int PlayerMotionSendingThread::exec() {
 
 		if (aktuellChunkX != this->zuletztChunkX
 				|| aktuellChunkZ != this->zuletztChunkZ) {
-			ChunkLaden::gebeChunkLaden()->aktualisiereChunks(aktuellChunkX,
+			ChunkLoading::gebeChunkLaden()->aktualisiereChunks(aktuellChunkX,
 					aktuellChunkZ);
 
 			this->zuletztChunkX = aktuellChunkX;
@@ -183,13 +183,13 @@ int PlayerMotionSendingThread::exec() {
 	return 0;
 }
 
-void PlayerMotionSendingThread::stop() {
+void PlayerMovementSendingThread::stop() {
 	pthread_mutex_lock(&this->mutexStop);
 	this->gestoppt = true;
 	pthread_mutex_unlock(&this->mutexStop);
 }
 
-bool PlayerMotionSendingThread::istGestopped() {
+bool PlayerMovementSendingThread::istGestopped() {
 	bool b = false;
 
 	pthread_mutex_lock(&this->mutexStop);
@@ -199,7 +199,7 @@ bool PlayerMotionSendingThread::istGestopped() {
 	return b;
 }
 
-void PlayerMotionSendingThread::update() {
+void PlayerMovementSendingThread::update() {
 	pthread_mutex_lock(&this->mutexWait);
 	pthread_cond_signal(&this->condWait);
 	pthread_mutex_unlock(&this->mutexWait);

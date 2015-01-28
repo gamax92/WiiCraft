@@ -41,18 +41,18 @@ namespace std {
 
 class Chunk;
 
-class ChunkLaden {
+class ChunkLoading {
 public:
-	ChunkLaden();
-	~ChunkLaden();
+	ChunkLoading();
+	~ChunkLoading();
 
-	static ChunkLaden *gebeChunkLaden();
+	static ChunkLoading *gebeChunkLaden();
 	static short gebeMaximaleAnzahlGeladeneChunks();
 	void fuegeChunkHinzu(Chunk *_chunk);
 	void loescheChunk(Chunk *_chunk);
 	void aktualisiereChunks(int x, int z);
 private:
-	static ChunkLaden *chunkLaden;
+	static ChunkLoading *chunkLaden;
 	vector<Chunk *> chunks;
 	pthread_mutex_t mutexChunk;
 };

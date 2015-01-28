@@ -36,7 +36,7 @@
 
 using namespace std;
 
-PacketeVerarbeitenThread::PacketeVerarbeitenThread() {
+PacketProcessingThread::PacketProcessingThread() {
 	this->gestoppt = false;
 
 	pthread_mutex_init(&this->mutexqueue, NULL);
@@ -45,14 +45,14 @@ PacketeVerarbeitenThread::PacketeVerarbeitenThread() {
 	pthread_cond_init(&this->condwait, NULL);
 }
 
-PacketeVerarbeitenThread::~PacketeVerarbeitenThread() {
+PacketProcessingThread::~PacketProcessingThread() {
 	pthread_mutex_destroy(&this->mutexqueue);
 	pthread_mutex_destroy(&this->mutexstop);
 	pthread_mutex_destroy(&this->mutexwait);
 	pthread_cond_destroy(&this->condwait);
 }
 
-int PacketeVerarbeitenThread::exec() {
+int PacketProcessingThread::exec() {
 	bool ok;
 	do {
 		ok = this->gebeNaechstesPacket();
@@ -61,7 +61,7 @@ int PacketeVerarbeitenThread::exec() {
 	return 0;
 }
 
-void PacketeVerarbeitenThread::verarbeitePacket(PacketServer *p) {
+void PacketProcessingThread::verarbeitePacket(PacketServer *p) {
 	if (this->istGestopped()) {
 		return;
 	}
@@ -76,7 +76,7 @@ void PacketeVerarbeitenThread::verarbeitePacket(PacketServer *p) {
 	pthread_mutex_unlock(&this->mutexwait);
 }
 
-bool PacketeVerarbeitenThread::gebeNaechstesPacket() {
+bool PacketProcessingThread::gebeNaechstesPacket() {
 	pthread_mutex_lock(&this->mutexqueue);
 	bool leer = this->verarbeitungPuffer.empty();
 	pthread_mutex_unlock(&this->mutexqueue);
@@ -120,7 +120,7 @@ bool PacketeVerarbeitenThread::gebeNaechstesPacket() {
 	return true;
 }
 
-void PacketeVerarbeitenThread::stop() {
+void PacketProcessingThread::stop() {
 	pthread_mutex_lock(&this->mutexstop);
 	this->gestoppt = true;
 	pthread_mutex_unlock(&this->mutexstop);
@@ -130,7 +130,7 @@ void PacketeVerarbeitenThread::stop() {
 	pthread_mutex_unlock(&this->mutexwait);
 }
 
-bool PacketeVerarbeitenThread::istGestopped() {
+bool PacketProcessingThread::istGestopped() {
 	pthread_mutex_lock(&this->mutexstop);
 	bool b = this->gestoppt;
 	pthread_mutex_unlock(&this->mutexstop);

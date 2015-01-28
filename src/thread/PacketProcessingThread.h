@@ -43,10 +43,10 @@ namespace std {
 
 class PacketServer;
 
-class PacketeVerarbeitenThread: public Thread {
+class PacketProcessingThread: public Thread {
 public:
-	PacketeVerarbeitenThread();
-	virtual ~PacketeVerarbeitenThread();
+	PacketProcessingThread();
+	virtual ~PacketProcessingThread();
 	int exec();
 	void stop();
 	void verarbeitePacket(PacketServer *p);

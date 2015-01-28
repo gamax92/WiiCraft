@@ -153,7 +153,7 @@ void AnmeldungMenue::zeigeAnmeldungMenue() {
 			continue;
 		}
 
-		HTTPSessionAktualisierenThread::aktualisiereSessionRegelmaessig();
+		HTTPSessionRefreshThread::aktualisiereSessionRegelmaessig();
 
 		break;
 	}

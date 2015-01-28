@@ -41,13 +41,13 @@ namespace std {
 
 class Player;
 
-class PlayerMotionSendingThread: public Thread {
+class PlayerMovementSendingThread: public Thread {
 public:
-	PlayerMotionSendingThread(Player *_spieler, double initialX,
+	PlayerMovementSendingThread(Player *_spieler, double initialX,
 			double initialY, double initialZ, double initialHaltung,
 			float initialWinkel, float initialAbstand, bool initialIstAufBoden,
 			bool initialIstFliegend);
-	virtual ~PlayerMotionSendingThread();
+	virtual ~PlayerMovementSendingThread();
 	int exec();
 	void stop();
 	void update();

@@ -34,7 +34,7 @@
 
 namespace std {
 
-class PlayerMotionSendingThread;
+class PlayerMovementSendingThread;
 
 class Player: public Entity {
 public:
@@ -69,7 +69,7 @@ public:
 private:
 	static Player *player;
 
-	PlayerMotionSendingThread *playerMotionSendingThread;
+	PlayerMovementSendingThread *playerMotionSendingThread;
 	bool playerMotionSendingThreadStarted;
 
 	double haltung;

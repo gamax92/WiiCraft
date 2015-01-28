@@ -51,11 +51,11 @@ Chunk::Chunk(int _x, int _z) {
 	pthread_mutex_init(&this->mutexDaten, NULL);
 	pthread_mutex_init(&this->mutexIndex, NULL);
 
-	ChunkLaden::gebeChunkLaden()->fuegeChunkHinzu(this);
+	ChunkLoading::gebeChunkLaden()->fuegeChunkHinzu(this);
 }
 
 Chunk::~Chunk() {
-	ChunkLaden::gebeChunkLaden()->loescheChunk(this);
+	ChunkLoading::gebeChunkLaden()->loescheChunk(this);
 
 	pthread_mutex_destroy(&this->mutexKomprimierteDaten);
 	pthread_mutex_destroy(&this->mutexBlockAenderungen);

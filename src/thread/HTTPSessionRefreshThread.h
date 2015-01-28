@@ -39,17 +39,17 @@
 
 namespace std {
 
-class HTTPSessionAktualisierenThread: public Thread {
+class HTTPSessionRefreshThread: public Thread {
 public:
-	HTTPSessionAktualisierenThread();
-	virtual ~HTTPSessionAktualisierenThread();
+	HTTPSessionRefreshThread();
+	virtual ~HTTPSessionRefreshThread();
 	int exec();
 	void stop();
 	static void aktualisiereSessionRegelmaessig();
 	static void stoppeAktualisierung();
 private:
 	bool gestoppt;
-	static HTTPSessionAktualisierenThread *sessionThread;
+	static HTTPSessionRefreshThread *sessionThread;
 
 	pthread_mutex_t mutexStop;
 

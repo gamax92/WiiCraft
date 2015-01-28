@@ -133,7 +133,7 @@ void UpdateMenue::zeigeUpdateMenue() {
 			GraphicHandler::getGraphicHandler()->join();
 
 			delete GraphicHandler::getGraphicHandler();
-			delete KontrollerHandler::gebeKontrollerHandler();
+			delete ControllerHandler::getControllerHandler();
 
 			exit(0);
 		}

@@ -45,10 +45,10 @@ class Socket;
 class PacketClient;
 class DataOutputStream;
 
-class PacketeSchreibenThread: public Thread {
+class PacketWriterThread: public Thread {
 public:
-	PacketeSchreibenThread(Socket *_socket);
-	virtual ~PacketeSchreibenThread();
+	PacketWriterThread(Socket *_socket);
+	virtual ~PacketWriterThread();
 	int exec();
 	void stop();
 	void verschickePacket(PacketClient *p);

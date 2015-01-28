@@ -68,7 +68,7 @@ public:
 	void setzeAnzeigeElement(GraphicElement *neuesElement);
 	GRRLIB_texImg *gebeBild(string name);
 	TexturMatrix gebeTexturMatrix(int nr);
-	void setzeCursorPosition(float x, float y, float angle);
+	void setCursorPosition(float x, float y, float angle);
 	void setzeAusgewaehltesElement(GraphicElement *_ausgewaehltesElement);
 	GraphicElement *gebeAusgewaehltesElement();
 	void gedrueckt(u32 gedrueckt);

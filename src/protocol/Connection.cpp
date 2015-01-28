@@ -36,17 +36,17 @@
 using namespace std;
 
 Socket *Verbindung::socket;
-PacketeSchreibenThread *Verbindung::vSchreiben;
+PacketWriterThread *Verbindung::vSchreiben;
 PacketeLesenThread *Verbindung::vLesen;
-PacketeVerarbeitenThread *Verbindung::vVerarbeitung;
+PacketProcessingThread *Verbindung::vVerarbeitung;
 
 bool Verbindung::verbinde(string server, int port) {
 	Verbindung::socket = new Socket();
 
 	bool ret = Verbindung::socket->connect(server.data(), port);
 	if (ret) {
-		Verbindung::vSchreiben = new PacketeSchreibenThread(Verbindung::socket);
-		Verbindung::vVerarbeitung = new PacketeVerarbeitenThread();
+		Verbindung::vSchreiben = new PacketWriterThread(Verbindung::socket);
+		Verbindung::vVerarbeitung = new PacketProcessingThread();
 		Verbindung::vLesen = new PacketeLesenThread(Verbindung::socket);
 	}
 
