@@ -34,7 +34,7 @@
 
 using namespace std;
 
-Item *Block02ETNT::gebeInstanz() {
+Item *Block02ETNT::getInstance() {
 	return new Block02ETNT();
 }
 

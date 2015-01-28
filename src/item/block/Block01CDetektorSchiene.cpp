@@ -33,7 +33,7 @@
 
 using namespace std;
 
-Item *Block01CDetektorSchiene::gebeInstanz() {
+Item *Block01CDetektorSchiene::getInstance() {
 	return new Block01CDetektorSchiene();
 }
 

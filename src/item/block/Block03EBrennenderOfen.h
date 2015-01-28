@@ -37,7 +37,7 @@ namespace std {
 class Block03EBrennenderOfen: public ItemBlock {
 public:
 	Block03EBrennenderOfen();
-	Item *gebeInstanz();
+	Item *getInstance();
 	static bool registiereItem();
 	void zeichne(float x, float y, float z, byte meta);
 	bool istDurchsichtig();

@@ -37,7 +37,7 @@ namespace std {
 class Block036Truhe: public ItemBlock {
 public:
 	Block036Truhe();
-	Item *gebeInstanz();
+	Item *getInstance();
 	static bool registiereItem();
 	void zeichne(float x, float y, float z, byte meta);
 	bool istDurchsichtig();

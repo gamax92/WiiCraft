@@ -43,8 +43,8 @@ class PacketFAPluginmessage: public PacketServer, public PacketClient {
 public:
 	~PacketFAPluginmessage();
 	PacketFAPluginmessage(string _channel, short _length, byte *_data);
-	PacketServer *gebeInstanz();
-	static bool registierePacket();
+	PacketServer *getInstance();
+	static bool registerPacket();
 	void schreibePacketInhalt(DataOutputStream *out);
 	void lesePacketInhalt(DataInputStream *in);
 	void verarbeitePacket();

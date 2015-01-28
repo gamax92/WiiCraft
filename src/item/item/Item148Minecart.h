@@ -37,7 +37,7 @@ namespace std {
 class Item148Minecart: public Item {
 public:
 	Item148Minecart();
-	Item *gebeInstanz();
+	Item *getInstance();
 	static bool registiereItem();
 private:
 };

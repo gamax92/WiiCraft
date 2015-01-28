@@ -31,7 +31,6 @@
 
 #include <unistd.h>
 #include "../entity/Player.h"
-#include "../world/ChunkLoading.h"
 #include "../protocol/PacketClient.h"
 #include "../protocol/packet/Packet0APlayer.h"
 #include "../protocol/packet/Packet0BPlayerPosition.h"
@@ -40,6 +39,7 @@
 #include "../protocol/packet/PacketCAPlayerAbilities.h"
 #include "../protocol/Connection.h"
 #include "../util/Debug.h"
+#include "../world/ChunkLoader.h"
 
 using namespace std;
 
@@ -164,7 +164,7 @@ int PlayerMovementSendingThread::exec() {
 
 		if (aktuellChunkX != this->zuletztChunkX
 				|| aktuellChunkZ != this->zuletztChunkZ) {
-			ChunkLoading::gebeChunkLaden()->aktualisiereChunks(aktuellChunkX,
+			ChunkLoader::getChunkLoader()->updateChunks(aktuellChunkX,
 					aktuellChunkZ);
 
 			this->zuletztChunkX = aktuellChunkX;

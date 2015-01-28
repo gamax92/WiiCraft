@@ -33,7 +33,7 @@
 
 using namespace std;
 
-Item *Block06DSteinziegeltreppe::gebeInstanz() {
+Item *Block06DSteinziegeltreppe::getInstance() {
 	return new Block06DSteinziegeltreppe();
 }
 

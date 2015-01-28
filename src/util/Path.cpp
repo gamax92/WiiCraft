@@ -33,15 +33,15 @@
 
 using namespace std;
 
-string Pfad::pfad;
+string Path::path;
 
-string Pfad::gebePfad() {
-	return Pfad::pfad;
+string Path::getPath() {
+	return Path::path;
 }
 
-void Pfad::setzePfad(char *argv) {
-	string kompletterPfad(argv);
-	size_t gefunden = kompletterPfad.find_last_of("/");
+void Path::setPath(char *argv) {
+	string completePath(argv);
+	size_t gefunden = completePath.find_last_of("/");
 
-	Pfad::pfad = kompletterPfad.substr(0, gefunden).append("/");
+	Path::path = completePath.substr(0, gefunden).append("/");
 }

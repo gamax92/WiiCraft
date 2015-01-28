@@ -33,7 +33,7 @@
 
 using namespace std;
 
-Item *Item170EnderPerle::gebeInstanz() {
+Item *Item170EnderPerle::getInstance() {
 	return new Item170EnderPerle();
 }
 

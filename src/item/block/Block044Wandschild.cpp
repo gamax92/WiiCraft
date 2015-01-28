@@ -33,7 +33,7 @@
 
 using namespace std;
 
-Item *Block044Wandschild::gebeInstanz() {
+Item *Block044Wandschild::getInstance() {
 	return new Block044Wandschild();
 }
 

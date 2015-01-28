@@ -41,8 +41,8 @@ class DataInputStream;
 class Packet65CloseWindow: public PacketServer, public PacketClient {
 public:
 	Packet65CloseWindow(byte _windowId);
-	PacketServer *gebeInstanz();
-	static bool registierePacket();
+	PacketServer *getInstance();
+	static bool registerPacket();
 	void schreibePacketInhalt(DataOutputStream *out);
 	void lesePacketInhalt(DataInputStream *in);
 	void verarbeitePacket();

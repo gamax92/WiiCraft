@@ -33,7 +33,7 @@
 
 using namespace std;
 
-Item *Block057Netherrack::gebeInstanz() {
+Item *Block057Netherrack::getInstance() {
 	return new Block057Netherrack();
 }
 

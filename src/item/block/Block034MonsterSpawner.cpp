@@ -33,7 +33,7 @@
 
 using namespace std;
 
-Item *Block034MonsterSpawner::gebeInstanz() {
+Item *Block034MonsterSpawner::getInstance() {
 	return new Block034MonsterSpawner();
 }
 

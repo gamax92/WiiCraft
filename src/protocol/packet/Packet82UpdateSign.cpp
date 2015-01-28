@@ -57,12 +57,12 @@ Packet82UpdateSign::Packet82UpdateSign(int _x, short _y, int _z, string _text1,
 	this->text4 = _text4;
 }
 
-PacketServer *Packet82UpdateSign::gebeInstanz() {
+PacketServer *Packet82UpdateSign::getInstance() {
 	return new Packet82UpdateSign();
 }
 
-bool Packet82UpdateSign::registierePacket() {
-	PacketManager::registrierePacket(new Packet82UpdateSign());
+bool Packet82UpdateSign::registerPacket() {
+	PacketManager::registerPacket(new Packet82UpdateSign());
 
 	return true;
 }

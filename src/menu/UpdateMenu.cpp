@@ -44,58 +44,58 @@
 
 using namespace std;
 
-UpdateMenue *UpdateMenue::updateMenue;
+UpdateMenu *UpdateMenu::updateMenu;
 
-void UpdateMenue::initialize() {
-	UpdateMenue::updateMenue = new UpdateMenue();
+void UpdateMenu::initialize() {
+	UpdateMenu::updateMenu = new UpdateMenu();
 }
 
-void UpdateMenue::deinitialize() {
-	delete UpdateMenue::updateMenue;
+void UpdateMenu::deinitialize() {
+	delete UpdateMenu::updateMenu;
 }
 
-UpdateMenue::UpdateMenue() {
+UpdateMenu::UpdateMenu() {
 	pthread_mutex_init(&this->mutexwait, NULL);
 	pthread_cond_init(&this->condwait, NULL);
 
 	this->updateHerunterlanden = false;
 
-	this->hintergrund = new Background("bildMenueHintergrund");
-	this->hintergrund->setzeCursorAnzeigen(true);
+	this->background = new Background("bildMenueHintergrund");
+	this->background->setzeCursorAnzeigen(true);
 
 	this->text = new Text(250, 200, "Suche nach Update");
-	this->ladeBalken = new LoadingBar(270, 220);
-	this->ladeBalken->sichtbarkeit(false);
+	this->loadingBar = new LoadingBar(270, 220);
+	this->loadingBar->visible(false);
 
-	this->buttonJa = new Button(250, 240, "Ja");
-	this->buttonJa->sichtbarkeit(false);
-	this->buttonJa->setzeBeimKlicken(&UpdateMenue::starteUpdate);
+	this->buttonYes = new Button(250, 240, "Ja");
+	this->buttonYes->visible(false);
+	this->buttonYes->setzeBeimKlicken(&UpdateMenu::starteUpdate);
 
-	this->buttonNein = new Button(300, 240, "Nein");
-	this->buttonNein->sichtbarkeit(false);
-	this->buttonNein->setzeBeimKlicken(&UpdateMenue::keinUpdate);
+	this->buttonNo = new Button(300, 240, "Nein");
+	this->buttonNo->visible(false);
+	this->buttonNo->setzeBeimKlicken(&UpdateMenu::keinUpdate);
 
-	this->hintergrund->fuegeUnterElementHinzu(this->text);
-	this->hintergrund->fuegeUnterElementHinzu(this->ladeBalken);
-	this->hintergrund->fuegeUnterElementHinzu(this->buttonJa);
-	this->hintergrund->fuegeUnterElementHinzu(this->buttonNein);
+	this->background->fuegeUnterElementHinzu(this->text);
+	this->background->fuegeUnterElementHinzu(this->loadingBar);
+	this->background->fuegeUnterElementHinzu(this->buttonYes);
+	this->background->fuegeUnterElementHinzu(this->buttonNo);
 }
 
-UpdateMenue::~UpdateMenue() {
+UpdateMenu::~UpdateMenu() {
 	pthread_mutex_destroy(&this->mutexwait);
 	pthread_cond_destroy(&this->condwait);
 
-	delete this->hintergrund;
+	delete this->background;
 
 	delete this->text;
-	delete this->ladeBalken;
-	delete this->buttonJa;
-	delete this->buttonNein;
+	delete this->loadingBar;
+	delete this->buttonYes;
+	delete this->buttonNo;
 }
 
-void UpdateMenue::zeigeUpdateMenue() {
+void UpdateMenu::showUpdateMenu() {
 	GraphicHandler::getGraphicHandler()->setzeAnzeigeElement(
-			UpdateMenue::updateMenue->hintergrund);
+			UpdateMenu::updateMenu->background);
 
 	bool updateVorhanden;
 	try {
@@ -105,29 +105,29 @@ void UpdateMenue::zeigeUpdateMenue() {
 	}
 
 	if (updateVorhanden) {
-		UpdateMenue::updateMenue->text->setzeText(
+		UpdateMenu::updateMenu->text->setText(
 				"Update gefunden. Soll es installiert werden?");
-		UpdateMenue::updateMenue->buttonJa->sichtbarkeit(true);
-		UpdateMenue::updateMenue->buttonNein->sichtbarkeit(true);
+		UpdateMenu::updateMenu->buttonYes->visible(true);
+		UpdateMenu::updateMenu->buttonNo->visible(true);
 #if defined _WIN32 || defined __CYGWIN__
 		string input = "";
 		getline(cin, input);
 
-		UpdateMenue::updateMenue->buttonNein->beimKlicken(0);
+		UpdateMenu::updateMenu->buttonNo->beimKlicken(0);
 #else
-		pthread_mutex_lock(&UpdateMenue::updateMenue->mutexwait);
-		pthread_cond_wait(&UpdateMenue::updateMenue->condwait,
-				&UpdateMenue::updateMenue->mutexwait);
-		pthread_mutex_unlock(&UpdateMenue::updateMenue->mutexwait);
+		pthread_mutex_lock(&UpdateMenu::updateMenu->mutexwait);
+		pthread_cond_wait(&UpdateMenu::updateMenu->condwait,
+				&UpdateMenu::updateMenu->mutexwait);
+		pthread_mutex_unlock(&UpdateMenu::updateMenu->mutexwait);
 #endif
-		if (UpdateMenue::updateMenue->updateHerunterlanden) {
-			UpdateMenue::updateMenue->text->setzeText(
+		if (UpdateMenu::updateMenu->updateHerunterlanden) {
+			UpdateMenu::updateMenu->text->setText(
 					"Update wird heruntergeladen");
-			UpdateMenue::updateMenue->ladeBalken->sichtbarkeit(true);
-			UpdateMenue::updateMenue->buttonJa->sichtbarkeit(false);
-			UpdateMenue::updateMenue->buttonNein->sichtbarkeit(false);
+			UpdateMenu::updateMenu->loadingBar->visible(true);
+			UpdateMenu::updateMenu->buttonYes->visible(false);
+			UpdateMenu::updateMenu->buttonNo->visible(false);
 
-			UpdateHandler::ladeUpdate(UpdateMenue::updateMenue->ladeBalken);
+			UpdateHandler::ladeUpdate(UpdateMenu::updateMenu->loadingBar);
 
 			GraphicHandler::getGraphicHandler()->stop();
 			GraphicHandler::getGraphicHandler()->join();
@@ -140,18 +140,18 @@ void UpdateMenue::zeigeUpdateMenue() {
 	}
 }
 
-void UpdateMenue::keinUpdate() {
-	UpdateMenue::updateMenue->updateHerunterlanden = false;
+void UpdateMenu::keinUpdate() {
+	UpdateMenu::updateMenu->updateHerunterlanden = false;
 
-	pthread_mutex_lock(&UpdateMenue::updateMenue->mutexwait);
-	pthread_cond_signal(&UpdateMenue::updateMenue->condwait);
-	pthread_mutex_unlock(&UpdateMenue::updateMenue->mutexwait);
+	pthread_mutex_lock(&UpdateMenu::updateMenu->mutexwait);
+	pthread_cond_signal(&UpdateMenu::updateMenu->condwait);
+	pthread_mutex_unlock(&UpdateMenu::updateMenu->mutexwait);
 }
 
-void UpdateMenue::starteUpdate() {
-	UpdateMenue::updateMenue->updateHerunterlanden = true;
+void UpdateMenu::starteUpdate() {
+	UpdateMenu::updateMenu->updateHerunterlanden = true;
 
-	pthread_mutex_lock(&UpdateMenue::updateMenue->mutexwait);
-	pthread_cond_signal(&UpdateMenue::updateMenue->condwait);
-	pthread_mutex_unlock(&UpdateMenue::updateMenue->mutexwait);
+	pthread_mutex_lock(&UpdateMenu::updateMenu->mutexwait);
+	pthread_cond_signal(&UpdateMenu::updateMenu->condwait);
+	pthread_mutex_unlock(&UpdateMenu::updateMenu->mutexwait);
 }

@@ -42,12 +42,12 @@ Packet23EntityHeadLook::Packet23EntityHeadLook() {
 	PacketServer::prio = 50;
 }
 
-PacketServer *Packet23EntityHeadLook::gebeInstanz() {
+PacketServer *Packet23EntityHeadLook::getInstance() {
 	return new Packet23EntityHeadLook();
 }
 
-bool Packet23EntityHeadLook::registierePacket() {
-	PacketManager::registrierePacket(new Packet23EntityHeadLook());
+bool Packet23EntityHeadLook::registerPacket() {
+	PacketManager::registerPacket(new Packet23EntityHeadLook());
 
 	return true;
 }

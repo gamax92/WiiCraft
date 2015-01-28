@@ -64,12 +64,12 @@ Packet29EntityEffect::Packet29EntityEffect() {
 	PacketServer::prio = 50;
 }
 
-PacketServer *Packet29EntityEffect::gebeInstanz() {
+PacketServer *Packet29EntityEffect::getInstance() {
 	return new Packet29EntityEffect();
 }
 
-bool Packet29EntityEffect::registierePacket() {
-	PacketManager::registrierePacket(new Packet29EntityEffect());
+bool Packet29EntityEffect::registerPacket() {
+	PacketManager::registerPacket(new Packet29EntityEffect());
 
 	return true;
 }

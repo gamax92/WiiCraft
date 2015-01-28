@@ -42,12 +42,12 @@ Packet32PreChunk::Packet32PreChunk() {
 	PacketServer::prio = 50;
 }
 
-PacketServer *Packet32PreChunk::gebeInstanz() {
+PacketServer *Packet32PreChunk::getInstance() {
 	return new Packet32PreChunk();
 }
 
-bool Packet32PreChunk::registierePacket() {
-	PacketManager::registrierePacket(new Packet32PreChunk());
+bool Packet32PreChunk::registerPacket() {
+	PacketManager::registerPacket(new Packet32PreChunk());
 
 	return true;
 }

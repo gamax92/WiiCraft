@@ -33,7 +33,7 @@
 
 using namespace std;
 
-Item *Block073Netherwarze::gebeInstanz() {
+Item *Block073Netherwarze::getInstance() {
 	return new Block073Netherwarze();
 }
 

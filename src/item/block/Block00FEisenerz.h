@@ -37,7 +37,7 @@ namespace std {
 class Block00FEisenerz: public ItemBlock {
 public:
 	Block00FEisenerz();
-	Item *gebeInstanz();
+	Item *getInstance();
 	static bool registiereItem();
 	void zeichne(float x, float y, float z, byte meta);
 	bool istDurchsichtig();

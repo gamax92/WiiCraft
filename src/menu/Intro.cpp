@@ -33,14 +33,14 @@
 #include <time.h>
 #include "../gui/GraphicHandler.h"
 #include "../gui/Background.h"
-#include "../gui/Picture.h"
 #include "../gui/Text.h"
+#include "../gui/Texture.h"
 
 using namespace std;
 
 bool Intro::abbruch = false;
 
-void Intro::zeigeIntro() {
+void Intro::showIntro() {
 
 	Background *h1 = new Background();
 	Background *h2 = new Background();
@@ -48,8 +48,8 @@ void Intro::zeigeIntro() {
 	h1->setzeBeimKlicken(&Intro::abbrechen);
 	h2->setzeBeimKlicken(&Intro::abbrechen);
 
-	Bild *b1 = new Bild(256, 150, "logo_orbitalfrosch");
-	Bild *b2 = new Bild(144, 160, "logo");
+	Texture *b1 = new Texture(256, 150, "logo_orbitalfrosch");
+	Texture *b2 = new Texture(144, 160, "logo");
 	h1->fuegeUnterElementHinzu(b1);
 	h2->fuegeUnterElementHinzu(b2);
 

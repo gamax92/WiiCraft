@@ -50,7 +50,7 @@ class World {
 public:
 	static void calculateChunkPosition(int x, int z, int &chunkX, int &chunkZ);
 	static void initializeWorld(int dimension, string levelTyp,
-			byte schwierigkeitsGrad, int serverModus, unsigned short weltHoehe);
+			byte schwierigkeitsGrad, int serverModus, unsigned short worldHeight);
 	static World *getWorld();
 
 	void initializeChunk(int x, int z);
@@ -59,7 +59,7 @@ public:
 			KomprimierteChunkDaten *komprimierteDaten);
 	void ergaenzeBlockAenderung(int chunkX, int chunkZ,
 			BlockAenderung *blockAenderung);
-	void setzeUhrzeit(short _uhrzeit);
+	void setTime(short _uhrzeit);
 	void setzeKompassPosition(int _x, int _y, int _z);
 	void setzeServerModus(byte _serverModus);
 	void setzeRegen(bool _regen);
@@ -69,28 +69,28 @@ public:
 	unsigned short berechneIndex(int x, int y, int z);
 	void berechnePosAusIndex(unsigned short index, int &x, int &y, int &z);
 	void berechneIndex(unsigned short index, int &x, int &y, int &z);
-	int gebeAnzahlGeladeneChunks();
-	int gebeAnzahlChunks();
+	int getNumberLoadedChunks();
+	int getNumberChunks();
 	void zeichne();
-	unsigned short gebeWeltHoehe();
-	short gebeUhrzeit();
-	string gebeUhrzeitString();
+	unsigned short getWorldHeight();
+	short getTime();
+	string getTimeString();
 private:
 	static World *world;
 
 	bool regen;
 	map<int, map<int, Chunk *> > geladeneChunks;
 	map<int, map<int, Chunk *> > chunks;
-	short uhrzeit;
+	short time;
 	int dimension;
-	unsigned short weltHoehe;
+	unsigned short worldHeight;
 	string levelTyp;
 	byte schwierigkeitsGrad;
 	int serverModus;
 	ChunkCacheManager *chunkCacheManager;
 	pthread_mutex_t mutexChunks;
 	pthread_mutex_t mutexLoadedChunks;
-	pthread_mutex_t mutexUhrzeit;
+	pthread_mutex_t mutexTime;
 	pthread_mutex_t mutexWelthoehe;
 
 	struct KompassPosition {
@@ -101,7 +101,7 @@ private:
 	KompassPosition kompassPosition;
 
 	World(int _dimension, string _levelTyp, byte _schwierigkeitsGrad,
-			int _serverModus, unsigned short _weltHoehe);
+			int _serverModus, unsigned short _worldHeight);
 	~World();
 };
 

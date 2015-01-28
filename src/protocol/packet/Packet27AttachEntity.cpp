@@ -42,12 +42,12 @@ Packet27AttachEntity::Packet27AttachEntity() {
 	PacketServer::prio = 50;
 }
 
-PacketServer *Packet27AttachEntity::gebeInstanz() {
+PacketServer *Packet27AttachEntity::getInstance() {
 	return new Packet27AttachEntity();
 }
 
-bool Packet27AttachEntity::registierePacket() {
-	PacketManager::registrierePacket(new Packet27AttachEntity());
+bool Packet27AttachEntity::registerPacket() {
+	PacketManager::registerPacket(new Packet27AttachEntity());
 
 	return true;
 }

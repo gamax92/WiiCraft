@@ -41,12 +41,12 @@ PacketC8IncrementStatistic::PacketC8IncrementStatistic() {
 	PacketServer::prio = 50;
 }
 
-PacketServer *PacketC8IncrementStatistic::gebeInstanz() {
+PacketServer *PacketC8IncrementStatistic::getInstance() {
 	return new PacketC8IncrementStatistic();
 }
 
-bool PacketC8IncrementStatistic::registierePacket() {
-	PacketManager::registrierePacket(new PacketC8IncrementStatistic());
+bool PacketC8IncrementStatistic::registerPacket() {
+	PacketManager::registerPacket(new PacketC8IncrementStatistic());
 
 	return true;
 }

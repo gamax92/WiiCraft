@@ -33,7 +33,7 @@
 
 using namespace std;
 
-Item *Block064RoterPilzblock::gebeInstanz() {
+Item *Block064RoterPilzblock::getInstance() {
 	return new Block064RoterPilzblock();
 }
 

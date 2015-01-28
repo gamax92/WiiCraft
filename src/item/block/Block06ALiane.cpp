@@ -33,7 +33,7 @@
 
 using namespace std;
 
-Item *Block06ALiane::gebeInstanz() {
+Item *Block06ALiane::getInstance() {
 	return new Block06ALiane();
 }
 

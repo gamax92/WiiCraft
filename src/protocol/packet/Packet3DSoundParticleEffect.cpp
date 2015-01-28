@@ -70,12 +70,12 @@ Packet3DSoundParticleEffect::Packet3DSoundParticleEffect() {
 	PacketServer::prio = 50;
 }
 
-PacketServer *Packet3DSoundParticleEffect::gebeInstanz() {
+PacketServer *Packet3DSoundParticleEffect::getInstance() {
 	return new Packet3DSoundParticleEffect();
 }
 
-bool Packet3DSoundParticleEffect::registierePacket() {
-	PacketManager::registrierePacket(new Packet3DSoundParticleEffect());
+bool Packet3DSoundParticleEffect::registerPacket() {
+	PacketManager::registerPacket(new Packet3DSoundParticleEffect());
 
 	return true;
 }

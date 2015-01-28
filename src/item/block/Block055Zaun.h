@@ -37,7 +37,7 @@ namespace std {
 class Block055Zaun: public ItemBlock {
 public:
 	Block055Zaun();
-	Item *gebeInstanz();
+	Item *getInstance();
 	static bool registiereItem();
 	void zeichne(float x, float y, float z, byte meta);
 	bool istDurchsichtig();

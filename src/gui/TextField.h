@@ -41,7 +41,7 @@ public:
 	TextField(float _x, float _y);
 	TextField(float _x, float _y, string _text);
 	~TextField();
-	void zeichneElement();
+	void drawElement();
 protected:
 	void berechneAusmasse();
 private:

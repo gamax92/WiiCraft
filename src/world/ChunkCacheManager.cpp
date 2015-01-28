@@ -65,10 +65,10 @@ void ChunkCacheManager::aktualisiereCacheWennNoetig() {
 }
 
 void ChunkCacheManager::loescheChunk(Chunk *chunk) {
-	this->gecachteChunks[chunk->gebeX()].erase(chunk->gebeZ());
+	this->gecachteChunks[chunk->getX()].erase(chunk->getZ());
 }
 
 void ChunkCacheManager::fuegeChunkHinzu(Chunk *chunk) {
-	this->gecachteChunks[chunk->gebeX()][chunk->gebeZ()] = new GecachterChunk(
+	this->gecachteChunks[chunk->getX()][chunk->getZ()] = new GecachterChunk(
 			chunk);
 }

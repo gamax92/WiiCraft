@@ -34,7 +34,7 @@
 
 using namespace std;
 
-Item *Block026Rose::gebeInstanz() {
+Item *Block026Rose::getInstance() {
 	return new Block026Rose();
 }
 

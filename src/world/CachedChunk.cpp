@@ -55,7 +55,7 @@ GecachterChunk::GecachterChunk(Chunk *_chunk) {
 }
 
 bool GecachterChunk::istAktuell() {
-	if (this->version < this->chunk->gebeVersionsNummer()) {
+	if (this->version < this->chunk->getVersionNumber()) {
 		return false;
 	}
 
@@ -67,7 +67,7 @@ void GecachterChunk::aktualisiereCacheWennNoetig() {
 		return;
 	}
 
-	this->version = this->chunk->gebeVersionsNummer();
+	this->version = this->chunk->getVersionNumber();
 
 	if (this->anzahlZeichenbarerBloecke > 0) {
 		this->anzahlZeichenbarerBloecke = 0;
@@ -82,7 +82,7 @@ void GecachterChunk::aktualisiereCacheWennNoetig() {
 		return;
 	}
 
-	unsigned int datenmenge = world->gebeWeltHoehe() * 16 * 16;
+	unsigned int datenmenge = world->getWorldHeight() * 16 * 16;
 
 	short *gecachtBloeckeTyp = new short[datenmenge];
 	byte *gecachtBloeckeMeta = new byte[datenmenge];
@@ -104,7 +104,7 @@ void GecachterChunk::aktualisiereCacheWennNoetig() {
 		int blockY;
 		int blockZ;
 		world->berechnePosAusIndex(index, blockX, blockY, blockZ);
-		short hoehe = world->gebeWeltHoehe();
+		short hoehe = world->getWorldHeight();
 
 		unsigned short indexWest = index - (16 * hoehe);
 		unsigned short indexOst = index + (16 * hoehe);
@@ -204,8 +204,8 @@ void GecachterChunk::aktualisiereCacheWennNoetig() {
 }
 
 void GecachterChunk::zeichne() {
-	GRRLIB_ObjectView((this->chunk->gebeX() * 16), 0,
-			(this->chunk->gebeZ() * 16), 0, 0, 0, 1, 1, 1);
+	GRRLIB_ObjectView((this->chunk->getX() * 16), 0,
+			(this->chunk->getZ() * 16), 0, 0, 0, 1, 1, 1);
 
 	World *world = World::getWorld();
 

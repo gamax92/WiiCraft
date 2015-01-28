@@ -55,12 +55,12 @@ Packet02Handshake::Packet02Handshake(string _usernameAndHost) {
 	this->usernameAndHost = _usernameAndHost;
 }
 
-PacketServer *Packet02Handshake::gebeInstanz() {
+PacketServer *Packet02Handshake::getInstance() {
 	return new Packet02Handshake();
 }
 
-bool Packet02Handshake::registierePacket() {
-	PacketManager::registrierePacket(new Packet02Handshake());
+bool Packet02Handshake::registerPacket() {
+	PacketManager::registerPacket(new Packet02Handshake());
 
 	return true;
 }
@@ -87,6 +87,6 @@ void Packet02Handshake::verarbeitePacket() {
 	}
 
 	PacketClient *p = new Packet01LoginRequest(ClientInfo::clientProtokollVersion,
-			Session::gebeBenutzer());
+			Session::getUsername());
 	Verbindung::zuVerschickendenPacketenHinzufuegen(p);
 }

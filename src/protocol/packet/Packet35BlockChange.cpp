@@ -43,12 +43,12 @@ Packet35BlockChange::Packet35BlockChange() {
 	PacketServer::prio = 50;
 }
 
-PacketServer *Packet35BlockChange::gebeInstanz() {
+PacketServer *Packet35BlockChange::getInstance() {
 	return new Packet35BlockChange();
 }
 
-bool Packet35BlockChange::registierePacket() {
-	PacketManager::registrierePacket(new Packet35BlockChange());
+bool Packet35BlockChange::registerPacket() {
+	PacketManager::registerPacket(new Packet35BlockChange());
 
 	return true;
 }

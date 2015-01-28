@@ -33,7 +33,7 @@
 
 using namespace std;
 
-Item *Item177Spinnenauge::gebeInstanz() {
+Item *Item177Spinnenauge::getInstance() {
 	return new Item177Spinnenauge();
 }
 

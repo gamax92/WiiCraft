@@ -33,7 +33,7 @@
 
 using namespace std;
 
-Item *Block051Kaktus::gebeInstanz() {
+Item *Block051Kaktus::getInstance() {
 	return new Block051Kaktus();
 }
 

@@ -37,7 +37,7 @@ namespace std {
 class Block065Eisengitter: public ItemBlock {
 public:
 	Block065Eisengitter();
-	Item *gebeInstanz();
+	Item *getInstance();
 	static bool registiereItem();
 	void zeichne(float x, float y, float z, byte meta);
 	bool istDurchsichtig();

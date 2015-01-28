@@ -41,7 +41,7 @@ public:
 	static byte letztePacketId;
 
 	virtual ~PacketServer();
-	virtual PacketServer *gebeInstanz() = 0;
+	virtual PacketServer *getInstance() = 0;
 	virtual void lesePacketInhalt(DataInputStream *in) = 0;
 	virtual void verarbeitePacket() = 0;
 	static bool lesePacket(DataInputStream *in);

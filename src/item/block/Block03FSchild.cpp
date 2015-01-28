@@ -33,7 +33,7 @@
 
 using namespace std;
 
-Item *Block03FSchild::gebeInstanz() {
+Item *Block03FSchild::getInstance() {
 	return new Block03FSchild();
 }
 

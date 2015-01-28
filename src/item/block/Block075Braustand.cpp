@@ -33,7 +33,7 @@
 
 using namespace std;
 
-Item *Block075Braustand::gebeInstanz() {
+Item *Block075Braustand::getInstance() {
 	return new Block075Braustand();
 }
 

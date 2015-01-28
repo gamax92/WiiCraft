@@ -37,7 +37,7 @@ namespace std {
 class Block02BDoppelteStufe: public ItemBlock {
 public:
 	Block02BDoppelteStufe();
-	Item *gebeInstanz();
+	Item *getInstance();
 	static bool registiereItem();
 	void zeichne(float x, float y, float z, byte meta);
 	bool istDurchsichtig();

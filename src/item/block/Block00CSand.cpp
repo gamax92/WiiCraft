@@ -33,7 +33,7 @@
 
 using namespace std;
 
-Item *Block00CSand::gebeInstanz() {
+Item *Block00CSand::getInstance() {
 	return new Block00CSand();
 }
 

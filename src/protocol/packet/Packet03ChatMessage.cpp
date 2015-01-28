@@ -51,12 +51,12 @@ Packet03ChatMessage::Packet03ChatMessage(string _message) {
 	this->message = _message;
 }
 
-PacketServer *Packet03ChatMessage::gebeInstanz() {
+PacketServer *Packet03ChatMessage::getInstance() {
 	return new Packet03ChatMessage();
 }
 
-bool Packet03ChatMessage::registierePacket() {
-	PacketManager::registrierePacket(new Packet03ChatMessage());
+bool Packet03ChatMessage::registerPacket() {
+	PacketManager::registerPacket(new Packet03ChatMessage());
 
 	return true;
 }
@@ -78,54 +78,54 @@ void Packet03ChatMessage::verarbeitePacket() {
 	//this->message.substr(0, 1);
 
 	// Farbcode
-	string farbe = this->message.substr(1, 1);
+	string color = this->message.substr(1, 1);
 
 	// eigentliche Nachricht
-	string nachricht = this->message.substr(2);
+	string message = this->message.substr(2);
 
 #ifdef DEBUG_ON
 	string farbcode;
-	if (farbe == "0") {
+	if (color == "0") {
 		farbcode = "#000000";
-	} else if (farbe == "1") {
+	} else if (color == "1") {
 		farbcode = "#0000aa";
-	} else if (farbe == "2") {
+	} else if (color == "2") {
 		farbcode = "#00aa00";
-	} else if (farbe == "3") {
+	} else if (color == "3") {
 		farbcode = "#00aaaa";
-	} else if (farbe == "4") {
+	} else if (color == "4") {
 		farbcode = "#aa0000";
-	} else if (farbe == "5") {
+	} else if (color == "5") {
 		farbcode = "#aa00aa";
-	} else if (farbe == "6") {
+	} else if (color == "6") {
 		farbcode = "#ffaa00";
-	} else if (farbe == "7") {
+	} else if (color == "7") {
 		farbcode = "#aaaaaa";
-	} else if (farbe == "8") {
+	} else if (color == "8") {
 		farbcode = "#555555";
-	} else if (farbe == "9") {
+	} else if (color == "9") {
 		farbcode = "#5555ff";
-	} else if (farbe == "a") {
+	} else if (color == "a") {
 		farbcode = "#55ff55";
-	} else if (farbe == "b") {
+	} else if (color == "b") {
 		farbcode = "#55ffff";
-	} else if (farbe == "c") {
+	} else if (color == "c") {
 		farbcode = "#ff5555";
-	} else if (farbe == "d") {
+	} else if (color == "d") {
 		farbcode = "#ff55ff";
-	} else if (farbe == "e") {
+	} else if (color == "e") {
 		farbcode = "#ffff55";
-	} else if (farbe == "f") {
+	} else if (color == "f") {
 		farbcode = "#ffffff";
 	} else {
 		farbcode = "unbakannt";
 	}
 
 	char *buffer = new char[200];
-	sprintf(buffer, "farbe=%s, text=%s", farbcode.data(), nachricht.data());
+	sprintf(buffer, "farbe=%s, text=%s", farbcode.data(), message.data());
 	Debug::schreibePacketLog("Packet03ChatMessage", buffer);
 	delete[] buffer;
 #endif
 
-	Chat::gebeChat()->fuegeNachrichtHinzu(nachricht, farbe);
+	Chat::getChat()->addMessage(message, color);
 }

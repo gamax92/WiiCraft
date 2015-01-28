@@ -38,7 +38,7 @@
 using namespace std;
 
 int main(int argc, char **argv) {
-	Pfad::setzePfad(argv[0]);
+	Path::setPath(argv[0]);
 #ifdef DEBUG_ON
 	Debug::start();
 #endif
@@ -46,7 +46,7 @@ int main(int argc, char **argv) {
 	PacketManager::initializePacketListe();
 	ItemManager::initializeItemListe();
 
-	SpielThread *spiel = new SpielThread();
+	GameThread *spiel = new GameThread();
 	spiel->start();
 	spiel->join();
 	delete spiel;

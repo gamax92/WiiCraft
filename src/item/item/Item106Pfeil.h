@@ -37,7 +37,7 @@ namespace std {
 class Item106Pfeil: public Item {
 public:
 	Item106Pfeil();
-	Item *gebeInstanz();
+	Item *getInstance();
 	static bool registiereItem();
 private:
 };

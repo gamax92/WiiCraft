@@ -43,8 +43,8 @@ class Packet09Respawn: public PacketServer, public PacketClient {
 public:
 	Packet09Respawn(int _dimension, byte _difficulty, byte _creativeMode,
 			short _worldHeight, string _levelType);
-	PacketServer *gebeInstanz();
-	static bool registierePacket();
+	PacketServer *getInstance();
+	static bool registerPacket();
 	void schreibePacketInhalt(DataOutputStream *out);
 	void lesePacketInhalt(DataInputStream *in);
 	void verarbeitePacket();

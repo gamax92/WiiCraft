@@ -33,7 +33,7 @@
 
 using namespace std;
 
-Item *Block03CAckerboden::gebeInstanz() {
+Item *Block03CAckerboden::getInstance() {
 	return new Block03CAckerboden();
 }
 

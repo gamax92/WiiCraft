@@ -42,12 +42,12 @@ Packet1DDestroyEntity::Packet1DDestroyEntity() {
 	PacketServer::prio = 50;
 }
 
-PacketServer *Packet1DDestroyEntity::gebeInstanz() {
+PacketServer *Packet1DDestroyEntity::getInstance() {
 	return new Packet1DDestroyEntity();
 }
 
-bool Packet1DDestroyEntity::registierePacket() {
-	PacketManager::registrierePacket(new Packet1DDestroyEntity());
+bool Packet1DDestroyEntity::registerPacket() {
+	PacketManager::registerPacket(new Packet1DDestroyEntity());
 
 	return true;
 }

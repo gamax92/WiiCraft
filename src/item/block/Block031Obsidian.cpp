@@ -33,7 +33,7 @@
 
 using namespace std;
 
-Item *Block031Obsidian::gebeInstanz() {
+Item *Block031Obsidian::getInstance() {
 	return new Block031Obsidian();
 }
 

@@ -34,7 +34,7 @@
 
 using namespace std;
 
-Item *Block03DOfen::gebeInstanz() {
+Item *Block03DOfen::getInstance() {
 	return new Block03DOfen();
 }
 

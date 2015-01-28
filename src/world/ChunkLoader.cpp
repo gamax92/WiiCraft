@@ -27,68 +27,68 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#define MAX_ENTFERNUNG 2
+#define MAX_DISTANCE 2
 
-#include "ChunkLoading.h"
+#include "ChunkLoader.h"
 
 #include "../world/Chunk.h"
 
 using namespace std;
 
-ChunkLoading *ChunkLoading::chunkLaden = new ChunkLoading();
+ChunkLoader *ChunkLoader::chunkLoader = new ChunkLoader();
 
-ChunkLoading::ChunkLoading() {
+ChunkLoader::ChunkLoader() {
 	pthread_mutex_init(&this->mutexChunk, NULL);
 }
 
-ChunkLoading::~ChunkLoading() {
+ChunkLoader::~ChunkLoader() {
 	pthread_mutex_destroy(&this->mutexChunk);
 }
 
-void ChunkLoading::aktualisiereChunks(int x, int z) {
+void ChunkLoader::updateChunks(int x, int z) {
 	pthread_mutex_lock(&this->mutexChunk);
 	vector<Chunk *>::iterator it1;
 	for (it1 = this->chunks.begin(); it1 < this->chunks.end(); it1++) {
 		Chunk *_chunk = (*it1);
 
-		if (x + MAX_ENTFERNUNG >= _chunk->gebeX()
-				&& x - MAX_ENTFERNUNG <= _chunk->gebeX()
-				&& z + MAX_ENTFERNUNG >= _chunk->gebeZ()
-				&& z - MAX_ENTFERNUNG <= _chunk->gebeZ()) { // Player Chunk hat sich geaendert
-			if (!_chunk->istGeladen()) { // Chunk laden
-				_chunk->ladeChunk();
+		if (x + MAX_DISTANCE >= _chunk->getX()
+				&& x - MAX_DISTANCE <= _chunk->getX()
+				&& z + MAX_DISTANCE >= _chunk->getZ()
+				&& z - MAX_DISTANCE <= _chunk->getZ()) { // Player Chunk hat sich geaendert
+			if (!_chunk->isLoaded()) { // Chunk load
+				_chunk->loadChunk();
 			}
-		} else if (_chunk->istGeladen()) { // Chunk entladen
-			_chunk->speichereChunk();
+		} else if (_chunk->isLoaded()) { // Chunk unload
+			_chunk->saveChunk();
 		}
 	}
 	pthread_mutex_unlock(&this->mutexChunk);
 }
 
-ChunkLoading *ChunkLoading::gebeChunkLaden() {
-	return ChunkLoading::chunkLaden;
+ChunkLoader *ChunkLoader::getChunkLoader() {
+	return ChunkLoader::chunkLoader;
 }
 
-void ChunkLoading::fuegeChunkHinzu(Chunk *_chunk) {
+void ChunkLoader::fuegeChunkHinzu(Chunk *_chunk) {
 	pthread_mutex_lock(&this->mutexChunk);
 	this->chunks.push_back(_chunk);
 	pthread_mutex_unlock(&this->mutexChunk);
 }
 
-void ChunkLoading::loescheChunk(Chunk *_chunk) {
+void ChunkLoader::deleteChunk(Chunk *_chunk) {
 	pthread_mutex_lock(&this->mutexChunk);
 	vector<Chunk *>::iterator it;
 	for (it = this->chunks.begin(); it < this->chunks.end(); it++) {
 		Chunk *_chunkV = (*it);
 
-		if (_chunk->gebeX() == _chunkV->gebeX()
-				&& _chunk->gebeZ() == _chunkV->gebeZ()) {
+		if (_chunk->getX() == _chunkV->getX()
+				&& _chunk->getZ() == _chunkV->getZ()) {
 			this->chunks.erase(it);
 		}
 	}
 	pthread_mutex_unlock(&this->mutexChunk);
 }
 
-short ChunkLoading::gebeMaximaleAnzahlGeladeneChunks() {
-	return (MAX_ENTFERNUNG * 4) + ((MAX_ENTFERNUNG * MAX_ENTFERNUNG) * 4) + 1;
+short ChunkLoader::getMaximumLoadedChunks() {
+	return (MAX_DISTANCE * 4) + ((MAX_DISTANCE * MAX_DISTANCE) * 4) + 1;
 }

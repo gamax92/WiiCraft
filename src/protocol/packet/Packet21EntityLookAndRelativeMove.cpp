@@ -42,12 +42,12 @@ Packet21EntityLookAndRelativeMove::Packet21EntityLookAndRelativeMove() {
 	PacketServer::prio = 50;
 }
 
-PacketServer *Packet21EntityLookAndRelativeMove::gebeInstanz() {
+PacketServer *Packet21EntityLookAndRelativeMove::getInstance() {
 	return new Packet21EntityLookAndRelativeMove();
 }
 
-bool Packet21EntityLookAndRelativeMove::registierePacket() {
-	PacketManager::registrierePacket(new Packet21EntityLookAndRelativeMove());
+bool Packet21EntityLookAndRelativeMove::registerPacket() {
+	PacketManager::registerPacket(new Packet21EntityLookAndRelativeMove());
 
 	return true;
 }

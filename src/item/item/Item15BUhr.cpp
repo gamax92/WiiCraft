@@ -33,7 +33,7 @@
 
 using namespace std;
 
-Item *Item15BUhr::gebeInstanz() {
+Item *Item15BUhr::getInstance() {
 	return new Item15BUhr();
 }
 

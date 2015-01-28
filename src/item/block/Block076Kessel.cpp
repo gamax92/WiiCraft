@@ -33,7 +33,7 @@
 
 using namespace std;
 
-Item *Block076Kessel::gebeInstanz() {
+Item *Block076Kessel::getInstance() {
 	return new Block076Kessel();
 }
 

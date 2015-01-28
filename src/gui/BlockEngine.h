@@ -47,9 +47,9 @@ class BlockEngine: public ContainerElement {
 public:
 	BlockEngine();
 	virtual ~BlockEngine();
-	void zeichneElement();
+	void drawElement();
 	void zeichne3DElemente();
-	void setzeCursorPosition(float x, float y, float angle);
+	void setCursorPosition(float x, float y, float angle);
 };
 
 }

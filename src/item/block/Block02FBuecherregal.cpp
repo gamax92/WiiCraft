@@ -34,7 +34,7 @@
 
 using namespace std;
 
-Item *Block02FBuecherregal::gebeInstanz() {
+Item *Block02FBuecherregal::getInstance() {
 	return new Block02FBuecherregal();
 }
 

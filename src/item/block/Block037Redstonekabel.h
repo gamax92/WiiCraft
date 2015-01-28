@@ -37,7 +37,7 @@ namespace std {
 class Block037Redstonekabel: public ItemBlock {
 public:
 	Block037Redstonekabel();
-	Item *gebeInstanz();
+	Item *getInstance();
 	static bool registiereItem();
 	void zeichne(float x, float y, float z, byte meta);
 	bool istDurchsichtig();

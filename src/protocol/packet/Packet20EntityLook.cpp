@@ -42,12 +42,12 @@ Packet20EntityLook::Packet20EntityLook() {
 	PacketServer::prio = 50;
 }
 
-PacketServer *Packet20EntityLook::gebeInstanz() {
+PacketServer *Packet20EntityLook::getInstance() {
 	return new Packet20EntityLook();
 }
 
-bool Packet20EntityLook::registierePacket() {
-	PacketManager::registrierePacket(new Packet20EntityLook());
+bool Packet20EntityLook::registerPacket() {
+	PacketManager::registerPacket(new Packet20EntityLook());
 
 	return true;
 }

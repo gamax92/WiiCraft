@@ -33,7 +33,7 @@
 
 using namespace std;
 
-Item *Block04DSteinschalter::gebeInstanz() {
+Item *Block04DSteinschalter::getInstance() {
 	return new Block04DSteinschalter();
 }
 

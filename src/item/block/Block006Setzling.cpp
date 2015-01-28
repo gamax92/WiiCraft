@@ -34,7 +34,7 @@
 
 using namespace std;
 
-Item *Block006Setzling::gebeInstanz() {
+Item *Block006Setzling::getInstance() {
 	return new Block006Setzling();
 }
 

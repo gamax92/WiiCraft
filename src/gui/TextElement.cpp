@@ -41,7 +41,7 @@ void TextElement::setzeStandardWerte() {
 	pthread_mutex_init(&this->mutexText, NULL);
 }
 
-void TextElement::setzeText(string _text) {
+void TextElement::setText(string _text) {
 	pthread_mutex_lock(&this->mutexText);
 	this->text = _text;
 	pthread_mutex_unlock(&this->mutexText);
@@ -49,7 +49,7 @@ void TextElement::setzeText(string _text) {
 	this->berechneAusmasse();
 }
 
-string TextElement::gebeText() {
+string TextElement::getText() {
 	pthread_mutex_lock(&this->mutexText);
 	string _text = this->text;
 	pthread_mutex_unlock(&this->mutexText);

@@ -37,7 +37,7 @@ namespace std {
 class Item11FFaden: public Item {
 public:
 	Item11FFaden();
-	Item *gebeInstanz();
+	Item *getInstance();
 	static bool registiereItem();
 private:
 };

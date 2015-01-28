@@ -33,7 +33,7 @@
 
 using namespace std;
 
-Item *Block04ESchnee::gebeInstanz() {
+Item *Block04ESchnee::getInstance() {
 	return new Block04ESchnee();
 }
 

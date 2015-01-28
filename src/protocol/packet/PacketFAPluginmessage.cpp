@@ -58,12 +58,12 @@ PacketFAPluginmessage::~PacketFAPluginmessage() {
 	free(this->data);
 }
 
-PacketServer *PacketFAPluginmessage::gebeInstanz() {
+PacketServer *PacketFAPluginmessage::getInstance() {
 	return new PacketFAPluginmessage();
 }
 
-bool PacketFAPluginmessage::registierePacket() {
-	PacketManager::registrierePacket(new PacketFAPluginmessage());
+bool PacketFAPluginmessage::registerPacket() {
+	PacketManager::registerPacket(new PacketFAPluginmessage());
 
 	return true;
 }

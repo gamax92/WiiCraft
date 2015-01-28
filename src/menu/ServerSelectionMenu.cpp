@@ -39,7 +39,7 @@
 #include "../gui/TextField.h"
 #include "../gui/Text.h"
 #include "../gui/Button.h"
-#include "../gui/Picture.h"
+#include "../gui/Texture.h"
 #include "../gui/GraphicHandler.h"
 #include "../protocol/Session.h"
 #include "../exception/ExcSocketHTTPServerLoginFailed.h"
@@ -64,11 +64,11 @@ ServerAuswahlMenue::ServerAuswahlMenue() {
 	this->hintergrund->setzeKeyboardAnzeigen(true);
 	this->hintergrund->setzeCursorAnzeigen(true);
 
-	Bild *bild = new Bild(144, 20, "logo");
+	Texture *bild = new Texture(144, 20, "logo");
 	this->textFehler = new Text(250, 260, "");
-	this->textFehler->setzeBackgroundFarbe(0xff33337f);
+	this->textFehler->setBackgroundColor(0xff33337f);
 	this->textBetreten = new Text(200, 160, "Server betreten...");
-	this->textBetreten->sichtbarkeit(false);
+	this->textBetreten->visible(false);
 
 	this->textServer = new Text(250, 124, "Server:");
 	this->textFeldServer = new TextField(250, 140, "");
@@ -98,7 +98,7 @@ ServerAuswahlMenue::~ServerAuswahlMenue() {
 void ServerAuswahlMenue::zeigeServerAuswahlMenue() {
 	GraphicHandler::getGraphicHandler()->setzeAnzeigeElement(
 			ServerAuswahlMenue::serverAuswahlMenue->hintergrund);
-	GraphicHandler::getGraphicHandler()->setzeAusgewaehltesElement(
+	GraphicHandler::getGraphicHandler()->setSelectedElement(
 			ServerAuswahlMenue::serverAuswahlMenue->textFeldServer);
 
 	while (true) {
@@ -106,13 +106,13 @@ void ServerAuswahlMenue::zeigeServerAuswahlMenue() {
 		string input = "";
 		getline(cin, input);
 
-		ServerAuswahlMenue::serverAuswahlMenue->textFeldServer->setzeText(
+		ServerAuswahlMenue::serverAuswahlMenue->textFeldServer->setText(
 				input);
 
 		input = "";
 		getline(cin, input);
 
-		ServerAuswahlMenue::serverAuswahlMenue->textFeldPort->setzeText(
+		ServerAuswahlMenue::serverAuswahlMenue->textFeldPort->setText(
 				input);
 
 		ServerAuswahlMenue::serverAuswahlMenue->buttonBetreten->beimKlicken(0);
@@ -125,37 +125,37 @@ void ServerAuswahlMenue::zeigeServerAuswahlMenue() {
 #endif
 		ServerAuswahlMenue::serverAuswahlMenue->hintergrund->setzeKeyboardAnzeigen(
 				false);
-		ServerAuswahlMenue::serverAuswahlMenue->textFehler->sichtbarkeit(false);
-		ServerAuswahlMenue::serverAuswahlMenue->textServer->sichtbarkeit(false);
-		ServerAuswahlMenue::serverAuswahlMenue->textFeldServer->sichtbarkeit(
+		ServerAuswahlMenue::serverAuswahlMenue->textFehler->visible(false);
+		ServerAuswahlMenue::serverAuswahlMenue->textServer->visible(false);
+		ServerAuswahlMenue::serverAuswahlMenue->textFeldServer->visible(
 				false);
-		ServerAuswahlMenue::serverAuswahlMenue->textPort->sichtbarkeit(false);
-		ServerAuswahlMenue::serverAuswahlMenue->textFeldPort->sichtbarkeit(
+		ServerAuswahlMenue::serverAuswahlMenue->textPort->visible(false);
+		ServerAuswahlMenue::serverAuswahlMenue->textFeldPort->visible(
 				false);
-		ServerAuswahlMenue::serverAuswahlMenue->buttonBetreten->sichtbarkeit(
+		ServerAuswahlMenue::serverAuswahlMenue->buttonBetreten->visible(
 				false);
-		ServerAuswahlMenue::serverAuswahlMenue->textBetreten->sichtbarkeit(
+		ServerAuswahlMenue::serverAuswahlMenue->textBetreten->visible(
 				true);
 
 		try {
 			string _server =
-					ServerAuswahlMenue::serverAuswahlMenue->textFeldServer->gebeText();
+					ServerAuswahlMenue::serverAuswahlMenue->textFeldServer->getText();
 			string _portString =
-					ServerAuswahlMenue::serverAuswahlMenue->textFeldPort->gebeText();
+					ServerAuswahlMenue::serverAuswahlMenue->textFeldPort->getText();
 			int _portInt = atoi(_portString.c_str());
 			bool verbunden = Verbindung::verbinde(_server, _portInt);
 
 			if (verbunden) {
 				Verbindung::starteSchnittstelle();
 
-				string benutzerUndHost;
-				benutzerUndHost.append(Session::gebeBenutzer());
-				benutzerUndHost.append(";");
-				benutzerUndHost.append(_server);
-				benutzerUndHost.append(";");
-				benutzerUndHost.append(_portString);
+				string usernameAndHost;
+				usernameAndHost.append(Session::getUsername());
+				usernameAndHost.append(";");
+				usernameAndHost.append(_server);
+				usernameAndHost.append(";");
+				usernameAndHost.append(_portString);
 
-				PacketClient *p = new Packet02Handshake(benutzerUndHost);
+				PacketClient *p = new Packet02Handshake(usernameAndHost);
 				Verbindung::zuVerschickendenPacketenHinzufuegen(p);
 			} else {
 				throw ExcSocketHTTPServerLoginFailed(
@@ -163,23 +163,23 @@ void ServerAuswahlMenue::zeigeServerAuswahlMenue() {
 			}
 		} catch (ExcSocketHTTPServerLoginFailed &exception) {
 
-			ServerAuswahlMenue::serverAuswahlMenue->textFehler->setzeText(
+			ServerAuswahlMenue::serverAuswahlMenue->textFehler->setText(
 					exception.getFehler());
 			ServerAuswahlMenue::serverAuswahlMenue->hintergrund->setzeKeyboardAnzeigen(
 					true);
-			ServerAuswahlMenue::serverAuswahlMenue->textFehler->sichtbarkeit(
+			ServerAuswahlMenue::serverAuswahlMenue->textFehler->visible(
 					true);
-			ServerAuswahlMenue::serverAuswahlMenue->textServer->sichtbarkeit(
+			ServerAuswahlMenue::serverAuswahlMenue->textServer->visible(
 					true);
-			ServerAuswahlMenue::serverAuswahlMenue->textFeldServer->sichtbarkeit(
+			ServerAuswahlMenue::serverAuswahlMenue->textFeldServer->visible(
 					true);
-			ServerAuswahlMenue::serverAuswahlMenue->textPort->sichtbarkeit(
+			ServerAuswahlMenue::serverAuswahlMenue->textPort->visible(
 					true);
-			ServerAuswahlMenue::serverAuswahlMenue->textFeldPort->sichtbarkeit(
+			ServerAuswahlMenue::serverAuswahlMenue->textFeldPort->visible(
 					true);
-			ServerAuswahlMenue::serverAuswahlMenue->buttonBetreten->sichtbarkeit(
+			ServerAuswahlMenue::serverAuswahlMenue->buttonBetreten->visible(
 					true);
-			ServerAuswahlMenue::serverAuswahlMenue->textBetreten->sichtbarkeit(
+			ServerAuswahlMenue::serverAuswahlMenue->textBetreten->visible(
 					false);
 			continue;
 		}
@@ -194,11 +194,11 @@ void ServerAuswahlMenue::betreten() {
 }
 
 void ServerAuswahlMenue::auswaehlenServer() {
-	GraphicHandler::getGraphicHandler()->setzeAusgewaehltesElement(
+	GraphicHandler::getGraphicHandler()->setSelectedElement(
 			ServerAuswahlMenue::serverAuswahlMenue->textFeldServer);
 }
 
 void ServerAuswahlMenue::auswaehlenPort() {
-	GraphicHandler::getGraphicHandler()->setzeAusgewaehltesElement(
+	GraphicHandler::getGraphicHandler()->setSelectedElement(
 			ServerAuswahlMenue::serverAuswahlMenue->textFeldPort);
 }

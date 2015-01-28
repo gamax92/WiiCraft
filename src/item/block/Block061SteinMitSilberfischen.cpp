@@ -33,7 +33,7 @@
 
 using namespace std;
 
-Item *Block061SteinMitSilberfischen::gebeInstanz() {
+Item *Block061SteinMitSilberfischen::getInstance() {
 	return new Block061SteinMitSilberfischen();
 }
 

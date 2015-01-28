@@ -37,7 +37,7 @@ namespace std {
 class Block01CDetektorSchiene: public ItemBlock {
 public:
 	Block01CDetektorSchiene();
-	Item *gebeInstanz();
+	Item *getInstance();
 	static bool registiereItem();
 	void zeichne(float x, float y, float z, byte meta);
 	bool istDurchsichtig();

@@ -37,7 +37,7 @@ namespace std {
 class Item170EnderPerle: public Item {
 public:
 	Item170EnderPerle();
-	Item *gebeInstanz();
+	Item *getInstance();
 	static bool registiereItem();
 private:
 };

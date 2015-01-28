@@ -37,7 +37,7 @@ namespace std {
 class Block072Netherziegeltreppe: public ItemBlock {
 public:
 	Block072Netherziegeltreppe();
-	Item *gebeInstanz();
+	Item *getInstance();
 	static bool registiereItem();
 	void zeichne(float x, float y, float z, byte meta);
 	bool istDurchsichtig();

@@ -33,7 +33,7 @@
 
 using namespace std;
 
-Item *Block014Glas::gebeInstanz() {
+Item *Block014Glas::getInstance() {
 	return new Block014Glas();
 }
 

@@ -33,7 +33,7 @@
 
 using namespace std;
 
-Item *Block00DKies::gebeInstanz() {
+Item *Block00DKies::getInstance() {
 	return new Block00DKies();
 }
 

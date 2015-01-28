@@ -33,7 +33,7 @@
 
 using namespace std;
 
-Item *Block079Endstein::gebeInstanz() {
+Item *Block079Endstein::getInstance() {
 	return new Block079Endstein();
 }
 

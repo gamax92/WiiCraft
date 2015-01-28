@@ -46,30 +46,30 @@ void World::calculateChunkPosition(int x, int z, int &chunkX, int &chunkZ) {
 
 void World::getChunkPos(int x, int y, int z, byte &xP, byte &yP, byte &zP) {
 	xP = x & 15;
-	yP = y & (this->gebeWeltHoehe() - 1);
+	yP = y & (this->getWorldHeight() - 1);
 	zP = z & 15;
 }
 
 unsigned short World::berechneIndex(int x, int y, int z) {
-	short _weltHoehe = this->gebeWeltHoehe();
-	return y + (z * _weltHoehe) + (x * _weltHoehe * 16);
+	short _worldHeight = this->getWorldHeight();
+	return y + (z * _worldHeight) + (x * _worldHeight * 16);
 }
 
 void World::berechnePosAusIndex(unsigned short index, int &x, int &y, int &z) {
-	short _weltHoehe = this->gebeWeltHoehe();
-	x = (index - (index % (_weltHoehe * 16))) / (_weltHoehe * 16);
-	z = ((index - (index % _weltHoehe)) / _weltHoehe) - (x * 16);
-	y = index - (z * _weltHoehe) - (x * _weltHoehe * 16);
+	short _worldHeight = this->getWorldHeight();
+	x = (index - (index % (_worldHeight * 16))) / (_worldHeight * 16);
+	z = ((index - (index % _worldHeight)) / _worldHeight) - (x * 16);
+	y = index - (z * _worldHeight) - (x * _worldHeight * 16);
 }
 
 void World::initializeWorld(int dimension, string levelTyp,
-		byte schwierigkeitsGrad, int serverModus, unsigned short weltHoehe) {
+		byte schwierigkeitsGrad, int serverModus, unsigned short worldHeight) {
 	if (World::world != NULL) {
 		delete World::world;
 	}
 
 	World::world = new World(dimension, levelTyp, schwierigkeitsGrad, serverModus,
-			weltHoehe);
+			worldHeight);
 }
 
 World *World::getWorld() {
@@ -77,14 +77,14 @@ World *World::getWorld() {
 }
 
 World::World(int _dimension, string _levelTyp, byte _schwierigkeitsGrad,
-		int _serverModus, unsigned short _weltHoehe) {
+		int _serverModus, unsigned short _worldHeight) {
 
 	pthread_mutex_init(&this->mutexChunks, NULL);
 	pthread_mutex_init(&this->mutexLoadedChunks, NULL);
-	pthread_mutex_init(&this->mutexUhrzeit, NULL);
+	pthread_mutex_init(&this->mutexTime, NULL);
 	pthread_mutex_init(&this->mutexWelthoehe, NULL);
 
-	this->uhrzeit = 0;
+	this->time = 0;
 	this->dimension = _dimension;
 	this->schwierigkeitsGrad = _schwierigkeitsGrad;
 	this->serverModus = _serverModus;
@@ -99,9 +99,9 @@ World::World(int _dimension, string _levelTyp, byte _schwierigkeitsGrad,
 
 	// TODO wird von Mojang noch nicht ausgewertet
 	pthread_mutex_lock(&this->mutexWelthoehe);
-	this->weltHoehe = 256;
-	if (_weltHoehe != 0) {
-		this->weltHoehe = _weltHoehe;
+	this->worldHeight = 256;
+	if (_worldHeight != 0) {
+		this->worldHeight = _worldHeight;
 	}
 	pthread_mutex_unlock(&this->mutexWelthoehe);
 }
@@ -109,7 +109,7 @@ World::World(int _dimension, string _levelTyp, byte _schwierigkeitsGrad,
 World::~World() {
 	pthread_mutex_destroy(&this->mutexChunks);
 	pthread_mutex_destroy(&this->mutexLoadedChunks);
-	pthread_mutex_destroy(&this->mutexUhrzeit);
+	pthread_mutex_destroy(&this->mutexTime);
 	pthread_mutex_destroy(&this->mutexWelthoehe);
 
 	for (map<int, map<int, Chunk *> >::iterator x = this->chunks.begin();
@@ -212,7 +212,7 @@ void World::setzeRegen(bool _regen) {
 	this->regen = _regen;
 }
 
-int World::gebeAnzahlGeladeneChunks() {
+int World::getNumberLoadedChunks() {
 	int anzahl = 0;
 	map<int, map<int, Chunk *> >::iterator it1;
 
@@ -225,7 +225,7 @@ int World::gebeAnzahlGeladeneChunks() {
 	return anzahl;
 }
 
-int World::gebeAnzahlChunks() {
+int World::getNumberChunks() {
 	int anzahl = 0;
 	map<int, map<int, Chunk *> >::iterator it1;
 
@@ -241,59 +241,59 @@ void World::zeichne() {
 	this->chunkCacheManager->zeichne();
 }
 
-unsigned short World::gebeWeltHoehe() {
+unsigned short World::getWorldHeight() {
 	pthread_mutex_lock(&this->mutexWelthoehe);
-	short _weltHoehe = this->weltHoehe;
+	short _worldHeight = this->worldHeight;
 	pthread_mutex_unlock(&this->mutexWelthoehe);
 
-	return _weltHoehe;
+	return _worldHeight;
 }
 
-void World::setzeUhrzeit(short _uhrzeit) {
-	pthread_mutex_lock(&this->mutexUhrzeit);
-	this->uhrzeit = _uhrzeit;
-	pthread_mutex_unlock(&this->mutexUhrzeit);
+void World::setTime(short _time) {
+	pthread_mutex_lock(&this->mutexTime);
+	this->time = _time;
+	pthread_mutex_unlock(&this->mutexTime);
 }
 
-short World::gebeUhrzeit() {
-	pthread_mutex_lock(&this->mutexUhrzeit);
-	short _uhrzeit = this->uhrzeit;
-	pthread_mutex_unlock(&this->mutexUhrzeit);
+short World::getTime() {
+	pthread_mutex_lock(&this->mutexTime);
+	short _time = this->time;
+	pthread_mutex_unlock(&this->mutexTime);
 
-	return _uhrzeit;
+	return _time;
 }
 
-string World::gebeUhrzeitString() {
-	pthread_mutex_lock(&this->mutexUhrzeit);
-	short _uhrzeit = this->uhrzeit;
-	pthread_mutex_unlock(&this->mutexUhrzeit);
+string World::getTimeString() {
+	pthread_mutex_lock(&this->mutexTime);
+	short _time = this->time;
+	pthread_mutex_unlock(&this->mutexTime);
 
-	short stunden = _uhrzeit / 1000;
-	short minuten = (short) (((float) (_uhrzeit % 1000)) * 0.06f);
-	short sekunden = (short) fmod(_uhrzeit, 1.0f / 0.06f);
+	short hours = _time / 1000;
+	short minutes = (short) (((float) (_time % 1000)) * 0.06f);
+	short seconds = (short) fmod(_time, 1.0f / 0.06f);
 
 	ostringstream stream;
 
-	if (stunden < 10) {
+	if (hours < 10) {
 		stream << "0";
 	}
-	if (stream << stunden) {
+	if (stream << hours) {
 	} else {
 		stream << "0";
 	}
 	stream << ":";
-	if (minuten < 10) {
+	if (minutes < 10) {
 		stream << "0";
 	}
-	if (stream << minuten) {
+	if (stream << minutes) {
 	} else {
 		stream << "0";
 	}
 	stream << ":";
-	if (sekunden < 10) {
+	if (seconds < 10) {
 		stream << "0";
 	}
-	if (stream << sekunden) {
+	if (stream << seconds) {
 	} else {
 		stream << "0";
 	}

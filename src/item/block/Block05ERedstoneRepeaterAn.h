@@ -37,7 +37,7 @@ namespace std {
 class Block05ERedstoneRepeaterAn: public ItemBlock {
 public:
 	Block05ERedstoneRepeaterAn();
-	Item *gebeInstanz();
+	Item *getInstance();
 	static bool registiereItem();
 	void zeichne(float x, float y, float z, byte meta);
 	bool istDurchsichtig();

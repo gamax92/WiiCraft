@@ -37,7 +37,7 @@ namespace std {
 class Block07BRedstoneLampeAus: public ItemBlock {
 public:
 	Block07BRedstoneLampeAus();
-	Item *gebeInstanz();
+	Item *getInstance();
 	static bool registiereItem();
 	void zeichne(float x, float y, float z, byte meta);
 	bool istDurchsichtig();

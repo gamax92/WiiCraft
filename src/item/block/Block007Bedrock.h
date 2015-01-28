@@ -37,7 +37,7 @@ namespace std {
 class Block007Bedrock: public ItemBlock {
 public:
 	Block007Bedrock();
-	Item *gebeInstanz();
+	Item *getInstance();
 	static bool registiereItem();
 	void zeichne(float x, float y, float z, byte meta);
 	bool istDurchsichtig();

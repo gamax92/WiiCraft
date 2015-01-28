@@ -34,12 +34,12 @@
 
 namespace std {
 
-class Pfad {
+class Path {
 public:
-	static string gebePfad();
-	static void setzePfad(char *argv);
+	static string getPath();
+	static void setPath(char *argv);
 private:
-	static string pfad;
+	static string path;
 };
 
 } /* namespace std */

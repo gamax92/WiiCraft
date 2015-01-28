@@ -27,34 +27,58 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef CHUNKLADEN_H_
-#define CHUNKLADEN_H_
-
+#include "GraphicHandler.h"
+#include "Texture.h"
 #if defined _WIN32 || defined __CYGWIN__
-#include <pthread.h>
-#else
-#include "../util/pthread.h"
-#endif
-#include <vector>
+#include "../util/WiiFunction.h"
+#else /* __wii__ */
+#include <grrlib.h>
+#endif /* __wii__ */
 
-namespace std {
+using namespace std;
 
-class Chunk;
+Texture::Texture(float _x, float _y, string _texture, float _rotation,
+		float _scaleX, float _scaleY, unsigned int _color) {
+	this->setzeStandardWerte();
 
-class ChunkLoading {
-public:
-	ChunkLoading();
-	~ChunkLoading();
-
-	static ChunkLoading *gebeChunkLaden();
-	static short gebeMaximaleAnzahlGeladeneChunks();
-	void fuegeChunkHinzu(Chunk *_chunk);
-	void loescheChunk(Chunk *_chunk);
-	void aktualisiereChunks(int x, int z);
-private:
-	static ChunkLoading *chunkLaden;
-	vector<Chunk *> chunks;
-	pthread_mutex_t mutexChunk;
-};
+	this->setX(_x);
+	this->setY(_y);
+	this->setHeight(
+			GraphicHandler::getGraphicHandler()->getTexture(_texture)->h
+					* _scaleY);
+	this->setWidth(
+			GraphicHandler::getGraphicHandler()->getTexture(_texture)->w
+					* _scaleX);
+	this->texture = _texture;
+	this->rotation = _rotation;
+	this->scaleX = _scaleX;
+	this->scaleY = _scaleY;
+	this->color = _color;
 }
-#endif /* CHUNKLADEN_H_ */
+
+Texture::Texture(float _x, float _y, string _texture) {
+	this->setzeStandardWerte();
+
+	this->setX(_x);
+	this->setY(_y);
+	this->setHeight(GraphicHandler::getGraphicHandler()->getTexture(_texture)->h);
+	this->setWidth(GraphicHandler::getGraphicHandler()->getTexture(_texture)->w);
+	this->texture = _texture;
+	this->rotation = 0;
+	this->scaleX = 1;
+	this->scaleY = 1;
+	this->color = 0xffffffff;
+}
+
+Texture::~Texture() {
+}
+
+void Texture::drawElement() {
+	if (this->isVisible()) {
+		GRRLIB_2dMode();
+		GRRLIB_DrawImg(this->getX(), this->getY(),
+				GraphicHandler::getGraphicHandler()->getTexture(this->texture),
+				this->rotation, this->scaleX, this->scaleY,
+				this->color);
+	}
+}

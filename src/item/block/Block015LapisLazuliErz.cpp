@@ -33,7 +33,7 @@
 
 using namespace std;
 
-Item *Block015LapisLazuliErz::gebeInstanz() {
+Item *Block015LapisLazuliErz::getInstance() {
 	return new Block015LapisLazuliErz();
 }
 

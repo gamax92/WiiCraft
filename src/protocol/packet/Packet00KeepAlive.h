@@ -42,8 +42,8 @@ class DataInputStream;
 class Packet00KeepAlive: public PacketServer, public PacketClient {
 public:
 	Packet00KeepAlive(int _keepAliventityId);
-	PacketServer *gebeInstanz();
-	static bool registierePacket();
+	PacketServer *getInstance();
+	static bool registerPacket();
 	void schreibePacketInhalt(DataOutputStream *out);
 	void lesePacketInhalt(DataInputStream *in);
 	void verarbeitePacket();

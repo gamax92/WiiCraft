@@ -37,7 +37,7 @@ namespace std {
 class Item115DiamantSchaufel: public ItemShovel {
 public:
 	Item115DiamantSchaufel();
-	Item *gebeInstanz();
+	Item *getInstance();
 	static bool registiereItem();
 private:
 };

@@ -45,12 +45,12 @@ Packet3CExplosion::~Packet3CExplosion() {
 	delete[] this->records;
 }
 
-PacketServer *Packet3CExplosion::gebeInstanz() {
+PacketServer *Packet3CExplosion::getInstance() {
 	return new Packet3CExplosion();
 }
 
-bool Packet3CExplosion::registierePacket() {
-	PacketManager::registrierePacket(new Packet3CExplosion());
+bool Packet3CExplosion::registerPacket() {
+	PacketManager::registerPacket(new Packet3CExplosion());
 
 	return true;
 }

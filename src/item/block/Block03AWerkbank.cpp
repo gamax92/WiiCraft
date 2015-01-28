@@ -34,7 +34,7 @@
 
 using namespace std;
 
-Item *Block03AWerkbank::gebeInstanz() {
+Item *Block03AWerkbank::getInstance() {
 	return new Block03AWerkbank();
 }
 

@@ -42,12 +42,12 @@ Packet36BlockAction::Packet36BlockAction() {
 	PacketServer::prio = 50;
 }
 
-PacketServer *Packet36BlockAction::gebeInstanz() {
+PacketServer *Packet36BlockAction::getInstance() {
 	return new Packet36BlockAction();
 }
 
-bool Packet36BlockAction::registierePacket() {
-	PacketManager::registrierePacket(new Packet36BlockAction());
+bool Packet36BlockAction::registerPacket() {
+	PacketManager::registerPacket(new Packet36BlockAction());
 
 	return true;
 }

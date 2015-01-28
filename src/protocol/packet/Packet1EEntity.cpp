@@ -42,12 +42,12 @@ Packet1EEntity::Packet1EEntity() {
 	PacketServer::prio = 50;
 }
 
-PacketServer *Packet1EEntity::gebeInstanz() {
+PacketServer *Packet1EEntity::getInstance() {
 	return new Packet1EEntity();
 }
 
-bool Packet1EEntity::registierePacket() {
-	PacketManager::registrierePacket(new Packet1EEntity());
+bool Packet1EEntity::registerPacket() {
+	PacketManager::registerPacket(new Packet1EEntity());
 
 	return true;
 }

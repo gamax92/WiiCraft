@@ -43,9 +43,9 @@ namespace std {
 class Chat {
 public:
 	static void initializeChat();
-	static Chat *gebeChat();
+	static Chat *getChat();
 
-	void fuegeNachrichtHinzu(string nachricht, string farbe);
+	void addMessage(string nachricht, string farbe);
 private:
 	static Chat *chat;
 

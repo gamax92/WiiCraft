@@ -40,8 +40,8 @@ class Slot;
 class Packet67SetSlot: public PacketServer {
 public:
 	~Packet67SetSlot();
-	PacketServer *gebeInstanz();
-	static bool registierePacket();
+	PacketServer *getInstance();
+	static bool registerPacket();
 	void lesePacketInhalt(DataInputStream *in);
 	void verarbeitePacket();
 private:

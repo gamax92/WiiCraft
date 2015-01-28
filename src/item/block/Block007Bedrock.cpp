@@ -33,7 +33,7 @@
 
 using namespace std;
 
-Item *Block007Bedrock::gebeInstanz() {
+Item *Block007Bedrock::getInstance() {
 	return new Block007Bedrock();
 }
 

@@ -43,12 +43,12 @@ Packet68WindowItems::Packet68WindowItems() {
 	PacketServer::prio = 50;
 }
 
-PacketServer *Packet68WindowItems::gebeInstanz() {
+PacketServer *Packet68WindowItems::getInstance() {
 	return new Packet68WindowItems();
 }
 
-bool Packet68WindowItems::registierePacket() {
-	PacketManager::registrierePacket(new Packet68WindowItems());
+bool Packet68WindowItems::registerPacket() {
+	PacketManager::registerPacket(new Packet68WindowItems());
 
 	return true;
 }

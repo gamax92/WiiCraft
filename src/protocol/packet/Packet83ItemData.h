@@ -39,8 +39,8 @@ class DataInputStream;
 class Packet83ItemData: public PacketServer {
 public:
 	~Packet83ItemData();
-	PacketServer *gebeInstanz();
-	static bool registierePacket();
+	PacketServer *getInstance();
+	static bool registerPacket();
 	void lesePacketInhalt(DataInputStream *in);
 	void verarbeitePacket();
 private:

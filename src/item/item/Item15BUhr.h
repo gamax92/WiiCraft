@@ -37,7 +37,7 @@ namespace std {
 class Item15BUhr: public Item {
 public:
 	Item15BUhr();
-	Item *gebeInstanz();
+	Item *getInstance();
 	static bool registiereItem();
 private:
 };

@@ -33,7 +33,7 @@
 
 using namespace std;
 
-Item *Block02BDoppelteStufe::gebeInstanz() {
+Item *Block02BDoppelteStufe::getInstance() {
 	return new Block02BDoppelteStufe();
 }
 

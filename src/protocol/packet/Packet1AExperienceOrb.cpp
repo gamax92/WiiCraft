@@ -42,12 +42,12 @@ Packet1AExperienceOrb::Packet1AExperienceOrb() {
 	PacketServer::prio = 50;
 }
 
-PacketServer *Packet1AExperienceOrb::gebeInstanz() {
+PacketServer *Packet1AExperienceOrb::getInstance() {
 	return new Packet1AExperienceOrb();
 }
 
-bool Packet1AExperienceOrb::registierePacket() {
-	PacketManager::registrierePacket(new Packet1AExperienceOrb());
+bool Packet1AExperienceOrb::registerPacket() {
+	PacketManager::registerPacket(new Packet1AExperienceOrb());
 
 	return true;
 }

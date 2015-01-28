@@ -70,9 +70,9 @@ GraphicHandler *GraphicHandler::getGraphicHandler() {
 }
 
 GraphicHandler::GraphicHandler() {
-	this->gestoppt = false;
+	this->stopped = false;
 	this->element = new Background();
-	this->ausgewaehltesElement = this->element;
+	this->selectedElement = this->element;
 
 	pthread_mutex_init(&this->mutexStop, NULL);
 	pthread_mutex_init(&this->mutexZeichne, NULL);
@@ -81,7 +81,7 @@ GraphicHandler::GraphicHandler() {
 	GRRLIB_SetAntiAliasing(false);
 
 	this->ladeBilder();
-	this->ladeTexturMatrix();
+	this->loadTextureMatrix();
 
 	GRRLIB_SetBackgroundColour(0x00, 0x00, 0x00, 0xff);
 }
@@ -103,20 +103,20 @@ int GraphicHandler::exec() {
 	time(&neueZeit);
 #endif
 
-	while (!this->istGestopped()) {
+	while (!this->isStopped()) {
 		ControllerHandler::getControllerHandler()->aktualisiere();
 
 		pthread_mutex_lock(&this->mutexZeichne);
-		this->element->zeichneElement();
+		this->element->drawElement();
 		pthread_mutex_unlock(&this->mutexZeichne);
 
 #ifdef DEBUG_ON
 		GRRLIB_2dMode();
 		GRRLIB_Printf(0, 20,
-				GraphicHandler::getGraphicHandler()->gebeBild("font"),
+				GraphicHandler::getGraphicHandler()->getTexture("font"),
 				0xffffffff, 1, "FPS: %i", fps);
 		GRRLIB_Printf(0, 30,
-				GraphicHandler::getGraphicHandler()->gebeBild("font"),
+				GraphicHandler::getGraphicHandler()->getTexture("font"),
 				0xffffffff, 1, "Bloecke: %i", GraphicHandler::blockAnzahl);
 		GraphicHandler::blockAnzahl = 0;
 
@@ -125,31 +125,31 @@ int GraphicHandler::exec() {
 			string chunks = "Chunks: ";
 			ostringstream stream;
 
-			if (stream << world->gebeAnzahlGeladeneChunks()) {
+			if (stream << world->getNumberLoadedChunks()) {
 			} else {
 				stream << "0";
 			}
 			stream << "/";
-			if (stream << world->gebeAnzahlChunks()) {
+			if (stream << world->getNumberChunks()) {
 			} else {
 				stream << "0";
 			}
 			chunks.append(stream.str().data());
 
 			string uhrzeit = "Uhrzeit: ";
-			uhrzeit.append(world->gebeUhrzeitString());
+			uhrzeit.append(world->getTimeString());
 
 			GRRLIB_Printf(0, 40,
-					GraphicHandler::getGraphicHandler()->gebeBild("font"),
+					GraphicHandler::getGraphicHandler()->getTexture("font"),
 					0xffffffff, 1, chunks.data());
 
 			GRRLIB_Printf(0, 50,
-					GraphicHandler::getGraphicHandler()->gebeBild("font"),
+					GraphicHandler::getGraphicHandler()->getTexture("font"),
 					0xffffffff, 1, uhrzeit.data());
 		}
 
-		Player *spieler = Player::getPlayer();
-		if (spieler != 0) {
+		Player *player = Player::getPlayer();
+		if (player != 0) {
 			string x_str = "x: ";
 			string y_str = "y: ";
 			string z_str = "z: ";
@@ -157,32 +157,32 @@ int GraphicHandler::exec() {
 			ostringstream y_stream;
 			ostringstream z_stream;
 
-			x_stream << (float) spieler->getX();
-			y_stream << (float) spieler->getY() + 1.62f;
-			z_stream << (float) spieler->getZ();
+			x_stream << (float) player->getX();
+			y_stream << (float) player->getY() + 1.62f;
+			z_stream << (float) player->getZ();
 
 			x_str.append(x_stream.str().data());
 			y_str.append(y_stream.str().data());
 			z_str.append(z_stream.str().data());
 
 			GRRLIB_Printf(0, 60,
-					GraphicHandler::getGraphicHandler()->gebeBild("font"),
+					GraphicHandler::getGraphicHandler()->getTexture("font"),
 					0xffffffff, 1, x_str.data());
 			GRRLIB_Printf(0, 70,
-					GraphicHandler::getGraphicHandler()->gebeBild("font"),
+					GraphicHandler::getGraphicHandler()->getTexture("font"),
 					0xffffffff, 1, y_str.data());
 			GRRLIB_Printf(0, 80,
-					GraphicHandler::getGraphicHandler()->gebeBild("font"),
+					GraphicHandler::getGraphicHandler()->getTexture("font"),
 					0xffffffff, 1, z_str.data());
 			GRRLIB_Printf(0, 90,
-					GraphicHandler::getGraphicHandler()->gebeBild("font"),
-					0xffffffff, 1, "Chunk X: %i", spieler->getChunkX());
+					GraphicHandler::getGraphicHandler()->getTexture("font"),
+					0xffffffff, 1, "Chunk X: %i", player->getChunkX());
 			GRRLIB_Printf(0, 100,
-					GraphicHandler::getGraphicHandler()->gebeBild("font"),
-					0xffffffff, 1, "Chunk Z: %i", spieler->getChunkZ());
+					GraphicHandler::getGraphicHandler()->getTexture("font"),
+					0xffffffff, 1, "Chunk Z: %i", player->getChunkZ());
 
-			float pitch = spieler->getAbstand();
-			float yaw = spieler->getWinkel();
+			float pitch = player->getAbstand();
+			float yaw = player->getWinkel();
 
 			float viewX = -cos(pitch) * sin(yaw);
 			float viewY = -sin(pitch);
@@ -190,63 +190,63 @@ int GraphicHandler::exec() {
 
 			string abstand_str = "Abstand: ";
 			string winkel_str = "Winkel: ";
-			string kamera_x_str = "Kamera X: ";
-			string kamera_y_str = "Kamera Y: ";
-			string kamera_z_str = "Kamera Z: ";
+			string camera_x_str = "Camera X: ";
+			string camera_y_str = "Camera Y: ";
+			string camera_z_str = "Camera Z: ";
 			string view_x_str = "View X: ";
 			string view_y_str = "View Y: ";
 			string view_z_str = "View Z: ";
 			ostringstream abstand_stream;
 			ostringstream winkel_stream;
-			ostringstream kamera_x_stream;
-			ostringstream kamera_y_stream;
-			ostringstream kamera_z_stream;
+			ostringstream camera_x_stream;
+			ostringstream camera_y_stream;
+			ostringstream camera_z_stream;
 			ostringstream view_x_stream;
 			ostringstream view_y_stream;
 			ostringstream view_z_stream;
 
 			abstand_stream << pitch;
 			winkel_stream << yaw;
-			kamera_x_stream << (float) spieler->getX() + viewX;
-			kamera_y_stream << (float) spieler->getY() + viewY + 1.62f;
-			kamera_z_stream << (float) spieler->getZ() + viewZ;
+			camera_x_stream << (float) player->getX() + viewX;
+			camera_y_stream << (float) player->getY() + viewY + 1.62f;
+			camera_z_stream << (float) player->getZ() + viewZ;
 			view_x_stream << viewX;
 			view_y_stream << viewY;
 			view_z_stream << viewZ;
 
 			abstand_str.append(abstand_stream.str().data());
 			winkel_str.append(winkel_stream.str().data());
-			kamera_x_str.append(kamera_x_stream.str().data());
-			kamera_y_str.append(kamera_y_stream.str().data());
-			kamera_z_str.append(kamera_z_stream.str().data());
+			camera_x_str.append(camera_x_stream.str().data());
+			camera_y_str.append(camera_y_stream.str().data());
+			camera_z_str.append(camera_z_stream.str().data());
 			view_x_str.append(view_x_stream.str().data());
 			view_y_str.append(view_y_stream.str().data());
 			view_z_str.append(view_z_stream.str().data());
 
 			GRRLIB_Printf(0, 110,
-					GraphicHandler::getGraphicHandler()->gebeBild("font"),
+					GraphicHandler::getGraphicHandler()->getTexture("font"),
 					0xffffffff, 1, abstand_str.data());
 			GRRLIB_Printf(0, 120,
-					GraphicHandler::getGraphicHandler()->gebeBild("font"),
+					GraphicHandler::getGraphicHandler()->getTexture("font"),
 					0xffffffff, 1, winkel_str.data());
 
 			GRRLIB_Printf(0, 130,
-					GraphicHandler::getGraphicHandler()->gebeBild("font"),
-					0xffffffff, 1, kamera_x_str.data());
+					GraphicHandler::getGraphicHandler()->getTexture("font"),
+					0xffffffff, 1, camera_x_str.data());
 			GRRLIB_Printf(0, 140,
-					GraphicHandler::getGraphicHandler()->gebeBild("font"),
-					0xffffffff, 1, kamera_y_str.data());
+					GraphicHandler::getGraphicHandler()->getTexture("font"),
+					0xffffffff, 1, camera_y_str.data());
 			GRRLIB_Printf(0, 150,
-					GraphicHandler::getGraphicHandler()->gebeBild("font"),
-					0xffffffff, 1, kamera_z_str.data());
+					GraphicHandler::getGraphicHandler()->getTexture("font"),
+					0xffffffff, 1, camera_z_str.data());
 			GRRLIB_Printf(0, 160,
-					GraphicHandler::getGraphicHandler()->gebeBild("font"),
+					GraphicHandler::getGraphicHandler()->getTexture("font"),
 					0xffffffff, 1, view_x_str.data());
 			GRRLIB_Printf(0, 170,
-					GraphicHandler::getGraphicHandler()->gebeBild("font"),
+					GraphicHandler::getGraphicHandler()->getTexture("font"),
 					0xffffffff, 1, view_y_str.data());
 			GRRLIB_Printf(0, 180,
-					GraphicHandler::getGraphicHandler()->gebeBild("font"),
+					GraphicHandler::getGraphicHandler()->getTexture("font"),
 					0xffffffff, 1, view_z_str.data());
 
 		}
@@ -267,75 +267,75 @@ int GraphicHandler::exec() {
 
 void GraphicHandler::stop() {
 	pthread_mutex_lock(&this->mutexStop);
-	this->gestoppt = true;
+	this->stopped = true;
 	pthread_mutex_unlock(&this->mutexStop);
 }
 
-bool GraphicHandler::istGestopped() {
+bool GraphicHandler::isStopped() {
 	bool b = false;
 
 	pthread_mutex_lock(&this->mutexStop);
-	b = this->gestoppt;
+	b = this->stopped;
 	pthread_mutex_unlock(&this->mutexStop);
 
 	return b;
 }
 
-void GraphicHandler::setzeAnzeigeElement(GraphicElement *neuesElement) {
+void GraphicHandler::setzeAnzeigeElement(GraphicElement *newElement) {
 	pthread_mutex_lock(&this->mutexZeichne);
-	this->element = neuesElement;
-	this->setzeAusgewaehltesElement(this->element);
+	this->element = newElement;
+	this->setSelectedElement(this->element);
 	pthread_mutex_unlock(&this->mutexZeichne);
 }
 
 void GraphicHandler::ladeBilder() {
-	this->bilder["bildMenueHintergrund"] = GRRLIB_LoadTexture(
+	this->textures["bildMenueHintergrund"] = GRRLIB_LoadTexture(
 			bildMenueHintergrund);
-	this->bilder["terrain"] = GRRLIB_LoadTexture(terrain);
-	GRRLIB_InitTileSet(this->bilder["terrain"], 16, 16, 0);
-	this->bilder["logo_orbitalfrosch"] = GRRLIB_LoadTexture(logo_orbitalfrosch);
-	this->bilder["logo"] = GRRLIB_LoadTexture(logo);
-	this->bilder["font"] = GRRLIB_LoadTexture(font);
-	GRRLIB_InitTileSet(this->bilder["font"], 8, 8, 0);
-	this->bilder["cursor1"] = GRRLIB_LoadTexture(cursor1);
-	this->bilder["cursor2"] = GRRLIB_LoadTexture(cursor2);
-	this->bilder["cursor3"] = GRRLIB_LoadTexture(cursor3);
-	this->bilder["cursor4"] = GRRLIB_LoadTexture(cursor4);
-	this->bilder["bild_ladebalken"] = GRRLIB_LoadTexture(bild_ladebalken);
-	GRRLIB_InitTileSet(this->bilder["bild_ladebalken"], 100, 4, 0);
-	this->bilder["bild_button"] = GRRLIB_LoadTexture(bild_button);
-	GRRLIB_InitTileSet(this->bilder["bild_button"], 16, 16, 0);
+	this->textures["terrain"] = GRRLIB_LoadTexture(terrain);
+	GRRLIB_InitTileSet(this->textures["terrain"], 16, 16, 0);
+	this->textures["logo_orbitalfrosch"] = GRRLIB_LoadTexture(logo_orbitalfrosch);
+	this->textures["logo"] = GRRLIB_LoadTexture(logo);
+	this->textures["font"] = GRRLIB_LoadTexture(font);
+	GRRLIB_InitTileSet(this->textures["font"], 8, 8, 0);
+	this->textures["cursor1"] = GRRLIB_LoadTexture(cursor1);
+	this->textures["cursor2"] = GRRLIB_LoadTexture(cursor2);
+	this->textures["cursor3"] = GRRLIB_LoadTexture(cursor3);
+	this->textures["cursor4"] = GRRLIB_LoadTexture(cursor4);
+	this->textures["bild_ladebalken"] = GRRLIB_LoadTexture(bild_ladebalken);
+	GRRLIB_InitTileSet(this->textures["bild_ladebalken"], 100, 4, 0);
+	this->textures["bild_button"] = GRRLIB_LoadTexture(bild_button);
+	GRRLIB_InitTileSet(this->textures["bild_button"], 16, 16, 0);
 }
 
-void GraphicHandler::ladeTexturMatrix() {
-	GRRLIB_texImg *terrain = this->gebeBild("terrain");
-	this->texturMatrix = new TexturMatrix[256];
+void GraphicHandler::loadTextureMatrix() {
+	GRRLIB_texImg *terrain = this->getTexture("terrain");
+	this->textureMatrix = new TextureMatrix[256];
 	for (short nr = 0; nr < 256; nr++) {
-		this->texturMatrix[nr].s1 = (nr % terrain->nbtilew)
+		this->textureMatrix[nr].s1 = (nr % terrain->nbtilew)
 				* terrain->ofnormaltexx;
-		this->texturMatrix[nr].s2 = this->texturMatrix[nr].s1
+		this->textureMatrix[nr].s2 = this->textureMatrix[nr].s1
 				+ terrain->ofnormaltexx;
-		this->texturMatrix[nr].t1 = (int) (nr / terrain->nbtilew)
+		this->textureMatrix[nr].t1 = (int) (nr / terrain->nbtilew)
 				* terrain->ofnormaltexy;
-		this->texturMatrix[nr].t2 = this->texturMatrix[nr].t1
+		this->textureMatrix[nr].t2 = this->textureMatrix[nr].t1
 				+ terrain->ofnormaltexy;
 	}
 }
 
-TexturMatrix GraphicHandler::gebeTexturMatrix(int nr) {
-	return this->texturMatrix[nr];
+TextureMatrix GraphicHandler::getTextureMatrix(int nr) {
+	return this->textureMatrix[nr];
 }
 
-GRRLIB_texImg *GraphicHandler::gebeBild(string name) {
-	return this->bilder[name];
+GRRLIB_texImg *GraphicHandler::getTexture(string name) {
+	return this->textures[name];
 }
 
 void GraphicHandler::setCursorPosition(float x, float y, float angle) {
 	BlockEngine *blockEngine = dynamic_cast<BlockEngine *>(this->element);
 	if (blockEngine != 0) {
-		blockEngine->setzeCursorPosition(x, y, angle);
+		blockEngine->setCursorPosition(x, y, angle);
 	} else {
-		((ContainerElement *) this->element)->setzeCursorPosition(x, y, angle);
+		((ContainerElement *) this->element)->setCursorPosition(x, y, angle);
 	}
 }
 
@@ -343,13 +343,13 @@ void GraphicHandler::gedrueckt(u32 gedrueckt) {
 	((ContainerElement *) this->element)->gedrueckt(gedrueckt);
 }
 
-void GraphicHandler::setzeAusgewaehltesElement(
-		GraphicElement *_ausgewaehltesElement) {
-	this->ausgewaehltesElement->auswaehlen(false);
-	this->ausgewaehltesElement = _ausgewaehltesElement;
-	this->ausgewaehltesElement->auswaehlen(true);
+void GraphicHandler::setSelectedElement(
+		GraphicElement *_selectedElement) {
+	this->selectedElement->selected(false);
+	this->selectedElement = _selectedElement;
+	this->selectedElement->selected(true);
 }
 
-GraphicElement *GraphicHandler::gebeAusgewaehltesElement() {
-	return this->ausgewaehltesElement;
+GraphicElement *GraphicHandler::getSelectedElement() {
+	return this->selectedElement;
 }

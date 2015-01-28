@@ -42,12 +42,12 @@ Packet26EntityStatus::Packet26EntityStatus() {
 	PacketServer::prio = 50;
 }
 
-PacketServer *Packet26EntityStatus::gebeInstanz() {
+PacketServer *Packet26EntityStatus::getInstance() {
 	return new Packet26EntityStatus();
 }
 
-bool Packet26EntityStatus::registierePacket() {
-	PacketManager::registrierePacket(new Packet26EntityStatus());
+bool Packet26EntityStatus::registerPacket() {
+	PacketManager::registerPacket(new Packet26EntityStatus());
 
 	return true;
 }

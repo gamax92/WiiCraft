@@ -41,12 +41,12 @@ Packet69UpdateWindowProperty::Packet69UpdateWindowProperty() {
 	PacketServer::prio = 50;
 }
 
-PacketServer *Packet69UpdateWindowProperty::gebeInstanz() {
+PacketServer *Packet69UpdateWindowProperty::getInstance() {
 	return new Packet69UpdateWindowProperty();
 }
 
-bool Packet69UpdateWindowProperty::registierePacket() {
-	PacketManager::registrierePacket(new Packet69UpdateWindowProperty());
+bool Packet69UpdateWindowProperty::registerPacket() {
+	PacketManager::registerPacket(new Packet69UpdateWindowProperty());
 
 	return true;
 }

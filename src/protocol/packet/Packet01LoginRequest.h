@@ -42,8 +42,8 @@ class DataInputStream;
 class Packet01LoginRequest: public PacketServer, public PacketClient {
 public:
 	Packet01LoginRequest(int _protocolVersion, string _userName);
-	PacketServer *gebeInstanz();
-	static bool registierePacket();
+	PacketServer *getInstance();
+	static bool registerPacket();
 	void schreibePacketInhalt(DataOutputStream *out);
 	void lesePacketInhalt(DataInputStream *in);
 	void verarbeitePacket();

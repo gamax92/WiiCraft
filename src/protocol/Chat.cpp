@@ -49,11 +49,11 @@ void Chat::initializeChat() {
 	Chat::chat = new Chat();
 }
 
-Chat *Chat::gebeChat() {
+Chat *Chat::getChat() {
 	return Chat::chat;
 }
 
-void Chat::fuegeNachrichtHinzu(string nachricht, string farbe) {
+void Chat::addMessage(string nachricht, string farbe) {
 	Nachrichten neueNachricht;
 
 	neueNachricht.farbe = farbe;

@@ -33,7 +33,7 @@
 
 using namespace std;
 
-Item *Block07BRedstoneLampeAus::gebeInstanz() {
+Item *Block07BRedstoneLampeAus::getInstance() {
 	return new Block07BRedstoneLampeAus();
 }
 

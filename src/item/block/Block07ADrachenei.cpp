@@ -33,7 +33,7 @@
 
 using namespace std;
 
-Item *Block07ADrachenei::gebeInstanz() {
+Item *Block07ADrachenei::getInstance() {
 	return new Block07ADrachenei();
 }
 

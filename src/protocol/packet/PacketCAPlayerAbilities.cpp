@@ -54,12 +54,12 @@ PacketCAPlayerAbilities::PacketCAPlayerAbilities(bool _invulnerability,
 	this->instantDestroy = _instantDestroy;
 }
 
-PacketServer *PacketCAPlayerAbilities::gebeInstanz() {
+PacketServer *PacketCAPlayerAbilities::getInstance() {
 	return new PacketCAPlayerAbilities();
 }
 
-bool PacketCAPlayerAbilities::registierePacket() {
-	PacketManager::registrierePacket(new PacketCAPlayerAbilities());
+bool PacketCAPlayerAbilities::registerPacket() {
+	PacketManager::registerPacket(new PacketCAPlayerAbilities());
 
 	return true;
 }

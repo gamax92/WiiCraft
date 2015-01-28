@@ -41,12 +41,12 @@ Packet84UpdateTileEntity::Packet84UpdateTileEntity() {
 	PacketServer::prio = 50;
 }
 
-PacketServer *Packet84UpdateTileEntity::gebeInstanz() {
+PacketServer *Packet84UpdateTileEntity::getInstance() {
 	return new Packet84UpdateTileEntity();
 }
 
-bool Packet84UpdateTileEntity::registierePacket() {
-	PacketManager::registrierePacket(new Packet84UpdateTileEntity());
+bool Packet84UpdateTileEntity::registerPacket() {
+	PacketManager::registerPacket(new Packet84UpdateTileEntity());
 
 	return true;
 }

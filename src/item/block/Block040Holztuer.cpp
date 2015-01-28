@@ -33,7 +33,7 @@
 
 using namespace std;
 
-Item *Block040Holztuer::gebeInstanz() {
+Item *Block040Holztuer::getInstance() {
 	return new Block040Holztuer();
 }
 

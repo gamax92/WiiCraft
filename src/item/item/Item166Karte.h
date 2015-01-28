@@ -40,7 +40,7 @@ public:
 	Item166Karte();
 	~Item166Karte();
 
-	Item *gebeInstanz();
+	Item *getInstance();
 	static bool registiereItem();
 	void setzeKartenDaten(byte *_kartenDaten);
 private:

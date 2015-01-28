@@ -37,7 +37,7 @@ namespace std {
 class Block025Loewenzahn: public ItemBlock {
 public:
 	Block025Loewenzahn();
-	Item *gebeInstanz();
+	Item *getInstance();
 	static bool registiereItem();
 	void zeichne(float x, float y, float z, byte meta);
 	bool istDurchsichtig();

@@ -41,8 +41,8 @@ class DataInputStream;
 class Packet6ATransaction: public PacketServer, public PacketClient {
 public:
 	Packet6ATransaction(byte _windowId, short _actionNumber, bool _accepted);
-	PacketServer *gebeInstanz();
-	static bool registierePacket();
+	PacketServer *getInstance();
+	static bool registerPacket();
 	void schreibePacketInhalt(DataOutputStream *out);
 	void lesePacketInhalt(DataInputStream *in);
 	void verarbeitePacket();

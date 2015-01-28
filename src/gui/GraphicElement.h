@@ -43,21 +43,21 @@ class GraphicElement {
 public:
 	virtual ~GraphicElement();
 
-	bool istSichtbar();
+	bool isVisible();
 	bool istDeaktiviert();
 	bool istAusgewaehlt();
-	virtual void zeichneElement() = 0;
-	void sichtbarkeit(bool _sichtbar);
+	virtual void drawElement() = 0;
+	void visible(bool _sichtbar);
 	void deaktivieren(bool _deaktiviert);
-	void auswaehlen(bool _ausgewaehlt);
-	float gebeX();
-	float gebeY();
-	float gebeBreite();
-	float gebeHoehe();
-	void setzeX(float _x);
-	void setzeY(float _y);
-	void setzeBreite(float _breite);
-	void setzeHoehe(float _hoehe);
+	void selected(bool _ausgewaehlt);
+	float getX();
+	float getY();
+	float getWidth();
+	float getHeight();
+	void setX(float _x);
+	void setY(float _y);
+	void setWidth(float _breite);
+	void setHeight(float _hoehe);
 	void setzeCursorDarueber(bool _cursorDarueber);
 	void setzeBeimKlicken(void(*_ausfuehrenBeimKlicken)());
 	void beimKlicken(u32 gedrueckt);

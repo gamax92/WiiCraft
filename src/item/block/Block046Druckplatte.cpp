@@ -33,7 +33,7 @@
 
 using namespace std;
 
-Item *Block046Druckplatte::gebeInstanz() {
+Item *Block046Druckplatte::getInstance() {
 	return new Block046Druckplatte();
 }
 

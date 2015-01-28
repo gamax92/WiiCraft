@@ -33,7 +33,7 @@
 
 using namespace std;
 
-Item *Item159Kompass::gebeInstanz() {
+Item *Item159Kompass::getInstance() {
 	return new Item159Kompass();
 }
 

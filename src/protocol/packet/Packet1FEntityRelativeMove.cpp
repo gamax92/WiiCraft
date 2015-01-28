@@ -42,12 +42,12 @@ Packet1FEntityRelativeMove::Packet1FEntityRelativeMove() {
 	PacketServer::prio = 50;
 }
 
-PacketServer *Packet1FEntityRelativeMove::gebeInstanz() {
+PacketServer *Packet1FEntityRelativeMove::getInstance() {
 	return new Packet1FEntityRelativeMove();
 }
 
-bool Packet1FEntityRelativeMove::registierePacket() {
-	PacketManager::registrierePacket(new Packet1FEntityRelativeMove());
+bool Packet1FEntityRelativeMove::registerPacket() {
+	PacketManager::registerPacket(new Packet1FEntityRelativeMove());
 
 	return true;
 }

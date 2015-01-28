@@ -37,7 +37,7 @@ namespace std {
 class Block059Glowstone: public ItemBlock {
 public:
 	Block059Glowstone();
-	Item *gebeInstanz();
+	Item *getInstance();
 	static bool registiereItem();
 	void zeichne(float x, float y, float z, byte meta);
 	bool istDurchsichtig();

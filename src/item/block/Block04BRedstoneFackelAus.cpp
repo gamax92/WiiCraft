@@ -33,7 +33,7 @@
 
 using namespace std;
 
-Item *Block04BRedstoneFackelAus::gebeInstanz() {
+Item *Block04BRedstoneFackelAus::getInstance() {
 	return new Block04BRedstoneFackelAus();
 }
 

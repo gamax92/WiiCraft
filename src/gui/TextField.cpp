@@ -42,8 +42,8 @@ using namespace std;
 TextField::TextField(float _x, float _y) {
 	TextElement::setzeStandardWerte();
 
-	this->setzeX(_x);
-	this->setzeY(_y);
+	this->setX(_x);
+	this->setY(_y);
 	this->berechneAusmasse();
 	time(&this->cursorZeit);
 }
@@ -51,9 +51,9 @@ TextField::TextField(float _x, float _y) {
 TextField::TextField(float _x, float _y, string _text) {
 	TextElement::setzeStandardWerte();
 
-	this->setzeX(_x);
-	this->setzeY(_y);
-	this->setzeText(_text);
+	this->setX(_x);
+	this->setY(_y);
+	this->setText(_text);
 	this->berechneAusmasse();
 	time(&this->cursorZeit);
 }
@@ -62,24 +62,24 @@ TextField::~TextField() {
 }
 
 void TextField::berechneAusmasse() {
-	this->setzeHoehe(18);
-	this->setzeBreite(104);
+	this->setHeight(18);
+	this->setWidth(104);
 }
 
-void TextField::zeichneElement() {
-	if (this->istSichtbar()) {
+void TextField::drawElement() {
+	if (this->isVisible()) {
 		GRRLIB_2dMode();
 
-		string _text = this->gebeText();
+		string _text = this->getText();
 
 		bool deaktiviert = this->istDeaktiviert();
 		int textFarbe = 0xffffffff;
 		int textFarbeSchatten = 0x383838ff;
 
-		float _x = this->gebeX();
-		float _y = this->gebeY();
-		float _breite = this->gebeBreite();
-		float _hoehe = this->gebeHoehe();
+		float _x = this->getX();
+		float _y = this->getY();
+		float _breite = this->getWidth();
+		float _hoehe = this->getHeight();
 
 		unsigned int zeichenPlatz = (unsigned int) floor(
 				(_breite - 4.0 - 8.0) / 8.0);
@@ -109,13 +109,13 @@ void TextField::zeichneElement() {
 			// Textschatten
 			if (!deaktiviert) {
 				GRRLIB_Printf(_x + 3, _y + 5,
-						GraphicHandler::getGraphicHandler()->gebeBild("font"),
+						GraphicHandler::getGraphicHandler()->getTexture("font"),
 						textFarbeSchatten, 1, _text.data());
 			}
 
 			// Text
 			GRRLIB_Printf(_x + 2, _y + 4,
-					GraphicHandler::getGraphicHandler()->gebeBild("font"),
+					GraphicHandler::getGraphicHandler()->getTexture("font"),
 					textFarbe, 1, _text.data());
 		}
 	}

@@ -42,12 +42,12 @@ Packet16CollectItem::Packet16CollectItem() {
 	PacketServer::prio = 50;
 }
 
-PacketServer *Packet16CollectItem::gebeInstanz() {
+PacketServer *Packet16CollectItem::getInstance() {
 	return new Packet16CollectItem();
 }
 
-bool Packet16CollectItem::registierePacket() {
-	PacketManager::registrierePacket(new Packet16CollectItem());
+bool Packet16CollectItem::registerPacket() {
+	PacketManager::registerPacket(new Packet16CollectItem());
 
 	return true;
 }

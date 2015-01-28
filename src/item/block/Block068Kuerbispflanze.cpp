@@ -33,7 +33,7 @@
 
 using namespace std;
 
-Item *Block068Kuerbispflanze::gebeInstanz() {
+Item *Block068Kuerbispflanze::getInstance() {
 	return new Block068Kuerbispflanze();
 }
 

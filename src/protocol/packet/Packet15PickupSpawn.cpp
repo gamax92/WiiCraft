@@ -42,12 +42,12 @@ Packet15PickupSpawn::Packet15PickupSpawn() {
 	PacketServer::prio = 50;
 }
 
-PacketServer *Packet15PickupSpawn::gebeInstanz() {
+PacketServer *Packet15PickupSpawn::getInstance() {
 	return new Packet15PickupSpawn();
 }
 
-bool Packet15PickupSpawn::registierePacket() {
-	PacketManager::registrierePacket(new Packet15PickupSpawn());
+bool Packet15PickupSpawn::registerPacket() {
+	PacketManager::registerPacket(new Packet15PickupSpawn());
 
 	return true;
 }

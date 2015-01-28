@@ -66,13 +66,13 @@ void ContainerElement::zeichneUnterElement() {
 	if (!this->unterElemente.empty()) {
 		for (list<GraphicElement *>::iterator it = this->unterElemente.begin();
 				it != this->unterElemente.end(); ++it) {
-			(*it)->zeichneElement();
+			(*it)->drawElement();
 		}
 	}
 	pthread_mutex_unlock(&this->mutexUnterElemente);
 }
 
-void ContainerElement::setzeCursorPosition(float x, float y, float angle) {
+void ContainerElement::setCursorPosition(float x, float y, float angle) {
 	bool positionGeandert = false;
 	pthread_mutex_lock(&this->mutexCursor);
 
@@ -105,27 +105,27 @@ void ContainerElement::informiereUnterElementeUeberCursorDarueber() {
 		for (std::list<GraphicElement*>::reverse_iterator it =
 				this->unterElemente.rbegin(); it != this->unterElemente.rend();
 				++it) {
-			if (!(*it)->istSichtbar()) {
+			if (!(*it)->isVisible()) {
 				continue;
 			}
 
-			float eX = (*it)->gebeX();
-			float eY = (*it)->gebeY();
+			float eX = (*it)->getX();
+			float eY = (*it)->getY();
 
-			if (!gefunden && _x >= eX && _x <= eX + (*it)->gebeBreite()
-					&& _y >= eY && _y <= eY + (*it)->gebeHoehe()) {
+			if (!gefunden && _x >= eX && _x <= eX + (*it)->getWidth()
+					&& _y >= eY && _y <= eY + (*it)->getHeight()) {
 				(*it)->setzeCursorDarueber(true);
 				ContainerElement* unterContainer =
 						dynamic_cast<ContainerElement*>(*it);
 				if (unterContainer != 0) {
-					unterContainer->setzeCursorPosition(_x, _y, _angle);
+					unterContainer->setCursorPosition(_x, _y, _angle);
 				}
 				gefunden = true;
 			} else {
 				ContainerElement* unterContainer =
 						dynamic_cast<ContainerElement*>(*it);
 				if (unterContainer != 0) {
-					unterContainer->setzeCursorPosition(_x, _y, _angle);
+					unterContainer->setCursorPosition(_x, _y, _angle);
 				}
 				(*it)->setzeCursorDarueber(false);
 			}
@@ -148,15 +148,15 @@ void ContainerElement::gedrueckt(u32 gedrueckt) {
 		for (std::list<GraphicElement*>::reverse_iterator it =
 				this->unterElemente.rbegin(); it != this->unterElemente.rend();
 				++it) {
-			if (!(*it)->istSichtbar()) {
+			if (!(*it)->isVisible()) {
 				continue;
 			}
 
-			float eX = (*it)->gebeX();
-			float eY = (*it)->gebeY();
+			float eX = (*it)->getX();
+			float eY = (*it)->getY();
 
-			if (_x >= eX && _x <= eX + (*it)->gebeBreite() && _y >= eY
-					&& _y <= eY + (*it)->gebeHoehe()) {
+			if (_x >= eX && _x <= eX + (*it)->getWidth() && _y >= eY
+					&& _y <= eY + (*it)->getHeight()) {
 				(*it)->beimKlicken(gedrueckt);
 				gefunden = true;
 
@@ -184,16 +184,16 @@ void ContainerElement::zeichneCursor() {
 	pthread_mutex_unlock(&this->mutexCursor);
 
 	GRRLIB_DrawImg(_x, _y,
-			GraphicHandler::getGraphicHandler()->gebeBild("cursor1"),
+			GraphicHandler::getGraphicHandler()->getTexture("cursor1"),
 			fmod(angle + 180, 360), 1, 1, 0xffffffff);
 	GRRLIB_DrawImg(_x, _y,
-			GraphicHandler::getGraphicHandler()->gebeBild("cursor2"),
+			GraphicHandler::getGraphicHandler()->getTexture("cursor2"),
 			fmod(angle + 270, 360), 1, 1, 0xffffffff);
 	GRRLIB_DrawImg(_x, _y,
-			GraphicHandler::getGraphicHandler()->gebeBild("cursor3"),
+			GraphicHandler::getGraphicHandler()->getTexture("cursor3"),
 			fmod(angle + 90, 360), 1, 1, 0xffffffff);
 	GRRLIB_DrawImg(_x, _y,
-			GraphicHandler::getGraphicHandler()->gebeBild("cursor4"), angle, 1,
+			GraphicHandler::getGraphicHandler()->getTexture("cursor4"), angle, 1,
 			1, 0xffffffff);
 }
 

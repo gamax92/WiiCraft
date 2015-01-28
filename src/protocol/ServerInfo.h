@@ -39,7 +39,7 @@ namespace std {
 class ServerInfo {
 public:
 	static void initializeServerInfo(byte maximaleAnzahlPlayer);
-	static ServerInfo *gebeServerInfo();
+	static ServerInfo *getServerInfo();
 
 	void aktualisierePlayerStatus(string _spieler, bool _online, short _ping);
 private:

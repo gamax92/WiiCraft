@@ -50,11 +50,11 @@ public:
 
 	bool zeigeKeyboard();
 	virtual ~Background();
-	void zeichneElement();
+	void drawElement();
 	void setzeKeyboardAnzeigen(bool _tastaturAnzeigen);
 private:
-	string textur;
-	Keyboard *tastatur;
+	string texture;
+	Keyboard *keyboard;
 };
 
 }

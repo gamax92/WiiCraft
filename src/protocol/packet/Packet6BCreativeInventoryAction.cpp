@@ -48,12 +48,12 @@ Packet6BCreativeInventoryAction::~Packet6BCreativeInventoryAction() {
 	free(this->clickedItem);
 }
 
-PacketServer *Packet6BCreativeInventoryAction::gebeInstanz() {
+PacketServer *Packet6BCreativeInventoryAction::getInstance() {
 	return new Packet6BCreativeInventoryAction();
 }
 
-bool Packet6BCreativeInventoryAction::registierePacket() {
-	PacketManager::registrierePacket(new Packet6BCreativeInventoryAction());
+bool Packet6BCreativeInventoryAction::registerPacket() {
+	PacketManager::registerPacket(new Packet6BCreativeInventoryAction());
 
 	return true;
 }

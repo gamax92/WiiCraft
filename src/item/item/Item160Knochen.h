@@ -37,7 +37,7 @@ namespace std {
 class Item160Knochen: public Item {
 public:
 	Item160Knochen();
-	Item *gebeInstanz();
+	Item *getInstance();
 	static bool registiereItem();
 private:
 };

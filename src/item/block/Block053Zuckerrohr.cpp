@@ -34,7 +34,7 @@
 
 using namespace std;
 
-Item *Block053Zuckerrohr::gebeInstanz() {
+Item *Block053Zuckerrohr::getInstance() {
 	return new Block053Zuckerrohr();
 }
 

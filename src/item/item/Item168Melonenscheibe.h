@@ -37,7 +37,7 @@ namespace std {
 class Item168Melonenscheibe: public ItemFood {
 public:
 	Item168Melonenscheibe();
-	Item *gebeInstanz();
+	Item *getInstance();
 	static bool registiereItem();
 private:
 };

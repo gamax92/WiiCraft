@@ -42,12 +42,12 @@ Packet04TimeUpdate::Packet04TimeUpdate() {
 	PacketServer::prio = 20;
 }
 
-PacketServer *Packet04TimeUpdate::gebeInstanz() {
+PacketServer *Packet04TimeUpdate::getInstance() {
 	return new Packet04TimeUpdate();
 }
 
-bool Packet04TimeUpdate::registierePacket() {
-	PacketManager::registrierePacket(new Packet04TimeUpdate());
+bool Packet04TimeUpdate::registerPacket() {
+	PacketManager::registerPacket(new Packet04TimeUpdate());
 
 	return true;
 }
@@ -58,7 +58,7 @@ void Packet04TimeUpdate::lesePacketInhalt(DataInputStream *in) {
 
 void Packet04TimeUpdate::verarbeitePacket() {
 	unsigned short uhrzeit = this->time % 24000;
-	World::getWorld()->setzeUhrzeit(uhrzeit);
+	World::getWorld()->setTime(uhrzeit);
 
 #ifdef DEBUG_ON
 	char *buffer = new char[100];

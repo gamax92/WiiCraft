@@ -27,59 +27,34 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Picture.h"
+#ifndef CHUNKLADEN_H_
+#define CHUNKLADEN_H_
 
-#include "GraphicHandler.h"
 #if defined _WIN32 || defined __CYGWIN__
-#include "../util/WiiFunction.h"
-#else /* __wii__ */
-#include <grrlib.h>
-#endif /* __wii__ */
+#include <pthread.h>
+#else
+#include "../util/pthread.h"
+#endif
+#include <vector>
 
-using namespace std;
+namespace std {
 
-Bild::Bild(float _x, float _y, string _textur, float _drehung,
-		float _skralierungX, float _skralierungY, unsigned int _farbe) {
-	this->setzeStandardWerte();
+class Chunk;
 
-	this->setzeX(_x);
-	this->setzeY(_y);
-	this->setzeHoehe(
-			GraphicHandler::getGraphicHandler()->gebeBild(_textur)->h
-					* _skralierungY);
-	this->setzeBreite(
-			GraphicHandler::getGraphicHandler()->gebeBild(_textur)->w
-					* _skralierungX);
-	this->textur = _textur;
-	this->drehung = _drehung;
-	this->skralierungX = _skralierungX;
-	this->skralierungY = _skralierungY;
-	this->farbe = farbe;
+class ChunkLoader {
+public:
+	ChunkLoader();
+	~ChunkLoader();
+
+	static ChunkLoader *getChunkLoader();
+	static short getMaximumLoadedChunks();
+	void fuegeChunkHinzu(Chunk *_chunk);
+	void deleteChunk(Chunk *_chunk);
+	void updateChunks(int x, int z);
+private:
+	static ChunkLoader *chunkLoader;
+	vector<Chunk *> chunks;
+	pthread_mutex_t mutexChunk;
+};
 }
-
-Bild::Bild(float _x, float _y, string _textur) {
-	this->setzeStandardWerte();
-
-	this->setzeX(_x);
-	this->setzeY(_y);
-	this->setzeHoehe(GraphicHandler::getGraphicHandler()->gebeBild(_textur)->h);
-	this->setzeBreite(GraphicHandler::getGraphicHandler()->gebeBild(_textur)->w);
-	this->textur = _textur;
-	this->drehung = 0;
-	this->skralierungX = 1;
-	this->skralierungY = 1;
-	this->farbe = 0xffffffff;
-}
-
-Bild::~Bild() {
-}
-
-void Bild::zeichneElement() {
-	if (this->istSichtbar()) {
-		GRRLIB_2dMode();
-		GRRLIB_DrawImg(this->gebeX(), this->gebeY(),
-				GraphicHandler::getGraphicHandler()->gebeBild(this->textur),
-				this->drehung, this->skralierungX, this->skralierungY,
-				this->farbe);
-	}
-}
+#endif /* CHUNKLADEN_H_ */

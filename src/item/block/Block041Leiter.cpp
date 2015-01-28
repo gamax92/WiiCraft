@@ -33,7 +33,7 @@
 
 using namespace std;
 
-Item *Block041Leiter::gebeInstanz() {
+Item *Block041Leiter::getInstance() {
 	return new Block041Leiter();
 }
 

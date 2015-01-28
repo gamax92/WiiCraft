@@ -34,7 +34,7 @@
 
 using namespace std;
 
-Item *Block018Sandstein::gebeInstanz() {
+Item *Block018Sandstein::getInstance() {
 	return new Block018Sandstein();
 }
 

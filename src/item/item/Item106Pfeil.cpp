@@ -33,7 +33,7 @@
 
 using namespace std;
 
-Item *Item106Pfeil::gebeInstanz() {
+Item *Item106Pfeil::getInstance() {
 	return new Item106Pfeil();
 }
 

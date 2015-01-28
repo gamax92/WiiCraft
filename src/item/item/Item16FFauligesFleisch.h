@@ -37,7 +37,7 @@ namespace std {
 class Item16FFauligesFleisch: public ItemFood {
 public:
 	Item16FFauligesFleisch();
-	Item *gebeInstanz();
+	Item *getInstance();
 	static bool registiereItem();
 private:
 };

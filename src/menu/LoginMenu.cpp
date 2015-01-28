@@ -37,7 +37,7 @@
 #include "../gui/PasswordField.h"
 #include "../gui/Text.h"
 #include "../gui/Button.h"
-#include "../gui/Picture.h"
+#include "../gui/Texture.h"
 #include "../gui/GraphicHandler.h"
 #include "../protocol/Session.h"
 #include "../exception/ExcSocketHTTPServerLoginFailed.h"
@@ -45,111 +45,111 @@
 
 using namespace std;
 
-AnmeldungMenue *AnmeldungMenue::anmeldungMenue;
+LoginMenu *LoginMenu::loginMenu;
 
-void AnmeldungMenue::initialize() {
-	AnmeldungMenue::anmeldungMenue = new AnmeldungMenue();
+void LoginMenu::initialize() {
+	LoginMenu::loginMenu = new LoginMenu();
 }
 
-void AnmeldungMenue::deinitialize() {
-	delete AnmeldungMenue::anmeldungMenue;
+void LoginMenu::deinitialize() {
+	delete LoginMenu::loginMenu;
 }
 
-AnmeldungMenue::AnmeldungMenue() {
+LoginMenu::LoginMenu() {
 	pthread_mutex_init(&this->mutexwait, NULL);
 	pthread_cond_init(&this->condwait, NULL);
 
-	this->hintergrund = new Background("bildMenueHintergrund");
-	this->hintergrund->setzeKeyboardAnzeigen(true);
-	this->hintergrund->setzeCursorAnzeigen(true);
+	this->background = new Background("bildMenueHintergrund");
+	this->background->setzeKeyboardAnzeigen(true);
+	this->background->setzeCursorAnzeigen(true);
 
-	Bild *bild = new Bild(144, 20, "logo");
-	this->textFehler = new Text(250, 260, "");
-	this->textFehler->setzeBackgroundFarbe(0xff33337f);
+	Texture *bild = new Texture(144, 20, "logo");
+	this->textError = new Text(250, 260, "");
+	this->textError->setBackgroundColor(0xff33337f);
 	this->textAnmelden = new Text(200, 160, "am Minecraft Server anmelden...");
-	this->textAnmelden->sichtbarkeit(false);
+	this->textAnmelden->visible(false);
 
-	this->textBenutzer = new Text(250, 124, "Benutzer:");
-	this->textFeldBenutzer = new TextField(250, 140, "");
-	this->textFeldBenutzer->setzeBeimKlicken(
-			&AnmeldungMenue::auswaehlenBunutzer);
-	this->textPasswort = new Text(250, 164, "Passwort:");
-	this->textFeldPasswort = new PasswordField(250, 180, "");
-	this->textFeldPasswort->setzeBeimKlicken(
-			&AnmeldungMenue::auswaehlenPasswort);
+	this->textUsername = new Text(250, 124, "Username:");
+	this->textFieldUsername = new TextField(250, 140, "");
+	this->textFieldUsername->setzeBeimKlicken(
+			&LoginMenu::auswaehlenBunutzer);
+	this->textPassword = new Text(250, 164, "Password:");
+	this->textFieldPassword = new PasswordField(250, 180, "");
+	this->textFieldPassword->setzeBeimKlicken(
+			&LoginMenu::auswaehlenPasswort);
 	this->buttonAnmelden = new Button(254, 220, "Anmelden");
-	this->buttonAnmelden->setzeBeimKlicken(&AnmeldungMenue::anmelden);
+	this->buttonAnmelden->setzeBeimKlicken(&LoginMenu::anmelden);
 
-	this->hintergrund->fuegeUnterElementHinzu(bild);
-	this->hintergrund->fuegeUnterElementHinzu(this->textFehler);
-	this->hintergrund->fuegeUnterElementHinzu(this->textAnmelden);
-	this->hintergrund->fuegeUnterElementHinzu(this->textBenutzer);
-	this->hintergrund->fuegeUnterElementHinzu(this->textFeldBenutzer);
-	this->hintergrund->fuegeUnterElementHinzu(this->textPasswort);
-	this->hintergrund->fuegeUnterElementHinzu(this->textFeldPasswort);
-	this->hintergrund->fuegeUnterElementHinzu(this->buttonAnmelden);
+	this->background->fuegeUnterElementHinzu(bild);
+	this->background->fuegeUnterElementHinzu(this->textError);
+	this->background->fuegeUnterElementHinzu(this->textAnmelden);
+	this->background->fuegeUnterElementHinzu(this->textUsername);
+	this->background->fuegeUnterElementHinzu(this->textFieldUsername);
+	this->background->fuegeUnterElementHinzu(this->textPassword);
+	this->background->fuegeUnterElementHinzu(this->textFieldPassword);
+	this->background->fuegeUnterElementHinzu(this->buttonAnmelden);
 }
 
-AnmeldungMenue::~AnmeldungMenue() {
+LoginMenu::~LoginMenu() {
 	pthread_mutex_destroy(&this->mutexwait);
 	pthread_cond_destroy(&this->condwait);
 }
 
-void AnmeldungMenue::zeigeAnmeldungMenue() {
+void LoginMenu::zeigeAnmeldungMenue() {
 	GraphicHandler::getGraphicHandler()->setzeAnzeigeElement(
-			AnmeldungMenue::anmeldungMenue->hintergrund);
-	GraphicHandler::getGraphicHandler()->setzeAusgewaehltesElement(
-			AnmeldungMenue::anmeldungMenue->textFeldBenutzer);
+			LoginMenu::loginMenu->background);
+	GraphicHandler::getGraphicHandler()->setSelectedElement(
+			LoginMenu::loginMenu->textFieldUsername);
 
 	while (true) {
 #if defined _WIN32 || defined __CYGWIN__
 		string input = "";
 		getline(cin, input);
 
-		AnmeldungMenue::anmeldungMenue->textFeldBenutzer->setzeText(input);
+		LoginMenu::loginMenu->textFieldUsername->setText(input);
 
 		input = "";
 		getline(cin, input);
-		AnmeldungMenue::anmeldungMenue->textFeldPasswort->setzeText(input);
+		LoginMenu::loginMenu->textFieldPassword->setText(input);
 
-		AnmeldungMenue::anmeldungMenue->buttonAnmelden->beimKlicken(0);
+		LoginMenu::loginMenu->buttonAnmelden->beimKlicken(0);
 #else
-		pthread_mutex_lock(&AnmeldungMenue::anmeldungMenue->mutexwait);
-		pthread_cond_wait(&AnmeldungMenue::anmeldungMenue->condwait,
-				&AnmeldungMenue::anmeldungMenue->mutexwait);
-		pthread_mutex_unlock(&AnmeldungMenue::anmeldungMenue->mutexwait);
+		pthread_mutex_lock(&LoginMenu::loginMenu->mutexwait);
+		pthread_cond_wait(&LoginMenu::loginMenu->condwait,
+				&LoginMenu::loginMenu->mutexwait);
+		pthread_mutex_unlock(&LoginMenu::loginMenu->mutexwait);
 #endif
 
-		AnmeldungMenue::anmeldungMenue->hintergrund->setzeKeyboardAnzeigen(
+		LoginMenu::loginMenu->background->setzeKeyboardAnzeigen(
 				false);
-		AnmeldungMenue::anmeldungMenue->textFehler->sichtbarkeit(false);
-		AnmeldungMenue::anmeldungMenue->textBenutzer->sichtbarkeit(false);
-		AnmeldungMenue::anmeldungMenue->textFeldBenutzer->sichtbarkeit(false);
-		AnmeldungMenue::anmeldungMenue->textPasswort->sichtbarkeit(false);
-		AnmeldungMenue::anmeldungMenue->textFeldPasswort->sichtbarkeit(false);
-		AnmeldungMenue::anmeldungMenue->buttonAnmelden->sichtbarkeit(false);
-		AnmeldungMenue::anmeldungMenue->textAnmelden->sichtbarkeit(true);
+		LoginMenu::loginMenu->textError->visible(false);
+		LoginMenu::loginMenu->textUsername->visible(false);
+		LoginMenu::loginMenu->textFieldUsername->visible(false);
+		LoginMenu::loginMenu->textPassword->visible(false);
+		LoginMenu::loginMenu->textFieldPassword->visible(false);
+		LoginMenu::loginMenu->buttonAnmelden->visible(false);
+		LoginMenu::loginMenu->textAnmelden->visible(true);
 
 		try {
 			Session::anmelden(
-					AnmeldungMenue::anmeldungMenue->textFeldBenutzer->gebeText(),
-					AnmeldungMenue::anmeldungMenue->textFeldPasswort->gebeText());
+					LoginMenu::loginMenu->textFieldUsername->getText(),
+					LoginMenu::loginMenu->textFieldPassword->getText());
 		} catch (ExcSocketHTTPServerLoginFailed &exception) {
 
-			AnmeldungMenue::anmeldungMenue->textFehler->setzeText(
+			LoginMenu::loginMenu->textError->setText(
 					exception.getFehler());
-			AnmeldungMenue::anmeldungMenue->hintergrund->setzeKeyboardAnzeigen(
+			LoginMenu::loginMenu->background->setzeKeyboardAnzeigen(
 					true);
-			AnmeldungMenue::anmeldungMenue->textFehler->sichtbarkeit(true);
-			AnmeldungMenue::anmeldungMenue->textBenutzer->sichtbarkeit(true);
-			AnmeldungMenue::anmeldungMenue->textFeldBenutzer->sichtbarkeit(
+			LoginMenu::loginMenu->textError->visible(true);
+			LoginMenu::loginMenu->textUsername->visible(true);
+			LoginMenu::loginMenu->textFieldUsername->visible(
 					true);
-			AnmeldungMenue::anmeldungMenue->textPasswort->sichtbarkeit(true);
-			AnmeldungMenue::anmeldungMenue->textFeldPasswort->setzeText("");
-			AnmeldungMenue::anmeldungMenue->textFeldPasswort->sichtbarkeit(
+			LoginMenu::loginMenu->textPassword->visible(true);
+			LoginMenu::loginMenu->textFieldPassword->setText("");
+			LoginMenu::loginMenu->textFieldPassword->visible(
 					true);
-			AnmeldungMenue::anmeldungMenue->buttonAnmelden->sichtbarkeit(true);
-			AnmeldungMenue::anmeldungMenue->textAnmelden->sichtbarkeit(false);
+			LoginMenu::loginMenu->buttonAnmelden->visible(true);
+			LoginMenu::loginMenu->textAnmelden->visible(false);
 			continue;
 		}
 
@@ -159,18 +159,18 @@ void AnmeldungMenue::zeigeAnmeldungMenue() {
 	}
 }
 
-void AnmeldungMenue::anmelden() {
-	pthread_mutex_lock(&AnmeldungMenue::anmeldungMenue->mutexwait);
-	pthread_cond_signal(&AnmeldungMenue::anmeldungMenue->condwait);
-	pthread_mutex_unlock(&AnmeldungMenue::anmeldungMenue->mutexwait);
+void LoginMenu::anmelden() {
+	pthread_mutex_lock(&LoginMenu::loginMenu->mutexwait);
+	pthread_cond_signal(&LoginMenu::loginMenu->condwait);
+	pthread_mutex_unlock(&LoginMenu::loginMenu->mutexwait);
 }
 
-void AnmeldungMenue::auswaehlenBunutzer() {
-	GraphicHandler::getGraphicHandler()->setzeAusgewaehltesElement(
-			AnmeldungMenue::anmeldungMenue->textFeldBenutzer);
+void LoginMenu::auswaehlenBunutzer() {
+	GraphicHandler::getGraphicHandler()->setSelectedElement(
+			LoginMenu::loginMenu->textFieldUsername);
 }
 
-void AnmeldungMenue::auswaehlenPasswort() {
-	GraphicHandler::getGraphicHandler()->setzeAusgewaehltesElement(
-			AnmeldungMenue::anmeldungMenue->textFeldPasswort);
+void LoginMenu::auswaehlenPasswort() {
+	GraphicHandler::getGraphicHandler()->setSelectedElement(
+			LoginMenu::loginMenu->textFieldPassword);
 }

@@ -42,12 +42,12 @@ Packet2BExperience::Packet2BExperience() {
 	PacketServer::prio = 50;
 }
 
-PacketServer *Packet2BExperience::gebeInstanz() {
+PacketServer *Packet2BExperience::getInstance() {
 	return new Packet2BExperience();
 }
 
-bool Packet2BExperience::registierePacket() {
-	PacketManager::registrierePacket(new Packet2BExperience());
+bool Packet2BExperience::registerPacket() {
+	PacketManager::registerPacket(new Packet2BExperience());
 
 	return true;
 }

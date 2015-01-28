@@ -33,7 +33,7 @@
 
 using namespace std;
 
-Item *Item111SteinSchaufel::gebeInstanz() {
+Item *Item111SteinSchaufel::getInstance() {
 	return new Item111SteinSchaufel();
 }
 

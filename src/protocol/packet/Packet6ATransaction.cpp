@@ -52,12 +52,12 @@ Packet6ATransaction::Packet6ATransaction(byte _windowId, short _actionNumber,
 	this->accepted = _accepted;
 }
 
-PacketServer *Packet6ATransaction::gebeInstanz() {
+PacketServer *Packet6ATransaction::getInstance() {
 	return new Packet6ATransaction();
 }
 
-bool Packet6ATransaction::registierePacket() {
-	PacketManager::registrierePacket(new Packet6ATransaction());
+bool Packet6ATransaction::registerPacket() {
+	PacketManager::registerPacket(new Packet6ATransaction());
 
 	return true;
 }

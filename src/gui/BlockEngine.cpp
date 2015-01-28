@@ -37,7 +37,7 @@
 #endif /* __wii__ */
 #include "../world/World.h"
 #include "../entity/Player.h"
-#include "../world/ChunkLoading.h"
+#include "../world/ChunkLoader.h"
 #include "GraphicHandler.h"
 #include "../util/GrrlibReplacement.h"
 
@@ -48,17 +48,17 @@ using namespace std;
 BlockEngine::BlockEngine() {
 	ContainerElement::setzeStandardWerte();
 
-	this->setzeX(0);
-	this->setzeY(0);
-	this->setzeHoehe(480);
-	this->setzeBreite(640);
+	this->setX(0);
+	this->setY(0);
+	this->setHeight(480);
+	this->setWidth(640);
 }
 
 BlockEngine::~BlockEngine() {
 }
 
-void BlockEngine::zeichneElement() {
-	if (this->istSichtbar()) {
+void BlockEngine::drawElement() {
+	if (this->isVisible()) {
 		this->zeichne3DElemente();
 		this->zeichneUnterElement();
 	}
@@ -84,7 +84,7 @@ void BlockEngine::zeichne3DElemente() {
 		GRRLIB_3dMode(0.001, 48, 70, 0, 0);
 
 		GrrlibErsatz::GRRLIB_SetTexture(
-				GraphicHandler::getGraphicHandler()->gebeBild("terrain"), 0);
+				GraphicHandler::getGraphicHandler()->getTexture("terrain"), 0);
 
 		World *world = World::getWorld();
 		if (world != NULL) {
@@ -93,7 +93,7 @@ void BlockEngine::zeichne3DElemente() {
 	}
 }
 
-void BlockEngine::setzeCursorPosition(float x, float y, float angle) {
+void BlockEngine::setCursorPosition(float x, float y, float angle) {
 	float x_zentrum = (x - 320);
 	float y_zentrum = (y - 240);
 

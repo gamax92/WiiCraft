@@ -56,12 +56,12 @@ Packet01LoginRequest::Packet01LoginRequest(int _protocolVersion,
 	this->userName = _userName;
 }
 
-PacketServer *Packet01LoginRequest::gebeInstanz() {
+PacketServer *Packet01LoginRequest::getInstance() {
 	return new Packet01LoginRequest();
 }
 
-bool Packet01LoginRequest::registierePacket() {
-	PacketManager::registrierePacket(new Packet01LoginRequest());
+bool Packet01LoginRequest::registerPacket() {
+	PacketManager::registerPacket(new Packet01LoginRequest());
 
 	return true;
 }

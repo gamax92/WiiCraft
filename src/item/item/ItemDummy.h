@@ -37,7 +37,7 @@ namespace std {
 class ItemDummy: public Item {
 public:
 	ItemDummy();
-	Item *gebeInstanz();
+	Item *getInstance();
 private:
 };
 }

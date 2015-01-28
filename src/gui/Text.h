@@ -45,17 +45,17 @@ class Text: public TextElement {
 public:
 	Text(float _x, float _y, string _text);
 	~Text();
-	void zeichneElement();
-	void setzeTextFarbe(u32 _textFarbe);
-	void setzeBackgroundFarbe(u32 _hintergrundFarbe);
-	u32 gebeTextFarbe();
-	u32 gebeBackgroundFarbe();
+	void drawElement();
+	void setTextColor(u32 _textFarbe);
+	void setBackgroundColor(u32 _hintergrundFarbe);
+	u32 getTextColor();
+	u32 getBackgroundColor();
 protected:
 	void berechneAusmasse();
 private:
-	u32 textFarbe;
-	u32 hintergrundFarbe;
-	pthread_mutex_t mutexFarbe;
+	u32 textColor;
+	u32 backgroundColor;
+	pthread_mutex_t mutexColor;
 };
 
 }

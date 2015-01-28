@@ -33,7 +33,7 @@
 
 using namespace std;
 
-Item *Item101EisenSpitzhacke::gebeInstanz() {
+Item *Item101EisenSpitzhacke::getInstance() {
 	return new Item101EisenSpitzhacke();
 }
 

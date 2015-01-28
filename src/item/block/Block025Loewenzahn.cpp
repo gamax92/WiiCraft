@@ -34,7 +34,7 @@
 
 using namespace std;
 
-Item *Block025Loewenzahn::gebeInstanz() {
+Item *Block025Loewenzahn::getInstance() {
 	return new Block025Loewenzahn();
 }
 

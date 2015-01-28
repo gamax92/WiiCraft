@@ -37,7 +37,7 @@ namespace std {
 class Item114DiamantSchwert: public ItemSword {
 public:
 	Item114DiamantSchwert();
-	Item *gebeInstanz();
+	Item *getInstance();
 	static bool registiereItem();
 private:
 };

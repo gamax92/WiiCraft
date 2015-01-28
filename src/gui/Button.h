@@ -38,7 +38,7 @@ class Button: public TextElement {
 public:
 	Button(float _x, float _y, string _text);
 	~Button();
-	void zeichneElement();
+	void drawElement();
 protected:
 	void berechneAusmasse();
 };

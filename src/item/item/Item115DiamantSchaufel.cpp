@@ -33,7 +33,7 @@
 
 using namespace std;
 
-Item *Item115DiamantSchaufel::gebeInstanz() {
+Item *Item115DiamantSchaufel::getInstance() {
 	return new Item115DiamantSchaufel();
 }
 

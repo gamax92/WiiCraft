@@ -44,7 +44,7 @@ class TextField;
 class PasswordField;
 class Button;
 
-class AnmeldungMenue {
+class LoginMenu {
 public:
 	static void initialize();
 	static void deinitialize();
@@ -53,17 +53,17 @@ public:
 	static void auswaehlenBunutzer();
 	static void auswaehlenPasswort();
 private:
-	static AnmeldungMenue *anmeldungMenue;
-	AnmeldungMenue();
-	~AnmeldungMenue();
+	static LoginMenu *loginMenu;
+	LoginMenu();
+	~LoginMenu();
 
-	Background *hintergrund;
-	Text *textBenutzer;
-	Text *textPasswort;
-	Text *textFehler;
+	Background *background;
+	Text *textUsername;
+	Text *textPassword;
+	Text *textError;
 	Text *textAnmelden;
-	TextField *textFeldBenutzer;
-	PasswordField *textFeldPasswort;
+	TextField *textFieldUsername;
+	PasswordField *textFieldPassword;
 	Button *buttonAnmelden;
 
 	pthread_mutex_t mutexwait;

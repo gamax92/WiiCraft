@@ -37,7 +37,7 @@ namespace std {
 class Block017Dispenser: public ItemBlock {
 public:
 	Block017Dispenser();
-	Item *gebeInstanz();
+	Item *getInstance();
 	static bool registiereItem();
 	void zeichne(float x, float y, float z, byte meta);
 	bool istDurchsichtig();

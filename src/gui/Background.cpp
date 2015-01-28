@@ -42,45 +42,45 @@ using namespace std;
 Background::Background() {
 	ContainerElement::setzeStandardWerte();
 
-	this->tastatur = Keyboard::gebeKeyboard();
-	this->setzeX(0);
-	this->setzeY(0);
-	this->setzeHoehe(480);
-	this->setzeBreite(640);
+	this->keyboard = Keyboard::getKeyboard();
+	this->setX(0);
+	this->setY(0);
+	this->setHeight(480);
+	this->setWidth(640);
 	this->setzeKeyboardAnzeigen(false);
 
-	this->fuegeUnterElementHinzu(this->tastatur);
+	this->fuegeUnterElementHinzu(this->keyboard);
 }
 
-Background::Background(string _textur) {
+Background::Background(string _texture) {
 	ContainerElement::setzeStandardWerte();
 
-	this->tastatur = Keyboard::gebeKeyboard();
-	this->textur = _textur;
-	this->setzeX(0);
-	this->setzeY(0);
-	this->setzeHoehe(480);
-	this->setzeBreite(640);
+	this->keyboard = Keyboard::getKeyboard();
+	this->texture = _texture;
+	this->setX(0);
+	this->setY(0);
+	this->setHeight(480);
+	this->setWidth(640);
 	this->setzeKeyboardAnzeigen(false);
 
-	this->fuegeUnterElementHinzu(this->tastatur);
+	this->fuegeUnterElementHinzu(this->keyboard);
 }
 
 Background::~Background() {
 }
 
-void Background::zeichneElement() {
-	if (this->istSichtbar()) {
+void Background::drawElement() {
+	if (this->isVisible()) {
 		GRRLIB_2dMode();
 
-		if (!this->textur.empty()) {
+		if (!this->texture.empty()) {
 			for (int breite = -40; breite < (640 + 80); breite += 32) {
 				for (int hoehe = -40; hoehe < (480 + 80); hoehe += 32) {
 					GRRLIB_DrawImg(
 							breite,
 							hoehe,
-							GraphicHandler::getGraphicHandler()->gebeBild(
-									this->textur), 0, 2, 2, 0xFFFFFFFF);
+							GraphicHandler::getGraphicHandler()->getTexture(
+									this->texture), 0, 2, 2, 0xFFFFFFFF);
 				}
 			}
 		} else {
@@ -96,9 +96,9 @@ void Background::zeichneElement() {
 }
 
 void Background::setzeKeyboardAnzeigen(bool _tastaturAnzeigen) {
-	this->tastatur->sichtbarkeit(_tastaturAnzeigen);
+	this->keyboard->visible(_tastaturAnzeigen);
 }
 
 bool Background::zeigeKeyboard() {
-	return this->tastatur->istSichtbar();
+	return this->keyboard->isVisible();
 }

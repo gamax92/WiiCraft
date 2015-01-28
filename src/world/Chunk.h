@@ -50,16 +50,16 @@ public:
 	Chunk(int _x, int _z);
 	~Chunk();
 
-	bool istGeladen();
+	bool isLoaded();
 	void ergaenzeKomprimierteDaten(KomprimierteChunkDaten *_komprimierteDaten);
 	void ergaenzeBlockAenderung(BlockAenderung *_blockAenderung);
-	void ladeChunk();
-	void speichereChunk();
-	int gebeX();
-	int gebeZ();
+	void loadChunk();
+	void saveChunk();
+	int getX();
+	int getZ();
 	void zeichne();
 	void aktualisiereZeichnenIndex();
-	unsigned long gebeVersionsNummer();
+	unsigned long getVersionNumber();
 	void kopiereDaten(short *_bloeckeTyp, byte *_bloeckeMeta,
 			byte *_bloeckeLicht, byte *_bloeckeHimmelLicht);
 private:

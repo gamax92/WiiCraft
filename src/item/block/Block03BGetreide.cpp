@@ -33,7 +33,7 @@
 
 using namespace std;
 
-Item *Block03BGetreide::gebeInstanz() {
+Item *Block03BGetreide::getInstance() {
 	return new Block03BGetreide();
 }
 
