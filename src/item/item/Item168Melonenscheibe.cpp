@@ -33,7 +33,7 @@
 
 using namespace std;
 
-Item *Item168Melonenscheibe::gebeInstanz() {
+Item *Item168Melonenscheibe::getInstance() {
 	return new Item168Melonenscheibe();
 }
 

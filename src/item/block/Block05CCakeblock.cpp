@@ -33,7 +33,7 @@
 
 using namespace std;
 
-Item *Block05CKuchenblock::gebeInstanz() {
+Item *Block05CKuchenblock::getInstance() {
 	return new Block05CKuchenblock();
 }
 

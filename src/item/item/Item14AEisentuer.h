@@ -37,7 +37,7 @@ namespace std {
 class Item14AEisentuer: public ItemDoor {
 public:
 	Item14AEisentuer();
-	Item *gebeInstanz();
+	Item *getInstance();
 	static bool registiereItem();
 private:
 };

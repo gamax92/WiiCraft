@@ -33,7 +33,7 @@
 
 using namespace std;
 
-Item *Block008FliessendesWasser::gebeInstanz() {
+Item *Block008FliessendesWasser::getInstance() {
 	return new Block008FliessendesWasser();
 }
 

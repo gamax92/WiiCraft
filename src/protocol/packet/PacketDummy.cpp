@@ -38,7 +38,7 @@ PacketDummy::PacketDummy() {
 	PacketServer::prio = 0;
 }
 
-PacketServer *PacketDummy::gebeInstanz() {
+PacketServer *PacketDummy::getInstance() {
 	return new PacketDummy();
 }
 

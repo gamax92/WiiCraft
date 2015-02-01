@@ -33,7 +33,7 @@
 
 using namespace std;
 
-Item *Block05FVerschlosseneTruhe::gebeInstanz() {
+Item *Block05FVerschlosseneTruhe::getInstance() {
 	return new Block05FVerschlosseneTruhe();
 }
 

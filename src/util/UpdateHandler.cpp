@@ -56,7 +56,7 @@ bool UpdateHandler::istUpdateVorhanden() {
 	short pos2 = response.find("</release_date>", pos1 + 1);
 	string serverReleaseVersion = response.substr(pos1 + 14, pos2 - pos1 - 14);
 
-	string pfad = Pfad::gebePfad();
+	string pfad = Path::getPath();
 	pfad.append("meta.xml");
 	string metaDatei;
 
@@ -110,7 +110,7 @@ bool UpdateHandler::ladeXML(LoadingBar *l) {
 
 	HTTP * h = new HTTP();
 
-	string pfad = Pfad::gebePfad();
+	string pfad = Path::getPath();
 	pfad.append("meta.xml");
 
 	try {
@@ -128,7 +128,7 @@ bool UpdateHandler::ladeIcon(LoadingBar *l) {
 
 	HTTP * h = new HTTP();
 
-	string pfad = Pfad::gebePfad();
+	string pfad = Path::getPath();
 	pfad.append("icon.png");
 
 	try {
@@ -146,7 +146,7 @@ bool UpdateHandler::ladeDol(LoadingBar *l) {
 
 	HTTP * h = new HTTP();
 
-	string pfad = Pfad::gebePfad();
+	string pfad = Path::getPath();
 	pfad.append("boot.dol");
 
 	try {

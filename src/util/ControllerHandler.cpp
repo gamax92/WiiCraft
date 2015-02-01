@@ -38,31 +38,31 @@
 
 using namespace std;
 
-KontrollerHandler* KontrollerHandler::kontrollerHandler =
-		new KontrollerHandler();
+ControllerHandler* ControllerHandler::controllerHandler =
+		new ControllerHandler();
 
-KontrollerHandler::KontrollerHandler() {
+ControllerHandler::ControllerHandler() {
 	WPAD_Init();
 	WPAD_SetDataFormat(WPAD_CHAN_0, WPAD_FMT_BTNS_ACC_IR);
 	WPAD_SetVRes(0, 640, 480);
 }
 
-KontrollerHandler::~KontrollerHandler() {
+ControllerHandler::~ControllerHandler() {
 	WPAD_Shutdown();
 }
 
-KontrollerHandler *KontrollerHandler::gebeKontrollerHandler() {
-	return KontrollerHandler::kontrollerHandler;
+ControllerHandler *ControllerHandler::getControllerHandler() {
+	return ControllerHandler::controllerHandler;
 }
 
-void KontrollerHandler::aktualisiere() {
+void ControllerHandler::aktualisiere() {
 	WPAD_ScanPads();
 	WPADData *Data = WPAD_Data(WPAD_CHAN_0);
 	WPADData data = *Data;
 
 	WPAD_IR(WPAD_CHAN_0, &(data.ir));
 
-	this->setzeCursorPosition(data.ir.x, data.ir.y, data.ir.angle);
+	this->setCursorPosition(data.ir.x, data.ir.y, data.ir.angle);
 
 	u32 gedrueckt = WPAD_ButtonsDown(0);
 	//u32 losgelassen = WPAD_ButtonsUp(0);
@@ -77,10 +77,10 @@ void KontrollerHandler::aktualisiere() {
 	}
 }
 
-void KontrollerHandler::setzeCursorPosition(float x, float y, float angle) {
-	GraphicHandler::getGraphicHandler()->setzeCursorPosition(x, y, angle);
+void ControllerHandler::setCursorPosition(float x, float y, float angle) {
+	GraphicHandler::getGraphicHandler()->setCursorPosition(x, y, angle);
 }
 
-void KontrollerHandler::gedrueckt(u32 gedrueckt) {
+void ControllerHandler::gedrueckt(u32 gedrueckt) {
 	GraphicHandler::getGraphicHandler()->gedrueckt(gedrueckt);
 }

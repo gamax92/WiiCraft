@@ -40,8 +40,8 @@
 namespace std {
 
 class PacketeLesenThread;
-class PacketeSchreibenThread;
-class PacketeVerarbeitenThread;
+class PacketWriterThread;
+class PacketProcessingThread;
 
 class Verbindung {
 public:
@@ -54,8 +54,8 @@ public:
 private:
 	static Socket *socket;
 	static PacketeLesenThread *vLesen;
-	static PacketeSchreibenThread *vSchreiben;
-	static PacketeVerarbeitenThread *vVerarbeitung;
+	static PacketWriterThread *vSchreiben;
+	static PacketProcessingThread *vVerarbeitung;
 };
 }
 #endif /* VERBINDUNG_H_ */

@@ -42,8 +42,8 @@ class DataInputStream;
 class PacketFFDisconnectKick: public PacketServer, public PacketClient {
 public:
 	PacketFFDisconnectKick(string _reason);
-	PacketServer *gebeInstanz();
-	static bool registierePacket();
+	PacketServer *getInstance();
+	static bool registerPacket();
 	void schreibePacketInhalt(DataOutputStream *out);
 	void lesePacketInhalt(DataInputStream *in);
 	void verarbeitePacket();

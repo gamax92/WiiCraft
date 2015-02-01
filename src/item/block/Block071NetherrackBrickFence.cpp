@@ -33,7 +33,7 @@
 
 using namespace std;
 
-Item *Block071Netherziegelzaun::gebeInstanz() {
+Item *Block071Netherziegelzaun::getInstance() {
 	return new Block071Netherziegelzaun();
 }
 

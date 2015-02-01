@@ -33,7 +33,7 @@
 
 using namespace std;
 
-Item *Item114DiamantSchwert::gebeInstanz() {
+Item *Item114DiamantSchwert::getInstance() {
 	return new Item114DiamantSchwert();
 }
 

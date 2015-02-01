@@ -34,7 +34,7 @@
 
 using namespace std;
 
-Item *Block020ToterStrauch::gebeInstanz() {
+Item *Block020ToterStrauch::getInstance() {
 	return new Block020ToterStrauch();
 }
 

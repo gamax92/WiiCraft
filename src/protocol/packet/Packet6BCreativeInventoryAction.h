@@ -42,8 +42,8 @@ class Slot;
 class Packet6BCreativeInventoryAction: public PacketServer, public PacketClient {
 public:
 	~Packet6BCreativeInventoryAction();
-	PacketServer *gebeInstanz();
-	static bool registierePacket();
+	PacketServer *getInstance();
+	static bool registerPacket();
 	void schreibePacketInhalt(DataOutputStream *out);
 	void lesePacketInhalt(DataInputStream *in);
 	void verarbeitePacket();

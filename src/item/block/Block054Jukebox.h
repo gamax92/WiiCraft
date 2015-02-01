@@ -37,7 +37,7 @@ namespace std {
 class Block054Jukebox: public ItemBlock {
 public:
 	Block054Jukebox();
-	Item *gebeInstanz();
+	Item *getInstance();
 	static bool registiereItem();
 	void zeichne(float x, float y, float z, byte meta);
 	bool istDurchsichtig();

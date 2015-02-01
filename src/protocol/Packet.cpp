@@ -37,7 +37,7 @@ long double Packet::aktuellePacketSchreibeNr = 0;
 Packet::~Packet() {
 }
 
-byte Packet::gebePacketId() {
+byte Packet::getPacketId() {
 	return this->id;
 }
 

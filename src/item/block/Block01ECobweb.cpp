@@ -34,7 +34,7 @@
 
 using namespace std;
 
-Item *Block01ESpinnennetz::gebeInstanz() {
+Item *Block01ESpinnennetz::getInstance() {
 	return new Block01ESpinnennetz();
 }
 

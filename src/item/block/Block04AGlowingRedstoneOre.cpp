@@ -33,7 +33,7 @@
 
 using namespace std;
 
-Item *Block04ALeuchtendesRedstoneerz::gebeInstanz() {
+Item *Block04ALeuchtendesRedstoneerz::getInstance() {
 	return new Block04ALeuchtendesRedstoneerz();
 }
 

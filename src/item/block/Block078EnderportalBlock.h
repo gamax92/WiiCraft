@@ -37,7 +37,7 @@ namespace std {
 class Block078EnderportalBlock: public ItemBlock {
 public:
 	Block078EnderportalBlock();
-	Item *gebeInstanz();
+	Item *getInstance();
 	static bool registiereItem();
 	void zeichne(float x, float y, float z, byte meta);
 	bool istDurchsichtig();

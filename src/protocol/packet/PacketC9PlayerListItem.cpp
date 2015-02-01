@@ -43,12 +43,12 @@ PacketC9PlayerListItem::PacketC9PlayerListItem() {
 	PacketServer::prio = 50;
 }
 
-PacketServer *PacketC9PlayerListItem::gebeInstanz() {
+PacketServer *PacketC9PlayerListItem::getInstance() {
 	return new PacketC9PlayerListItem();
 }
 
-bool PacketC9PlayerListItem::registierePacket() {
-	PacketManager::registrierePacket(new PacketC9PlayerListItem());
+bool PacketC9PlayerListItem::registerPacket() {
+	PacketManager::registerPacket(new PacketC9PlayerListItem());
 
 	return true;
 }
@@ -65,7 +65,7 @@ void PacketC9PlayerListItem::lesePacketInhalt(DataInputStream *in) {
 }
 
 void PacketC9PlayerListItem::verarbeitePacket() {
-	ServerInfo::gebeServerInfo()->aktualisierePlayerStatus(this->playerName,
+	ServerInfo::getServerInfo()->aktualisierePlayerStatus(this->playerName,
 			this->online, this->ping);
 
 #ifdef DEBUG_ON

@@ -42,9 +42,9 @@ using namespace std;
 Button::Button(float _x, float _y, string _text) {
 	TextElement::setzeStandardWerte();
 
-	this->setzeX(_x);
-	this->setzeY(_y);
-	this->setzeText(_text);
+	this->setX(_x);
+	this->setY(_y);
+	this->setText(_text);
 	this->berechneAusmasse();
 }
 
@@ -52,16 +52,16 @@ Button::~Button() {
 }
 
 void Button::berechneAusmasse() {
-	this->setzeHoehe(16);
-	this->setzeBreite(
-			32 + ceil((8.0 * (float) this->gebeText().size()) / 16.0) * 16);
+	this->setHeight(16);
+	this->setWidth(
+			32 + ceil((8.0 * (float) this->getText().size()) / 16.0) * 16);
 }
 
-void Button::zeichneElement() {
-	if (this->istSichtbar()) {
+void Button::drawElement() {
+	if (this->isVisible()) {
 		GRRLIB_2dMode();
 
-		string _text = this->gebeText();
+		string _text = this->getText();
 
 		bool deaktiviert = this->istDeaktiviert();
 		short index = 12;
@@ -79,13 +79,13 @@ void Button::zeichneElement() {
 			textFarbe = 0xa0a0a0ff;
 		}
 
-		float _x = this->gebeX();
-		float _y = this->gebeY();
+		float _x = this->getX();
+		float _y = this->getY();
 
 		if (_text.size() > 0) {
 			// Bild fuer Buttonanfang
 			GRRLIB_DrawTile(_x, _y,
-					GraphicHandler::getGraphicHandler()->gebeBild("bild_button"),
+					GraphicHandler::getGraphicHandler()->getTexture("bild_button"),
 					0, 1, 1, 0xffffffff, index);
 
 			// dynamische Anzahl an Bilder fuer Buttonmitte
@@ -93,14 +93,14 @@ void Button::zeichneElement() {
 				GRRLIB_DrawTile(
 						_x + 16 + i * 16,
 						_y,
-						GraphicHandler::getGraphicHandler()->gebeBild(
+						GraphicHandler::getGraphicHandler()->getTexture(
 								"bild_button"), 0, 1, 1, 0xffffffff,
 						index + 1 + (i % 10));
 			}
 
 			// Bild fuer Buttonende
-			GRRLIB_DrawTile(_x + this->gebeBreite() - 16, _y,
-					GraphicHandler::getGraphicHandler()->gebeBild("bild_button"),
+			GRRLIB_DrawTile(_x + this->getWidth() - 16, _y,
+					GraphicHandler::getGraphicHandler()->getTexture("bild_button"),
 					0, 1, 1, 0xffffffff, index + 11);
 
 			_text = this->konvertiereAnzeigeText(_text);
@@ -108,13 +108,13 @@ void Button::zeichneElement() {
 			// Textschatten
 			if (!deaktiviert) {
 				GRRLIB_Printf(_x + 17, _y + 5,
-						GraphicHandler::getGraphicHandler()->gebeBild("font"),
+						GraphicHandler::getGraphicHandler()->getTexture("font"),
 						textFarbeSchatten, 1, _text.data());
 			}
 
 			// Text
 			GRRLIB_Printf(_x + 16, _y + 4,
-					GraphicHandler::getGraphicHandler()->gebeBild("font"),
+					GraphicHandler::getGraphicHandler()->getTexture("font"),
 					textFarbe, 1, _text.data());
 		}
 	}

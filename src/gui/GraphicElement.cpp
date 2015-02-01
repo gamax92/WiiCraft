@@ -48,15 +48,15 @@ void GraphicElement::setzeStandardWerte() {
 	pthread_mutex_init(&this->mutexAusfuehrenBeimKlicken, NULL);
 	pthread_mutex_init(&this->mutexAusgewaehlt, NULL);
 
-	this->sichtbarkeit(true);
+	this->visible(true);
 	this->deaktivieren(false);
-	this->auswaehlen(false);
+	this->selected(false);
 	this->setzeCursorDarueber(false);
 	this->setzeBeimKlicken(&GraphicElement::tueNix);
-	this->setzeX(0);
-	this->setzeY(0);
-	this->setzeBreite(0);
-	this->setzeHoehe(0);
+	this->setX(0);
+	this->setY(0);
+	this->setWidth(0);
+	this->setHeight(0);
 }
 
 bool GraphicElement::istAusgewaehlt() {
@@ -67,13 +67,13 @@ bool GraphicElement::istAusgewaehlt() {
 	return _ausgewaehlt;
 }
 
-void GraphicElement::auswaehlen(bool _ausgewaehlt) {
+void GraphicElement::selected(bool _ausgewaehlt) {
 	pthread_mutex_lock(&this->mutexAusgewaehlt);
 	this->ausgewaehlt = _ausgewaehlt;
 	pthread_mutex_unlock(&this->mutexAusgewaehlt);
 }
 
-void GraphicElement::sichtbarkeit(bool _sichtbar) {
+void GraphicElement::visible(bool _sichtbar) {
 	pthread_mutex_lock(&this->mutexSichtbarkeit);
 	this->sichtbar = _sichtbar;
 	pthread_mutex_unlock(&this->mutexSichtbarkeit);
@@ -81,7 +81,7 @@ void GraphicElement::sichtbarkeit(bool _sichtbar) {
 	this->setzeCursorDarueber(false);
 }
 
-bool GraphicElement::istSichtbar() {
+bool GraphicElement::isVisible() {
 	pthread_mutex_lock(&this->mutexSichtbarkeit);
 	bool _sichtbar = this->sichtbar;
 	pthread_mutex_unlock(&this->mutexSichtbarkeit);
@@ -117,7 +117,7 @@ bool GraphicElement::istCursorDarueber() {
 	return _cursorDarueber;
 }
 
-float GraphicElement::gebeX() {
+float GraphicElement::getX() {
 	pthread_mutex_lock(&this->mutexPosition);
 	float _x = this->x;
 	pthread_mutex_unlock(&this->mutexPosition);
@@ -125,7 +125,7 @@ float GraphicElement::gebeX() {
 	return _x;
 }
 
-float GraphicElement::gebeY() {
+float GraphicElement::getY() {
 	pthread_mutex_lock(&this->mutexPosition);
 	float _y = this->y;
 	pthread_mutex_unlock(&this->mutexPosition);
@@ -133,7 +133,7 @@ float GraphicElement::gebeY() {
 	return _y;
 }
 
-float GraphicElement::gebeBreite() {
+float GraphicElement::getWidth() {
 	pthread_mutex_lock(&this->mutexPosition);
 	float _breite = this->breite;
 	pthread_mutex_unlock(&this->mutexPosition);
@@ -141,7 +141,7 @@ float GraphicElement::gebeBreite() {
 	return _breite;
 }
 
-float GraphicElement::gebeHoehe() {
+float GraphicElement::getHeight() {
 	pthread_mutex_lock(&this->mutexPosition);
 	float _hoehe = this->hoehe;
 	pthread_mutex_unlock(&this->mutexPosition);
@@ -149,25 +149,25 @@ float GraphicElement::gebeHoehe() {
 	return _hoehe;
 }
 
-void GraphicElement::setzeX(float _x) {
+void GraphicElement::setX(float _x) {
 	pthread_mutex_lock(&this->mutexPosition);
 	this->x = _x;
 	pthread_mutex_unlock(&this->mutexPosition);
 }
 
-void GraphicElement::setzeY(float _y) {
+void GraphicElement::setY(float _y) {
 	pthread_mutex_lock(&this->mutexPosition);
 	this->y = _y;
 	pthread_mutex_unlock(&this->mutexPosition);
 }
 
-void GraphicElement::setzeBreite(float _breite) {
+void GraphicElement::setWidth(float _breite) {
 	pthread_mutex_lock(&this->mutexPosition);
 	this->breite = _breite;
 	pthread_mutex_unlock(&this->mutexPosition);
 }
 
-void GraphicElement::setzeHoehe(float _hoehe) {
+void GraphicElement::setHeight(float _hoehe) {
 	pthread_mutex_lock(&this->mutexPosition);
 	this->hoehe = _hoehe;
 	pthread_mutex_unlock(&this->mutexPosition);

@@ -37,7 +37,7 @@ namespace std {
 class Item121Schiesspulver: public Item {
 public:
 	Item121Schiesspulver();
-	Item *gebeInstanz();
+	Item *getInstance();
 	static bool registiereItem();
 private:
 };

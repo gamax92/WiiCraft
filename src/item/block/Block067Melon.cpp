@@ -34,7 +34,7 @@
 
 using namespace std;
 
-Item *Block067Melone::gebeInstanz() {
+Item *Block067Melone::getInstance() {
 	return new Block067Melone();
 }
 

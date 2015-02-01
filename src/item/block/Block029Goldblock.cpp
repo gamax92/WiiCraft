@@ -33,7 +33,7 @@
 
 using namespace std;
 
-Item *Block029Goldblock::gebeInstanz() {
+Item *Block029Goldblock::getInstance() {
 	return new Block029Goldblock();
 }
 

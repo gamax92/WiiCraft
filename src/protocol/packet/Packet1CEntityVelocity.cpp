@@ -42,12 +42,12 @@ Packet1CEntityVelocity::Packet1CEntityVelocity() {
 	PacketServer::prio = 50;
 }
 
-PacketServer *Packet1CEntityVelocity::gebeInstanz() {
+PacketServer *Packet1CEntityVelocity::getInstance() {
 	return new Packet1CEntityVelocity();
 }
 
-bool Packet1CEntityVelocity::registierePacket() {
-	PacketManager::registrierePacket(new Packet1CEntityVelocity());
+bool Packet1CEntityVelocity::registerPacket() {
+	PacketManager::registerPacket(new Packet1CEntityVelocity());
 
 	return true;
 }

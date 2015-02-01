@@ -41,8 +41,8 @@ class DataInputStream;
 class Packet12Animation: public PacketServer, public PacketClient {
 public:
 	Packet12Animation(int _entityId, byte _animation);
-	PacketServer *gebeInstanz();
-	static bool registierePacket();
+	PacketServer *getInstance();
+	static bool registerPacket();
 	void schreibePacketInhalt(DataOutputStream *out);
 	void lesePacketInhalt(DataInputStream *in);
 	void verarbeitePacket();

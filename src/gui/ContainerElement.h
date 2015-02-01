@@ -46,7 +46,7 @@ public:
 	virtual ~ContainerElement();
 
 	void fuegeUnterElementHinzu(GraphicElement *neuesElement);
-	void setzeCursorPosition(float x, float y, float angle);
+	void setCursorPosition(float x, float y, float angle);
 	void setzeCursorAnzeigen(bool _anzeigen);
 	void gedrueckt(u32 gedrueckt);
 protected:

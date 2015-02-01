@@ -37,7 +37,7 @@ namespace std {
 class Block051Kaktus: public ItemBlock {
 public:
 	Block051Kaktus();
-	Item *gebeInstanz();
+	Item *getInstance();
 	static bool registiereItem();
 	void zeichne(float x, float y, float z, byte meta);
 	bool istDurchsichtig();

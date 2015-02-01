@@ -39,7 +39,7 @@ public:
 	static void anmelden(string benutzer, string passwort);
 	static void tretteServerBei(string serverHash);
 	static void bleibeVerbunden();
-	static string gebeBenutzer();
+	static string getUsername();
 private:
 	static string currentVersion;
 	static string downloadTicket;

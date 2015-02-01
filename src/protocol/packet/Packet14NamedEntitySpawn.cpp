@@ -43,12 +43,12 @@ Packet14NamedEntitySpawn::Packet14NamedEntitySpawn() {
 	PacketServer::prio = 50;
 }
 
-PacketServer *Packet14NamedEntitySpawn::gebeInstanz() {
+PacketServer *Packet14NamedEntitySpawn::getInstance() {
 	return new Packet14NamedEntitySpawn();
 }
 
-bool Packet14NamedEntitySpawn::registierePacket() {
-	PacketManager::registrierePacket(new Packet14NamedEntitySpawn());
+bool Packet14NamedEntitySpawn::registerPacket() {
+	PacketManager::registerPacket(new Packet14NamedEntitySpawn());
 
 	return true;
 }

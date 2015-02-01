@@ -40,8 +40,8 @@ class Metadata;
 class Packet28EntityMetadata: public PacketServer {
 public:
 	~Packet28EntityMetadata();
-	PacketServer *gebeInstanz();
-	static bool registierePacket();
+	PacketServer *getInstance();
+	static bool registerPacket();
 	void lesePacketInhalt(DataInputStream *in);
 	void verarbeitePacket();
 private:

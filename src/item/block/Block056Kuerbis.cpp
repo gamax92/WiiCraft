@@ -34,7 +34,7 @@
 
 using namespace std;
 
-Item *Block056Kuerbis::gebeInstanz() {
+Item *Block056Kuerbis::getInstance() {
 	return new Block056Kuerbis();
 }
 

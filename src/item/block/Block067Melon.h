@@ -37,7 +37,7 @@ namespace std {
 class Block067Melone: public ItemBlock {
 public:
 	Block067Melone();
-	Item *gebeInstanz();
+	Item *getInstance();
 	static bool registiereItem();
 	void zeichne(float x, float y, float z, byte meta);
 	bool istDurchsichtig();

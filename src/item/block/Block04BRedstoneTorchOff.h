@@ -37,7 +37,7 @@ namespace std {
 class Block04BRedstoneFackelAus: public ItemBlock {
 public:
 	Block04BRedstoneFackelAus();
-	Item *gebeInstanz();
+	Item *getInstance();
 	static bool registiereItem();
 	void zeichne(float x, float y, float z, byte meta);
 	bool istDurchsichtig();

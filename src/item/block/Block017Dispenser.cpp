@@ -34,7 +34,7 @@
 
 using namespace std;
 
-Item *Block017Dispenser::gebeInstanz() {
+Item *Block017Dispenser::getInstance() {
 	return new Block017Dispenser();
 }
 

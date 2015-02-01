@@ -39,10 +39,10 @@
 
 namespace std {
 
-class SpielThread: public Thread {
+class GameThread: public Thread {
 public:
-	SpielThread();
-	virtual ~SpielThread();
+	GameThread();
+	virtual ~GameThread();
 	int exec();
 };
 }

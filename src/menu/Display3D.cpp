@@ -49,7 +49,7 @@ Anzeige3D::Anzeige3D() {
 	this->blockEngine = new BlockEngine();
 
 	this->hintergrund = new Background();
-	this->hintergrund->sichtbarkeit(false);
+	this->hintergrund->visible(false);
 	this->hintergrund->setzeKeyboardAnzeigen(false);
 	this->hintergrund->setzeCursorAnzeigen(false);
 

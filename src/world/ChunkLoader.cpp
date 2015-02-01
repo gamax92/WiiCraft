@@ -27,59 +27,68 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Picture.h"
+#define MAX_DISTANCE 2
 
-#include "GraphicHandler.h"
-#if defined _WIN32 || defined __CYGWIN__
-#include "../util/WiiFunction.h"
-#else /* __wii__ */
-#include <grrlib.h>
-#endif /* __wii__ */
+#include "ChunkLoader.h"
+
+#include "../world/Chunk.h"
 
 using namespace std;
 
-Bild::Bild(float _x, float _y, string _textur, float _drehung,
-		float _skralierungX, float _skralierungY, unsigned int _farbe) {
-	this->setzeStandardWerte();
+ChunkLoader *ChunkLoader::chunkLoader = new ChunkLoader();
 
-	this->setzeX(_x);
-	this->setzeY(_y);
-	this->setzeHoehe(
-			GraphicHandler::getGraphicHandler()->gebeBild(_textur)->h
-					* _skralierungY);
-	this->setzeBreite(
-			GraphicHandler::getGraphicHandler()->gebeBild(_textur)->w
-					* _skralierungX);
-	this->textur = _textur;
-	this->drehung = _drehung;
-	this->skralierungX = _skralierungX;
-	this->skralierungY = _skralierungY;
-	this->farbe = farbe;
+ChunkLoader::ChunkLoader() {
+	pthread_mutex_init(&this->mutexChunk, NULL);
 }
 
-Bild::Bild(float _x, float _y, string _textur) {
-	this->setzeStandardWerte();
-
-	this->setzeX(_x);
-	this->setzeY(_y);
-	this->setzeHoehe(GraphicHandler::getGraphicHandler()->gebeBild(_textur)->h);
-	this->setzeBreite(GraphicHandler::getGraphicHandler()->gebeBild(_textur)->w);
-	this->textur = _textur;
-	this->drehung = 0;
-	this->skralierungX = 1;
-	this->skralierungY = 1;
-	this->farbe = 0xffffffff;
+ChunkLoader::~ChunkLoader() {
+	pthread_mutex_destroy(&this->mutexChunk);
 }
 
-Bild::~Bild() {
-}
+void ChunkLoader::updateChunks(int x, int z) {
+	pthread_mutex_lock(&this->mutexChunk);
+	vector<Chunk *>::iterator it1;
+	for (it1 = this->chunks.begin(); it1 < this->chunks.end(); it1++) {
+		Chunk *_chunk = (*it1);
 
-void Bild::zeichneElement() {
-	if (this->istSichtbar()) {
-		GRRLIB_2dMode();
-		GRRLIB_DrawImg(this->gebeX(), this->gebeY(),
-				GraphicHandler::getGraphicHandler()->gebeBild(this->textur),
-				this->drehung, this->skralierungX, this->skralierungY,
-				this->farbe);
+		if (x + MAX_DISTANCE >= _chunk->getX()
+				&& x - MAX_DISTANCE <= _chunk->getX()
+				&& z + MAX_DISTANCE >= _chunk->getZ()
+				&& z - MAX_DISTANCE <= _chunk->getZ()) { // Player Chunk hat sich geaendert
+			if (!_chunk->isLoaded()) { // Chunk load
+				_chunk->loadChunk();
+			}
+		} else if (_chunk->isLoaded()) { // Chunk unload
+			_chunk->saveChunk();
+		}
 	}
+	pthread_mutex_unlock(&this->mutexChunk);
+}
+
+ChunkLoader *ChunkLoader::getChunkLoader() {
+	return ChunkLoader::chunkLoader;
+}
+
+void ChunkLoader::fuegeChunkHinzu(Chunk *_chunk) {
+	pthread_mutex_lock(&this->mutexChunk);
+	this->chunks.push_back(_chunk);
+	pthread_mutex_unlock(&this->mutexChunk);
+}
+
+void ChunkLoader::deleteChunk(Chunk *_chunk) {
+	pthread_mutex_lock(&this->mutexChunk);
+	vector<Chunk *>::iterator it;
+	for (it = this->chunks.begin(); it < this->chunks.end(); it++) {
+		Chunk *_chunkV = (*it);
+
+		if (_chunk->getX() == _chunkV->getX()
+				&& _chunk->getZ() == _chunkV->getZ()) {
+			this->chunks.erase(it);
+		}
+	}
+	pthread_mutex_unlock(&this->mutexChunk);
+}
+
+short ChunkLoader::getMaximumLoadedChunks() {
+	return (MAX_DISTANCE * 4) + ((MAX_DISTANCE * MAX_DISTANCE) * 4) + 1;
 }

@@ -49,12 +49,12 @@ Packet34MultiBlockChange::~Packet34MultiBlockChange() {
 	this->data = NULL;
 }
 
-PacketServer *Packet34MultiBlockChange::gebeInstanz() {
+PacketServer *Packet34MultiBlockChange::getInstance() {
 	return new Packet34MultiBlockChange();
 }
 
-bool Packet34MultiBlockChange::registierePacket() {
-	PacketManager::registrierePacket(new Packet34MultiBlockChange());
+bool Packet34MultiBlockChange::registerPacket() {
+	PacketManager::registerPacket(new Packet34MultiBlockChange());
 
 	return true;
 }

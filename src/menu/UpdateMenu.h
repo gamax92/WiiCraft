@@ -43,24 +43,24 @@ class Text;
 class LoadingBar;
 class Button;
 
-class UpdateMenue {
+class UpdateMenu {
 public:
 	static void initialize();
 	static void deinitialize();
-	static void zeigeUpdateMenue();
+	static void showUpdateMenu();
 	static void keinUpdate();
 	static void starteUpdate();
 private:
 	bool updateHerunterlanden;
-	static UpdateMenue *updateMenue;
-	UpdateMenue();
-	~UpdateMenue();
+	static UpdateMenu *updateMenu;
+	UpdateMenu();
+	~UpdateMenu();
 
-	Background *hintergrund;
+	Background *background;
 	Text *text;
-	LoadingBar *ladeBalken;
-	Button *buttonJa;
-	Button *buttonNein;
+	LoadingBar *loadingBar;
+	Button *buttonYes;
+	Button *buttonNo;
 
 	pthread_mutex_t mutexwait;
 	pthread_cond_t condwait;

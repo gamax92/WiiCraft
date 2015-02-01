@@ -42,12 +42,12 @@ Packet64OpenWindow::Packet64OpenWindow() {
 	PacketServer::prio = 50;
 }
 
-PacketServer *Packet64OpenWindow::gebeInstanz() {
+PacketServer *Packet64OpenWindow::getInstance() {
 	return new Packet64OpenWindow();
 }
 
-bool Packet64OpenWindow::registierePacket() {
-	PacketManager::registrierePacket(new Packet64OpenWindow());
+bool Packet64OpenWindow::registerPacket() {
+	PacketManager::registerPacket(new Packet64OpenWindow());
 
 	return true;
 }

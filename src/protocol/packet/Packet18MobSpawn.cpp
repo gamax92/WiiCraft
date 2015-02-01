@@ -77,12 +77,12 @@ Packet18MobSpawn::~Packet18MobSpawn() {
 	delete this->metaData;
 }
 
-PacketServer *Packet18MobSpawn::gebeInstanz() {
+PacketServer *Packet18MobSpawn::getInstance() {
 	return new Packet18MobSpawn();
 }
 
-bool Packet18MobSpawn::registierePacket() {
-	PacketManager::registrierePacket(new Packet18MobSpawn());
+bool Packet18MobSpawn::registerPacket() {
+	PacketManager::registerPacket(new Packet18MobSpawn());
 
 	return true;
 }

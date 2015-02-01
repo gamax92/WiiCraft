@@ -37,7 +37,7 @@ namespace std {
 class Block008FliessendesWasser: public ItemBlock {
 public:
 	Block008FliessendesWasser();
-	Item *gebeInstanz();
+	Item *getInstance();
 	static bool registiereItem();
 	void zeichne(float x, float y, float z, byte meta);
 	bool istDurchsichtig();

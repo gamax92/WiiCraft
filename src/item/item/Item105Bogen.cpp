@@ -33,7 +33,7 @@
 
 using namespace std;
 
-Item *Item105Bogen::gebeInstanz() {
+Item *Item105Bogen::getInstance() {
 	return new Item105Bogen();
 }
 
@@ -48,5 +48,5 @@ Item105Bogen::Item105Bogen() {
 
 	Item::id = 0x105;
 
-	this->maximaleHaltbarkeit = 384;
+	this->maximumDurability = 384;
 }

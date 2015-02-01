@@ -39,8 +39,8 @@ class DataInputStream;
 
 class Packet19EntityPainting: public PacketServer {
 public:
-	PacketServer *gebeInstanz();
-	static bool registierePacket();
+	PacketServer *getInstance();
+	static bool registerPacket();
 	void lesePacketInhalt(DataInputStream *in);
 	void verarbeitePacket();
 private:

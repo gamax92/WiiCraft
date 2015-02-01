@@ -33,7 +33,7 @@
 
 using namespace std;
 
-Item *Block069Melonenpflanze::gebeInstanz() {
+Item *Block069Melonenpflanze::getInstance() {
 	return new Block069Melonenpflanze();
 }
 

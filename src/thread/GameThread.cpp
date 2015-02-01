@@ -37,42 +37,42 @@
 #include "../menu/ServerSelectionMenu.h"
 #include "../menu/Display3D.h"
 #include "../world/World.h"
-#include "../world/ChunkLoading.h"
 #include "../entity/Player.h"
+#include "../world/ChunkLoader.h"
 
 using namespace std;
 
-SpielThread::SpielThread() {
+GameThread::GameThread() {
 }
 
-SpielThread::~SpielThread() {
+GameThread::~GameThread() {
 }
 
-int SpielThread::exec() {
-	Intro::zeigeIntro();
+int GameThread::exec() {
+	Intro::showIntro();
 
-	UpdateMenue::initialize();
-	UpdateMenue::zeigeUpdateMenue();
+	UpdateMenu::initialize();
+	UpdateMenu::showUpdateMenu();
 
-	AnmeldungMenue::initialize();
-	AnmeldungMenue::zeigeAnmeldungMenue();
+	LoginMenu::initialize();
+	LoginMenu::zeigeAnmeldungMenue();
 
-	UpdateMenue::deinitialize();
+	UpdateMenu::deinitialize();
 
 	ServerAuswahlMenue::initialize();
 	ServerAuswahlMenue::zeigeServerAuswahlMenue();
-	AnmeldungMenue::deinitialize();
+	LoginMenu::deinitialize();
 
 	// Chunks im vorraus laden
 	while (true) {
 		World *world = World::getWorld();
 		if (world != 0) {
-			ChunkLaden::gebeChunkLaden()->aktualisiereChunks(
+			ChunkLoader::getChunkLoader()->updateChunks(
 					Player::getPlayer()->getChunkX(),
 					Player::getPlayer()->getChunkZ());
 
-			if (world->gebeAnzahlGeladeneChunks()
-					== ChunkLaden::gebeMaximaleAnzahlGeladeneChunks()) {
+			if (world->getNumberLoadedChunks()
+					== ChunkLoader::getMaximumLoadedChunks()) {
 				break;
 			}
 		}

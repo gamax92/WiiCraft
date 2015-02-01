@@ -37,7 +37,7 @@ namespace std {
 class Block058SoulSand: public ItemBlock {
 public:
 	Block058SoulSand();
-	Item *gebeInstanz();
+	Item *getInstance();
 	static bool registiereItem();
 	void zeichne(float x, float y, float z, byte meta);
 	bool istDurchsichtig();

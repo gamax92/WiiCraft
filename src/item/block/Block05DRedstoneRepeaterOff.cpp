@@ -33,7 +33,7 @@
 
 using namespace std;
 
-Item *Block05DRedstoneRepeaterAus::gebeInstanz() {
+Item *Block05DRedstoneRepeaterAus::getInstance() {
 	return new Block05DRedstoneRepeaterAus();
 }
 

@@ -50,12 +50,12 @@ Packet00KeepAlive::Packet00KeepAlive(int _keepAliventityId) {
 	this->keepAliventityId = _keepAliventityId;
 }
 
-PacketServer *Packet00KeepAlive::gebeInstanz() {
+PacketServer *Packet00KeepAlive::getInstance() {
 	return new Packet00KeepAlive();
 }
 
-bool Packet00KeepAlive::registierePacket() {
-	PacketManager::registrierePacket(new Packet00KeepAlive());
+bool Packet00KeepAlive::registerPacket() {
+	PacketManager::registerPacket(new Packet00KeepAlive());
 
 	return true;
 }

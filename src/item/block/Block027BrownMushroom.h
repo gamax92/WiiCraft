@@ -37,7 +37,7 @@ namespace std {
 class Block027BraunerPilz: public ItemBlock {
 public:
 	Block027BraunerPilz();
-	Item *gebeInstanz();
+	Item *getInstance();
 	static bool registiereItem();
 	void zeichne(float x, float y, float z, byte meta);
 	bool istDurchsichtig();

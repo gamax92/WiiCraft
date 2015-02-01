@@ -56,12 +56,12 @@ Packet09Respawn::Packet09Respawn(int _dimension, byte _difficulty,
 	this->levelType = _levelType;
 }
 
-PacketServer *Packet09Respawn::gebeInstanz() {
+PacketServer *Packet09Respawn::getInstance() {
 	return new Packet09Respawn();
 }
 
-bool Packet09Respawn::registierePacket() {
-	PacketManager::registrierePacket(new Packet09Respawn());
+bool Packet09Respawn::registerPacket() {
+	PacketManager::registerPacket(new Packet09Respawn());
 
 	return true;
 }

@@ -33,7 +33,7 @@
 
 using namespace std;
 
-Item *Item16FFauligesFleisch::gebeInstanz() {
+Item *Item16FFauligesFleisch::getInstance() {
 	return new Item16FFauligesFleisch();
 }
 

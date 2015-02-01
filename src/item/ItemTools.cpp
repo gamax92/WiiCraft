@@ -35,5 +35,5 @@ void ItemTools::setzeStandardWerte() {
 	Item::setzeStandardWerte();
 
 	// TODO maximaleHaltbarkeit an Hand des Materials festlegen
-	this->maximaleHaltbarkeit = 1;
+	this->maximumDurability = 1;
 }

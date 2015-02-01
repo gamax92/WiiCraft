@@ -38,8 +38,8 @@ class DataInputStream;
 
 class Packet1CEntityVelocity: public PacketServer {
 public:
-	PacketServer *gebeInstanz();
-	static bool registierePacket();
+	PacketServer *getInstance();
+	static bool registerPacket();
 	void lesePacketInhalt(DataInputStream *in);
 	void verarbeitePacket();
 private:

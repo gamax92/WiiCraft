@@ -42,12 +42,12 @@ Packet05EntityEquipment::Packet05EntityEquipment() {
 	PacketServer::prio = 50;
 }
 
-PacketServer *Packet05EntityEquipment::gebeInstanz() {
+PacketServer *Packet05EntityEquipment::getInstance() {
 	return new Packet05EntityEquipment();
 }
 
-bool Packet05EntityEquipment::registierePacket() {
-	PacketManager::registrierePacket(new Packet05EntityEquipment());
+bool Packet05EntityEquipment::registerPacket() {
+	PacketManager::registerPacket(new Packet05EntityEquipment());
 
 	return true;
 }

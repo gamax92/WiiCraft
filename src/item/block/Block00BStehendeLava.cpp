@@ -33,7 +33,7 @@
 
 using namespace std;
 
-Item *Block00BStehendeLava::gebeInstanz() {
+Item *Block00BStehendeLava::getInstance() {
 	return new Block00BStehendeLava();
 }
 

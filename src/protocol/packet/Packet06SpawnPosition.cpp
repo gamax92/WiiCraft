@@ -42,12 +42,12 @@ Packet06SpawnPosition::Packet06SpawnPosition() {
 	PacketServer::prio = 50;
 }
 
-PacketServer *Packet06SpawnPosition::gebeInstanz() {
+PacketServer *Packet06SpawnPosition::getInstance() {
 	return new Packet06SpawnPosition();
 }
 
-bool Packet06SpawnPosition::registierePacket() {
-	PacketManager::registrierePacket(new Packet06SpawnPosition());
+bool Packet06SpawnPosition::registerPacket() {
+	PacketManager::registerPacket(new Packet06SpawnPosition());
 
 	return true;
 }

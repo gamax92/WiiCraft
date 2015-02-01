@@ -33,7 +33,7 @@
 
 using namespace std;
 
-Item *Block024VerschobenerBlock::gebeInstanz() {
+Item *Block024VerschobenerBlock::getInstance() {
 	return new Block024VerschobenerBlock();
 }
 

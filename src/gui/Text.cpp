@@ -41,73 +41,73 @@ using namespace std;
 Text::Text(float _x, float _y, string _text) {
 	TextElement::setzeStandardWerte();
 
-	pthread_mutex_init(&this->mutexFarbe, NULL);
+	pthread_mutex_init(&this->mutexColor, NULL);
 
-	this->setzeX(_x);
-	this->setzeY(_y);
-	this->setzeText(_text);
+	this->setX(_x);
+	this->setY(_y);
+	this->setText(_text);
 	this->berechneAusmasse();
-	this->setzeTextFarbe(0xffffffff);
-	this->setzeBackgroundFarbe(0);
+	this->setTextColor(0xffffffff);
+	this->setBackgroundColor(0);
 }
 
 Text::~Text() {
-	pthread_mutex_destroy(&this->mutexFarbe);
+	pthread_mutex_destroy(&this->mutexColor);
 }
 
 void Text::berechneAusmasse() {
-	string _text = this->gebeText();
+	string _text = this->getText();
 
-	this->setzeHoehe(_text.size() ? 8 : 0);
-	this->setzeBreite(8.0 * (float) _text.size());
+	this->setHeight(_text.size() ? 8 : 0);
+	this->setWidth(8.0 * (float) _text.size());
 }
 
-void Text::zeichneElement() {
-	if (this->istSichtbar()) {
-		string _text = this->gebeText();
+void Text::drawElement() {
+	if (this->isVisible()) {
+		string _text = this->getText();
 		_text = this->konvertiereAnzeigeText(_text);
-		u32 _textFarbe = this->gebeTextFarbe();
-		u32 _hintergrundFarbe = this->gebeBackgroundFarbe();
+		u32 _textColor = this->getTextColor();
+		u32 _backgroundColor = this->getBackgroundColor();
 
-		float _x = this->gebeX();
-		float _y = this->gebeY();
+		float _x = this->getX();
+		float _y = this->getY();
 
 		GRRLIB_2dMode();
-		if (_hintergrundFarbe > 0) {
-			float _breite = this->gebeBreite();
-			float _hoehe = this->gebeHoehe();
-			GRRLIB_Rectangle(_x, _y, _breite, _hoehe, _hintergrundFarbe, 1);
+		if (_backgroundColor > 0) {
+			float _breite = this->getWidth();
+			float _hoehe = this->getHeight();
+			GRRLIB_Rectangle(_x, _y, _breite, _hoehe, _backgroundColor, 1);
 		}
 		GRRLIB_Printf(_x, _y,
-				GraphicHandler::getGraphicHandler()->gebeBild("font"),
-				_textFarbe, 1, _text.data());
+				GraphicHandler::getGraphicHandler()->getTexture("font"),
+				_textColor, 1, _text.data());
 	}
 }
 
-void Text::setzeTextFarbe(u32 _textFarbe) {
-	pthread_mutex_lock(&this->mutexFarbe);
-	this->textFarbe = _textFarbe;
-	pthread_mutex_unlock(&this->mutexFarbe);
+void Text::setTextColor(u32 _textColor) {
+	pthread_mutex_lock(&this->mutexColor);
+	this->textColor = _textColor;
+	pthread_mutex_unlock(&this->mutexColor);
 }
 
-u32 Text::gebeTextFarbe() {
-	pthread_mutex_lock(&this->mutexFarbe);
-	u32 _textFarbe = this->textFarbe;
-	pthread_mutex_unlock(&this->mutexFarbe);
+u32 Text::getTextColor() {
+	pthread_mutex_lock(&this->mutexColor);
+	u32 _textColor = this->textColor;
+	pthread_mutex_unlock(&this->mutexColor);
 
-	return _textFarbe;
+	return _textColor;
 }
 
-void Text::setzeBackgroundFarbe(u32 _hintergrundFarbe) {
-	pthread_mutex_lock(&this->mutexFarbe);
-	this->hintergrundFarbe = _hintergrundFarbe;
-	pthread_mutex_unlock(&this->mutexFarbe);
+void Text::setBackgroundColor(u32 _backgroundColor) {
+	pthread_mutex_lock(&this->mutexColor);
+	this->backgroundColor = _backgroundColor;
+	pthread_mutex_unlock(&this->mutexColor);
 }
 
-u32 Text::gebeBackgroundFarbe() {
-	pthread_mutex_lock(&this->mutexFarbe);
-	u32 _hintergrundFarbe = this->hintergrundFarbe;
-	pthread_mutex_unlock(&this->mutexFarbe);
+u32 Text::getBackgroundColor() {
+	pthread_mutex_lock(&this->mutexColor);
+	u32 _backgroundColor = this->backgroundColor;
+	pthread_mutex_unlock(&this->mutexColor);
 
-	return _hintergrundFarbe;
+	return _backgroundColor;
 }

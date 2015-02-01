@@ -50,12 +50,12 @@ PacketFFDisconnectKick::PacketFFDisconnectKick(string _reason) {
 	this->reason = _reason;
 }
 
-PacketServer *PacketFFDisconnectKick::gebeInstanz() {
+PacketServer *PacketFFDisconnectKick::getInstance() {
 	return new PacketFFDisconnectKick();
 }
 
-bool PacketFFDisconnectKick::registierePacket() {
-	PacketManager::registrierePacket(new PacketFFDisconnectKick());
+bool PacketFFDisconnectKick::registerPacket() {
+	PacketManager::registerPacket(new PacketFFDisconnectKick());
 
 	return true;
 }

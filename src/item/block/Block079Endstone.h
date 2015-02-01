@@ -37,7 +37,7 @@ namespace std {
 class Block079Endstein: public ItemBlock {
 public:
 	Block079Endstein();
-	Item *gebeInstanz();
+	Item *getInstance();
 	static bool registiereItem();
 	void zeichne(float x, float y, float z, byte meta);
 	bool istDurchsichtig();

@@ -34,7 +34,7 @@
 
 using namespace std;
 
-Item *Block011Baumstamm::gebeInstanz() {
+Item *Block011Baumstamm::getInstance() {
 	return new Block011Baumstamm();
 }
 

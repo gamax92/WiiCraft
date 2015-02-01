@@ -37,7 +37,7 @@ namespace std {
 class Item101EisenSpitzhacke: public ItemPickaxe {
 public:
 	Item101EisenSpitzhacke();
-	Item *gebeInstanz();
+	Item *getInstance();
 	static bool registiereItem();
 private:
 };

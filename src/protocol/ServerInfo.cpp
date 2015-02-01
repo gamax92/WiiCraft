@@ -43,7 +43,7 @@ void ServerInfo::initializeServerInfo(byte maximaleAnzahlPlayer) {
 	ServerInfo::serverInfo = new ServerInfo(maximaleAnzahlPlayer);
 }
 
-ServerInfo *ServerInfo::gebeServerInfo() {
+ServerInfo *ServerInfo::getServerInfo() {
 	return ServerInfo::serverInfo;
 }
 

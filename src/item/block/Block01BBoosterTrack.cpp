@@ -33,7 +33,7 @@
 
 using namespace std;
 
-Item *Block01BBoosterSchiene::gebeInstanz() {
+Item *Block01BBoosterSchiene::getInstance() {
 	return new Block01BBoosterSchiene();
 }
 

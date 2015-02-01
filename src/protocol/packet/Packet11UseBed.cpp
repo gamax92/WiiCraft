@@ -42,12 +42,12 @@ Packet11UseBed::Packet11UseBed() {
 	PacketServer::prio = 50;
 }
 
-PacketServer *Packet11UseBed::gebeInstanz() {
+PacketServer *Packet11UseBed::getInstance() {
 	return new Packet11UseBed();
 }
 
-bool Packet11UseBed::registierePacket() {
-	PacketManager::registrierePacket(new Packet11UseBed());
+bool Packet11UseBed::registerPacket() {
+	PacketManager::registerPacket(new Packet11UseBed());
 
 	return true;
 }

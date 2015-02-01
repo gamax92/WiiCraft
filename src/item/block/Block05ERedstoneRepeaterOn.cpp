@@ -33,7 +33,7 @@
 
 using namespace std;
 
-Item *Block05ERedstoneRepeaterAn::gebeInstanz() {
+Item *Block05ERedstoneRepeaterAn::getInstance() {
 	return new Block05ERedstoneRepeaterAn();
 }
 

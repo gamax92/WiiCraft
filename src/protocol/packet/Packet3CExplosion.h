@@ -39,8 +39,8 @@ class DataInputStream;
 class Packet3CExplosion: public PacketServer {
 public:
 	~Packet3CExplosion();
-	PacketServer *gebeInstanz();
-	static bool registierePacket();
+	PacketServer *getInstance();
+	static bool registerPacket();
 	void lesePacketInhalt(DataInputStream *in);
 	void verarbeitePacket();
 private:

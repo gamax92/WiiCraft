@@ -33,7 +33,7 @@
 
 using namespace std;
 
-Item *Block05APortal::gebeInstanz() {
+Item *Block05APortal::getInstance() {
 	return new Block05APortal();
 }
 

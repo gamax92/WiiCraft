@@ -60,12 +60,12 @@ Packet17AddObjectVehicle::Packet17AddObjectVehicle() {
 	PacketServer::prio = 50;
 }
 
-PacketServer *Packet17AddObjectVehicle::gebeInstanz() {
+PacketServer *Packet17AddObjectVehicle::getInstance() {
 	return new Packet17AddObjectVehicle();
 }
 
-bool Packet17AddObjectVehicle::registierePacket() {
-	PacketManager::registrierePacket(new Packet17AddObjectVehicle());
+bool Packet17AddObjectVehicle::registerPacket() {
+	PacketManager::registerPacket(new Packet17AddObjectVehicle());
 
 	return true;
 }

@@ -37,7 +37,7 @@ namespace std {
 class Item159Kompass: public Item {
 public:
 	Item159Kompass();
-	Item *gebeInstanz();
+	Item *getInstance();
 	static bool registiereItem();
 private:
 };

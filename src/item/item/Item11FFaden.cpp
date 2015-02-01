@@ -33,7 +33,7 @@
 
 using namespace std;
 
-Item *Item11FFaden::gebeInstanz() {
+Item *Item11FFaden::getInstance() {
 	return new Item11FFaden();
 }
 

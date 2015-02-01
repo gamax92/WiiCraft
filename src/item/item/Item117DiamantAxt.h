@@ -37,7 +37,7 @@ namespace std {
 class Item117DiamantAxt: public ItemAxe {
 public:
 	Item117DiamantAxt();
-	Item *gebeInstanz();
+	Item *getInstance();
 	static bool registiereItem();
 private:
 };

@@ -46,7 +46,7 @@
 
 namespace std {
 
-struct TexturMatrix {
+struct TextureMatrix {
 	f32 s1;
 	f32 s2;
 	f32 t1;
@@ -66,27 +66,27 @@ public:
 	void stop();
 	virtual ~GraphicHandler();
 	void setzeAnzeigeElement(GraphicElement *neuesElement);
-	GRRLIB_texImg *gebeBild(string name);
-	TexturMatrix gebeTexturMatrix(int nr);
-	void setzeCursorPosition(float x, float y, float angle);
-	void setzeAusgewaehltesElement(GraphicElement *_ausgewaehltesElement);
-	GraphicElement *gebeAusgewaehltesElement();
+	GRRLIB_texImg *getTexture(string name);
+	TextureMatrix getTextureMatrix(int nr);
+	void setCursorPosition(float x, float y, float angle);
+	void setSelectedElement(GraphicElement *_ausgewaehltesElement);
+	GraphicElement *getSelectedElement();
 	void gedrueckt(u32 gedrueckt);
 private:
 	static GraphicHandler *grafikHandler;
 
-	bool gestoppt;
+	bool stopped;
 	GraphicElement *element;
-	GraphicElement *ausgewaehltesElement;
-	map<string, GRRLIB_texImg *> bilder;
-	TexturMatrix *texturMatrix;
+	GraphicElement *selectedElement;
+	map<string, GRRLIB_texImg *> textures;
+	TextureMatrix *textureMatrix;
 	pthread_mutex_t mutexStop;
 	pthread_mutex_t mutexZeichne;
 
-	bool istGestopped();
+	bool isStopped();
 	GraphicHandler();
 	void ladeBilder();
-	void ladeTexturMatrix();
+	void loadTextureMatrix();
 };
 
 }

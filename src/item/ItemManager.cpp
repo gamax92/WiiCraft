@@ -190,9 +190,9 @@ using namespace std;
 Item **ItemManager::itemListe = NULL;
 
 void ItemManager::registriereItem(Item *item) {
-	delete ItemManager::itemListe[item->gebeItemId()];
+	delete ItemManager::itemListe[item->getItemId()];
 
-	ItemManager::itemListe[item->gebeItemId()] = item;
+	ItemManager::itemListe[item->getItemId()] = item;
 }
 
 void ItemManager::initializeItemListe() {
@@ -356,7 +356,7 @@ Item *ItemManager::getInstance(short itemId) {
 		throw ExcItemUnknownItem(itemId);
 	}
 
-	return ItemManager::itemListe[itemId]->gebeInstanz();
+	return ItemManager::itemListe[itemId]->getInstance();
 }
 
 void ItemManager::zeichne(short itemId, float x, float y, float z, byte meta) {

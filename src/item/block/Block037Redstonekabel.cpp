@@ -33,7 +33,7 @@
 
 using namespace std;
 
-Item *Block037Redstonekabel::gebeInstanz() {
+Item *Block037Redstonekabel::getInstance() {
 	return new Block037Redstonekabel();
 }
 

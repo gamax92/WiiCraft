@@ -37,7 +37,7 @@ namespace std {
 class Item177Spinnenauge: public ItemFood {
 public:
 	Item177Spinnenauge();
-	Item *gebeInstanz();
+	Item *getInstance();
 	static bool registiereItem();
 private:
 };

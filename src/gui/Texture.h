@@ -36,19 +36,19 @@
 
 namespace std {
 
-class Bild: public GraphicElement {
+class Texture: public GraphicElement {
 public:
-	Bild(float _x, float _y, string textur, float _drehung, float _skralierungX,
+	Texture(float _x, float _y, string textur, float _drehung, float _skralierungX,
 			float _skralierungY, unsigned int _farbe);
-	Bild(float _startX, float _startY, string textur);
-	virtual ~Bild();
-	void zeichneElement();
+	Texture(float _startX, float _startY, string textur);
+	virtual ~Texture();
+	void drawElement();
 private:
-	string textur;
-	float drehung;
-	float skralierungX;
-	float skralierungY;
-	unsigned int farbe;
+	string texture;
+	float rotation;
+	float scaleX;
+	float scaleY;
+	unsigned int color;
 };
 
 }

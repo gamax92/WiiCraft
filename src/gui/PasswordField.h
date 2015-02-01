@@ -41,7 +41,7 @@ public:
 	PasswordField(float _x, float _y);
 	PasswordField(float _x, float _y, string _text);
 	~PasswordField();
-	void zeichneElement();
+	void drawElement();
 protected:
 	void berechneAusmasse();
 private:

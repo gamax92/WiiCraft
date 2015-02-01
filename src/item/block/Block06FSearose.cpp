@@ -33,7 +33,7 @@
 
 using namespace std;
 
-Item *Block06FSeerose::gebeInstanz() {
+Item *Block06FSeerose::getInstance() {
 	return new Block06FSeerose();
 }
 

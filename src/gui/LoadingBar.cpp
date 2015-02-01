@@ -43,10 +43,10 @@ LoadingBar::LoadingBar(float _x, float _y) {
 
 	pthread_mutex_init(&this->mutexfortschritt, NULL);
 
-	this->setzeX(_x);
-	this->setzeY(_y);
-	this->setzeHoehe(4);
-	this->setzeBreite(100);
+	this->setX(_x);
+	this->setY(_y);
+	this->setHeight(4);
+	this->setWidth(100);
 	this->setzeFortschritt(0);
 }
 
@@ -54,12 +54,12 @@ LoadingBar::~LoadingBar() {
 	pthread_mutex_destroy(&this->mutexfortschritt);
 }
 
-void LoadingBar::zeichneElement() {
-	if (this->istSichtbar()) {
-		float _x = this->gebeX();
-		float _y = this->gebeY();
-		float _hoehe = this->gebeHoehe();
-		float _breite = this->gebeBreite();
+void LoadingBar::drawElement() {
+	if (this->isVisible()) {
+		float _x = this->getX();
+		float _y = this->getY();
+		float _hoehe = this->getHeight();
+		float _breite = this->getWidth();
 		int _fortschritt = this->gebeFortschritt();
 
 		GRRLIB_2dMode();
@@ -70,7 +70,7 @@ void LoadingBar::zeichneElement() {
 		// zeichne LoadingBar fortschritt, anhand des Tiles
 		if (_fortschritt > 0 && _fortschritt <= 100) {
 			GRRLIB_DrawTile(_x, _y,
-					GraphicHandler::getGraphicHandler()->gebeBild(
+					GraphicHandler::getGraphicHandler()->getTexture(
 							"bild_ladebalken"), 0, _breite / 100.0,
 					_hoehe / 4.0, 0xffffffff, _fortschritt);
 		}

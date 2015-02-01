@@ -31,7 +31,7 @@
 
 using namespace std;
 
-Item *ItemDummy::gebeInstanz() {
+Item *ItemDummy::getInstance() {
 	return new ItemDummy();
 }
 

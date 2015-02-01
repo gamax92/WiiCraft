@@ -35,14 +35,14 @@ namespace std {
 class Item {
 public:
 	virtual ~Item();
-	virtual Item *gebeInstanz() = 0;
+	virtual Item *getInstance() = 0;
 	bool isDestructible();
-	short gebeItemId();
-	void setDurability(int _haltbarkeit);
+	short getItemId();
+	void setDurability(int _durability);
 protected:
 	short id;
-	int maximaleHaltbarkeit;
-	int haltbarkeit;
+	int maximumDurability;
+	int durability;
 	bool hatKindTypen;
 
 	void setzeStandardWerte();

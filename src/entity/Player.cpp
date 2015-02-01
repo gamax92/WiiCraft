@@ -65,7 +65,7 @@ Player::Player(int entityId) {
 	this->level = 0;
 	this->experiencePointsTotal = 0;
 
-	this->playerMotionSendingThread = new PlayerMotionSendingThread(this,
+	this->playerMotionSendingThread = new PlayerMovementSendingThread(this,
 			this->x, this->y, this->z, this->winkel, this->abstand,
 			this->haltung, this->isOnGround, this->isFlying);
 	this->playerMotionSendingThread->start();

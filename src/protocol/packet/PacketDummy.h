@@ -39,7 +39,7 @@ class DataInputStream;
 class PacketDummy: public PacketServer {
 public:
 	PacketDummy();
-	PacketServer *gebeInstanz();
+	PacketServer *getInstance();
 	void lesePacketInhalt(DataInputStream *in);
 	void verarbeitePacket();
 };

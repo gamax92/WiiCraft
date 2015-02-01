@@ -37,7 +37,7 @@ namespace std {
 class Block06ALiane: public ItemBlock {
 public:
 	Block06ALiane();
-	Item *gebeInstanz();
+	Item *getInstance();
 	static bool registiereItem();
 	void zeichne(float x, float y, float z, byte meta);
 	bool istDurchsichtig();

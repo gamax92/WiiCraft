@@ -42,8 +42,8 @@ class PacketCAPlayerAbilities: public PacketServer, public PacketClient {
 public:
 	PacketCAPlayerAbilities(bool _invulnerability, bool _isFlying, bool _canFly,
 			bool _instantDestroy);
-	PacketServer *gebeInstanz();
-	static bool registierePacket();
+	PacketServer *getInstance();
+	static bool registerPacket();
 	void schreibePacketInhalt(DataOutputStream *out);
 	void lesePacketInhalt(DataInputStream *in);
 	void verarbeitePacket();

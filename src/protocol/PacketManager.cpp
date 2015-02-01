@@ -96,9 +96,9 @@ using namespace std;
 
 PacketServer **PacketManager::paketListe = NULL;
 
-void PacketManager::registrierePacket(PacketServer *paket) {
-	delete PacketManager::paketListe[paket->gebePacketId()];
-	PacketManager::paketListe[paket->gebePacketId()] = paket;
+void PacketManager::registerPacket(PacketServer *paket) {
+	delete PacketManager::paketListe[paket->getPacketId()];
+	PacketManager::paketListe[paket->getPacketId()] = paket;
 }
 
 void PacketManager::initializePacketListe() {
@@ -109,63 +109,63 @@ void PacketManager::initializePacketListe() {
 		PacketManager::paketListe[i] = new PacketDummy();
 	}
 
-	Packet00KeepAlive::registierePacket();
-	Packet01LoginRequest::registierePacket();
-	Packet02Handshake::registierePacket();
-	Packet03ChatMessage::registierePacket();
-	Packet04TimeUpdate::registierePacket();
-	Packet05EntityEquipment::registierePacket();
-	Packet06SpawnPosition::registierePacket();
-	Packet08UpdateHealth::registierePacket();
-	Packet09Respawn::registierePacket();
-	Packet0DPlayerPositionLook::registierePacket();
-	Packet11UseBed::registierePacket();
-	Packet12Animation::registierePacket();
-	Packet14NamedEntitySpawn::registierePacket();
-	Packet15PickupSpawn::registierePacket();
-	Packet16CollectItem::registierePacket();
-	Packet17AddObjectVehicle::registierePacket();
-	Packet18MobSpawn::registierePacket();
-	Packet19EntityPainting::registierePacket();
-	Packet1AExperienceOrb::registierePacket();
-	Packet1CEntityVelocity::registierePacket();
-	Packet1DDestroyEntity::registierePacket();
-	Packet1EEntity::registierePacket();
-	Packet1FEntityRelativeMove::registierePacket();
-	Packet20EntityLook::registierePacket();
-	Packet21EntityLookAndRelativeMove::registierePacket();
-	Packet22EntityTeleport::registierePacket();
-	Packet23EntityHeadLook::registierePacket();
-	Packet26EntityStatus::registierePacket();
-	Packet27AttachEntity::registierePacket();
-	Packet28EntityMetadata::registierePacket();
-	Packet29EntityEffect::registierePacket();
-	Packet2ARemoveEntityEffect::registierePacket();
-	Packet2BExperience::registierePacket();
-	Packet32PreChunk::registierePacket();
-	Packet33MapChunk::registierePacket();
-	Packet34MultiBlockChange::registierePacket();
-	Packet35BlockChange::registierePacket();
-	Packet36BlockAction::registierePacket();
-	Packet3CExplosion::registierePacket();
-	Packet3DSoundParticleEffect::registierePacket();
-	Packet46NewInvalidState::registierePacket();
-	Packet47Thunderbolt::registierePacket();
-	Packet64OpenWindow::registierePacket();
-	Packet65CloseWindow::registierePacket();
-	Packet67SetSlot::registierePacket();
-	Packet68WindowItems::registierePacket();
-	Packet69UpdateWindowProperty::registierePacket();
-	Packet6ATransaction::registierePacket();
-	Packet6BCreativeInventoryAction::registierePacket();
-	Packet82UpdateSign::registierePacket();
-	Packet83ItemData::registierePacket();
-	Packet84UpdateTileEntity::registierePacket();
-	PacketC8IncrementStatistic::registierePacket();
-	PacketC9PlayerListItem::registierePacket();
-	PacketCAPlayerAbilities::registierePacket();
-	PacketFAPluginmessage::registierePacket();
-	PacketFFDisconnectKick::registierePacket();
+	Packet00KeepAlive::registerPacket();
+	Packet01LoginRequest::registerPacket();
+	Packet02Handshake::registerPacket();
+	Packet03ChatMessage::registerPacket();
+	Packet04TimeUpdate::registerPacket();
+	Packet05EntityEquipment::registerPacket();
+	Packet06SpawnPosition::registerPacket();
+	Packet08UpdateHealth::registerPacket();
+	Packet09Respawn::registerPacket();
+	Packet0DPlayerPositionLook::registerPacket();
+	Packet11UseBed::registerPacket();
+	Packet12Animation::registerPacket();
+	Packet14NamedEntitySpawn::registerPacket();
+	Packet15PickupSpawn::registerPacket();
+	Packet16CollectItem::registerPacket();
+	Packet17AddObjectVehicle::registerPacket();
+	Packet18MobSpawn::registerPacket();
+	Packet19EntityPainting::registerPacket();
+	Packet1AExperienceOrb::registerPacket();
+	Packet1CEntityVelocity::registerPacket();
+	Packet1DDestroyEntity::registerPacket();
+	Packet1EEntity::registerPacket();
+	Packet1FEntityRelativeMove::registerPacket();
+	Packet20EntityLook::registerPacket();
+	Packet21EntityLookAndRelativeMove::registerPacket();
+	Packet22EntityTeleport::registerPacket();
+	Packet23EntityHeadLook::registerPacket();
+	Packet26EntityStatus::registerPacket();
+	Packet27AttachEntity::registerPacket();
+	Packet28EntityMetadata::registerPacket();
+	Packet29EntityEffect::registerPacket();
+	Packet2ARemoveEntityEffect::registerPacket();
+	Packet2BExperience::registerPacket();
+	Packet32PreChunk::registerPacket();
+	Packet33MapChunk::registerPacket();
+	Packet34MultiBlockChange::registerPacket();
+	Packet35BlockChange::registerPacket();
+	Packet36BlockAction::registerPacket();
+	Packet3CExplosion::registerPacket();
+	Packet3DSoundParticleEffect::registerPacket();
+	Packet46NewInvalidState::registerPacket();
+	Packet47Thunderbolt::registerPacket();
+	Packet64OpenWindow::registerPacket();
+	Packet65CloseWindow::registerPacket();
+	Packet67SetSlot::registerPacket();
+	Packet68WindowItems::registerPacket();
+	Packet69UpdateWindowProperty::registerPacket();
+	Packet6ATransaction::registerPacket();
+	Packet6BCreativeInventoryAction::registerPacket();
+	Packet82UpdateSign::registerPacket();
+	Packet83ItemData::registerPacket();
+	Packet84UpdateTileEntity::registerPacket();
+	PacketC8IncrementStatistic::registerPacket();
+	PacketC9PlayerListItem::registerPacket();
+	PacketCAPlayerAbilities::registerPacket();
+	PacketFAPluginmessage::registerPacket();
+	PacketFFDisconnectKick::registerPacket();
 }
 
 PacketServer *PacketManager::getInstanz(byte byte) {
@@ -175,5 +175,5 @@ PacketServer *PacketManager::getInstanz(byte byte) {
 		throw ExcPacketUnknownPacket(byte);
 	}
 
-	return PacketManager::paketListe[byte]->gebeInstanz();
+	return PacketManager::paketListe[byte]->getInstance();
 }

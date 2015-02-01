@@ -37,7 +37,7 @@ namespace std {
 class Block020ToterStrauch: public ItemBlock {
 public:
 	Block020ToterStrauch();
-	Item *gebeInstanz();
+	Item *getInstance();
 	static bool registiereItem();
 	void zeichne(float x, float y, float z, byte meta);
 	bool istDurchsichtig();

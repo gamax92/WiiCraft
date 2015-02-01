@@ -42,8 +42,8 @@ class DataInputStream;
 class Packet02Handshake: public PacketServer, public PacketClient {
 public:
 	Packet02Handshake(string _usernameAndHost);
-	PacketServer *gebeInstanz();
-	static bool registierePacket();
+	PacketServer *getInstance();
+	static bool registerPacket();
 	void schreibePacketInhalt(DataOutputStream *out);
 	void lesePacketInhalt(DataInputStream *in);
 	void verarbeitePacket();

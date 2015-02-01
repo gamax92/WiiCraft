@@ -42,12 +42,12 @@ Packet2ARemoveEntityEffect::Packet2ARemoveEntityEffect() {
 	PacketServer::prio = 50;
 }
 
-PacketServer *Packet2ARemoveEntityEffect::gebeInstanz() {
+PacketServer *Packet2ARemoveEntityEffect::getInstance() {
 	return new Packet2ARemoveEntityEffect();
 }
 
-bool Packet2ARemoveEntityEffect::registierePacket() {
-	PacketManager::registrierePacket(new Packet2ARemoveEntityEffect());
+bool Packet2ARemoveEntityEffect::registerPacket() {
+	PacketManager::registerPacket(new Packet2ARemoveEntityEffect());
 
 	return true;
 }

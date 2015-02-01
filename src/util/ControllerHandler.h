@@ -36,19 +36,19 @@
 
 namespace std {
 
-class KontrollerHandler {
+class ControllerHandler {
 public:
 	static void initialize();
-	static KontrollerHandler *gebeKontrollerHandler();
+	static ControllerHandler *getControllerHandler();
 
 	void aktualisiere();
-	~KontrollerHandler();
+	~ControllerHandler();
 private:
-	static KontrollerHandler *kontrollerHandler;
+	static ControllerHandler *controllerHandler;
 
-	KontrollerHandler();
+	ControllerHandler();
 
-	void setzeCursorPosition(float x, float y, float angle);
+	void setCursorPosition(float x, float y, float angle);
 	void gedrueckt(unsigned int gedrueckt);
 };
 }

@@ -35,18 +35,18 @@ Item::~Item() {
 }
 
 bool Item::isDestructible() {
-	return this->maximaleHaltbarkeit > 0 && !this->hatKindTypen;
+	return this->maximumDurability > 0 && !this->hatKindTypen;
 }
 
-short Item::gebeItemId() {
+short Item::getItemId() {
 	return this->id;
 }
 
 void Item::setzeStandardWerte() {
-	this->maximaleHaltbarkeit = 0;
+	this->maximumDurability = 0;
 	this->hatKindTypen = false;
 }
 
-void Item::setDurability(int _haltbarkeit) {
-	this->haltbarkeit = _haltbarkeit;
+void Item::setDurability(int _durability) {
+	this->durability = _durability;
 }

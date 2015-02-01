@@ -39,8 +39,8 @@ class DataInputStream;
 class Packet34MultiBlockChange: public PacketServer {
 public:
 	~Packet34MultiBlockChange();
-	PacketServer *gebeInstanz();
-	static bool registierePacket();
+	PacketServer *getInstance();
+	static bool registerPacket();
 	void lesePacketInhalt(DataInputStream *in);
 	void verarbeitePacket();
 private:

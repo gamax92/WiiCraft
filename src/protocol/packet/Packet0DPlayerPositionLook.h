@@ -42,8 +42,8 @@ class Packet0DPlayerPositionLook: public PacketServer, public PacketClient {
 public:
 	Packet0DPlayerPositionLook(double _x, double _y, double _stance, double _z,
 			float _yaw, float _pitch, bool _onGround);
-	PacketServer *gebeInstanz();
-	static bool registierePacket();
+	PacketServer *getInstance();
+	static bool registerPacket();
 	void schreibePacketInhalt(DataOutputStream *out);
 	void lesePacketInhalt(DataInputStream *in);
 	void verarbeitePacket();

@@ -33,7 +33,7 @@
 
 using namespace std;
 
-Item *Block042Schienen::gebeInstanz() {
+Item *Block042Schienen::getInstance() {
 	return new Block042Schienen();
 }
 

@@ -33,7 +33,7 @@
 
 using namespace std;
 
-Item *Item160Knochen::gebeInstanz() {
+Item *Item160Knochen::getInstance() {
 	return new Item160Knochen();
 }
 

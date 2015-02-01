@@ -46,12 +46,12 @@ Packet83ItemData::~Packet83ItemData() {
 	delete[] this->text;
 }
 
-PacketServer *Packet83ItemData::gebeInstanz() {
+PacketServer *Packet83ItemData::getInstance() {
 	return new Packet83ItemData();
 }
 
-bool Packet83ItemData::registierePacket() {
-	PacketManager::registrierePacket(new Packet83ItemData());
+bool Packet83ItemData::registerPacket() {
+	PacketManager::registerPacket(new Packet83ItemData());
 
 	return true;
 }

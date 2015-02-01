@@ -47,12 +47,12 @@ Packet67SetSlot::~Packet67SetSlot() {
 	free(this->slot);
 }
 
-PacketServer *Packet67SetSlot::gebeInstanz() {
+PacketServer *Packet67SetSlot::getInstance() {
 	return new Packet67SetSlot();
 }
 
-bool Packet67SetSlot::registierePacket() {
-	PacketManager::registrierePacket(new Packet67SetSlot());
+bool Packet67SetSlot::registerPacket() {
+	PacketManager::registerPacket(new Packet67SetSlot());
 
 	return true;
 }

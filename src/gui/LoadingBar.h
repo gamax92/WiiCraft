@@ -44,7 +44,7 @@ class LoadingBar: public GraphicElement {
 public:
 	LoadingBar(float _x, float _y);
 	~LoadingBar();
-	void zeichneElement();
+	void drawElement();
 	void setzeFortschritt(int _fortschritt);
 	int gebeFortschritt();
 private:

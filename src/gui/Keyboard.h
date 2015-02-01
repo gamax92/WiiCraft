@@ -39,9 +39,9 @@ class Button;
 class Keyboard: public ContainerElement {
 public:
 	virtual ~Keyboard();
-	void zeichneElement();
+	void drawElement();
 	void aendereGrossKlein();
-	static Keyboard *gebeKeyboard();
+	static Keyboard *getKeyboard();
 	static void drueckeAusrufeZeichen();
 	static void druecke1();
 	static void drueckeAt();

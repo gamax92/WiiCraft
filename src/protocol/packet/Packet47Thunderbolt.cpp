@@ -42,12 +42,12 @@ Packet47Thunderbolt::Packet47Thunderbolt() {
 	PacketServer::prio = 50;
 }
 
-PacketServer *Packet47Thunderbolt::gebeInstanz() {
+PacketServer *Packet47Thunderbolt::getInstance() {
 	return new Packet47Thunderbolt();
 }
 
-bool Packet47Thunderbolt::registierePacket() {
-	PacketManager::registrierePacket(new Packet47Thunderbolt());
+bool Packet47Thunderbolt::registerPacket() {
+	PacketManager::registerPacket(new Packet47Thunderbolt());
 
 	return true;
 }

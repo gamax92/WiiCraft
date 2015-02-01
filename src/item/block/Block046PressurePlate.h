@@ -37,7 +37,7 @@ namespace std {
 class Block046Druckplatte: public ItemBlock {
 public:
 	Block046Druckplatte();
-	Item *gebeInstanz();
+	Item *getInstance();
 	static bool registiereItem();
 	void zeichne(float x, float y, float z, byte meta);
 	bool istDurchsichtig();

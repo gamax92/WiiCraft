@@ -58,7 +58,7 @@ ErrorMenu::ErrorMenu(string fehlerText) {
 	this->hintergrund->setzeCursorAnzeigen(true);
 
 	this->textFehler = new Text(200, 160, fehlerText);
-	this->textFehler->sichtbarkeit(true);
+	this->textFehler->visible(true);
 
 	this->buttonOk = new Button(254, 220, "Ok");
 	this->buttonOk->setzeBeimKlicken(&ErrorMenu::ok);
@@ -90,8 +90,8 @@ void ErrorMenu::showErrorMenu() {
 #endif
 
 		ErrorMenu::fehlerMenue->hintergrund->setzeKeyboardAnzeigen(false);
-		ErrorMenu::fehlerMenue->textFehler->sichtbarkeit(false);
-		ErrorMenu::fehlerMenue->buttonOk->sichtbarkeit(false);
+		ErrorMenu::fehlerMenue->textFehler->visible(false);
+		ErrorMenu::fehlerMenue->buttonOk->visible(false);
 
 		exit(0);
 	}

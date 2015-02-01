@@ -44,12 +44,12 @@ Packet33MapChunk::Packet33MapChunk() {
 	PacketServer::prio = 50;
 }
 
-PacketServer *Packet33MapChunk::gebeInstanz() {
+PacketServer *Packet33MapChunk::getInstance() {
 	return new Packet33MapChunk();
 }
 
-bool Packet33MapChunk::registierePacket() {
-	PacketManager::registrierePacket(new Packet33MapChunk());
+bool Packet33MapChunk::registerPacket() {
+	PacketManager::registerPacket(new Packet33MapChunk());
 
 	return true;
 }

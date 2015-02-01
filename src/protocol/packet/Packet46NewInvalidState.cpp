@@ -43,12 +43,12 @@ Packet46NewInvalidState::Packet46NewInvalidState() {
 	PacketServer::prio = 50;
 }
 
-PacketServer *Packet46NewInvalidState::gebeInstanz() {
+PacketServer *Packet46NewInvalidState::getInstance() {
 	return new Packet46NewInvalidState();
 }
 
-bool Packet46NewInvalidState::registierePacket() {
-	PacketManager::registrierePacket(new Packet46NewInvalidState());
+bool Packet46NewInvalidState::registerPacket() {
+	PacketManager::registerPacket(new Packet46NewInvalidState());
 
 	return true;
 }

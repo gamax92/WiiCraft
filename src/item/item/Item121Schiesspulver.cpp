@@ -33,7 +33,7 @@
 
 using namespace std;
 
-Item *Item121Schiesspulver::gebeInstanz() {
+Item *Item121Schiesspulver::getInstance() {
 	return new Item121Schiesspulver();
 }
 

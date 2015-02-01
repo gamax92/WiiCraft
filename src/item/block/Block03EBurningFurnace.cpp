@@ -34,7 +34,7 @@
 
 using namespace std;
 
-Item *Block03EBrennenderOfen::gebeInstanz() {
+Item *Block03EBrennenderOfen::getInstance() {
 	return new Block03EBrennenderOfen();
 }
 

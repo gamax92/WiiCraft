@@ -42,12 +42,12 @@ Packet22EntityTeleport::Packet22EntityTeleport() {
 	PacketServer::prio = 50;
 }
 
-PacketServer *Packet22EntityTeleport::gebeInstanz() {
+PacketServer *Packet22EntityTeleport::getInstance() {
 	return new Packet22EntityTeleport();
 }
 
-bool Packet22EntityTeleport::registierePacket() {
-	PacketManager::registrierePacket(new Packet22EntityTeleport());
+bool Packet22EntityTeleport::registerPacket() {
+	PacketManager::registerPacket(new Packet22EntityTeleport());
 
 	return true;
 }

@@ -34,7 +34,7 @@ namespace std {
 
 class Intro {
 public:
-	static void zeigeIntro();
+	static void showIntro();
 	static void abbrechen();
 private:
 	static bool abbruch;

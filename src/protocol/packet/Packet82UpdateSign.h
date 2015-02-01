@@ -43,8 +43,8 @@ class Packet82UpdateSign: public PacketServer, public PacketClient {
 public:
 	Packet82UpdateSign(int _x, short _y, int _z, string _text1, string _text2,
 			string _text3, string _text4);
-	PacketServer *gebeInstanz();
-	static bool registierePacket();
+	PacketServer *getInstance();
+	static bool registerPacket();
 	void schreibePacketInhalt(DataOutputStream *out);
 	void lesePacketInhalt(DataInputStream *in);
 	void verarbeitePacket();

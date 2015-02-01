@@ -37,7 +37,7 @@ namespace std {
 class Item105Bogen: public Item {
 public:
 	Item105Bogen();
-	Item *gebeInstanz();
+	Item *getInstance();
 	static bool registiereItem();
 private:
 };

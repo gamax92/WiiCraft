@@ -50,12 +50,12 @@ Packet28EntityMetadata::~Packet28EntityMetadata() {
 	delete this->entityMetadata;
 }
 
-PacketServer *Packet28EntityMetadata::gebeInstanz() {
+PacketServer *Packet28EntityMetadata::getInstance() {
 	return new Packet28EntityMetadata();
 }
 
-bool Packet28EntityMetadata::registierePacket() {
-	PacketManager::registrierePacket(new Packet28EntityMetadata());
+bool Packet28EntityMetadata::registerPacket() {
+	PacketManager::registerPacket(new Packet28EntityMetadata());
 
 	return true;
 }

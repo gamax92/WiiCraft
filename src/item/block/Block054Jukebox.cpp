@@ -34,7 +34,7 @@
 
 using namespace std;
 
-Item *Block054Jukebox::gebeInstanz() {
+Item *Block054Jukebox::getInstance() {
 	return new Block054Jukebox();
 }
 

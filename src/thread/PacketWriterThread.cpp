@@ -38,7 +38,7 @@
 
 using namespace std;
 
-PacketeSchreibenThread::PacketeSchreibenThread(Socket *_socket) {
+PacketWriterThread::PacketWriterThread(Socket *_socket) {
 	this->socket = _socket;
 	this->gestoppt = false;
 	this->oStream = new DataOutputStream(this->socket);
@@ -49,14 +49,14 @@ PacketeSchreibenThread::PacketeSchreibenThread(Socket *_socket) {
 	pthread_cond_init(&this->condwait, NULL);
 }
 
-PacketeSchreibenThread::~PacketeSchreibenThread() {
+PacketWriterThread::~PacketWriterThread() {
 	pthread_mutex_destroy(&this->mutexqueue);
 	pthread_mutex_destroy(&this->mutexstop);
 	pthread_mutex_destroy(&this->mutexwait);
 	pthread_cond_destroy(&this->condwait);
 }
 
-int PacketeSchreibenThread::exec() {
+int PacketWriterThread::exec() {
 	bool ok;
 	do {
 		ok = this->gebeNaechstesPacket();
@@ -65,7 +65,7 @@ int PacketeSchreibenThread::exec() {
 	return 0;
 }
 
-void PacketeSchreibenThread::verschickePacket(PacketClient *p) {
+void PacketWriterThread::verschickePacket(PacketClient *p) {
 	if (this->istGestopped()) {
 		return;
 	}
@@ -82,7 +82,7 @@ void PacketeSchreibenThread::verschickePacket(PacketClient *p) {
 	pthread_mutex_unlock(&this->mutexwait);
 }
 
-bool PacketeSchreibenThread::gebeNaechstesPacket() {
+bool PacketWriterThread::gebeNaechstesPacket() {
 	pthread_mutex_lock(&this->mutexqueue);
 	bool leer = this->schreibPuffer.empty();
 	pthread_mutex_unlock(&this->mutexqueue);
@@ -126,7 +126,7 @@ bool PacketeSchreibenThread::gebeNaechstesPacket() {
 	return true;
 }
 
-void PacketeSchreibenThread::stop() {
+void PacketWriterThread::stop() {
 	pthread_mutex_lock(&this->mutexstop);
 	this->gestoppt = true;
 	pthread_mutex_unlock(&this->mutexstop);
@@ -136,7 +136,7 @@ void PacketeSchreibenThread::stop() {
 	pthread_mutex_unlock(&this->mutexwait);
 }
 
-bool PacketeSchreibenThread::istGestopped() {
+bool PacketWriterThread::istGestopped() {
 	pthread_mutex_lock(&this->mutexstop);
 	bool b = this->gestoppt;
 	pthread_mutex_unlock(&this->mutexstop);

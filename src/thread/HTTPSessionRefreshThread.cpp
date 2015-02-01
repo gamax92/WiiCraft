@@ -35,35 +35,35 @@
 
 using namespace std;
 
-HTTPSessionAktualisierenThread *HTTPSessionAktualisierenThread::sessionThread =
+HTTPSessionRefreshThread *HTTPSessionRefreshThread::sessionThread =
 		NULL;
 
-HTTPSessionAktualisierenThread::HTTPSessionAktualisierenThread() {
+HTTPSessionRefreshThread::HTTPSessionRefreshThread() {
 	this->gestoppt = false;
 
 	pthread_mutex_init(&this->mutexStop, NULL);
 }
 
-HTTPSessionAktualisierenThread::~HTTPSessionAktualisierenThread() {
+HTTPSessionRefreshThread::~HTTPSessionRefreshThread() {
 	pthread_mutex_destroy(&this->mutexStop);
 }
 
-void HTTPSessionAktualisierenThread::aktualisiereSessionRegelmaessig() {
-	HTTPSessionAktualisierenThread::stoppeAktualisierung();
+void HTTPSessionRefreshThread::aktualisiereSessionRegelmaessig() {
+	HTTPSessionRefreshThread::stoppeAktualisierung();
 
-	HTTPSessionAktualisierenThread::sessionThread =
-			new HTTPSessionAktualisierenThread();
-	HTTPSessionAktualisierenThread::sessionThread->start();
+	HTTPSessionRefreshThread::sessionThread =
+			new HTTPSessionRefreshThread();
+	HTTPSessionRefreshThread::sessionThread->start();
 }
 
-void HTTPSessionAktualisierenThread::stoppeAktualisierung() {
-	if (HTTPSessionAktualisierenThread::sessionThread != NULL) {
-		HTTPSessionAktualisierenThread::sessionThread->stop();
-		HTTPSessionAktualisierenThread::sessionThread = NULL;
+void HTTPSessionRefreshThread::stoppeAktualisierung() {
+	if (HTTPSessionRefreshThread::sessionThread != NULL) {
+		HTTPSessionRefreshThread::sessionThread->stop();
+		HTTPSessionRefreshThread::sessionThread = NULL;
 	}
 }
 
-int HTTPSessionAktualisierenThread::exec() {
+int HTTPSessionRefreshThread::exec() {
 	bool ok = true;
 	do {
 		if (!this->istGestopped()) {
@@ -87,13 +87,13 @@ int HTTPSessionAktualisierenThread::exec() {
 	return 0;
 }
 
-void HTTPSessionAktualisierenThread::stop() {
+void HTTPSessionRefreshThread::stop() {
 	pthread_mutex_lock(&this->mutexStop);
 	this->gestoppt = true;
 	pthread_mutex_unlock(&this->mutexStop);
 }
 
-bool HTTPSessionAktualisierenThread::istGestopped() {
+bool HTTPSessionRefreshThread::istGestopped() {
 	bool b = false;
 
 	pthread_mutex_lock(&this->mutexStop);

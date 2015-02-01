@@ -42,12 +42,12 @@ Packet08UpdateHealth::Packet08UpdateHealth() {
 	PacketServer::prio = 50;
 }
 
-PacketServer *Packet08UpdateHealth::gebeInstanz() {
+PacketServer *Packet08UpdateHealth::getInstance() {
 	return new Packet08UpdateHealth();
 }
 
-bool Packet08UpdateHealth::registierePacket() {
-	PacketManager::registrierePacket(new Packet08UpdateHealth());
+bool Packet08UpdateHealth::registerPacket() {
+	PacketManager::registerPacket(new Packet08UpdateHealth());
 
 	return true;
 }

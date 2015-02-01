@@ -33,7 +33,7 @@
 
 using namespace std;
 
-Item *Item117DiamantAxt::gebeInstanz() {
+Item *Item117DiamantAxt::getInstance() {
 	return new Item117DiamantAxt();
 }
 

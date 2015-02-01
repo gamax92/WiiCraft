@@ -43,12 +43,12 @@ Packet19EntityPainting::Packet19EntityPainting() {
 	PacketServer::prio = 50;
 }
 
-PacketServer *Packet19EntityPainting::gebeInstanz() {
+PacketServer *Packet19EntityPainting::getInstance() {
 	return new Packet19EntityPainting();
 }
 
-bool Packet19EntityPainting::registierePacket() {
-	PacketManager::registrierePacket(new Packet19EntityPainting());
+bool Packet19EntityPainting::registerPacket() {
+	PacketManager::registerPacket(new Packet19EntityPainting());
 
 	return true;
 }

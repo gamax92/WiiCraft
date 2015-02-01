@@ -184,6 +184,6 @@ void Session::bleibeVerbunden() {
 
 }
 
-string Session::gebeBenutzer() {
+string Session::getUsername() {
 	return Session::caseCorrectUsername;
 }

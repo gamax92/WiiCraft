@@ -42,8 +42,8 @@ using namespace std;
 PasswordField::PasswordField(float _x, float _y) {
 	TextElement::setzeStandardWerte();
 
-	this->setzeX(_x);
-	this->setzeY(_y);
+	this->setX(_x);
+	this->setY(_y);
 	this->berechneAusmasse();
 	time(&this->cursorZeit);
 }
@@ -51,10 +51,10 @@ PasswordField::PasswordField(float _x, float _y) {
 PasswordField::PasswordField(float _x, float _y, string _text) {
 	TextElement::setzeStandardWerte();
 
-	this->setzeX(_x);
-	this->setzeY(_y);
+	this->setX(_x);
+	this->setY(_y);
 	this->berechneAusmasse();
-	this->setzeText(_text);
+	this->setText(_text);
 	time(&this->cursorZeit);
 }
 
@@ -62,12 +62,12 @@ PasswordField::~PasswordField() {
 }
 
 void PasswordField::berechneAusmasse() {
-	this->setzeHoehe(18);
-	this->setzeBreite(104);
+	this->setHeight(18);
+	this->setWidth(104);
 }
 
-void PasswordField::zeichneElement() {
-	if (this->istSichtbar()) {
+void PasswordField::drawElement() {
+	if (this->isVisible()) {
 		GRRLIB_2dMode();
 
 		string _text;
@@ -76,12 +76,12 @@ void PasswordField::zeichneElement() {
 		int textFarbe = 0xffffffff;
 		int textFarbeSchatten = 0x383838ff;
 
-		float _x = this->gebeX();
-		float _y = this->gebeY();
-		float _breite = this->gebeBreite();
-		float _hoehe = this->gebeHoehe();
+		float _x = this->getX();
+		float _y = this->getY();
+		float _breite = this->getWidth();
+		float _hoehe = this->getHeight();
 
-		for (unsigned int i = 0; i < this->gebeText().size(); i++) {
+		for (unsigned int i = 0; i < this->getText().size(); i++) {
 			_text.append("*");
 		}
 
@@ -112,13 +112,13 @@ void PasswordField::zeichneElement() {
 			// Textschatten
 			if (!deaktiviert) {
 				GRRLIB_Printf(_x + 3, _y + 5,
-						GraphicHandler::getGraphicHandler()->gebeBild("font"),
+						GraphicHandler::getGraphicHandler()->getTexture("font"),
 						textFarbeSchatten, 1, _text.data());
 			}
 
 			// Text
 			GRRLIB_Printf(_x + 2, _y + 4,
-					GraphicHandler::getGraphicHandler()->gebeBild("font"),
+					GraphicHandler::getGraphicHandler()->getTexture("font"),
 					textFarbe, 1, _text.data());
 		}
 	}

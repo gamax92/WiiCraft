@@ -40,7 +40,7 @@ public:
 	static long double aktuellePacketSchreibeNr;
 
 	virtual ~Packet();
-	byte gebePacketId();
+	byte getPacketId();
 	int gebePrio();
 	void setzePacketNr(long double aktuellePacketNr);
 	long double gebePacketNr();

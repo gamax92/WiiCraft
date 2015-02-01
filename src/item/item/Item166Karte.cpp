@@ -33,7 +33,7 @@
 
 using namespace std;
 
-Item *Item166Karte::gebeInstanz() {
+Item *Item166Karte::getInstance() {
 	return new Item166Karte();
 }
 

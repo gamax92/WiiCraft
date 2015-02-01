@@ -33,7 +33,7 @@
 
 using namespace std;
 
-Item *Block077Enderportal::gebeInstanz() {
+Item *Block077Enderportal::getInstance() {
 	return new Block077Enderportal();
 }
 

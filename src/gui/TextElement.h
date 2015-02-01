@@ -40,8 +40,8 @@ class TextElement: public GraphicElement {
 public:
 	virtual ~TextElement();
 
-	void setzeText(string _text);
-	string gebeText();
+	void setText(string _text);
+	string getText();
 protected:
 	void setzeStandardWerte();
 	virtual void berechneAusmasse() = 0;

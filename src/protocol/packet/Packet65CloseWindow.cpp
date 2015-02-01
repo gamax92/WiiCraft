@@ -49,12 +49,12 @@ Packet65CloseWindow::Packet65CloseWindow(byte _windowId) {
 	this->windowId = _windowId;
 }
 
-PacketServer *Packet65CloseWindow::gebeInstanz() {
+PacketServer *Packet65CloseWindow::getInstance() {
 	return new Packet65CloseWindow();
 }
 
-bool Packet65CloseWindow::registierePacket() {
-	PacketManager::registrierePacket(new Packet65CloseWindow());
+bool Packet65CloseWindow::registerPacket() {
+	PacketManager::registerPacket(new Packet65CloseWindow());
 
 	return true;
 }

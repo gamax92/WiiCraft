@@ -27,68 +27,58 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#define MAX_ENTFERNUNG 2
-
-#include "ChunkLoading.h"
-
-#include "../world/Chunk.h"
+#include "GraphicHandler.h"
+#include "Texture.h"
+#if defined _WIN32 || defined __CYGWIN__
+#include "../util/WiiFunction.h"
+#else /* __wii__ */
+#include <grrlib.h>
+#endif /* __wii__ */
 
 using namespace std;
 
-ChunkLaden *ChunkLaden::chunkLaden = new ChunkLaden();
+Texture::Texture(float _x, float _y, string _texture, float _rotation,
+		float _scaleX, float _scaleY, unsigned int _color) {
+	this->setzeStandardWerte();
 
-ChunkLaden::ChunkLaden() {
-	pthread_mutex_init(&this->mutexChunk, NULL);
+	this->setX(_x);
+	this->setY(_y);
+	this->setHeight(
+			GraphicHandler::getGraphicHandler()->getTexture(_texture)->h
+					* _scaleY);
+	this->setWidth(
+			GraphicHandler::getGraphicHandler()->getTexture(_texture)->w
+					* _scaleX);
+	this->texture = _texture;
+	this->rotation = _rotation;
+	this->scaleX = _scaleX;
+	this->scaleY = _scaleY;
+	this->color = _color;
 }
 
-ChunkLaden::~ChunkLaden() {
-	pthread_mutex_destroy(&this->mutexChunk);
+Texture::Texture(float _x, float _y, string _texture) {
+	this->setzeStandardWerte();
+
+	this->setX(_x);
+	this->setY(_y);
+	this->setHeight(GraphicHandler::getGraphicHandler()->getTexture(_texture)->h);
+	this->setWidth(GraphicHandler::getGraphicHandler()->getTexture(_texture)->w);
+	this->texture = _texture;
+	this->rotation = 0;
+	this->scaleX = 1;
+	this->scaleY = 1;
+	this->color = 0xffffffff;
 }
 
-void ChunkLaden::aktualisiereChunks(int x, int z) {
-	pthread_mutex_lock(&this->mutexChunk);
-	vector<Chunk *>::iterator it1;
-	for (it1 = this->chunks.begin(); it1 < this->chunks.end(); it1++) {
-		Chunk *_chunk = (*it1);
+Texture::~Texture() {
+}
 
-		if (x + MAX_ENTFERNUNG >= _chunk->gebeX()
-				&& x - MAX_ENTFERNUNG <= _chunk->gebeX()
-				&& z + MAX_ENTFERNUNG >= _chunk->gebeZ()
-				&& z - MAX_ENTFERNUNG <= _chunk->gebeZ()) { // Player Chunk hat sich geaendert
-			if (!_chunk->istGeladen()) { // Chunk laden
-				_chunk->ladeChunk();
-			}
-		} else if (_chunk->istGeladen()) { // Chunk entladen
-			_chunk->speichereChunk();
-		}
+void Texture::drawElement() {
+	if (this->isVisible()) {
+		GRRLIB_2dMode();
+		GRRLIB_DrawImg(this->getX(), this->getY(),
+				GraphicHandler::getGraphicHandler()->getTexture(this->texture),
+				this->rotation, this->scaleX, this->scaleY,
+				this->color);
 	}
-	pthread_mutex_unlock(&this->mutexChunk);
-}
-
-ChunkLaden *ChunkLaden::gebeChunkLaden() {
-	return ChunkLaden::chunkLaden;
-}
-
-void ChunkLaden::fuegeChunkHinzu(Chunk *_chunk) {
-	pthread_mutex_lock(&this->mutexChunk);
-	this->chunks.push_back(_chunk);
-	pthread_mutex_unlock(&this->mutexChunk);
-}
-
-void ChunkLaden::loescheChunk(Chunk *_chunk) {
-	pthread_mutex_lock(&this->mutexChunk);
-	vector<Chunk *>::iterator it;
-	for (it = this->chunks.begin(); it < this->chunks.end(); it++) {
-		Chunk *_chunkV = (*it);
-
-		if (_chunk->gebeX() == _chunkV->gebeX()
-				&& _chunk->gebeZ() == _chunkV->gebeZ()) {
-			this->chunks.erase(it);
-		}
-	}
-	pthread_mutex_unlock(&this->mutexChunk);
-}
-
-short ChunkLaden::gebeMaximaleAnzahlGeladeneChunks() {
-	return (MAX_ENTFERNUNG * 4) + ((MAX_ENTFERNUNG * MAX_ENTFERNUNG) * 4) + 1;
 }

@@ -34,7 +34,7 @@
 
 using namespace std;
 
-Item *Block05BJackOLantern::gebeInstanz() {
+Item *Block05BJackOLantern::getInstance() {
 	return new Block05BJackOLantern();
 }
 

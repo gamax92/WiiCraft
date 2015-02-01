@@ -37,7 +37,7 @@ namespace std {
 class Block035Holztreppe: public ItemBlock {
 public:
 	Block035Holztreppe();
-	Item *gebeInstanz();
+	Item *getInstance();
 	static bool registiereItem();
 	void zeichne(float x, float y, float z, byte meta);
 	bool istDurchsichtig();

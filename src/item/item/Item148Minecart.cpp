@@ -33,7 +33,7 @@
 
 using namespace std;
 
-Item *Item148Minecart::gebeInstanz() {
+Item *Item148Minecart::getInstance() {
 	return new Item148Minecart();
 }
 

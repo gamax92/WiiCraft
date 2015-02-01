@@ -57,12 +57,12 @@ Packet0DPlayerPositionLook::Packet0DPlayerPositionLook(double _x, double _y,
 	this->onGround = _onGround;
 }
 
-PacketServer *Packet0DPlayerPositionLook::gebeInstanz() {
+PacketServer *Packet0DPlayerPositionLook::getInstance() {
 	return new Packet0DPlayerPositionLook();
 }
 
-bool Packet0DPlayerPositionLook::registierePacket() {
-	PacketManager::registrierePacket(new Packet0DPlayerPositionLook());
+bool Packet0DPlayerPositionLook::registerPacket() {
+	PacketManager::registerPacket(new Packet0DPlayerPositionLook());
 
 	return true;
 }

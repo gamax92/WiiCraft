@@ -34,7 +34,7 @@
 
 using namespace std;
 
-Item *Block028Fliegenpilz::gebeInstanz() {
+Item *Block028Fliegenpilz::getInstance() {
 	return new Block028Fliegenpilz();
 }
 

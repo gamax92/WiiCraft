@@ -33,7 +33,7 @@
 
 using namespace std;
 
-Item *Block06EMyzel::gebeInstanz() {
+Item *Block06EMyzel::getInstance() {
 	return new Block06EMyzel();
 }
 

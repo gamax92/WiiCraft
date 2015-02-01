@@ -37,7 +37,7 @@ namespace std {
 class Block06FSeerose: public ItemBlock {
 public:
 	Block06FSeerose();
-	Item *gebeInstanz();
+	Item *getInstance();
 	static bool registiereItem();
 	void zeichne(float x, float y, float z, byte meta);
 	bool istDurchsichtig();

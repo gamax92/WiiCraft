@@ -66,12 +66,12 @@ Packet12Animation::Packet12Animation(int _entityId, byte _animation) {
 	this->animation = _animation;
 }
 
-PacketServer *Packet12Animation::gebeInstanz() {
+PacketServer *Packet12Animation::getInstance() {
 	return new Packet12Animation();
 }
 
-bool Packet12Animation::registierePacket() {
-	PacketManager::registrierePacket(new Packet12Animation());
+bool Packet12Animation::registerPacket() {
+	PacketManager::registerPacket(new Packet12Animation());
 
 	return true;
 }

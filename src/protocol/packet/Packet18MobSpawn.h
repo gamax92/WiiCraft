@@ -40,8 +40,8 @@ class Metadata;
 class Packet18MobSpawn: public PacketServer {
 public:
 	~Packet18MobSpawn();
-	PacketServer *gebeInstanz();
-	static bool registierePacket();
+	PacketServer *getInstance();
+	static bool registerPacket();
 	void lesePacketInhalt(DataInputStream *in);
 	void verarbeitePacket();
 private:

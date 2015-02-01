@@ -37,7 +37,7 @@ namespace std {
 class Block075Braustand: public ItemBlock {
 public:
 	Block075Braustand();
-	Item *gebeInstanz();
+	Item *getInstance();
 	static bool registiereItem();
 	void zeichne(float x, float y, float z, byte meta);
 	bool istDurchsichtig();

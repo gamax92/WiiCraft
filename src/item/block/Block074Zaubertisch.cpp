@@ -33,7 +33,7 @@
 
 using namespace std;
 
-Item *Block074Zaubertisch::gebeInstanz() {
+Item *Block074Zaubertisch::getInstance() {
 	return new Block074Zaubertisch();
 }
 
