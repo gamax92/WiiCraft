@@ -95,8 +95,8 @@ void Background::drawElement() {
 	}
 }
 
-void Background::setzeKeyboardAnzeigen(bool _tastaturAnzeigen) {
-	this->keyboard->visible(_tastaturAnzeigen);
+void Background::setzeKeyboardAnzeigen(bool _keyboardAnzeigen) {
+	this->keyboard->visible(_keyboardAnzeigen);
 }
 
 bool Background::zeigeKeyboard() {

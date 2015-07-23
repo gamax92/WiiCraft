@@ -70,7 +70,7 @@ void PacketC9PlayerListItem::verarbeitePacket() {
 
 #ifdef DEBUG_ON
 	char *buffer = new char[100];
-	sprintf(buffer, "spieler: %s, online: %i, ping: %i",
+	sprintf(buffer, "player: %s, online: %i, ping: %i",
 			this->playerName.data(), this->online, this->ping);
 	Debug::schreibePacketLog("PacketC9PlayerListItem", buffer);
 	delete[] buffer;

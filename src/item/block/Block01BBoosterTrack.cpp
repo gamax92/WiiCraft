@@ -33,27 +33,27 @@
 
 using namespace std;
 
-Item *Block01BBoosterSchiene::getInstance() {
-	return new Block01BBoosterSchiene();
+Item *Block01BBoosterTrack::getInstance() {
+	return new Block01BBoosterTrack();
 }
 
-bool Block01BBoosterSchiene::registiereItem() {
-	ItemManager::registriereItem(new Block01BBoosterSchiene());
+bool Block01BBoosterTrack::registiereItem() {
+	ItemManager::registriereItem(new Block01BBoosterTrack());
 
 	return true;
 }
 
-Block01BBoosterSchiene::Block01BBoosterSchiene() {
+Block01BBoosterTrack::Block01BBoosterTrack() {
 	this->setzeStandardWerte();
 
 	Item::id = 0x01b;
 }
 
-void Block01BBoosterSchiene::zeichne(float x, float y, float z, byte meta) {
+void Block01BBoosterTrack::zeichne(float x, float y, float z, byte meta) {
 	// TODO zeichnen fertig umsetzen
 	ItemBlock::zeichneBlock(x, y, z, 169);
 }
 
-bool Block01BBoosterSchiene::istDurchsichtig() {
+bool Block01BBoosterTrack::istDurchsichtig() {
 	return true;
 }

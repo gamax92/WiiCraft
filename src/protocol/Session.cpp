@@ -67,7 +67,7 @@ void Session::anmelden(string benutzer, string passwort) {
 	 *	response = h->get("login.minecraft.net", 80, get);
 	 *} catch (ExcSocketHTTP &exception) {
 	 *	throw ExcSocketHTTPServerLoginFailed(
-	 *			"Verbindung zu login.minecraft.net nicht moeglich");
+	 *			"Connection zu login.minecraft.net nicht moeglich");
 	 *}
   **
 	 *if (response == "Old version") {
@@ -151,7 +151,7 @@ void Session::tretteServerBei(string serverHash) {
 	 *	response = h->get("session.minecraft.net", 80, get);
 	 *} catch (ExcSocketHTTP &exception) {
 	 *	throw ExcSocketHTTPServerJoinFailed(
-	 *			"Verbindung zu session.minecraft.net nicht moeglich");
+	 *			"Connection zu session.minecraft.net nicht moeglich");
 	 *}
   **
 	 *if (response != "OK") {
@@ -178,7 +178,7 @@ void Session::bleibeVerbunden() {
 	 *	h->get("login.minecraft.net", 80, get);
 	 *} catch (ExcSocketHTTP &exception) {
 	 *	throw ExcSocketHTTPServerRefreshFailed(
-				"Verbindung zu login.minecraft.net nicht moeglich");
+				"Connection zu login.minecraft.net nicht moeglich");
 	}
 	 */
 

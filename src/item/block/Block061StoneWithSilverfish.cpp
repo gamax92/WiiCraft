@@ -33,23 +33,23 @@
 
 using namespace std;
 
-Item *Block061SteinMitSilberfischen::getInstance() {
-	return new Block061SteinMitSilberfischen();
+Item *Block061StoneWithSilverfish::getInstance() {
+	return new Block061StoneWithSilverfish();
 }
 
-bool Block061SteinMitSilberfischen::registiereItem() {
-	ItemManager::registriereItem(new Block061SteinMitSilberfischen());
+bool Block061StoneWithSilverfish::registiereItem() {
+	ItemManager::registriereItem(new Block061StoneWithSilverfish());
 
 	return true;
 }
 
-Block061SteinMitSilberfischen::Block061SteinMitSilberfischen() {
+Block061StoneWithSilverfish::Block061StoneWithSilverfish() {
 	this->setzeStandardWerte();
 
 	Item::id = 0x061;
 }
 
-void Block061SteinMitSilberfischen::zeichne(float x, float y, float z,
+void Block061StoneWithSilverfish::zeichne(float x, float y, float z,
 		byte meta) {
 
 	if (meta == 1) { // Pflasterstein
@@ -61,6 +61,6 @@ void Block061SteinMitSilberfischen::zeichne(float x, float y, float z,
 	}
 }
 
-bool Block061SteinMitSilberfischen::istDurchsichtig() {
+bool Block061StoneWithSilverfish::istDurchsichtig() {
 	return false;
 }

@@ -27,8 +27,8 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef METADATAZEILE_H_
-#define METADATAZEILE_H_
+#ifndef METADATALINE_H_
+#define METADATALINE_H_
 
 #include <string>
 #include "../util/Datentypes.h"
@@ -60,4 +60,4 @@ private:
 };
 
 }
-#endif /* METADATAZEILE_H_ */
+#endif /* METADATALINE_H_ */

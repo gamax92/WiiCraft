@@ -46,7 +46,7 @@ Chunk::Chunk(int _x, int _z) {
 	this->version = 0;
 
 	pthread_mutex_init(&this->mutexKomprimierteDaten, NULL);
-	pthread_mutex_init(&this->mutexBlockAenderungen, NULL);
+	pthread_mutex_init(&this->mutexBlockChangeen, NULL);
 	pthread_mutex_init(&this->mutexGeladen, NULL);
 	pthread_mutex_init(&this->mutexDaten, NULL);
 	pthread_mutex_init(&this->mutexIndex, NULL);
@@ -58,7 +58,7 @@ Chunk::~Chunk() {
 	ChunkLoader::getChunkLoader()->deleteChunk(this);
 
 	pthread_mutex_destroy(&this->mutexKomprimierteDaten);
-	pthread_mutex_destroy(&this->mutexBlockAenderungen);
+	pthread_mutex_destroy(&this->mutexBlockChangeen);
 	pthread_mutex_destroy(&this->mutexGeladen);
 	pthread_mutex_destroy(&this->mutexDaten);
 	pthread_mutex_destroy(&this->mutexIndex);
@@ -89,17 +89,17 @@ bool Chunk::isLoaded() {
 }
 
 void Chunk::ergaenzeKomprimierteDaten(
-		KomprimierteChunkDaten *_komprimierteDaten) {
+		CompressedChunkData *_komprimierteDaten) {
 	pthread_mutex_lock(&this->mutexKomprimierteDaten);
 	this->komprimierteDaten.push_back(_komprimierteDaten);
 	pthread_mutex_unlock(&this->mutexKomprimierteDaten);
 }
 
-void Chunk::ergaenzeBlockAenderung(BlockAenderung *_blockAenderung) {
-	pthread_mutex_lock(&this->mutexBlockAenderungen);
+void Chunk::ergaenzeBlockChange(BlockChange *_blockAenderung) {
+	pthread_mutex_lock(&this->mutexBlockChangeen);
 	this->blockAenderungen.push_front(_blockAenderung);
-	this->blockAenderungen.unique(BlockAenderung::Vergleicher);
-	pthread_mutex_unlock(&this->mutexBlockAenderungen);
+	this->blockAenderungen.unique(BlockChange::Vergleicher);
+	pthread_mutex_unlock(&this->mutexBlockChangeen);
 }
 
 void Chunk::loadChunk() {
@@ -130,7 +130,7 @@ void Chunk::loadChunk() {
 	}
 
 	for (unsigned int i = 0; i < this->komprimierteDaten.size(); i++) {
-		KomprimierteChunkDaten *k = this->komprimierteDaten.front();
+		CompressedChunkData *k = this->komprimierteDaten.front();
 		this->komprimierteDaten.erase(this->komprimierteDaten.begin());
 
 		pthread_mutex_lock(&this->mutexDaten);
@@ -142,13 +142,13 @@ void Chunk::loadChunk() {
 	pthread_mutex_unlock(&this->mutexKomprimierteDaten);
 
 	// wartende Changes verarbeiten
-	pthread_mutex_lock(&this->mutexBlockAenderungen);
+	pthread_mutex_lock(&this->mutexBlockChangeen);
 	if (this->blockAenderungen.size() > 0) {
 		datenGefunden = true;
 	}
 
 	while (this->blockAenderungen.size() > 0) {
-		BlockAenderung *b = this->blockAenderungen.front();
+		BlockChange *b = this->blockAenderungen.front();
 		this->blockAenderungen.pop_front();
 
 		pthread_mutex_lock(&this->mutexDaten);
@@ -157,7 +157,7 @@ void Chunk::loadChunk() {
 		pthread_mutex_unlock(&this->mutexDaten);
 		delete b;
 	}
-	pthread_mutex_unlock(&this->mutexBlockAenderungen);
+	pthread_mutex_unlock(&this->mutexBlockChangeen);
 
 	if (datenGefunden) {
 		this->version++;

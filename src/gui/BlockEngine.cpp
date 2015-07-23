@@ -65,25 +65,25 @@ void BlockEngine::drawElement() {
 }
 
 void BlockEngine::zeichne3DElemente() {
-	Player *spieler = Player::getPlayer();
+	Player *player = Player::getPlayer();
 
-	if (spieler != NULL) {
-		float spielerX = (float) spieler->getX();
-		float spielerY = ((float) spieler->getY()) + 1.62f;
-		float spielerZ = (float) spieler->getZ();
+	if (player != NULL) {
+		float playerX = (float) player->getX();
+		float playerY = ((float) player->getY()) + 1.62f;
+		float playerZ = (float) player->getZ();
 
-		float abstand = spieler->getAbstand() * PI / 180;
-		float winkel = spieler->getWinkel() * PI / 180;
+		float abstand = player->getAbstand() * PI / 180;
+		float winkel = player->getWinkel() * PI / 180;
 
 		float viewX = -cos(abstand) * sin(winkel);
 		float viewY = -sin(abstand);
 		float viewZ = cos(abstand) * cos(winkel);
 
-		GRRLIB_Camera3dSettings(spielerX, spielerY, spielerZ, 0, 1, 0,
-				spielerX + viewX, spielerY + viewY, spielerZ + viewZ);
+		GRRLIB_Camera3dSettings(playerX, playerY, playerZ, 0, 1, 0,
+				playerX + viewX, playerY + viewY, playerZ + viewZ);
 		GRRLIB_3dMode(0.001, 48, 70, 0, 0);
 
-		GrrlibErsatz::GRRLIB_SetTexture(
+		GrrlibReplacement::GRRLIB_SetTexture(
 				GraphicHandler::getGraphicHandler()->getTexture("terrain"), 0);
 
 		World *world = World::getWorld();
@@ -105,11 +105,11 @@ void BlockEngine::setCursorPosition(float x, float y, float angle) {
 		y_zentrum = 0;
 	}
 
-	Player *spieler = Player::getPlayer();
+	Player *player = Player::getPlayer();
 
-	if (spieler != NULL) {
-		float abstand = spieler->getAbstand() + (0.007 * y_zentrum);
-		float winkel = spieler->getWinkel() + (0.007 * x_zentrum);
+	if (player != NULL) {
+		float abstand = player->getAbstand() + (0.007 * y_zentrum);
+		float winkel = player->getWinkel() + (0.007 * x_zentrum);
 
 		if (abstand > 90)
 			abstand = 90;
@@ -120,6 +120,6 @@ void BlockEngine::setCursorPosition(float x, float y, float angle) {
 		if (winkel < -180)
 			winkel += 360;
 
-		spieler->setBlickfeld(winkel, abstand);
+		player->setBlickfeld(winkel, abstand);
 	}
 }

@@ -27,12 +27,12 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef NETZWERKKONFIGURATOR_H_
-#define NETZWERKKONFIGURATOR_H_
+#ifndef NETWORKCONFIGURATOR_H_
+#define NETWORKCONFIGURATOR_H_
 
 namespace std {
 
-class NetzwerkKonfigurator {
+class NetworkConfigurator {
 public:
 	static bool initializing();
 
@@ -43,4 +43,4 @@ private:
 	static bool istInitializing;
 };
 }
-#endif /* NETZWERKKONFIGURATOR_H_ */
+#endif /* NETWORKCONFIGURATOR_H_ */

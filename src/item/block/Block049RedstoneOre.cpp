@@ -33,26 +33,26 @@
 
 using namespace std;
 
-Item *Block049Redstoneerz::getInstance() {
-	return new Block049Redstoneerz();
+Item *Block049RedstoneOre::getInstance() {
+	return new Block049RedstoneOre();
 }
 
-bool Block049Redstoneerz::registiereItem() {
-	ItemManager::registriereItem(new Block049Redstoneerz());
+bool Block049RedstoneOre::registiereItem() {
+	ItemManager::registriereItem(new Block049RedstoneOre());
 
 	return true;
 }
 
-Block049Redstoneerz::Block049Redstoneerz() {
+Block049RedstoneOre::Block049RedstoneOre() {
 	this->setzeStandardWerte();
 
 	Item::id = 0x049;
 }
 
-void Block049Redstoneerz::zeichne(float x, float y, float z, byte meta) {
+void Block049RedstoneOre::zeichne(float x, float y, float z, byte meta) {
 	ItemBlock::zeichneBlock(x, y, z, 51);
 }
 
-bool Block049Redstoneerz::istDurchsichtig() {
+bool Block049RedstoneOre::istDurchsichtig() {
 	return false;
 }

@@ -48,7 +48,7 @@ using namespace std;
 
 bool Socket::connect(const char *host, const u16 port) {
 
-	if (!NetzwerkKonfigurator::initializing()) {
+	if (!NetworkConfigurator::initializing()) {
 		return false;
 	}
 
@@ -102,7 +102,7 @@ bool Socket::disconnect() {
 int Socket::write(const void *buf, int len) {
 	s32 anzahlGeschriebeneByte = net_write(this->socket, buf, len);
 
-	// Verbindung verloren
+	// Connection verloren
 	if (anzahlGeschriebeneByte <= 0) {
 		throw ExcSocketConnectionLost(errno, "write", len);
 	}
@@ -127,7 +127,7 @@ int Socket::sendAll(const char* const buf, const int size) {
 int Socket::read(void *buf, int len) {
 	s32 anzahlGeleseneByte = net_read(this->socket, buf, len);
 
-	// Verbindung verloren
+	// Connection verloren
 	if (anzahlGeleseneByte <= 0) {
 		throw ExcSocketConnectionLost(errno, "read", len);
 	}

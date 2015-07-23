@@ -33,27 +33,27 @@
 
 using namespace std;
 
-Item *Block009StehendesWasser::getInstance() {
-	return new Block009StehendesWasser();
+Item *Block009StillWater::getInstance() {
+	return new Block009StillWater();
 }
 
-bool Block009StehendesWasser::registiereItem() {
-	ItemManager::registriereItem(new Block009StehendesWasser());
+bool Block009StillWater::registiereItem() {
+	ItemManager::registriereItem(new Block009StillWater());
 
 	return true;
 }
 
-Block009StehendesWasser::Block009StehendesWasser() {
+Block009StillWater::Block009StillWater() {
 	this->setzeStandardWerte();
 
 	Item::id = 0x009;
 }
 
-void Block009StehendesWasser::zeichne(float x, float y, float z, byte meta) {
+void Block009StillWater::zeichne(float x, float y, float z, byte meta) {
 	// TODO zeichnen fertig umsetzen
 	ItemBlock::zeichneBlock(x, y, z, 169);
 }
 
-bool Block009StehendesWasser::istDurchsichtig() {
+bool Block009StillWater::istDurchsichtig() {
 	return true;
 }

@@ -4,11 +4,11 @@ Visit http://www.devkitpro.org
 */
 
 //---------------------------------------------------------------------------------
-#ifndef _bildMenueHintergrund_h_
-#define _bildMenueHintergrund_h_
+#ifndef _pictureMenueBackground_h_
+#define _pictureMenueBackground_h_
 //---------------------------------------------------------------------------------
-extern const unsigned char bildMenueHintergrund[];
-extern const int bildMenueHintergrund_size;
+extern const unsigned char pictureMenueBackground[];
+extern const int pictureMenueBackground_size;
 //---------------------------------------------------------------------------------
-#endif //_bildMenueHintergrund_h_
+#endif //_pictureMenueBackground_h_
 //---------------------------------------------------------------------------------

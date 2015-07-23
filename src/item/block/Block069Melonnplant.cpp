@@ -33,27 +33,27 @@
 
 using namespace std;
 
-Item *Block069Melonenpflanze::getInstance() {
-	return new Block069Melonenpflanze();
+Item *Block069Melonnplant::getInstance() {
+	return new Block069Melonnplant();
 }
 
-bool Block069Melonenpflanze::registiereItem() {
-	ItemManager::registriereItem(new Block069Melonenpflanze());
+bool Block069Melonnplant::registiereItem() {
+	ItemManager::registriereItem(new Block069Melonnplant());
 
 	return true;
 }
 
-Block069Melonenpflanze::Block069Melonenpflanze() {
+Block069Melonnplant::Block069Melonnplant() {
 	this->setzeStandardWerte();
 
 	Item::id = 0x069;
 }
 
-void Block069Melonenpflanze::zeichne(float x, float y, float z, byte meta) {
+void Block069Melonnplant::zeichne(float x, float y, float z, byte meta) {
 	// TODO zeichnen fertig umsetzen
 	ItemBlock::zeichneBlock(x, y, z, 169);
 }
 
-bool Block069Melonenpflanze::istDurchsichtig() {
+bool Block069Melonnplant::istDurchsichtig() {
 	return true;
 }

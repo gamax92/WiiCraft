@@ -33,27 +33,27 @@
 
 using namespace std;
 
-Item *Block066Glasscheibe::getInstance() {
-	return new Block066Glasscheibe();
+Item *Block066GlassPane::getInstance() {
+	return new Block066GlassPane();
 }
 
-bool Block066Glasscheibe::registiereItem() {
-	ItemManager::registriereItem(new Block066Glasscheibe());
+bool Block066GlassPane::registiereItem() {
+	ItemManager::registriereItem(new Block066GlassPane());
 
 	return true;
 }
 
-Block066Glasscheibe::Block066Glasscheibe() {
+Block066GlassPane::Block066GlassPane() {
 	this->setzeStandardWerte();
 
 	Item::id = 0x066;
 }
 
-void Block066Glasscheibe::zeichne(float x, float y, float z, byte meta) {
+void Block066GlassPane::zeichne(float x, float y, float z, byte meta) {
 	// TODO zeichnen fertig umsetzen
 	ItemBlock::zeichneBlock(x, y, z, 169);
 }
 
-bool Block066Glasscheibe::istDurchsichtig() {
+bool Block066GlassPane::istDurchsichtig() {
 	return true;
 }

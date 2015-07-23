@@ -27,8 +27,8 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef WELT_H_
-#define WELT_H_
+#ifndef WORLD_H_
+#define WORLD_H_
 
 #include <map>
 #include <string>
@@ -43,8 +43,8 @@ namespace std {
 
 class Chunk;
 class ChunkCacheManager;
-class KomprimierteChunkDaten;
-class BlockAenderung;
+class CompressedChunkData;
+class BlockChange;
 
 class World {
 public:
@@ -56,9 +56,9 @@ public:
 	void initializeChunk(int x, int z);
 	void loescheChunk(int x, int z);
 	void ergaenzeKomprimierteDaten(int chunkX, int chunkZ,
-			KomprimierteChunkDaten *komprimierteDaten);
-	void ergaenzeBlockAenderung(int chunkX, int chunkZ,
-			BlockAenderung *blockAenderung);
+			CompressedChunkData *komprimierteDaten);
+	void ergaenzeBlockChange(int chunkX, int chunkZ,
+			BlockChange *blockAenderung);
 	void setTime(short _uhrzeit);
 	void setzeKompassPosition(int _x, int _y, int _z);
 	void setzeServerModus(byte _serverModus);
@@ -91,7 +91,7 @@ private:
 	pthread_mutex_t mutexChunks;
 	pthread_mutex_t mutexLoadedChunks;
 	pthread_mutex_t mutexTime;
-	pthread_mutex_t mutexWelthoehe;
+	pthread_mutex_t mutexWorldhoehe;
 
 	struct KompassPosition {
 		int x;
@@ -106,4 +106,4 @@ private:
 };
 
 }
-#endif /* WELT_H_ */
+#endif /* WORLD_H_ */

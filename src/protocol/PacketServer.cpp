@@ -68,7 +68,7 @@ bool PacketServer::lesePacket(DataInputStream *in) {
 	p->setzePacketNr(Packet::aktuellePacketLeseNr);
 	Packet::aktuellePacketLeseNr++;
 
-	Verbindung::zuVerarbeitendenPacketenHinzufuegen(p);
+	Connection::zuVerarbeitendenPacketenHinzufuegen(p);
 
 	PacketServer::letztePacketId = byte;
 

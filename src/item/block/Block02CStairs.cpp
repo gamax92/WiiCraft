@@ -33,27 +33,27 @@
 
 using namespace std;
 
-Item *Block02CStufe::getInstance() {
-	return new Block02CStufe();
+Item *Block02CStairs::getInstance() {
+	return new Block02CStairs();
 }
 
-bool Block02CStufe::registiereItem() {
-	ItemManager::registriereItem(new Block02CStufe());
+bool Block02CStairs::registiereItem() {
+	ItemManager::registriereItem(new Block02CStairs());
 
 	return true;
 }
 
-Block02CStufe::Block02CStufe() {
+Block02CStairs::Block02CStairs() {
 	this->setzeStandardWerte();
 
 	Item::id = 0x02c;
 }
 
-void Block02CStufe::zeichne(float x, float y, float z, byte meta) {
+void Block02CStairs::zeichne(float x, float y, float z, byte meta) {
 	// TODO zeichnen fertig umsetzen
 	ItemBlock::zeichneBlock(x, y, z, 169);
 }
 
-bool Block02CStufe::istDurchsichtig() {
+bool Block02CStairs::istDurchsichtig() {
 	return false;
 }

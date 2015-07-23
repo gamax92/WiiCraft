@@ -34,9 +34,9 @@
 
 namespace std {
 
-class Block00AFliessendeLava: public ItemBlock {
+class Block00AFlowingLava: public ItemBlock {
 public:
-	Block00AFliessendeLava();
+	Block00AFlowingLava();
 	Item *getInstance();
 	static bool registiereItem();
 	void zeichne(float x, float y, float z, byte meta);

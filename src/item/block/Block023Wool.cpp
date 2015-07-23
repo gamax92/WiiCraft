@@ -33,23 +33,23 @@
 
 using namespace std;
 
-Item *Block023Wolle::getInstance() {
-	return new Block023Wolle();
+Item *Block023Wool::getInstance() {
+	return new Block023Wool();
 }
 
-bool Block023Wolle::registiereItem() {
-	ItemManager::registriereItem(new Block023Wolle());
+bool Block023Wool::registiereItem() {
+	ItemManager::registriereItem(new Block023Wool());
 
 	return true;
 }
 
-Block023Wolle::Block023Wolle() {
+Block023Wool::Block023Wool() {
 	this->setzeStandardWerte();
 
 	Item::id = 0x023;
 }
 
-void Block023Wolle::zeichne(float x, float y, float z, byte meta) {
+void Block023Wool::zeichne(float x, float y, float z, byte meta) {
 	if (meta == 1) { // Orange
 		ItemBlock::zeichneBlock(x, y, z, 210);
 	} else if (meta == 2) { // Magenta
@@ -85,6 +85,6 @@ void Block023Wolle::zeichne(float x, float y, float z, byte meta) {
 	}
 }
 
-bool Block023Wolle::istDurchsichtig() {
+bool Block023Wool::istDurchsichtig() {
 	return false;
 }

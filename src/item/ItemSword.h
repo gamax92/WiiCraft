@@ -27,8 +27,8 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef ITEMSCHWERT_H_
-#define ITEMSCHWERT_H_
+#ifndef ITEMSWORD_H_
+#define ITEMSWORD_H_
 
 #include "ItemTools.h"
 
@@ -38,4 +38,4 @@ class ItemSword: public ItemTools {
 };
 
 }
-#endif /* ITEMSCHWERT_H_ */
+#endif /* ITEMSWORD_H_ */

@@ -33,27 +33,27 @@
 
 using namespace std;
 
-Item *Block032Fackel::getInstance() {
-	return new Block032Fackel();
+Item *Block032Torch::getInstance() {
+	return new Block032Torch();
 }
 
-bool Block032Fackel::registiereItem() {
-	ItemManager::registriereItem(new Block032Fackel());
+bool Block032Torch::registiereItem() {
+	ItemManager::registriereItem(new Block032Torch());
 
 	return true;
 }
 
-Block032Fackel::Block032Fackel() {
+Block032Torch::Block032Torch() {
 	this->setzeStandardWerte();
 
 	Item::id = 0x032;
 }
 
-void Block032Fackel::zeichne(float x, float y, float z, byte meta) {
+void Block032Torch::zeichne(float x, float y, float z, byte meta) {
 	// TODO zeichnen fertig umsetzen
 	ItemBlock::zeichneBlock(x, y, z, 169);
 }
 
-bool Block032Fackel::istDurchsichtig() {
+bool Block032Torch::istDurchsichtig() {
 	return true;
 }

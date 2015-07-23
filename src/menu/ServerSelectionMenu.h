@@ -27,8 +27,8 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef SERVERAUSWAHLMENUE_H_
-#define SERVERAUSWAHLMENUE_H_
+#ifndef SERVERSELECTIONMENU_H_
+#define SERVERSELECTIONMENU_H_
 
 #if defined _WIN32 || defined __CYGWIN__
 #include <pthread.h>
@@ -43,20 +43,20 @@ class Text;
 class TextField;
 class Button;
 
-class ServerAuswahlMenue {
+class ServerSelectionMenu {
 public:
 	static void initialize();
 	static void deinitialize();
-	static void zeigeServerAuswahlMenue();
+	static void zeigeServerSelectionMenu();
 	static void betreten();
 	static void auswaehlenServer();
 	static void auswaehlenPort();
 private:
-	static ServerAuswahlMenue *serverAuswahlMenue;
-	ServerAuswahlMenue();
-	~ServerAuswahlMenue();
+	static ServerSelectionMenu *serverAuswahlMenue;
+	ServerSelectionMenu();
+	~ServerSelectionMenu();
 
-	Background *hintergrund;
+	Background *background;
 	Text *textServer;
 	Text *textPort;
 	Text *textFehler;
@@ -70,4 +70,4 @@ private:
 };
 
 }
-#endif /* SERVERAUSWAHLMENUE_H_ */
+#endif /* SERVERSELECTIONMENU_H_ */

@@ -33,26 +33,26 @@
 
 using namespace std;
 
-Item *Block014Glas::getInstance() {
-	return new Block014Glas();
+Item *Block014Glass::getInstance() {
+	return new Block014Glass();
 }
 
-bool Block014Glas::registiereItem() {
-	ItemManager::registriereItem(new Block014Glas());
+bool Block014Glass::registiereItem() {
+	ItemManager::registriereItem(new Block014Glass());
 
 	return true;
 }
 
-Block014Glas::Block014Glas() {
+Block014Glass::Block014Glass() {
 	this->setzeStandardWerte();
 
 	Item::id = 0x014;
 }
 
-void Block014Glas::zeichne(float x, float y, float z, byte meta) {
+void Block014Glass::zeichne(float x, float y, float z, byte meta) {
 	ItemBlock::zeichneBlock(x, y, z, 49);
 }
 
-bool Block014Glas::istDurchsichtig() {
+bool Block014Glass::istDurchsichtig() {
 	return true;
 }

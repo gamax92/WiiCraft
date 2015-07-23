@@ -27,8 +27,8 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef TASTATUR_H_
-#define TASTATUR_H_
+#ifndef KEYBOARD_H_
+#define KEYBOARD_H_
 
 #include "ContainerElement.h"
 
@@ -142,7 +142,7 @@ public:
 	static void drueckeLeertaste();
 private:
 	static bool initialisiert;
-	static Keyboard* tastatur;
+	static Keyboard* keyboard;
 
 	Keyboard();bool kleinSchreiben;
 
@@ -247,4 +247,4 @@ private:
 };
 
 }
-#endif /* TASTATUR_H_ */
+#endif /* KEYBOARD_H_ */

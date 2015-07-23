@@ -33,28 +33,28 @@
 
 using namespace std;
 
-Item *Block048HoelzerneDruckplatte::getInstance() {
-	return new Block048HoelzerneDruckplatte();
+Item *Block048WoodenPressurePlate::getInstance() {
+	return new Block048WoodenPressurePlate();
 }
 
-bool Block048HoelzerneDruckplatte::registiereItem() {
-	ItemManager::registriereItem(new Block048HoelzerneDruckplatte());
+bool Block048WoodenPressurePlate::registiereItem() {
+	ItemManager::registriereItem(new Block048WoodenPressurePlate());
 
 	return true;
 }
 
-Block048HoelzerneDruckplatte::Block048HoelzerneDruckplatte() {
+Block048WoodenPressurePlate::Block048WoodenPressurePlate() {
 	this->setzeStandardWerte();
 
 	Item::id = 0x048;
 }
 
-void Block048HoelzerneDruckplatte::zeichne(float x, float y, float z,
+void Block048WoodenPressurePlate::zeichne(float x, float y, float z,
 		byte meta) {
 	// TODO zeichnen fertig umsetzen
 	ItemBlock::zeichneBlock(x, y, z, 169);
 }
 
-bool Block048HoelzerneDruckplatte::istDurchsichtig() {
+bool Block048WoodenPressurePlate::istDurchsichtig() {
 	return true;
 }

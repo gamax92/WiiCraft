@@ -27,16 +27,16 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef BLOCK001STEIN_H_
-#define BLOCK001STEIN_H_
+#ifndef BLOCK001STONE_H_
+#define BLOCK001STONE_H_
 
 #include "../ItemBlock.h"
 
 namespace std {
 
-class Block001Stein: public ItemBlock {
+class Block001Stone: public ItemBlock {
 public:
-	Block001Stein();
+	Block001Stone();
 	Item *getInstance();
 	static bool registiereItem();
 	void zeichne(float x, float y, float z, byte meta);
@@ -45,4 +45,4 @@ private:
 };
 
 }
-#endif /* BLOCK001STEIN_H_ */
+#endif /* BLOCK001STONE_H_ */

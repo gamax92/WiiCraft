@@ -36,17 +36,17 @@
 using namespace std;
 
 bool Keyboard::initialisiert = false;
-Keyboard *Keyboard::tastatur;
+Keyboard *Keyboard::keyboard;
 
 Keyboard::~Keyboard() {
 }
 
 Keyboard *Keyboard::getKeyboard() {
 	if (!Keyboard::initialisiert) {
-		Keyboard::tastatur = new Keyboard();
+		Keyboard::keyboard = new Keyboard();
 		Keyboard::initialisiert = true;
 	}
-	return Keyboard::tastatur;
+	return Keyboard::keyboard;
 }
 
 Keyboard::Keyboard() {

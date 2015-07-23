@@ -34,9 +34,9 @@
 
 namespace std {
 
-class Block024VerschobenerBlock: public ItemBlock {
+class Block024MovedBlock: public ItemBlock {
 public:
-	Block024VerschobenerBlock();
+	Block024MovedBlock();
 	Item *getInstance();
 	static bool registiereItem();
 	void zeichne(float x, float y, float z, byte meta);

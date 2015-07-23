@@ -34,9 +34,9 @@
 
 namespace std {
 
-class Block01ESpinnennetz: public ItemBlock {
+class Block01ECobweb: public ItemBlock {
 public:
-	Block01ESpinnennetz();
+	Block01ECobweb();
 	Item *getInstance();
 	static bool registiereItem();
 	void zeichne(float x, float y, float z, byte meta);

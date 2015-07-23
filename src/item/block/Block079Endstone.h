@@ -34,9 +34,9 @@
 
 namespace std {
 
-class Block079Endstein: public ItemBlock {
+class Block079Endstone: public ItemBlock {
 public:
-	Block079Endstein();
+	Block079Endstone();
 	Item *getInstance();
 	static bool registiereItem();
 	void zeichne(float x, float y, float z, byte meta);

@@ -27,8 +27,8 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef ANZEIGE3D_H_
-#define ANZEIGE3D_H_
+#ifndef DISPLAY3D_H_
+#define DISPLAY3D_H_
 
 #if defined _WIN32 || defined __CYGWIN__
 #include <pthread.h>
@@ -41,19 +41,19 @@ namespace std {
 class BlockEngine;
 class Background;
 
-class Anzeige3D {
+class Display3D {
 public:
 	static void initialize();
 	static void deinitialize();
-	static void zeigeAnzeige3D();
+	static void zeigeDisplay3D();
 private:
-	static Anzeige3D *anzeige3D;
-	Anzeige3D();
-	~Anzeige3D();
+	static Display3D *anzeige3D;
+	Display3D();
+	~Display3D();
 
 	BlockEngine *blockEngine;
-	Background *hintergrund;
+	Background *background;
 };
 
 }
-#endif /* ANZEIGE3D_H_ */
+#endif /* DISPLAY3D_H_ */

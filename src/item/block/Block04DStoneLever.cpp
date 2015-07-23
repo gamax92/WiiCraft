@@ -33,27 +33,27 @@
 
 using namespace std;
 
-Item *Block04DSteinschalter::getInstance() {
-	return new Block04DSteinschalter();
+Item *Block04DStoneLever::getInstance() {
+	return new Block04DStoneLever();
 }
 
-bool Block04DSteinschalter::registiereItem() {
-	ItemManager::registriereItem(new Block04DSteinschalter());
+bool Block04DStoneLever::registiereItem() {
+	ItemManager::registriereItem(new Block04DStoneLever());
 
 	return true;
 }
 
-Block04DSteinschalter::Block04DSteinschalter() {
+Block04DStoneLever::Block04DStoneLever() {
 	this->setzeStandardWerte();
 
 	Item::id = 0x04d;
 }
 
-void Block04DSteinschalter::zeichne(float x, float y, float z, byte meta) {
+void Block04DStoneLever::zeichne(float x, float y, float z, byte meta) {
 	// TODO zeichnen fertig umsetzen
 	ItemBlock::zeichneBlock(x, y, z, 169);
 }
 
-bool Block04DSteinschalter::istDurchsichtig() {
+bool Block04DStoneLever::istDurchsichtig() {
 	return true;
 }

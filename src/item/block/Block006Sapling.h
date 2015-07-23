@@ -27,16 +27,16 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef BLOCK006SETZLING_H_
-#define BLOCK006SETZLING_H_
+#ifndef BLOCK006SAPLING_H_
+#define BLOCK006SAPLING_H_
 
 #include "../ItemBlock.h"
 
 namespace std {
 
-class Block006Setzling: public ItemBlock {
+class Block006Sapling: public ItemBlock {
 public:
-	Block006Setzling();
+	Block006Sapling();
 	Item *getInstance();
 	static bool registiereItem();
 	void zeichne(float x, float y, float z, byte meta);
@@ -45,4 +45,4 @@ private:
 };
 
 }
-#endif /* BLOCK006SETZLING_H_ */
+#endif /* BLOCK006SAPLING_H_ */

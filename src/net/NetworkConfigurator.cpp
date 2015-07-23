@@ -36,28 +36,28 @@
 
 using namespace std;
 
-char NetzwerkKonfigurator::localip[16];
-char NetzwerkKonfigurator::netmask[16];
-char NetzwerkKonfigurator::gateway[16];
-bool NetzwerkKonfigurator::istInitializing;
+char NetworkConfigurator::localip[16];
+char NetworkConfigurator::netmask[16];
+char NetworkConfigurator::gateway[16];
+bool NetworkConfigurator::istInitializing;
 
-bool NetzwerkKonfigurator::initializing() {
+bool NetworkConfigurator::initializing() {
 	signed int ret;
 
-	if (NetzwerkKonfigurator::istInitializing) {
+	if (NetworkConfigurator::istInitializing) {
 		return true;
 	}
 
 #if defined __wii__
-	ret = if_config(NetzwerkKonfigurator::localip, NetzwerkKonfigurator::netmask, NetzwerkKonfigurator::gateway, true);
+	ret = if_config(NetworkConfigurator::localip, NetworkConfigurator::netmask, NetworkConfigurator::gateway, true);
 #else
 	ret = 0;
 #endif
 	if (ret >= 0) {
-		NetzwerkKonfigurator::istInitializing = true;
+		NetworkConfigurator::istInitializing = true;
 		return true;
 	} else {
-		NetzwerkKonfigurator::istInitializing = false;
+		NetworkConfigurator::istInitializing = false;
 		return false;
 	}
 }

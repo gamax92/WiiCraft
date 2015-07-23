@@ -33,26 +33,26 @@
 
 using namespace std;
 
-Item *Block010Kohle::getInstance() {
-	return new Block010Kohle();
+Item *Block010Coal::getInstance() {
+	return new Block010Coal();
 }
 
-bool Block010Kohle::registiereItem() {
-	ItemManager::registriereItem(new Block010Kohle());
+bool Block010Coal::registiereItem() {
+	ItemManager::registriereItem(new Block010Coal());
 
 	return true;
 }
 
-Block010Kohle::Block010Kohle() {
+Block010Coal::Block010Coal() {
 	this->setzeStandardWerte();
 
 	Item::id = 0x010;
 }
 
-void Block010Kohle::zeichne(float x, float y, float z, byte meta) {
+void Block010Coal::zeichne(float x, float y, float z, byte meta) {
 	ItemBlock::zeichneBlock(x, y, z, 34);
 }
 
-bool Block010Kohle::istDurchsichtig() {
+bool Block010Coal::istDurchsichtig() {
 	return false;
 }

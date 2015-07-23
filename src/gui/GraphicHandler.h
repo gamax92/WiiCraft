@@ -27,8 +27,8 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef GRAFIKHANDLER_H_
-#define GRAFIKHANDLER_H_
+#ifndef GRAPHICHANDLER_H_
+#define GRAPHICHANDLER_H_
 
 #include <map>
 #include <string>
@@ -85,9 +85,9 @@ private:
 
 	bool isStopped();
 	GraphicHandler();
-	void ladeBilder();
+	void ladePictureer();
 	void loadTextureMatrix();
 };
 
 }
-#endif /* GRAFIKHANDLER_H_ */
+#endif /* GRAPHICHANDLER_H_ */

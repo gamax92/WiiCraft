@@ -4,11 +4,11 @@ Visit http://www.devkitpro.org
 */
 
 //---------------------------------------------------------------------------------
-#ifndef _bild_button_h_
-#define _bild_button_h_
+#ifndef _picture_button_h_
+#define _picture_button_h_
 //---------------------------------------------------------------------------------
-extern const unsigned char bild_button[];
-extern const int bild_button_size;
+extern const unsigned char picture_button[];
+extern const int picture_button_size;
 //---------------------------------------------------------------------------------
-#endif //_bild_button_h_
+#endif //_picture_button_h_
 //---------------------------------------------------------------------------------

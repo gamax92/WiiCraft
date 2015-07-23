@@ -33,26 +33,26 @@
 
 using namespace std;
 
-Item *Block019NotenBlock::getInstance() {
-	return new Block019NotenBlock();
+Item *Block019NoteBlock::getInstance() {
+	return new Block019NoteBlock();
 }
 
-bool Block019NotenBlock::registiereItem() {
-	ItemManager::registriereItem(new Block019NotenBlock());
+bool Block019NoteBlock::registiereItem() {
+	ItemManager::registriereItem(new Block019NoteBlock());
 
 	return true;
 }
 
-Block019NotenBlock::Block019NotenBlock() {
+Block019NoteBlock::Block019NoteBlock() {
 	this->setzeStandardWerte();
 
 	Item::id = 0x019;
 }
 
-void Block019NotenBlock::zeichne(float x, float y, float z, byte meta) {
+void Block019NoteBlock::zeichne(float x, float y, float z, byte meta) {
 	ItemBlock::zeichneBlock(x, y, z, 74);
 }
 
-bool Block019NotenBlock::istDurchsichtig() {
+bool Block019NoteBlock::istDurchsichtig() {
 	return false;
 }

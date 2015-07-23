@@ -34,23 +34,23 @@
 
 using namespace std;
 
-Item *Block018Sandstein::getInstance() {
-	return new Block018Sandstein();
+Item *Block018Sandstone::getInstance() {
+	return new Block018Sandstone();
 }
 
-bool Block018Sandstein::registiereItem() {
-	ItemManager::registriereItem(new Block018Sandstein());
+bool Block018Sandstone::registiereItem() {
+	ItemManager::registriereItem(new Block018Sandstone());
 
 	return true;
 }
 
-Block018Sandstein::Block018Sandstein() {
+Block018Sandstone::Block018Sandstone() {
 	this->setzeStandardWerte();
 
 	Item::id = 0x018;
 }
 
-void Block018Sandstein::zeichne(float x, float y, float z, byte meta) {
+void Block018Sandstone::zeichne(float x, float y, float z, byte meta) {
 	float x1 = x + 1.0f;
 	float y1 = y + 1.0f;
 	float z1 = z + 1.0f;
@@ -67,34 +67,34 @@ void Block018Sandstein::zeichne(float x, float y, float z, byte meta) {
 	// sued
 	guVector sued[4] = { { x, y1, z1 }, { x1, y1, z1 }, { x1, y, z1 }, { x, y,
 			z1 } };
-	GrrlibErsatz::GRRLIB_DrawImgQuadTile(sued, textur);
+	GrrlibReplacement::GRRLIB_DrawImgQuadTile(sued, textur);
 
 	// nord
 	guVector nord[4] =
 			{ { x1, y1, z }, { x, y1, z }, { x, y, z }, { x1, y, z } };
-	GrrlibErsatz::GRRLIB_DrawImgQuadTile(nord, textur);
+	GrrlibReplacement::GRRLIB_DrawImgQuadTile(nord, textur);
 
 	// ost
 	guVector ost[4] = { { x1, y1, z1 }, { x1, y1, z }, { x1, y, z },
 			{ x1, y, z1 } };
-	GrrlibErsatz::GRRLIB_DrawImgQuadTile(ost, textur);
+	GrrlibReplacement::GRRLIB_DrawImgQuadTile(ost, textur);
 
 	// west
 	guVector west[4] =
 			{ { x, y1, z }, { x, y1, z1 }, { x, y, z1 }, { x, y, z } };
-	GrrlibErsatz::GRRLIB_DrawImgQuadTile(west, textur);
+	GrrlibReplacement::GRRLIB_DrawImgQuadTile(west, textur);
 
 	// oben
 	guVector oben[4] = { { x, y1, z }, { x1, y1, z }, { x1, y1, z1 }, { x, y1,
 			z1 } };
-	GrrlibErsatz::GRRLIB_DrawImgQuadTile(oben, 176);
+	GrrlibReplacement::GRRLIB_DrawImgQuadTile(oben, 176);
 
 	// unten
 	guVector unten[4] =
 			{ { x1, y, z }, { x, y, z }, { x, y, z1 }, { x1, y, z1 } };
-	GrrlibErsatz::GRRLIB_DrawImgQuadTile(unten, 208);
+	GrrlibReplacement::GRRLIB_DrawImgQuadTile(unten, 208);
 }
 
-bool Block018Sandstein::istDurchsichtig() {
+bool Block018Sandstone::istDurchsichtig() {
 	return false;
 }

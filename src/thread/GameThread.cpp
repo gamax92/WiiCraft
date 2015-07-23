@@ -55,12 +55,12 @@ int GameThread::exec() {
 	UpdateMenu::showUpdateMenu();
 
 	LoginMenu::initialize();
-	LoginMenu::zeigeAnmeldungMenue();
+	LoginMenu::zeigeLoginMenu();
 
 	UpdateMenu::deinitialize();
 
-	ServerAuswahlMenue::initialize();
-	ServerAuswahlMenue::zeigeServerAuswahlMenue();
+	ServerSelectionMenu::initialize();
+	ServerSelectionMenu::zeigeServerSelectionMenu();
 	LoginMenu::deinitialize();
 
 	// Chunks im vorraus laden
@@ -79,11 +79,11 @@ int GameThread::exec() {
 		usleep(50);
 	}
 
-	Anzeige3D::initialize();
-	Anzeige3D::zeigeAnzeige3D();
-	ServerAuswahlMenue::deinitialize();
+	Display3D::initialize();
+	Display3D::zeigeDisplay3D();
+	ServerSelectionMenu::deinitialize();
 
-	Verbindung::warte();
+	Connection::warte();
 
 	return 0;
 }

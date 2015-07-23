@@ -83,24 +83,24 @@ void Button::drawElement() {
 		float _y = this->getY();
 
 		if (_text.size() > 0) {
-			// Bild fuer Buttonanfang
+			// Picture fuer Buttonanfang
 			GRRLIB_DrawTile(_x, _y,
-					GraphicHandler::getGraphicHandler()->getTexture("bild_button"),
+					GraphicHandler::getGraphicHandler()->getTexture("picture_button"),
 					0, 1, 1, 0xffffffff, index);
 
-			// dynamische Anzahl an Bilder fuer Buttonmitte
+			// dynamische Anzahl an Pictureer fuer Buttonmitte
 			for (int i = 0; i < (int) ceil((float) _text.size() / 2.0); i++) {
 				GRRLIB_DrawTile(
 						_x + 16 + i * 16,
 						_y,
 						GraphicHandler::getGraphicHandler()->getTexture(
-								"bild_button"), 0, 1, 1, 0xffffffff,
+								"picture_button"), 0, 1, 1, 0xffffffff,
 						index + 1 + (i % 10));
 			}
 
-			// Bild fuer Buttonende
+			// Picture fuer Buttonende
 			GRRLIB_DrawTile(_x + this->getWidth() - 16, _y,
-					GraphicHandler::getGraphicHandler()->getTexture("bild_button"),
+					GraphicHandler::getGraphicHandler()->getTexture("picture_button"),
 					0, 1, 1, 0xffffffff, index + 11);
 
 			_text = this->konvertiereAnzeigeText(_text);

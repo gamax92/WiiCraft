@@ -27,8 +27,8 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef ITEMAXT_H_
-#define ITEMAXT_H_
+#ifndef ITEMAXE_H_
+#define ITEMAXE_H_
 
 #include "ItemTools.h"
 
@@ -38,4 +38,4 @@ class ItemAxe: public ItemTools {
 };
 
 }
-#endif /* ITEMAXT_H_ */
+#endif /* ITEMAXE_H_ */

@@ -34,9 +34,9 @@
 
 namespace std {
 
-class Block02CStufe: public ItemBlock {
+class Block02CStairs: public ItemBlock {
 public:
-	Block02CStufe();
+	Block02CStairs();
 	Item *getInstance();
 	static bool registiereItem();
 	void zeichne(float x, float y, float z, byte meta);

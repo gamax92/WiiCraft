@@ -33,26 +33,26 @@
 
 using namespace std;
 
-Item *Block079Endstein::getInstance() {
-	return new Block079Endstein();
+Item *Block079Endstone::getInstance() {
+	return new Block079Endstone();
 }
 
-bool Block079Endstein::registiereItem() {
-	ItemManager::registriereItem(new Block079Endstein());
+bool Block079Endstone::registiereItem() {
+	ItemManager::registriereItem(new Block079Endstone());
 
 	return true;
 }
 
-Block079Endstein::Block079Endstein() {
+Block079Endstone::Block079Endstone() {
 	this->setzeStandardWerte();
 
 	Item::id = 0x079;
 }
 
-void Block079Endstein::zeichne(float x, float y, float z, byte meta) {
+void Block079Endstone::zeichne(float x, float y, float z, byte meta) {
 	ItemBlock::zeichneBlock(x, y, z, 175);
 }
 
-bool Block079Endstein::istDurchsichtig() {
+bool Block079Endstone::istDurchsichtig() {
 	return false;
 }

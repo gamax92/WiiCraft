@@ -88,5 +88,5 @@ void Packet02Handshake::verarbeitePacket() {
 
 	PacketClient *p = new Packet01LoginRequest(ClientInfo::clientProtokollVersion,
 			Session::getUsername());
-	Verbindung::zuVerschickendenPacketenHinzufuegen(p);
+	Connection::zuVerschickendenPacketenHinzufuegen(p);
 }

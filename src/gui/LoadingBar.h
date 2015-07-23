@@ -27,8 +27,8 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef LADEBALKEN_H_
-#define LADEBALKEN_H_
+#ifndef LOADINGBAR_H_
+#define LOADINGBAR_H_
 
 #include "GraphicElement.h"
 
@@ -54,4 +54,4 @@ private:
 };
 
 }
-#endif /* LADEBALKEN_H_ */
+#endif /* LOADINGBAR_H_ */

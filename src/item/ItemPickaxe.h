@@ -27,8 +27,8 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef ITEMSPITZHACKE_H_
-#define ITEMSPITZHACKE_H_
+#ifndef ITEMPICKAXE_H_
+#define ITEMPICKAXE_H_
 
 #include "ItemTools.h"
 
@@ -38,4 +38,4 @@ class ItemPickaxe: public ItemTools {
 };
 
 }
-#endif /* ITEMSPITZHACKE_H_ */
+#endif /* ITEMPICKAXE_H_ */

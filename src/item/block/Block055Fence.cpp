@@ -33,27 +33,27 @@
 
 using namespace std;
 
-Item *Block055Zaun::getInstance() {
-	return new Block055Zaun();
+Item *Block055Fence::getInstance() {
+	return new Block055Fence();
 }
 
-bool Block055Zaun::registiereItem() {
-	ItemManager::registriereItem(new Block055Zaun());
+bool Block055Fence::registiereItem() {
+	ItemManager::registriereItem(new Block055Fence());
 
 	return true;
 }
 
-Block055Zaun::Block055Zaun() {
+Block055Fence::Block055Fence() {
 	this->setzeStandardWerte();
 
 	Item::id = 0x055;
 }
 
-void Block055Zaun::zeichne(float x, float y, float z, byte meta) {
+void Block055Fence::zeichne(float x, float y, float z, byte meta) {
 	// TODO zeichnen fertig umsetzen
 	ItemBlock::zeichneBlock(x, y, z, 169);
 }
 
-bool Block055Zaun::istDurchsichtig() {
+bool Block055Fence::istDurchsichtig() {
 	return true;
 }

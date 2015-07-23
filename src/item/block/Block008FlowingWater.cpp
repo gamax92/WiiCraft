@@ -33,27 +33,27 @@
 
 using namespace std;
 
-Item *Block008FliessendesWasser::getInstance() {
-	return new Block008FliessendesWasser();
+Item *Block008FlowingWater::getInstance() {
+	return new Block008FlowingWater();
 }
 
-bool Block008FliessendesWasser::registiereItem() {
-	ItemManager::registriereItem(new Block008FliessendesWasser());
+bool Block008FlowingWater::registiereItem() {
+	ItemManager::registriereItem(new Block008FlowingWater());
 
 	return true;
 }
 
-Block008FliessendesWasser::Block008FliessendesWasser() {
+Block008FlowingWater::Block008FlowingWater() {
 	this->setzeStandardWerte();
 
 	Item::id = 0x008;
 }
 
-void Block008FliessendesWasser::zeichne(float x, float y, float z, byte meta) {
+void Block008FlowingWater::zeichne(float x, float y, float z, byte meta) {
 	// TODO zeichnen fertig umsetzen
 	ItemBlock::zeichneBlock(x, y, z, 169);
 }
 
-bool Block008FliessendesWasser::istDurchsichtig() {
+bool Block008FlowingWater::istDurchsichtig() {
 	return true;
 }

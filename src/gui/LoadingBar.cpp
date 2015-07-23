@@ -71,7 +71,7 @@ void LoadingBar::drawElement() {
 		if (_fortschritt > 0 && _fortschritt <= 100) {
 			GRRLIB_DrawTile(_x, _y,
 					GraphicHandler::getGraphicHandler()->getTexture(
-							"bild_ladebalken"), 0, _breite / 100.0,
+							"picture_loadingbar"), 0, _breite / 100.0,
 					_hoehe / 4.0, 0xffffffff, _fortschritt);
 		}
 	}

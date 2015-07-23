@@ -41,7 +41,7 @@
 
 using namespace std;
 
-GecachterChunk::GecachterChunk(Chunk *_chunk) {
+CachedChunk::CachedChunk(Chunk *_chunk) {
 	this->version = 0;
 	this->anzahlZeichenbarerBloecke = 0;
 	this->chunk = _chunk;
@@ -54,7 +54,7 @@ GecachterChunk::GecachterChunk(Chunk *_chunk) {
 	this->aktualisiereCacheWennNoetig();
 }
 
-bool GecachterChunk::istAktuell() {
+bool CachedChunk::istAktuell() {
 	if (this->version < this->chunk->getVersionNumber()) {
 		return false;
 	}
@@ -62,7 +62,7 @@ bool GecachterChunk::istAktuell() {
 	return true;
 }
 
-void GecachterChunk::aktualisiereCacheWennNoetig() {
+void CachedChunk::aktualisiereCacheWennNoetig() {
 	if (this->istAktuell()) {
 		return;
 	}
@@ -115,7 +115,7 @@ void GecachterChunk::aktualisiereCacheWennNoetig() {
 
 		// TODO nachbar Chunk pruefen
 		if (
-		//(blockX == 0 && welt->istChunkGeladen(this->x - 1, this->z) /* && nachbar Chunk abfragen*/) ||
+		//(blockX == 0 && world->istChunkGeladen(this->x - 1, this->z) /* && nachbar Chunk abfragen*/) ||
 		(blockX > 0
 				&& (gecachtBloeckeTyp[indexWest] == 0
 						|| ItemManager::istDurchsichtig(
@@ -125,7 +125,7 @@ void GecachterChunk::aktualisiereCacheWennNoetig() {
 		}
 
 		if (
-		//(blockX == 15 && welt->istChunkGeladen(this->x + 1, this->z) /* && nachbar Chunk abfragen*/) ||
+		//(blockX == 15 && world->istChunkGeladen(this->x + 1, this->z) /* && nachbar Chunk abfragen*/) ||
 		(blockX < 15
 				&& (gecachtBloeckeTyp[indexOst] == 0
 						|| ItemManager::istDurchsichtig(
@@ -135,7 +135,7 @@ void GecachterChunk::aktualisiereCacheWennNoetig() {
 		}
 
 		if (
-		//(blockZ == 0 && welt->istChunkGeladen(this->x, this->z - 1) /* && nachbar Chunk abfragen*/) ||
+		//(blockZ == 0 && world->istChunkGeladen(this->x, this->z - 1) /* && nachbar Chunk abfragen*/) ||
 		(blockZ > 0
 				&& (gecachtBloeckeTyp[indexSued] == 0
 						|| ItemManager::istDurchsichtig(
@@ -145,7 +145,7 @@ void GecachterChunk::aktualisiereCacheWennNoetig() {
 		}
 
 		if (
-		//(blockZ == 15 && welt->istChunkGeladen(this->x, this->z + 1) /* && nachbar Chunk abfragen*/) ||
+		//(blockZ == 15 && world->istChunkGeladen(this->x, this->z + 1) /* && nachbar Chunk abfragen*/) ||
 		(blockZ < 15
 				&& (gecachtBloeckeTyp[indexNord] == 0
 						|| ItemManager::istDurchsichtig(
@@ -203,7 +203,7 @@ void GecachterChunk::aktualisiereCacheWennNoetig() {
 	delete[] gecachtBloeckeHimmelLicht;
 }
 
-void GecachterChunk::zeichne() {
+void CachedChunk::zeichne() {
 	GRRLIB_ObjectView((this->chunk->getX() * 16), 0,
 			(this->chunk->getZ() * 16), 0, 0, 0, 1, 1, 1);
 

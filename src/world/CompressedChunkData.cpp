@@ -36,7 +36,7 @@
 
 using namespace std;
 
-KomprimierteChunkDaten::KomprimierteChunkDaten(byte *_komprimierteDaten,
+CompressedChunkData::CompressedChunkData(byte *_komprimierteDaten,
 		int _komprimierteDatenMenge, short _bitMap, bool _groundUpContiguous) {
 
 	this->komprimierteDaten = _komprimierteDaten;
@@ -45,11 +45,11 @@ KomprimierteChunkDaten::KomprimierteChunkDaten(byte *_komprimierteDaten,
 	this->groundUpContiguous = _groundUpContiguous;
 }
 
-KomprimierteChunkDaten::~KomprimierteChunkDaten() {
+CompressedChunkData::~CompressedChunkData() {
 	delete[] this->komprimierteDaten;
 }
 
-byte *KomprimierteChunkDaten::gebeDekomprimierteDaten() {
+byte *CompressedChunkData::gebeDekomprimierteDaten() {
 	int dekomprimierteDatenlaenge = this->gebeDatenMenge();
 	int errechneteDatenlaenge = dekomprimierteDatenlaenge;
 
@@ -63,7 +63,7 @@ byte *KomprimierteChunkDaten::gebeDekomprimierteDaten() {
 	return dekomprimierteDaten;
 }
 
-int KomprimierteChunkDaten::gebeDatenMenge() {
+int CompressedChunkData::gebeDatenMenge() {
 	int chunkTeile = 0;
 	for (int j = 0; j < 16; j++) {
 		chunkTeile += this->bitMap >> j & 1;
@@ -80,7 +80,7 @@ int KomprimierteChunkDaten::gebeDatenMenge() {
 	return entpackteDatenMenge;
 }
 
-void KomprimierteChunkDaten::ladeDaten(short *bloeckeTyp, byte *bloeckeMeta,
+void CompressedChunkData::ladeDaten(short *bloeckeTyp, byte *bloeckeMeta,
 		byte *bloeckeLicht, byte *bloeckeHimmelLicht) {
 
 	byte *dekomprimierteDaten = this->gebeDekomprimierteDaten();

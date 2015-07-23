@@ -27,8 +27,8 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef UPDATEMENUE_H_
-#define UPDATEMENUE_H_
+#ifndef UPDATEMENU_H_
+#define UPDATEMENU_H_
 
 #if defined _WIN32 || defined __CYGWIN__
 #include <pthread.h>
@@ -67,4 +67,4 @@ private:
 };
 
 }
-#endif /* UPDATEMENUE_H_ */
+#endif /* UPDATEMENU_H_ */

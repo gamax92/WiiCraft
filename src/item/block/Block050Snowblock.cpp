@@ -33,26 +33,26 @@
 
 using namespace std;
 
-Item *Block050Schneeblock::getInstance() {
-	return new Block050Schneeblock();
+Item *Block050Snowblock::getInstance() {
+	return new Block050Snowblock();
 }
 
-bool Block050Schneeblock::registiereItem() {
-	ItemManager::registriereItem(new Block050Schneeblock());
+bool Block050Snowblock::registiereItem() {
+	ItemManager::registriereItem(new Block050Snowblock());
 
 	return true;
 }
 
-Block050Schneeblock::Block050Schneeblock() {
+Block050Snowblock::Block050Snowblock() {
 	this->setzeStandardWerte();
 
 	Item::id = 0x050;
 }
 
-void Block050Schneeblock::zeichne(float x, float y, float z, byte meta) {
+void Block050Snowblock::zeichne(float x, float y, float z, byte meta) {
 	ItemBlock::zeichneBlock(x, y, z, 66);
 }
 
-bool Block050Schneeblock::istDurchsichtig() {
+bool Block050Snowblock::istDurchsichtig() {
 	return true;
 }

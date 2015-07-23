@@ -33,26 +33,26 @@
 
 using namespace std;
 
-Item *Block00DKies::getInstance() {
-	return new Block00DKies();
+Item *Block00DGravel::getInstance() {
+	return new Block00DGravel();
 }
 
-bool Block00DKies::registiereItem() {
-	ItemManager::registriereItem(new Block00DKies());
+bool Block00DGravel::registiereItem() {
+	ItemManager::registriereItem(new Block00DGravel());
 
 	return true;
 }
 
-Block00DKies::Block00DKies() {
+Block00DGravel::Block00DGravel() {
 	this->setzeStandardWerte();
 
 	Item::id = 0x00d;
 }
 
-void Block00DKies::zeichne(float x, float y, float z, byte meta) {
+void Block00DGravel::zeichne(float x, float y, float z, byte meta) {
 	ItemBlock::zeichneBlock(x, y, z, 19);
 }
 
-bool Block00DKies::istDurchsichtig() {
+bool Block00DGravel::istDurchsichtig() {
 	return false;
 }

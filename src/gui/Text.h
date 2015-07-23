@@ -47,7 +47,7 @@ public:
 	~Text();
 	void drawElement();
 	void setTextColor(u32 _textFarbe);
-	void setBackgroundColor(u32 _hintergrundFarbe);
+	void setBackgroundColor(u32 _backgroundFarbe);
 	u32 getTextColor();
 	u32 getBackgroundColor();
 protected:

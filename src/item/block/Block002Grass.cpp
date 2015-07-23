@@ -34,23 +34,23 @@
 
 using namespace std;
 
-Item *Block002Gras::getInstance() {
-	return new Block002Gras();
+Item *Block002Grass::getInstance() {
+	return new Block002Grass();
 }
 
-bool Block002Gras::registiereItem() {
-	ItemManager::registriereItem(new Block002Gras());
+bool Block002Grass::registiereItem() {
+	ItemManager::registriereItem(new Block002Grass());
 
 	return true;
 }
 
-Block002Gras::Block002Gras() {
+Block002Grass::Block002Grass() {
 	this->setzeStandardWerte();
 
 	Item::id = 0x002;
 }
 
-void Block002Gras::zeichne(float x, float y, float z, byte meta) {
+void Block002Grass::zeichne(float x, float y, float z, byte meta) {
 	float x1 = x + 1.0f;
 	float y1 = y + 1.0f;
 	float z1 = z + 1.0f;
@@ -62,34 +62,34 @@ void Block002Gras::zeichne(float x, float y, float z, byte meta) {
 	// sued
 	guVector sued[4] = { { x, y1, z1 }, { x1, y1, z1 }, { x1, y, z1 }, { x, y,
 			z1 } };
-	GrrlibErsatz::GRRLIB_DrawImgQuadTile(sued, 3);
+	GrrlibReplacement::GRRLIB_DrawImgQuadTile(sued, 3);
 
 	// nord
 	guVector nord[4] =
 			{ { x1, y1, z }, { x, y1, z }, { x, y, z }, { x1, y, z } };
-	GrrlibErsatz::GRRLIB_DrawImgQuadTile(nord, 3);
+	GrrlibReplacement::GRRLIB_DrawImgQuadTile(nord, 3);
 
 	// ost
 	guVector ost[4] = { { x1, y1, z1 }, { x1, y1, z }, { x1, y, z },
 			{ x1, y, z1 } };
-	GrrlibErsatz::GRRLIB_DrawImgQuadTile(ost, 3);
+	GrrlibReplacement::GRRLIB_DrawImgQuadTile(ost, 3);
 
 	// west
 	guVector west[4] =
 			{ { x, y1, z }, { x, y1, z1 }, { x, y, z1 }, { x, y, z } };
-	GrrlibErsatz::GRRLIB_DrawImgQuadTile(west, 3);
+	GrrlibReplacement::GRRLIB_DrawImgQuadTile(west, 3);
 
 	// oben
 	guVector oben[4] = { { x, y1, z }, { x1, y1, z }, { x1, y1, z1 }, { x, y1,
 			z1 } };
-	GrrlibErsatz::GRRLIB_DrawImgQuadTile(oben, 0);
+	GrrlibReplacement::GRRLIB_DrawImgQuadTile(oben, 0);
 
 	// unten
 	guVector unten[4] =
 			{ { x1, y, z }, { x, y, z }, { x, y, z1 }, { x1, y, z1 } };
-	GrrlibErsatz::GRRLIB_DrawImgQuadTile(unten, 2);
+	GrrlibReplacement::GRRLIB_DrawImgQuadTile(unten, 2);
 }
 
-bool Block002Gras::istDurchsichtig() {
+bool Block002Grass::istDurchsichtig() {
 	return false;
 }

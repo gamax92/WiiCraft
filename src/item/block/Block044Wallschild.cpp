@@ -33,27 +33,27 @@
 
 using namespace std;
 
-Item *Block044Wandschild::getInstance() {
-	return new Block044Wandschild();
+Item *Block044Wallschild::getInstance() {
+	return new Block044Wallschild();
 }
 
-bool Block044Wandschild::registiereItem() {
-	ItemManager::registriereItem(new Block044Wandschild());
+bool Block044Wallschild::registiereItem() {
+	ItemManager::registriereItem(new Block044Wallschild());
 
 	return true;
 }
 
-Block044Wandschild::Block044Wandschild() {
+Block044Wallschild::Block044Wallschild() {
 	this->setzeStandardWerte();
 
 	Item::id = 0x044;
 }
 
-void Block044Wandschild::zeichne(float x, float y, float z, byte meta) {
+void Block044Wallschild::zeichne(float x, float y, float z, byte meta) {
 	// TODO zeichnen fertig umsetzen
 	ItemBlock::zeichneBlock(x, y, z, 169);
 }
 
-bool Block044Wandschild::istDurchsichtig() {
+bool Block044Wallschild::istDurchsichtig() {
 	return true;
 }

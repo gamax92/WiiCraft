@@ -37,7 +37,7 @@ GXRModeObj *rmode;
 
 using namespace std;
 
-GRRLIB_texImg *GrrlibErsatz::textur;
+GRRLIB_texImg *GrrlibReplacement::textur;
 
 /**
  * Ersetzt die von GRRLIB mitgelieferte Methode. Da dort jedesmal
@@ -45,10 +45,10 @@ GRRLIB_texImg *GrrlibErsatz::textur;
  * @param Textur
  * @param wiederholen
  */
-void GrrlibErsatz::GRRLIB_SetTexture(GRRLIB_texImg *tex, bool wiederholen) {
+void GrrlibReplacement::GRRLIB_SetTexture(GRRLIB_texImg *tex, bool wiederholen) {
 	GXTexObj texObj;
 
-	GrrlibErsatz::textur = tex;
+	GrrlibReplacement::textur = tex;
 
 	GX_InitTexObj(&texObj, tex->data, tex->w, tex->h, GX_TF_RGBA8, GX_CLAMP,
 			GX_CLAMP, GX_FALSE);
@@ -67,7 +67,7 @@ void GrrlibErsatz::GRRLIB_SetTexture(GRRLIB_texImg *tex, bool wiederholen) {
  * @param pos Vector array of the 4 points.
  * @param frame Specifies the frame to draw.
  */
-void GrrlibErsatz::GRRLIB_DrawImgQuadTile(const guVector pos[4],
+void GrrlibReplacement::GRRLIB_DrawImgQuadTile(const guVector pos[4],
 		const int frame) {
 	//f32 width, height;
 	//Mtx m, m1, m2, mv;
@@ -79,15 +79,15 @@ void GrrlibErsatz::GRRLIB_DrawImgQuadTile(const guVector pos[4],
 	//u32 color = 0xffffffff;
 
 	// The 0.001f/x is the frame correction formula by spiffen
-	s1 = (frame % GrrlibErsatz::textur->nbtilew)
-			* GrrlibErsatz::textur->ofnormaltexx;
-	s2 = s1 + GrrlibErsatz::textur->ofnormaltexx;
-	t1 = (int) (frame / GrrlibErsatz::textur->nbtilew)
-			* GrrlibErsatz::textur->ofnormaltexy;
-	t2 = t1 + GrrlibErsatz::textur->ofnormaltexy;
+	s1 = (frame % GrrlibReplacement::textur->nbtilew)
+			* GrrlibReplacement::textur->ofnormaltexx;
+	s2 = s1 + GrrlibReplacement::textur->ofnormaltexx;
+	t1 = (int) (frame / GrrlibReplacement::textur->nbtilew)
+			* GrrlibReplacement::textur->ofnormaltexy;
+	t2 = t1 + GrrlibReplacement::textur->ofnormaltexy;
 
-	//width = GrrlibErsatz::textur->tilew * 0.5f;
-	//height = GrrlibErsatz::textur->tileh * 0.5f;
+	//width = GrrlibReplacement::textur->tilew * 0.5f;
+	//height = GrrlibReplacement::textur->tileh * 0.5f;
 
 	//guMtxIdentity(m1);
 	//guMtxScaleApply(m1, m1, scaleX, scaleY, 1.0f);
@@ -95,18 +95,18 @@ void GrrlibErsatz::GRRLIB_DrawImgQuadTile(const guVector pos[4],
 	//guMtxConcat(m2, m1, m);
 
 	//guMtxTransApply(m, m,
-	//		xpos + width + GrrlibErsatz::textur->handlex
-	//				- GrrlibErsatz::textur->offsetx
+	//		xpos + width + GrrlibReplacement::textur->handlex
+	//				- GrrlibReplacement::textur->offsetx
 	//				+ (scaleX
-	//						* (-GrrlibErsatz::textur->handley
+	//						* (-GrrlibReplacement::textur->handley
 	//								* sin(-DegToRad(degrees))
-	//								- GrrlibErsatz::textur->handlex
+	//								- GrrlibReplacement::textur->handlex
 	//										* cos(-DegToRad(degrees)))),
-	//		ypos + height + tex->handley - GrrlibErsatz::textur->offsety
+	//		ypos + height + tex->handley - GrrlibReplacement::textur->offsety
 	//				+ (scaleY
-	//						* (-GrrlibErsatz::textur->handley
+	//						* (-GrrlibReplacement::textur->handley
 	//								* cos(-DegToRad(degrees))
-	//								+ GrrlibErsatz::textur->handlex
+	//								+ GrrlibReplacement::textur->handlex
 	//										* sin(-DegToRad(degrees)))), 0);
 
 	//guMtxConcat(GXmodelView2D, m, mv);

@@ -80,7 +80,7 @@ GraphicHandler::GraphicHandler() {
 	GRRLIB_Init();
 	GRRLIB_SetAntiAliasing(false);
 
-	this->ladeBilder();
+	this->ladePictureer();
 	this->loadTextureMatrix();
 
 	GRRLIB_SetBackgroundColour(0x00, 0x00, 0x00, 0xff);
@@ -288,9 +288,9 @@ void GraphicHandler::setzeAnzeigeElement(GraphicElement *newElement) {
 	pthread_mutex_unlock(&this->mutexZeichne);
 }
 
-void GraphicHandler::ladeBilder() {
-	this->textures["bildMenueHintergrund"] = GRRLIB_LoadTexture(
-			bildMenueHintergrund);
+void GraphicHandler::ladePictureer() {
+	this->textures["pictureMenueBackground"] = GRRLIB_LoadTexture(
+			pictureMenueBackground);
 	this->textures["terrain"] = GRRLIB_LoadTexture(terrain);
 	GRRLIB_InitTileSet(this->textures["terrain"], 16, 16, 0);
 	this->textures["logo_orbitalfrosch"] = GRRLIB_LoadTexture(logo_orbitalfrosch);
@@ -301,10 +301,10 @@ void GraphicHandler::ladeBilder() {
 	this->textures["cursor2"] = GRRLIB_LoadTexture(cursor2);
 	this->textures["cursor3"] = GRRLIB_LoadTexture(cursor3);
 	this->textures["cursor4"] = GRRLIB_LoadTexture(cursor4);
-	this->textures["bild_ladebalken"] = GRRLIB_LoadTexture(bild_ladebalken);
-	GRRLIB_InitTileSet(this->textures["bild_ladebalken"], 100, 4, 0);
-	this->textures["bild_button"] = GRRLIB_LoadTexture(bild_button);
-	GRRLIB_InitTileSet(this->textures["bild_button"], 16, 16, 0);
+	this->textures["picture_loadingbar"] = GRRLIB_LoadTexture(picture_loadingbar);
+	GRRLIB_InitTileSet(this->textures["picture_loadingbar"], 100, 4, 0);
+	this->textures["picture_button"] = GRRLIB_LoadTexture(picture_button);
+	GRRLIB_InitTileSet(this->textures["picture_button"], 16, 16, 0);
 }
 
 void GraphicHandler::loadTextureMatrix() {

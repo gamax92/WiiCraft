@@ -33,26 +33,26 @@
 
 using namespace std;
 
-Item *Block00FEisenerz::getInstance() {
-	return new Block00FEisenerz();
+Item *Block00FIronOre::getInstance() {
+	return new Block00FIronOre();
 }
 
-bool Block00FEisenerz::registiereItem() {
-	ItemManager::registriereItem(new Block00FEisenerz());
+bool Block00FIronOre::registiereItem() {
+	ItemManager::registriereItem(new Block00FIronOre());
 
 	return true;
 }
 
-Block00FEisenerz::Block00FEisenerz() {
+Block00FIronOre::Block00FIronOre() {
 	this->setzeStandardWerte();
 
 	Item::id = 0x00f;
 }
 
-void Block00FEisenerz::zeichne(float x, float y, float z, byte meta) {
+void Block00FIronOre::zeichne(float x, float y, float z, byte meta) {
 	ItemBlock::zeichneBlock(x, y, z, 33);
 }
 
-bool Block00FEisenerz::istDurchsichtig() {
+bool Block00FIronOre::istDurchsichtig() {
 	return false;
 }

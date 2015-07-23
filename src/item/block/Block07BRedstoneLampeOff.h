@@ -34,9 +34,9 @@
 
 namespace std {
 
-class Block07BRedstoneLampeAus: public ItemBlock {
+class Block07BRedstoneLampeOff: public ItemBlock {
 public:
-	Block07BRedstoneLampeAus();
+	Block07BRedstoneLampeOff();
 	Item *getInstance();
 	static bool registiereItem();
 	void zeichne(float x, float y, float z, byte meta);

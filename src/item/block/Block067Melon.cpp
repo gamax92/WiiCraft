@@ -34,23 +34,23 @@
 
 using namespace std;
 
-Item *Block067Melone::getInstance() {
-	return new Block067Melone();
+Item *Block067Melon::getInstance() {
+	return new Block067Melon();
 }
 
-bool Block067Melone::registiereItem() {
-	ItemManager::registriereItem(new Block067Melone());
+bool Block067Melon::registiereItem() {
+	ItemManager::registriereItem(new Block067Melon());
 
 	return true;
 }
 
-Block067Melone::Block067Melone() {
+Block067Melon::Block067Melon() {
 	this->setzeStandardWerte();
 
 	Item::id = 0x067;
 }
 
-void Block067Melone::zeichne(float x, float y, float z, byte meta) {
+void Block067Melon::zeichne(float x, float y, float z, byte meta) {
 	float x1 = x + 1.0f;
 	float y1 = y + 1.0f;
 	float z1 = z + 1.0f;
@@ -58,34 +58,34 @@ void Block067Melone::zeichne(float x, float y, float z, byte meta) {
 	// sued
 	guVector sued[4] = { { x, y1, z1 }, { x1, y1, z1 }, { x1, y, z1 }, { x, y,
 			z1 } };
-	GrrlibErsatz::GRRLIB_DrawImgQuadTile(sued, 136);
+	GrrlibReplacement::GRRLIB_DrawImgQuadTile(sued, 136);
 
 	// nord
 	guVector nord[4] =
 			{ { x1, y1, z }, { x, y1, z }, { x, y, z }, { x1, y, z } };
-	GrrlibErsatz::GRRLIB_DrawImgQuadTile(nord, 136);
+	GrrlibReplacement::GRRLIB_DrawImgQuadTile(nord, 136);
 
 	// ost
 	guVector ost[4] = { { x1, y1, z1 }, { x1, y1, z }, { x1, y, z },
 			{ x1, y, z1 } };
-	GrrlibErsatz::GRRLIB_DrawImgQuadTile(ost, 136);
+	GrrlibReplacement::GRRLIB_DrawImgQuadTile(ost, 136);
 
 	// west
 	guVector west[4] =
 			{ { x, y1, z }, { x, y1, z1 }, { x, y, z1 }, { x, y, z } };
-	GrrlibErsatz::GRRLIB_DrawImgQuadTile(west, 136);
+	GrrlibReplacement::GRRLIB_DrawImgQuadTile(west, 136);
 
 	// oben
 	guVector oben[4] = { { x, y1, z }, { x1, y1, z }, { x1, y1, z1 }, { x, y1,
 			z1 } };
-	GrrlibErsatz::GRRLIB_DrawImgQuadTile(oben, 137);
+	GrrlibReplacement::GRRLIB_DrawImgQuadTile(oben, 137);
 
 	// unten
 	guVector unten[4] =
 			{ { x1, y, z }, { x, y, z }, { x, y, z1 }, { x1, y, z1 } };
-	GrrlibErsatz::GRRLIB_DrawImgQuadTile(unten, 137);
+	GrrlibReplacement::GRRLIB_DrawImgQuadTile(unten, 137);
 }
 
-bool Block067Melone::istDurchsichtig() {
+bool Block067Melon::istDurchsichtig() {
 	return false;
 }

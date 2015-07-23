@@ -33,26 +33,26 @@
 
 using namespace std;
 
-Item *Block04FEis::getInstance() {
-	return new Block04FEis();
+Item *Block04FIce::getInstance() {
+	return new Block04FIce();
 }
 
-bool Block04FEis::registiereItem() {
-	ItemManager::registriereItem(new Block04FEis());
+bool Block04FIce::registiereItem() {
+	ItemManager::registriereItem(new Block04FIce());
 
 	return true;
 }
 
-Block04FEis::Block04FEis() {
+Block04FIce::Block04FIce() {
 	this->setzeStandardWerte();
 
 	Item::id = 0x04f;
 }
 
-void Block04FEis::zeichne(float x, float y, float z, byte meta) {
+void Block04FIce::zeichne(float x, float y, float z, byte meta) {
 	ItemBlock::zeichneBlock(x, y, z, 67);
 }
 
-bool Block04FEis::istDurchsichtig() {
+bool Block04FIce::istDurchsichtig() {
 	return false;
 }

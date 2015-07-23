@@ -27,8 +27,8 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef SPIELTHREAD_H_
-#define SPIELTHREAD_H_
+#ifndef GAMETHREAD_H_
+#define GAMETHREAD_H_
 
 #include "Thread.h"
 #if defined _WIN32 || defined __CYGWIN__
@@ -46,4 +46,4 @@ public:
 	int exec();
 };
 }
-#endif /* SPIELTHREAD_H_ */
+#endif /* GAMETHREAD_H_ */

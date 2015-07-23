@@ -27,8 +27,8 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef EXCDATEIOEFFNEN_H_
-#define EXCDATEIOEFFNEN_H_
+#ifndef EXCFILEOPEN_H_
+#define EXCFILEOPEN_H_
 
 namespace std {
 
@@ -38,4 +38,4 @@ public:
 };
 
 }
-#endif /* EXCDATEIOEFFNEN_H_ */
+#endif /* EXCFILEOPEN_H_ */

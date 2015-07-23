@@ -33,26 +33,26 @@
 
 using namespace std;
 
-Item *Block030BemoosterPflasterstein::getInstance() {
-	return new Block030BemoosterPflasterstein();
+Item *Block030MossyCobbleStone::getInstance() {
+	return new Block030MossyCobbleStone();
 }
 
-bool Block030BemoosterPflasterstein::registiereItem() {
-	ItemManager::registriereItem(new Block030BemoosterPflasterstein());
+bool Block030MossyCobbleStone::registiereItem() {
+	ItemManager::registriereItem(new Block030MossyCobbleStone());
 
 	return true;
 }
 
-Block030BemoosterPflasterstein::Block030BemoosterPflasterstein() {
+Block030MossyCobbleStone::Block030MossyCobbleStone() {
 	this->setzeStandardWerte();
 
 	Item::id = 0x030;
 }
 
-void Block030BemoosterPflasterstein::zeichne(float x, float y, float z, byte meta) {
+void Block030MossyCobbleStone::zeichne(float x, float y, float z, byte meta) {
 	ItemBlock::zeichneBlock(x, y, z, 36);
 }
 
-bool Block030BemoosterPflasterstein::istDurchsichtig() {
+bool Block030MossyCobbleStone::istDurchsichtig() {
 	return false;
 }

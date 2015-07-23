@@ -34,9 +34,9 @@
 
 namespace std {
 
-class Block04ALeuchtendesRedstoneerz: public ItemBlock {
+class Block04AGlowingRedstoneOre: public ItemBlock {
 public:
-	Block04ALeuchtendesRedstoneerz();
+	Block04AGlowingRedstoneOre();
 	Item *getInstance();
 	static bool registiereItem();
 	void zeichne(float x, float y, float z, byte meta);

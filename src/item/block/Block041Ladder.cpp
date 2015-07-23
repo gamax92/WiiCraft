@@ -33,27 +33,27 @@
 
 using namespace std;
 
-Item *Block041Leiter::getInstance() {
-	return new Block041Leiter();
+Item *Block041Ladder::getInstance() {
+	return new Block041Ladder();
 }
 
-bool Block041Leiter::registiereItem() {
-	ItemManager::registriereItem(new Block041Leiter());
+bool Block041Ladder::registiereItem() {
+	ItemManager::registriereItem(new Block041Ladder());
 
 	return true;
 }
 
-Block041Leiter::Block041Leiter() {
+Block041Ladder::Block041Ladder() {
 	this->setzeStandardWerte();
 
 	Item::id = 0x041;
 }
 
-void Block041Leiter::zeichne(float x, float y, float z, byte meta) {
+void Block041Ladder::zeichne(float x, float y, float z, byte meta) {
 	// TODO zeichnen fertig umsetzen
 	ItemBlock::zeichneBlock(x, y, z, 169);
 }
 
-bool Block041Leiter::istDurchsichtig() {
+bool Block041Ladder::istDurchsichtig() {
 	return true;
 }

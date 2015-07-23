@@ -35,52 +35,52 @@
 
 using namespace std;
 
-Socket *Verbindung::socket;
-PacketWriterThread *Verbindung::vSchreiben;
-PacketeLesenThread *Verbindung::vLesen;
-PacketProcessingThread *Verbindung::vVerarbeitung;
+Socket *Connection::socket;
+PacketWriterThread *Connection::vSchreiben;
+PacketReadingThread *Connection::vLesen;
+PacketProcessingThread *Connection::vVerarbeitung;
 
-bool Verbindung::verbinde(string server, int port) {
-	Verbindung::socket = new Socket();
+bool Connection::verbinde(string server, int port) {
+	Connection::socket = new Socket();
 
-	bool ret = Verbindung::socket->connect(server.data(), port);
+	bool ret = Connection::socket->connect(server.data(), port);
 	if (ret) {
-		Verbindung::vSchreiben = new PacketWriterThread(Verbindung::socket);
-		Verbindung::vVerarbeitung = new PacketProcessingThread();
-		Verbindung::vLesen = new PacketeLesenThread(Verbindung::socket);
+		Connection::vSchreiben = new PacketWriterThread(Connection::socket);
+		Connection::vVerarbeitung = new PacketProcessingThread();
+		Connection::vLesen = new PacketReadingThread(Connection::socket);
 	}
 
 	return ret;
 }
 
-void Verbindung::starteSchnittstelle() {
-	Verbindung::vLesen->start();
-	Verbindung::vVerarbeitung->start();
-	Verbindung::vSchreiben->start();
+void Connection::starteSchnittstelle() {
+	Connection::vLesen->start();
+	Connection::vVerarbeitung->start();
+	Connection::vSchreiben->start();
 }
 
-void Verbindung::warte() {
-	Verbindung::vVerarbeitung->join();
-	Verbindung::vSchreiben->join();
-	Verbindung::vLesen->join();
+void Connection::warte() {
+	Connection::vVerarbeitung->join();
+	Connection::vSchreiben->join();
+	Connection::vLesen->join();
 }
 
-void Verbindung::zuVerschickendenPacketenHinzufuegen(PacketClient *p) {
-	Verbindung::vSchreiben->verschickePacket(p);
+void Connection::zuVerschickendenPacketenHinzufuegen(PacketClient *p) {
+	Connection::vSchreiben->verschickePacket(p);
 }
 
-void Verbindung::zuVerarbeitendenPacketenHinzufuegen(PacketServer *p) {
-	Verbindung::vVerarbeitung->verarbeitePacket(p);
+void Connection::zuVerarbeitendenPacketenHinzufuegen(PacketServer *p) {
+	Connection::vVerarbeitung->verarbeitePacket(p);
 }
 
-void Verbindung::beenden(bool aktiv) {
+void Connection::beenden(bool aktiv) {
 	if (aktiv) {
 #ifdef DEBUG_ON
 		Debug::schreibeLog("sd:/apps/WiiCraft/Packet.log",
 				"Spiel wird aktiv verlassen.\n", Debug::DATEI_ERWEITERN);
 #endif
 		PacketClient *p = new PacketFFDisconnectKick("Spiel wurde verlassen.");
-		Verbindung::zuVerschickendenPacketenHinzufuegen(p);
+		Connection::zuVerschickendenPacketenHinzufuegen(p);
 		return;
 	}
 #ifdef DEBUG_ON
@@ -91,7 +91,7 @@ void Verbindung::beenden(bool aktiv) {
 	}
 #endif
 
-	Verbindung::vLesen->stop();
-	Verbindung::vVerarbeitung->stop();
-	Verbindung::vSchreiben->stop();
+	Connection::vLesen->stop();
+	Connection::vVerarbeitung->stop();
+	Connection::vSchreiben->stop();
 }

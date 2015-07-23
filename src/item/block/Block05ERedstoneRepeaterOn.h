@@ -34,9 +34,9 @@
 
 namespace std {
 
-class Block05ERedstoneRepeaterAn: public ItemBlock {
+class Block05ERedstoneRepeaterOn: public ItemBlock {
 public:
-	Block05ERedstoneRepeaterAn();
+	Block05ERedstoneRepeaterOn();
 	Item *getInstance();
 	static bool registiereItem();
 	void zeichne(float x, float y, float z, byte meta);

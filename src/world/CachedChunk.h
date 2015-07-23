@@ -27,8 +27,8 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef GECACHTERCHUNK_H_
-#define GECACHTERCHUNK_H_
+#ifndef CACHEDCHUNK_H_
+#define CACHEDCHUNK_H_
 
 #include "../util/Datentypes.h"
 
@@ -36,9 +36,9 @@ namespace std {
 
 class Chunk;
 
-class GecachterChunk {
+class CachedChunk {
 public:
-	GecachterChunk(Chunk *_chunk);
+	CachedChunk(Chunk *_chunk);
 
 	void aktualisiereCacheWennNoetig();
 	void zeichne();
@@ -56,4 +56,4 @@ private:
 };
 
 }
-#endif /* GECACHTERCHUNK_H_ */
+#endif /* CACHEDCHUNK_H_ */

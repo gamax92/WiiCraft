@@ -60,7 +60,7 @@ UpdateMenu::UpdateMenu() {
 
 	this->updateHerunterlanden = false;
 
-	this->background = new Background("bildMenueHintergrund");
+	this->background = new Background("pictureMenueBackground");
 	this->background->setzeCursorAnzeigen(true);
 
 	this->text = new Text(250, 200, "Suche nach Update");

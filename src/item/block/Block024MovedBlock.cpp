@@ -33,27 +33,27 @@
 
 using namespace std;
 
-Item *Block024VerschobenerBlock::getInstance() {
-	return new Block024VerschobenerBlock();
+Item *Block024MovedBlock::getInstance() {
+	return new Block024MovedBlock();
 }
 
-bool Block024VerschobenerBlock::registiereItem() {
-	ItemManager::registriereItem(new Block024VerschobenerBlock());
+bool Block024MovedBlock::registiereItem() {
+	ItemManager::registriereItem(new Block024MovedBlock());
 
 	return true;
 }
 
-Block024VerschobenerBlock::Block024VerschobenerBlock() {
+Block024MovedBlock::Block024MovedBlock() {
 	this->setzeStandardWerte();
 
 	Item::id = 0x024;
 }
 
-void Block024VerschobenerBlock::zeichne(float x, float y, float z, byte meta) {
+void Block024MovedBlock::zeichne(float x, float y, float z, byte meta) {
 	// TODO zeichnen fertig umsetzen
 	ItemBlock::zeichneBlock(x, y, z, 169);
 }
 
-bool Block024VerschobenerBlock::istDurchsichtig() {
+bool Block024MovedBlock::istDurchsichtig() {
 	return true;
 }

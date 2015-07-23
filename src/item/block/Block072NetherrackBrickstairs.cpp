@@ -33,27 +33,27 @@
 
 using namespace std;
 
-Item *Block072Netherziegeltreppe::getInstance() {
-	return new Block072Netherziegeltreppe();
+Item *Block072NetherrackBrickstairs::getInstance() {
+	return new Block072NetherrackBrickstairs();
 }
 
-bool Block072Netherziegeltreppe::registiereItem() {
-	ItemManager::registriereItem(new Block072Netherziegeltreppe());
+bool Block072NetherrackBrickstairs::registiereItem() {
+	ItemManager::registriereItem(new Block072NetherrackBrickstairs());
 
 	return true;
 }
 
-Block072Netherziegeltreppe::Block072Netherziegeltreppe() {
+Block072NetherrackBrickstairs::Block072NetherrackBrickstairs() {
 	this->setzeStandardWerte();
 
 	Item::id = 0x072;
 }
 
-void Block072Netherziegeltreppe::zeichne(float x, float y, float z, byte meta) {
+void Block072NetherrackBrickstairs::zeichne(float x, float y, float z, byte meta) {
 	// TODO zeichnen fertig umsetzen
 	ItemBlock::zeichneBlock(x, y, z, 169);
 }
 
-bool Block072Netherziegeltreppe::istDurchsichtig() {
+bool Block072NetherrackBrickstairs::istDurchsichtig() {
 	return true;
 }

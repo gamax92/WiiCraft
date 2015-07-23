@@ -33,27 +33,27 @@
 
 using namespace std;
 
-Item *Block05ERedstoneRepeaterAn::getInstance() {
-	return new Block05ERedstoneRepeaterAn();
+Item *Block05ERedstoneRepeaterOn::getInstance() {
+	return new Block05ERedstoneRepeaterOn();
 }
 
-bool Block05ERedstoneRepeaterAn::registiereItem() {
-	ItemManager::registriereItem(new Block05ERedstoneRepeaterAn());
+bool Block05ERedstoneRepeaterOn::registiereItem() {
+	ItemManager::registriereItem(new Block05ERedstoneRepeaterOn());
 
 	return true;
 }
 
-Block05ERedstoneRepeaterAn::Block05ERedstoneRepeaterAn() {
+Block05ERedstoneRepeaterOn::Block05ERedstoneRepeaterOn() {
 	this->setzeStandardWerte();
 
 	Item::id = 0x05e;
 }
 
-void Block05ERedstoneRepeaterAn::zeichne(float x, float y, float z, byte meta) {
+void Block05ERedstoneRepeaterOn::zeichne(float x, float y, float z, byte meta) {
 	// TODO zeichnen fertig umsetzen
 	ItemBlock::zeichneBlock(x, y, z, 169);
 }
 
-bool Block05ERedstoneRepeaterAn::istDurchsichtig() {
+bool Block05ERedstoneRepeaterOn::istDurchsichtig() {
 	return true;
 }

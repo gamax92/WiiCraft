@@ -33,27 +33,27 @@
 
 using namespace std;
 
-Item *Block035Holztreppe::getInstance() {
-	return new Block035Holztreppe();
+Item *Block035Planksstairs::getInstance() {
+	return new Block035Planksstairs();
 }
 
-bool Block035Holztreppe::registiereItem() {
-	ItemManager::registriereItem(new Block035Holztreppe());
+bool Block035Planksstairs::registiereItem() {
+	ItemManager::registriereItem(new Block035Planksstairs());
 
 	return true;
 }
 
-Block035Holztreppe::Block035Holztreppe() {
+Block035Planksstairs::Block035Planksstairs() {
 	this->setzeStandardWerte();
 
 	Item::id = 0x035;
 }
 
-void Block035Holztreppe::zeichne(float x, float y, float z, byte meta) {
+void Block035Planksstairs::zeichne(float x, float y, float z, byte meta) {
 	// TODO zeichnen fertig umsetzen
 	ItemBlock::zeichneBlock(x, y, z, 169);
 }
 
-bool Block035Holztreppe::istDurchsichtig() {
+bool Block035Planksstairs::istDurchsichtig() {
 	return true;
 }

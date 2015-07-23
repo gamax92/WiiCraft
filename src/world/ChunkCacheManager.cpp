@@ -41,8 +41,8 @@ ChunkCacheManager::ChunkCacheManager() {
 void ChunkCacheManager::zeichne() {
 	this->aktualisiereCacheWennNoetig();
 
-	map<int, map<int, GecachterChunk *> >::iterator it1;
-	map<int, GecachterChunk *>::iterator it2;
+	map<int, map<int, CachedChunk *> >::iterator it1;
+	map<int, CachedChunk *>::iterator it2;
 
 	for (it1 = this->gecachteChunks.begin(); it1 != this->gecachteChunks.end();
 			it1++) {
@@ -53,8 +53,8 @@ void ChunkCacheManager::zeichne() {
 }
 
 void ChunkCacheManager::aktualisiereCacheWennNoetig() {
-	map<int, map<int, GecachterChunk *> >::iterator it1;
-	map<int, GecachterChunk *>::iterator it2;
+	map<int, map<int, CachedChunk *> >::iterator it1;
+	map<int, CachedChunk *>::iterator it2;
 
 	for (it1 = this->gecachteChunks.begin(); it1 != this->gecachteChunks.end();
 			it1++) {
@@ -69,6 +69,6 @@ void ChunkCacheManager::loescheChunk(Chunk *chunk) {
 }
 
 void ChunkCacheManager::fuegeChunkHinzu(Chunk *chunk) {
-	this->gecachteChunks[chunk->getX()][chunk->getZ()] = new GecachterChunk(
+	this->gecachteChunks[chunk->getX()][chunk->getZ()] = new CachedChunk(
 			chunk);
 }

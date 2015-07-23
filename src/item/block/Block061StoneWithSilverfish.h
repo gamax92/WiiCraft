@@ -34,9 +34,9 @@
 
 namespace std {
 
-class Block061SteinMitSilberfischen: public ItemBlock {
+class Block061StoneWithSilverfish: public ItemBlock {
 public:
-	Block061SteinMitSilberfischen();
+	Block061StoneWithSilverfish();
 	Item *getInstance();
 	static bool registiereItem();
 	void zeichne(float x, float y, float z, byte meta);

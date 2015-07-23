@@ -34,23 +34,23 @@
 
 using namespace std;
 
-Item *Block01FHohesGras::getInstance() {
-	return new Block01FHohesGras();
+Item *Block01FTallGrass::getInstance() {
+	return new Block01FTallGrass();
 }
 
-bool Block01FHohesGras::registiereItem() {
-	ItemManager::registriereItem(new Block01FHohesGras());
+bool Block01FTallGrass::registiereItem() {
+	ItemManager::registriereItem(new Block01FTallGrass());
 
 	return true;
 }
 
-Block01FHohesGras::Block01FHohesGras() {
+Block01FTallGrass::Block01FTallGrass() {
 	this->setzeStandardWerte();
 
 	Item::id = 0x01f;
 }
 
-void Block01FHohesGras::zeichne(float x, float y, float z, byte meta) {
+void Block01FTallGrass::zeichne(float x, float y, float z, byte meta) {
 	// TODO korrekte Farbe rendern
 
 	if (meta == 1) { // Hohes Gras
@@ -62,6 +62,6 @@ void Block01FHohesGras::zeichne(float x, float y, float z, byte meta) {
 	}
 }
 
-bool Block01FHohesGras::istDurchsichtig() {
+bool Block01FTallGrass::istDurchsichtig() {
 	return true;
 }

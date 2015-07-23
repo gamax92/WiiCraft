@@ -27,20 +27,20 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef KOMPRIMIERTECHUNKDATEN_H_
-#define KOMPRIMIERTECHUNKDATEN_H_
+#ifndef COMPRESSEDCHUNKDATA_H_
+#define COMPRESSEDCHUNKDATA_H_
 
 #include <map>
 #include "../util/Datentypes.h"
 
 namespace std {
 
-class KomprimierteChunkDaten {
+class CompressedChunkData {
 public:
-	KomprimierteChunkDaten(byte *_komprimierteDaten,
+	CompressedChunkData(byte *_komprimierteDaten,
 			int _komprimierteDatenMenge, short _bitMap,
 			bool _groundUpContiguous);
-	~KomprimierteChunkDaten();
+	~CompressedChunkData();
 	byte *gebeDekomprimierteDaten();
 	void ladeDaten(short *bloeckeTyp, byte *bloeckeMeta, byte *bloeckeLicht,
 			byte *bloeckeHimmelLicht);
@@ -55,4 +55,4 @@ private:
 };
 
 }
-#endif /* KOMPRIMIERTECHUNKDATEN_H_ */
+#endif /* COMPRESSEDCHUNKDATA_H_ */

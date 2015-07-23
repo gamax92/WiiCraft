@@ -33,27 +33,27 @@
 
 using namespace std;
 
-Item *Block05CKuchenblock::getInstance() {
-	return new Block05CKuchenblock();
+Item *Block05CCakeblock::getInstance() {
+	return new Block05CCakeblock();
 }
 
-bool Block05CKuchenblock::registiereItem() {
-	ItemManager::registriereItem(new Block05CKuchenblock());
+bool Block05CCakeblock::registiereItem() {
+	ItemManager::registriereItem(new Block05CCakeblock());
 
 	return true;
 }
 
-Block05CKuchenblock::Block05CKuchenblock() {
+Block05CCakeblock::Block05CCakeblock() {
 	this->setzeStandardWerte();
 
 	Item::id = 0x05c;
 }
 
-void Block05CKuchenblock::zeichne(float x, float y, float z, byte meta) {
+void Block05CCakeblock::zeichne(float x, float y, float z, byte meta) {
 	// TODO zeichnen fertig umsetzen
 	ItemBlock::zeichneBlock(x, y, z, 169);
 }
 
-bool Block05CKuchenblock::istDurchsichtig() {
+bool Block05CCakeblock::istDurchsichtig() {
 	return true;
 }

@@ -34,23 +34,23 @@
 
 using namespace std;
 
-Item *Block011Baumstamm::getInstance() {
-	return new Block011Baumstamm();
+Item *Block011Wood::getInstance() {
+	return new Block011Wood();
 }
 
-bool Block011Baumstamm::registiereItem() {
-	ItemManager::registriereItem(new Block011Baumstamm());
+bool Block011Wood::registiereItem() {
+	ItemManager::registriereItem(new Block011Wood());
 
 	return true;
 }
 
-Block011Baumstamm::Block011Baumstamm() {
+Block011Wood::Block011Wood() {
 	this->setzeStandardWerte();
 
 	Item::id = 0x011;
 }
 
-void Block011Baumstamm::zeichne(float x, float y, float z, byte meta) {
+void Block011Wood::zeichne(float x, float y, float z, byte meta) {
 	float x1 = x + 1.0f;
 	float y1 = y + 1.0f;
 	float z1 = z + 1.0f;
@@ -69,34 +69,34 @@ void Block011Baumstamm::zeichne(float x, float y, float z, byte meta) {
 	// sued
 	guVector sued[4] = { { x, y1, z1 }, { x1, y1, z1 }, { x1, y, z1 }, { x, y,
 			z1 } };
-	GrrlibErsatz::GRRLIB_DrawImgQuadTile(sued, textur);
+	GrrlibReplacement::GRRLIB_DrawImgQuadTile(sued, textur);
 
 	// nord
 	guVector nord[4] =
 			{ { x1, y1, z }, { x, y1, z }, { x, y, z }, { x1, y, z } };
-	GrrlibErsatz::GRRLIB_DrawImgQuadTile(nord, textur);
+	GrrlibReplacement::GRRLIB_DrawImgQuadTile(nord, textur);
 
 	// ost
 	guVector ost[4] = { { x1, y1, z1 }, { x1, y1, z }, { x1, y, z },
 			{ x1, y, z1 } };
-	GrrlibErsatz::GRRLIB_DrawImgQuadTile(ost, textur);
+	GrrlibReplacement::GRRLIB_DrawImgQuadTile(ost, textur);
 
 	// west
 	guVector west[4] =
 			{ { x, y1, z }, { x, y1, z1 }, { x, y, z1 }, { x, y, z } };
-	GrrlibErsatz::GRRLIB_DrawImgQuadTile(west, textur);
+	GrrlibReplacement::GRRLIB_DrawImgQuadTile(west, textur);
 
 	// oben
 	guVector oben[4] = { { x, y1, z }, { x1, y1, z }, { x1, y1, z1 }, { x, y1,
 			z1 } };
-	GrrlibErsatz::GRRLIB_DrawImgQuadTile(oben, 21);
+	GrrlibReplacement::GRRLIB_DrawImgQuadTile(oben, 21);
 
 	// unten
 	guVector unten[4] =
 			{ { x1, y, z }, { x, y, z }, { x, y, z1 }, { x1, y, z1 } };
-	GrrlibErsatz::GRRLIB_DrawImgQuadTile(unten, 21);
+	GrrlibReplacement::GRRLIB_DrawImgQuadTile(unten, 21);
 }
 
-bool Block011Baumstamm::istDurchsichtig() {
+bool Block011Wood::istDurchsichtig() {
 	return false;
 }

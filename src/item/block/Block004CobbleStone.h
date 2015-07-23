@@ -27,16 +27,16 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef BLOCK004PFLASTERSTEIN_H_
-#define BLOCK004PFLASTERSTEIN_H_
+#ifndef BLOCK004COBBLESTONE_H_
+#define BLOCK004COBBLESTONE_H_
 
 #include "../ItemBlock.h"
 
 namespace std {
 
-class Block004Pflasterstein: public ItemBlock {
+class Block004CobbleStone: public ItemBlock {
 public:
-	Block004Pflasterstein();
+	Block004CobbleStone();
 	Item *getInstance();
 	static bool registiereItem();
 	void zeichne(float x, float y, float z, byte meta);
@@ -45,4 +45,4 @@ private:
 };
 
 }
-#endif /* BLOCK004PFLASTERSTEIN_H_ */
+#endif /* BLOCK004COBBLESTONE_H_ */

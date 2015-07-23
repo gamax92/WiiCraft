@@ -33,23 +33,23 @@
 
 using namespace std;
 
-Item *Block02BDoppelteStufe::getInstance() {
-	return new Block02BDoppelteStufe();
+Item *Block02BDoubleStairs::getInstance() {
+	return new Block02BDoubleStairs();
 }
 
-bool Block02BDoppelteStufe::registiereItem() {
-	ItemManager::registriereItem(new Block02BDoppelteStufe());
+bool Block02BDoubleStairs::registiereItem() {
+	ItemManager::registriereItem(new Block02BDoubleStairs());
 
 	return true;
 }
 
-Block02BDoppelteStufe::Block02BDoppelteStufe() {
+Block02BDoubleStairs::Block02BDoubleStairs() {
 	this->setzeStandardWerte();
 
 	Item::id = 0x02b;
 }
 
-void Block02BDoppelteStufe::zeichne(float x, float y, float z, byte meta) {
+void Block02BDoubleStairs::zeichne(float x, float y, float z, byte meta) {
 	if (meta == 1) { // Sandstein
 		ItemManager::zeichne(0x018, x, y, z, 0);
 	} else if (meta == 2) { // Holz
@@ -66,6 +66,6 @@ void Block02BDoppelteStufe::zeichne(float x, float y, float z, byte meta) {
 
 }
 
-bool Block02BDoppelteStufe::istDurchsichtig() {
+bool Block02BDoubleStairs::istDurchsichtig() {
 	return false;
 }

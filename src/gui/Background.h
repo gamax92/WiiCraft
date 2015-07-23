@@ -27,8 +27,8 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef HINTERGRUND_H_
-#define HINTERGRUND_H_
+#ifndef BACKGROUND_H_
+#define BACKGROUND_H_
 
 #include "ContainerElement.h"
 
@@ -51,11 +51,11 @@ public:
 	bool zeigeKeyboard();
 	virtual ~Background();
 	void drawElement();
-	void setzeKeyboardAnzeigen(bool _tastaturAnzeigen);
+	void setzeKeyboardAnzeigen(bool _keyboardAnzeigen);
 private:
 	string texture;
 	Keyboard *keyboard;
 };
 
 }
-#endif /* HINTERGRUND_H_ */
+#endif /* BACKGROUND_H_ */

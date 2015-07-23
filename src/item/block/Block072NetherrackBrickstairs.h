@@ -34,9 +34,9 @@
 
 namespace std {
 
-class Block072Netherziegeltreppe: public ItemBlock {
+class Block072NetherrackBrickstairs: public ItemBlock {
 public:
-	Block072Netherziegeltreppe();
+	Block072NetherrackBrickstairs();
 	Item *getInstance();
 	static bool registiereItem();
 	void zeichne(float x, float y, float z, byte meta);

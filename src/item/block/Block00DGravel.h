@@ -34,9 +34,9 @@
 
 namespace std {
 
-class Block00DKies: public ItemBlock {
+class Block00DGravel: public ItemBlock {
 public:
-	Block00DKies();
+	Block00DGravel();
 	Item *getInstance();
 	static bool registiereItem();
 	void zeichne(float x, float y, float z, byte meta);

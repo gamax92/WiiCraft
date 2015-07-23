@@ -33,27 +33,27 @@
 
 using namespace std;
 
-Item *Block01ABett::getInstance() {
-	return new Block01ABett();
+Item *Block01ABed::getInstance() {
+	return new Block01ABed();
 }
 
-bool Block01ABett::registiereItem() {
-	ItemManager::registriereItem(new Block01ABett());
+bool Block01ABed::registiereItem() {
+	ItemManager::registriereItem(new Block01ABed());
 
 	return true;
 }
 
-Block01ABett::Block01ABett() {
+Block01ABed::Block01ABed() {
 	this->setzeStandardWerte();
 
 	Item::id = 0x01a;
 }
 
-void Block01ABett::zeichne(float x, float y, float z, byte meta) {
+void Block01ABed::zeichne(float x, float y, float z, byte meta) {
 	// TODO zeichnen fertig umsetzen
 	ItemBlock::zeichneBlock(x, y, z, 169);
 }
 
-bool Block01ABett::istDurchsichtig() {
+bool Block01ABed::istDurchsichtig() {
 	return true;
 }

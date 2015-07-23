@@ -33,26 +33,26 @@
 
 using namespace std;
 
-Item *Block003Erde::getInstance() {
-	return new Block003Erde();
+Item *Block003Dirt::getInstance() {
+	return new Block003Dirt();
 }
 
-bool Block003Erde::registiereItem() {
-	ItemManager::registriereItem(new Block003Erde());
+bool Block003Dirt::registiereItem() {
+	ItemManager::registriereItem(new Block003Dirt());
 
 	return true;
 }
 
-Block003Erde::Block003Erde() {
+Block003Dirt::Block003Dirt() {
 	this->setzeStandardWerte();
 
 	Item::id = 0x003;
 }
 
-void Block003Erde::zeichne(float x, float y, float z, byte meta) {
+void Block003Dirt::zeichne(float x, float y, float z, byte meta) {
 	ItemBlock::zeichneBlock(x, y, z, 2);
 }
 
-bool Block003Erde::istDurchsichtig() {
+bool Block003Dirt::istDurchsichtig() {
 	return false;
 }

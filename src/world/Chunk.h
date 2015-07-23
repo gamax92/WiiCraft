@@ -42,8 +42,8 @@
 
 namespace std {
 
-class KomprimierteChunkDaten;
-class BlockAenderung;
+class CompressedChunkData;
+class BlockChange;
 
 class Chunk {
 public:
@@ -51,8 +51,8 @@ public:
 	~Chunk();
 
 	bool isLoaded();
-	void ergaenzeKomprimierteDaten(KomprimierteChunkDaten *_komprimierteDaten);
-	void ergaenzeBlockAenderung(BlockAenderung *_blockAenderung);
+	void ergaenzeKomprimierteDaten(CompressedChunkData *_komprimierteDaten);
+	void ergaenzeBlockChange(BlockChange *_blockAenderung);
 	void loadChunk();
 	void saveChunk();
 	int getX();
@@ -72,10 +72,10 @@ private:
 	byte *bloeckeMeta;
 	byte *bloeckeLicht;
 	byte *bloeckeHimmelLicht;
-	vector<KomprimierteChunkDaten *> komprimierteDaten;
-	list<BlockAenderung *> blockAenderungen;
+	vector<CompressedChunkData *> komprimierteDaten;
+	list<BlockChange *> blockAenderungen;
 	pthread_mutex_t mutexKomprimierteDaten;
-	pthread_mutex_t mutexBlockAenderungen;
+	pthread_mutex_t mutexBlockChangeen;
 	pthread_mutex_t mutexDaten;
 	pthread_mutex_t mutexIndex;
 	pthread_mutex_t mutexGeladen;

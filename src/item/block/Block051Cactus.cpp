@@ -33,27 +33,27 @@
 
 using namespace std;
 
-Item *Block051Kaktus::getInstance() {
-	return new Block051Kaktus();
+Item *Block051Cactus::getInstance() {
+	return new Block051Cactus();
 }
 
-bool Block051Kaktus::registiereItem() {
-	ItemManager::registriereItem(new Block051Kaktus());
+bool Block051Cactus::registiereItem() {
+	ItemManager::registriereItem(new Block051Cactus());
 
 	return true;
 }
 
-Block051Kaktus::Block051Kaktus() {
+Block051Cactus::Block051Cactus() {
 	this->setzeStandardWerte();
 
 	Item::id = 0x051;
 }
 
-void Block051Kaktus::zeichne(float x, float y, float z, byte meta) {
+void Block051Cactus::zeichne(float x, float y, float z, byte meta) {
 	// TODO zeichnen fertig umsetzen
 	ItemBlock::zeichneBlock(x, y, z, 169);
 }
 
-bool Block051Kaktus::istDurchsichtig() {
+bool Block051Cactus::istDurchsichtig() {
 	return true;
 }

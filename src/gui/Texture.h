@@ -27,8 +27,8 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef BILD_H_
-#define BILD_H_
+#ifndef PICTURE_H_
+#define PICTURE_H_
 
 #include "GraphicElement.h"
 
@@ -52,4 +52,4 @@ private:
 };
 
 }
-#endif /* BILD_H_ */
+#endif /* PICTURE_H_ */

@@ -34,7 +34,7 @@ namespace std {
 
 class Packet;
 
-class PacketVergleicher {
+class PacketMatcher {
 public:
 	bool operator()(Packet *p1, Packet *p2) const;
 };

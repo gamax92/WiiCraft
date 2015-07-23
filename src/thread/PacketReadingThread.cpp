@@ -38,7 +38,7 @@
 
 using namespace std;
 
-PacketeLesenThread::PacketeLesenThread(Socket *_socket) {
+PacketReadingThread::PacketReadingThread(Socket *_socket) {
 	this->socket = _socket;
 	this->gestoppt = false;
 	this->iStream = new DataInputStream(this->socket);
@@ -46,11 +46,11 @@ PacketeLesenThread::PacketeLesenThread(Socket *_socket) {
 	pthread_mutex_init(&this->mutexstop, NULL);
 }
 
-PacketeLesenThread::~PacketeLesenThread() {
+PacketReadingThread::~PacketReadingThread() {
 	pthread_mutex_destroy(&this->mutexstop);
 }
 
-int PacketeLesenThread::exec() {
+int PacketReadingThread::exec() {
 	bool ok;
 	do {
 		if (this->istGestopped()) {
@@ -61,11 +61,11 @@ int PacketeLesenThread::exec() {
 			ok = PacketServer::lesePacket(this->iStream);
 		} catch (ExcSocketConnectionLost &exception) {
 			this->stop();
-			Verbindung::beenden(false);
+			Connection::beenden(false);
 			break;
 		} catch (ExcPacketUnknownPacket &exception) {
 			this->stop();
-			Verbindung::beenden(true);
+			Connection::beenden(true);
 			break;
 		}
 	} while (ok);
@@ -84,13 +84,13 @@ int PacketeLesenThread::exec() {
 	return 0;
 }
 
-void PacketeLesenThread::stop() {
+void PacketReadingThread::stop() {
 	pthread_mutex_lock(&this->mutexstop);
 	this->gestoppt = true;
 	pthread_mutex_unlock(&this->mutexstop);
 }
 
-bool PacketeLesenThread::istGestopped() {
+bool PacketReadingThread::istGestopped() {
 	bool b = false;
 
 	pthread_mutex_lock(&this->mutexstop);

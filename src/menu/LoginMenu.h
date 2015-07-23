@@ -27,8 +27,8 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef ANMELDUNGMENUE_H_
-#define ANMELDUNGMENUE_H_
+#ifndef LOGINMENU_H_
+#define LOGINMENU_H_
 
 #if defined _WIN32 || defined __CYGWIN__
 #include <pthread.h>
@@ -48,7 +48,7 @@ class LoginMenu {
 public:
 	static void initialize();
 	static void deinitialize();
-	static void zeigeAnmeldungMenue();
+	static void zeigeLoginMenu();
 	static void anmelden();
 	static void auswaehlenBunutzer();
 	static void auswaehlenPasswort();
@@ -71,4 +71,4 @@ private:
 };
 
 }
-#endif /* ANMELDUNGMENUE_H_ */
+#endif /* LOGINMENU_H_ */

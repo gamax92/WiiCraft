@@ -33,27 +33,27 @@
 
 using namespace std;
 
-Item *Block046Druckplatte::getInstance() {
-	return new Block046Druckplatte();
+Item *Block046PressurePlate::getInstance() {
+	return new Block046PressurePlate();
 }
 
-bool Block046Druckplatte::registiereItem() {
-	ItemManager::registriereItem(new Block046Druckplatte());
+bool Block046PressurePlate::registiereItem() {
+	ItemManager::registriereItem(new Block046PressurePlate());
 
 	return true;
 }
 
-Block046Druckplatte::Block046Druckplatte() {
+Block046PressurePlate::Block046PressurePlate() {
 	this->setzeStandardWerte();
 
 	Item::id = 0x046;
 }
 
-void Block046Druckplatte::zeichne(float x, float y, float z, byte meta) {
+void Block046PressurePlate::zeichne(float x, float y, float z, byte meta) {
 	// TODO zeichnen fertig umsetzen
 	ItemBlock::zeichneBlock(x, y, z, 169);
 }
 
-bool Block046Druckplatte::istDurchsichtig() {
+bool Block046PressurePlate::istDurchsichtig() {
 	return true;
 }

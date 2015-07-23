@@ -43,12 +43,12 @@
 
 using namespace std;
 
-PlayerMovementSendingThread::PlayerMovementSendingThread(Player *_spieler,
+PlayerMovementSendingThread::PlayerMovementSendingThread(Player *_player,
 		double initialX, double initialY, double initialZ,
 		double initialHaltung, float initialWinkel, float initialAbstand,
 		bool initialIstAufBoden, bool initialIstFliegend) {
 
-	this->spieler = _spieler;
+	this->player = _player;
 	this->zuletztUebertragenX = initialX;
 	this->zuletztUebertragenY = initialY;
 	this->zuletztUebertragenZ = initialZ;
@@ -81,13 +81,13 @@ int PlayerMovementSendingThread::exec() {
 			break;
 		}
 
-		double aktuellX = this->spieler->getX();
-		double aktuellY = this->spieler->getY();
-		double aktuellZ = this->spieler->getZ();
-		double aktuellHaltung = this->spieler->getHaltung();
-		float aktuellWinkel = this->spieler->getWinkel();
-		float aktuellAbstand = this->spieler->getAbstand();
-		bool aktuellIstAufBoden = this->spieler->getIsOnGround();
+		double aktuellX = this->player->getX();
+		double aktuellY = this->player->getY();
+		double aktuellZ = this->player->getZ();
+		double aktuellHaltung = this->player->getHaltung();
+		float aktuellWinkel = this->player->getWinkel();
+		float aktuellAbstand = this->player->getAbstand();
+		bool aktuellIstAufBoden = this->player->getIsOnGround();
 
 		// Position und Blickwinkel geaendert
 		if ((aktuellX != this->zuletztUebertragenX
@@ -99,7 +99,7 @@ int PlayerMovementSendingThread::exec() {
 			PacketClient *p = new Packet0DPlayerPositionLook(aktuellX, aktuellY,
 					aktuellHaltung, aktuellZ, aktuellWinkel, aktuellAbstand,
 					aktuellIstAufBoden);
-			Verbindung::zuVerschickendenPacketenHinzufuegen(p);
+			Connection::zuVerschickendenPacketenHinzufuegen(p);
 
 			this->zuletztUebertragenX = aktuellX;
 			this->zuletztUebertragenY = aktuellY;
@@ -116,7 +116,7 @@ int PlayerMovementSendingThread::exec() {
 				|| aktuellHaltung != this->zuletztUebertragenHaltung) {
 			PacketClient *p = new Packet0BPlayerPosition(aktuellX, aktuellY,
 					aktuellHaltung, aktuellZ, aktuellIstAufBoden);
-			Verbindung::zuVerschickendenPacketenHinzufuegen(p);
+			Connection::zuVerschickendenPacketenHinzufuegen(p);
 
 			this->zuletztUebertragenX = aktuellX;
 			this->zuletztUebertragenY = aktuellY;
@@ -129,7 +129,7 @@ int PlayerMovementSendingThread::exec() {
 				|| aktuellAbstand != this->zuletztUebertragenAbstand) {
 			PacketClient *p = new Packet0CPlayerLook(aktuellWinkel,
 					aktuellAbstand, aktuellIstAufBoden);
-			Verbindung::zuVerschickendenPacketenHinzufuegen(p);
+			Connection::zuVerschickendenPacketenHinzufuegen(p);
 
 			this->zuletztUebertragenWinkel = aktuellWinkel;
 			this->zuletztUebertragenAbstand = aktuellAbstand;
@@ -138,29 +138,29 @@ int PlayerMovementSendingThread::exec() {
 			// keine Bewegung des Players
 		} else {
 			PacketClient *p = new Packet0APlayer(aktuellIstAufBoden);
-			Verbindung::zuVerschickendenPacketenHinzufuegen(p);
+			Connection::zuVerschickendenPacketenHinzufuegen(p);
 
 			this->zuletztUebertragenIstAufBoden = aktuellIstAufBoden;
 		}
 
-		bool aktuellIstFliegend = this->spieler->getIsFlying();
+		bool aktuellIstFliegend = this->player->getIsFlying();
 		bool aktuellIstFliegenMoeglich =
-				this->spieler->getIstFliegenMoeglich();
+				this->player->getIstFliegenMoeglich();
 		bool aktuellIstEinfachesAbbauenAktiv =
-				this->spieler->getIsEinfachesAbbauenAktiv();
-		bool aktuellIstUnverwundbar = this->spieler->getIsInvulnerable();
+				this->player->getIsEinfachesAbbauenAktiv();
+		bool aktuellIstUnverwundbar = this->player->getIsInvulnerable();
 
 		if (aktuellIstFliegend != this->zuletztUebertragenIstFliegend) {
 			PacketClient *p = new PacketCAPlayerAbilities(aktuellIstUnverwundbar,
 					aktuellIstFliegend, aktuellIstFliegenMoeglich,
 					aktuellIstEinfachesAbbauenAktiv);
-			Verbindung::zuVerschickendenPacketenHinzufuegen(p);
+			Connection::zuVerschickendenPacketenHinzufuegen(p);
 
 			this->zuletztUebertragenIstFliegend = aktuellIstFliegend;
 		}
 
-		int aktuellChunkX = this->spieler->getChunkX();
-		int aktuellChunkZ = this->spieler->getChunkZ();
+		int aktuellChunkX = this->player->getChunkX();
+		int aktuellChunkZ = this->player->getChunkZ();
 
 		if (aktuellChunkX != this->zuletztChunkX
 				|| aktuellChunkZ != this->zuletztChunkZ) {

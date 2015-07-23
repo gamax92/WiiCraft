@@ -33,27 +33,27 @@
 
 using namespace std;
 
-Item *Block040Holztuer::getInstance() {
-	return new Block040Holztuer();
+Item *Block040WoodenDoor::getInstance() {
+	return new Block040WoodenDoor();
 }
 
-bool Block040Holztuer::registiereItem() {
-	ItemManager::registriereItem(new Block040Holztuer());
+bool Block040WoodenDoor::registiereItem() {
+	ItemManager::registriereItem(new Block040WoodenDoor());
 
 	return true;
 }
 
-Block040Holztuer::Block040Holztuer() {
+Block040WoodenDoor::Block040WoodenDoor() {
 	this->setzeStandardWerte();
 
 	Item::id = 0x040;
 }
 
-void Block040Holztuer::zeichne(float x, float y, float z, byte meta) {
+void Block040WoodenDoor::zeichne(float x, float y, float z, byte meta) {
 	// TODO zeichnen fertig umsetzen
 	ItemBlock::zeichneBlock(x, y, z, 169);
 }
 
-bool Block040Holztuer::istDurchsichtig() {
+bool Block040WoodenDoor::istDurchsichtig() {
 	return true;
 }

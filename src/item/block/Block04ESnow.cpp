@@ -33,27 +33,27 @@
 
 using namespace std;
 
-Item *Block04ESchnee::getInstance() {
-	return new Block04ESchnee();
+Item *Block04ESnow::getInstance() {
+	return new Block04ESnow();
 }
 
-bool Block04ESchnee::registiereItem() {
-	ItemManager::registriereItem(new Block04ESchnee());
+bool Block04ESnow::registiereItem() {
+	ItemManager::registriereItem(new Block04ESnow());
 
 	return true;
 }
 
-Block04ESchnee::Block04ESchnee() {
+Block04ESnow::Block04ESnow() {
 	this->setzeStandardWerte();
 
 	Item::id = 0x04e;
 }
 
-void Block04ESchnee::zeichne(float x, float y, float z, byte meta) {
+void Block04ESnow::zeichne(float x, float y, float z, byte meta) {
 	// TODO zeichnen fertig umsetzen
 	ItemBlock::zeichneBlock(x, y, z, 169);
 }
 
-bool Block04ESchnee::istDurchsichtig() {
+bool Block04ESnow::istDurchsichtig() {
 	return true;
 }

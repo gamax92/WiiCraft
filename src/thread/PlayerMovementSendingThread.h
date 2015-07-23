@@ -27,8 +27,8 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef SPIELERBEWEGUNGSENDENTHREAD_H_
-#define SPIELERBEWEGUNGSENDENTHREAD_H_
+#ifndef PLAYERMOVEMENTSENDINGTHREAD_H_
+#define PLAYERMOVEMENTSENDINGTHREAD_H_
 
 #include "Thread.h"
 #if defined _WIN32 || defined __CYGWIN__
@@ -43,7 +43,7 @@ class Player;
 
 class PlayerMovementSendingThread: public Thread {
 public:
-	PlayerMovementSendingThread(Player *_spieler, double initialX,
+	PlayerMovementSendingThread(Player *_player, double initialX,
 			double initialY, double initialZ, double initialHaltung,
 			float initialWinkel, float initialAbstand, bool initialIstAufBoden,
 			bool initialIstFliegend);
@@ -62,7 +62,7 @@ private:
 	bool zuletztUebertragenIstFliegend;
 	int zuletztChunkX;
 	int zuletztChunkZ;
-	Player *spieler;
+	Player *player;
 	bool gestoppt;
 
 	pthread_mutex_t mutexStop;
@@ -72,4 +72,4 @@ private:
 	bool istGestopped();
 };
 }
-#endif /* SPIELERBEWEGUNGSENDENTHREAD_H_ */
+#endif /* PLAYERMOVEMENTSENDINGTHREAD_H_ */

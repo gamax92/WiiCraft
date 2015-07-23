@@ -59,11 +59,11 @@ LoginMenu::LoginMenu() {
 	pthread_mutex_init(&this->mutexwait, NULL);
 	pthread_cond_init(&this->condwait, NULL);
 
-	this->background = new Background("bildMenueHintergrund");
+	this->background = new Background("pictureMenueBackground");
 	this->background->setzeKeyboardAnzeigen(true);
 	this->background->setzeCursorAnzeigen(true);
 
-	Texture *bild = new Texture(144, 20, "logo");
+	Texture *picture = new Texture(144, 20, "logo");
 	this->textError = new Text(250, 260, "");
 	this->textError->setBackgroundColor(0xff33337f);
 	this->textAnmelden = new Text(200, 160, "am Minecraft Server anmelden...");
@@ -80,7 +80,7 @@ LoginMenu::LoginMenu() {
 	this->buttonAnmelden = new Button(254, 220, "Anmelden");
 	this->buttonAnmelden->setzeBeimKlicken(&LoginMenu::anmelden);
 
-	this->background->fuegeUnterElementHinzu(bild);
+	this->background->fuegeUnterElementHinzu(picture);
 	this->background->fuegeUnterElementHinzu(this->textError);
 	this->background->fuegeUnterElementHinzu(this->textAnmelden);
 	this->background->fuegeUnterElementHinzu(this->textUsername);
@@ -95,7 +95,7 @@ LoginMenu::~LoginMenu() {
 	pthread_cond_destroy(&this->condwait);
 }
 
-void LoginMenu::zeigeAnmeldungMenue() {
+void LoginMenu::zeigeLoginMenu() {
 	GraphicHandler::getGraphicHandler()->setzeAnzeigeElement(
 			LoginMenu::loginMenu->background);
 	GraphicHandler::getGraphicHandler()->setSelectedElement(

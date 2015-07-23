@@ -33,27 +33,27 @@
 
 using namespace std;
 
-Item *Block00AFliessendeLava::getInstance() {
-	return new Block00AFliessendeLava();
+Item *Block00AFlowingLava::getInstance() {
+	return new Block00AFlowingLava();
 }
 
-bool Block00AFliessendeLava::registiereItem() {
-	ItemManager::registriereItem(new Block00AFliessendeLava());
+bool Block00AFlowingLava::registiereItem() {
+	ItemManager::registriereItem(new Block00AFlowingLava());
 
 	return true;
 }
 
-Block00AFliessendeLava::Block00AFliessendeLava() {
+Block00AFlowingLava::Block00AFlowingLava() {
 	this->setzeStandardWerte();
 
 	Item::id = 0x00a;
 }
 
-void Block00AFliessendeLava::zeichne(float x, float y, float z, byte meta) {
+void Block00AFlowingLava::zeichne(float x, float y, float z, byte meta) {
 	// TODO zeichnen fertig umsetzen
 	ItemBlock::zeichneBlock(x, y, z, 169);
 }
 
-bool Block00AFliessendeLava::istDurchsichtig() {
+bool Block00AFlowingLava::istDurchsichtig() {
 	return true;
 }

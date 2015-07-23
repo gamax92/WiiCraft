@@ -35,31 +35,31 @@
 
 using namespace std;
 
-Anzeige3D *Anzeige3D::anzeige3D;
+Display3D *Display3D::anzeige3D;
 
-void Anzeige3D::initialize() {
-	Anzeige3D::anzeige3D = new Anzeige3D();
+void Display3D::initialize() {
+	Display3D::anzeige3D = new Display3D();
 }
 
-void Anzeige3D::deinitialize() {
-	delete Anzeige3D::anzeige3D;
+void Display3D::deinitialize() {
+	delete Display3D::anzeige3D;
 }
 
-Anzeige3D::Anzeige3D() {
+Display3D::Display3D() {
 	this->blockEngine = new BlockEngine();
 
-	this->hintergrund = new Background();
-	this->hintergrund->visible(false);
-	this->hintergrund->setzeKeyboardAnzeigen(false);
-	this->hintergrund->setzeCursorAnzeigen(false);
+	this->background = new Background();
+	this->background->visible(false);
+	this->background->setzeKeyboardAnzeigen(false);
+	this->background->setzeCursorAnzeigen(false);
 
-	this->blockEngine->fuegeUnterElementHinzu(this->hintergrund);
+	this->blockEngine->fuegeUnterElementHinzu(this->background);
 }
 
-Anzeige3D::~Anzeige3D() {
+Display3D::~Display3D() {
 }
 
-void Anzeige3D::zeigeAnzeige3D() {
+void Display3D::zeigeDisplay3D() {
 	GraphicHandler::getGraphicHandler()->setzeAnzeigeElement(
-			Anzeige3D::anzeige3D->blockEngine);
+			Display3D::anzeige3D->blockEngine);
 }

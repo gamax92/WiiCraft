@@ -34,26 +34,26 @@
 
 using namespace std;
 
-Item *Block01ESpinnennetz::getInstance() {
-	return new Block01ESpinnennetz();
+Item *Block01ECobweb::getInstance() {
+	return new Block01ECobweb();
 }
 
-bool Block01ESpinnennetz::registiereItem() {
-	ItemManager::registriereItem(new Block01ESpinnennetz());
+bool Block01ECobweb::registiereItem() {
+	ItemManager::registriereItem(new Block01ECobweb());
 
 	return true;
 }
 
-Block01ESpinnennetz::Block01ESpinnennetz() {
+Block01ECobweb::Block01ECobweb() {
 	this->setzeStandardWerte();
 
 	Item::id = 0x01e;
 }
 
-void Block01ESpinnennetz::zeichne(float x, float y, float z, byte meta) {
+void Block01ECobweb::zeichne(float x, float y, float z, byte meta) {
 	ItemBlock::zeichnePflanze(x, y, z, 11);
 }
 
-bool Block01ESpinnennetz::istDurchsichtig() {
+bool Block01ECobweb::istDurchsichtig() {
 	return true;
 }

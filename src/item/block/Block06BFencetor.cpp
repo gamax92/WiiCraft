@@ -33,27 +33,27 @@
 
 using namespace std;
 
-Item *Block06BZauntor::getInstance() {
-	return new Block06BZauntor();
+Item *Block06BFencetor::getInstance() {
+	return new Block06BFencetor();
 }
 
-bool Block06BZauntor::registiereItem() {
-	ItemManager::registriereItem(new Block06BZauntor());
+bool Block06BFencetor::registiereItem() {
+	ItemManager::registriereItem(new Block06BFencetor());
 
 	return true;
 }
 
-Block06BZauntor::Block06BZauntor() {
+Block06BFencetor::Block06BFencetor() {
 	this->setzeStandardWerte();
 
 	Item::id = 0x06b;
 }
 
-void Block06BZauntor::zeichne(float x, float y, float z, byte meta) {
+void Block06BFencetor::zeichne(float x, float y, float z, byte meta) {
 	// TODO zeichnen fertig umsetzen
 	ItemBlock::zeichneBlock(x, y, z, 169);
 }
 
-bool Block06BZauntor::istDurchsichtig() {
+bool Block06BFencetor::istDurchsichtig() {
 	return true;
 }

@@ -27,8 +27,8 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef ITEMESSEN_H_
-#define ITEMESSEN_H_
+#ifndef ITEMFOOD_H_
+#define ITEMFOOD_H_
 
 #include "Item.h"
 
@@ -38,4 +38,4 @@ class ItemFood: public std::Item {
 };
 
 }
-#endif /* ITEMESSEN_H_ */
+#endif /* ITEMFOOD_H_ */

@@ -27,8 +27,8 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef ITEMWERKZEUG_H_
-#define ITEMWERKZEUG_H_
+#ifndef ITEMTOOLS_H_
+#define ITEMTOOLS_H_
 
 #include "Item.h"
 
@@ -40,4 +40,4 @@ protected:
 };
 
 }
-#endif /* ITEMWERKZEUG_H_ */
+#endif /* ITEMTOOLS_H_ */

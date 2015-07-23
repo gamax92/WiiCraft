@@ -34,9 +34,9 @@
 
 namespace std {
 
-class Block018Sandstein: public ItemBlock {
+class Block018Sandstone: public ItemBlock {
 public:
-	Block018Sandstein();
+	Block018Sandstone();
 	Item *getInstance();
 	static bool registiereItem();
 	void zeichne(float x, float y, float z, byte meta);

@@ -4,11 +4,11 @@ Visit http://www.devkitpro.org
 */
 
 //---------------------------------------------------------------------------------
-#ifndef _bild_ladebalken_h_
-#define _bild_ladebalken_h_
+#ifndef _picture_loadingbar_h_
+#define _picture_loadingbar_h_
 //---------------------------------------------------------------------------------
-extern const unsigned char bild_ladebalken[];
-extern const int bild_ladebalken_size;
+extern const unsigned char picture_loadingbar[];
+extern const int picture_loadingbar_size;
 //---------------------------------------------------------------------------------
-#endif //_bild_ladebalken_h_
+#endif //_picture_loadingbar_h_
 //---------------------------------------------------------------------------------

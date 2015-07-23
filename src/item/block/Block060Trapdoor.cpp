@@ -33,27 +33,27 @@
 
 using namespace std;
 
-Item *Block060Falltuer::getInstance() {
-	return new Block060Falltuer();
+Item *Block060Trapdoor::getInstance() {
+	return new Block060Trapdoor();
 }
 
-bool Block060Falltuer::registiereItem() {
-	ItemManager::registriereItem(new Block060Falltuer());
+bool Block060Trapdoor::registiereItem() {
+	ItemManager::registriereItem(new Block060Trapdoor());
 
 	return true;
 }
 
-Block060Falltuer::Block060Falltuer() {
+Block060Trapdoor::Block060Trapdoor() {
 	this->setzeStandardWerte();
 
 	Item::id = 0x060;
 }
 
-void Block060Falltuer::zeichne(float x, float y, float z, byte meta) {
+void Block060Trapdoor::zeichne(float x, float y, float z, byte meta) {
 	// TODO zeichnen fertig umsetzen
 	ItemBlock::zeichneBlock(x, y, z, 169);
 }
 
-bool Block060Falltuer::istDurchsichtig() {
+bool Block060Trapdoor::istDurchsichtig() {
 	return true;
 }

@@ -34,9 +34,9 @@
 
 namespace std {
 
-class Block015LapisLazuliErz: public ItemBlock {
+class Block015LapisLazuliOre: public ItemBlock {
 public:
-	Block015LapisLazuliErz();
+	Block015LapisLazuliOre();
 	Item *getInstance();
 	static bool registiereItem();
 	void zeichne(float x, float y, float z, byte meta);

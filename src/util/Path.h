@@ -27,8 +27,8 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef PFAD_H_
-#define PFAD_H_
+#ifndef PATH_H_
+#define PATH_H_
 
 #include <string>
 
@@ -43,4 +43,4 @@ private:
 };
 
 } /* namespace std */
-#endif /* PFAD_H_ */
+#endif /* PATH_H_ */

@@ -34,9 +34,9 @@
 
 namespace std {
 
-class Block01CDetektorSchiene: public ItemBlock {
+class Block01CDetectorTrack: public ItemBlock {
 public:
-	Block01CDetektorSchiene();
+	Block01CDetectorTrack();
 	Item *getInstance();
 	static bool registiereItem();
 	void zeichne(float x, float y, float z, byte meta);

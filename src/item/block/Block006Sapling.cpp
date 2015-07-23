@@ -34,24 +34,24 @@
 
 using namespace std;
 
-Item *Block006Setzling::getInstance() {
-	return new Block006Setzling();
+Item *Block006Sapling::getInstance() {
+	return new Block006Sapling();
 }
 
-bool Block006Setzling::registiereItem() {
-	ItemManager::registriereItem(new Block006Setzling());
+bool Block006Sapling::registiereItem() {
+	ItemManager::registriereItem(new Block006Sapling());
 
 	return true;
 }
 
-Block006Setzling::Block006Setzling() {
+Block006Sapling::Block006Sapling() {
 	this->setzeStandardWerte();
 
 	Item::id = 0x006;
 }
 
-void Block006Setzling::zeichne(float x, float y, float z, byte meta) {
-	// TODO je nach Metadaten das korrekte Bild laden
+void Block006Sapling::zeichne(float x, float y, float z, byte meta) {
+	// TODO je nach Metadaten das korrekte Picture laden
 	// Dieser Wert ist zweigeteilt. Die erste Haelfte ist ein Zaehler von 0 bis 3,
 	// der in zufaelligen Abstaenden um eins weiterlaeuft. Sobald der Zaehler 3 erreicht,
 	// wird der Setzling durch einen Baum ersetzt. Die zweite Haelfte reicht von 0 bis 3
@@ -60,6 +60,6 @@ void Block006Setzling::zeichne(float x, float y, float z, byte meta) {
 	ItemBlock::zeichnePflanze(x, y, z, 15);
 }
 
-bool Block006Setzling::istDurchsichtig() {
+bool Block006Sapling::istDurchsichtig() {
 	return true;
 }

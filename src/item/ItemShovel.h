@@ -27,8 +27,8 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef ITEMSCHAUFEL_H_
-#define ITEMSCHAUFEL_H_
+#ifndef ITEMSHOVEL_H_
+#define ITEMSHOVEL_H_
 
 #include "ItemTools.h"
 
@@ -38,4 +38,4 @@ class ItemShovel: public ItemTools {
 };
 
 }
-#endif /* ITEMSCHAUFEL_H_ */
+#endif /* ITEMSHOVEL_H_ */

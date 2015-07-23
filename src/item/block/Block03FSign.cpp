@@ -33,27 +33,27 @@
 
 using namespace std;
 
-Item *Block03FSchild::getInstance() {
-	return new Block03FSchild();
+Item *Block03FSign::getInstance() {
+	return new Block03FSign();
 }
 
-bool Block03FSchild::registiereItem() {
-	ItemManager::registriereItem(new Block03FSchild());
+bool Block03FSign::registiereItem() {
+	ItemManager::registriereItem(new Block03FSign());
 
 	return true;
 }
 
-Block03FSchild::Block03FSchild() {
+Block03FSign::Block03FSign() {
 	this->setzeStandardWerte();
 
 	Item::id = 0x03f;
 }
 
-void Block03FSchild::zeichne(float x, float y, float z, byte meta) {
+void Block03FSign::zeichne(float x, float y, float z, byte meta) {
 	// TODO zeichnen fertig umsetzen
 	ItemBlock::zeichneBlock(x, y, z, 169);
 }
 
-bool Block03FSchild::istDurchsichtig() {
+bool Block03FSign::istDurchsichtig() {
 	return true;
 }

@@ -27,8 +27,8 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef CHUNKLADEN_H_
-#define CHUNKLADEN_H_
+#ifndef CHUNKLOADING_H_
+#define CHUNKLOADING_H_
 
 #if defined _WIN32 || defined __CYGWIN__
 #include <pthread.h>
@@ -57,4 +57,4 @@ private:
 	pthread_mutex_t mutexChunk;
 };
 }
-#endif /* CHUNKLADEN_H_ */
+#endif /* CHUNKLOADING_H_ */

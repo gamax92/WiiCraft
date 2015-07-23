@@ -33,27 +33,27 @@
 
 using namespace std;
 
-Item *Block042Schienen::getInstance() {
-	return new Block042Schienen();
+Item *Block042Track::getInstance() {
+	return new Block042Track();
 }
 
-bool Block042Schienen::registiereItem() {
-	ItemManager::registriereItem(new Block042Schienen());
+bool Block042Track::registiereItem() {
+	ItemManager::registriereItem(new Block042Track());
 
 	return true;
 }
 
-Block042Schienen::Block042Schienen() {
+Block042Track::Block042Track() {
 	this->setzeStandardWerte();
 
 	Item::id = 0x042;
 }
 
-void Block042Schienen::zeichne(float x, float y, float z, byte meta) {
+void Block042Track::zeichne(float x, float y, float z, byte meta) {
 	// TODO zeichnen fertig umsetzen
 	ItemBlock::zeichneBlock(x, y, z, 169);
 }
 
-bool Block042Schienen::istDurchsichtig() {
+bool Block042Track::istDurchsichtig() {
 	return true;
 }

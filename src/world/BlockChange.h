@@ -27,18 +27,18 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef BLOCKAENDERUNG_H_
-#define BLOCKAENDERUNG_H_
+#ifndef BLOCKCHANGE_H_
+#define BLOCKCHANGE_H_
 
 #include <map>
 #include "../util/Datentypes.h"
 
 namespace std {
 
-class BlockAenderung {
+class BlockChange {
 public:
-	BlockAenderung(unsigned short _index, short _wertTyp, byte _wertMeta);
-	static bool Vergleicher(BlockAenderung *first, BlockAenderung *second);
+	BlockChange(unsigned short _index, short _wertTyp, byte _wertMeta);
+	static bool Vergleicher(BlockChange *first, BlockChange *second);
 	unsigned short getIndex();
 	void aendereDaten(short *bloeckeTyp, byte *bloeckeMeta, byte *bloeckeLicht,
 			byte *bloeckeHimmelLicht);
@@ -50,4 +50,4 @@ private:
 };
 
 }
-#endif /* BLOCKAENDERUNG_H_ */
+#endif /* BLOCKCHANGE_H_ */

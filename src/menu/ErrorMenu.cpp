@@ -54,8 +54,8 @@ ErrorMenu::ErrorMenu(string fehlerText) {
 	pthread_mutex_init(&this->mutexWait, NULL);
 	pthread_cond_init(&this->condWait, NULL);
 
-	this->hintergrund = new Background("bildMenueHintergrund");
-	this->hintergrund->setzeCursorAnzeigen(true);
+	this->background = new Background("pictureMenueBackground");
+	this->background->setzeCursorAnzeigen(true);
 
 	this->textFehler = new Text(200, 160, fehlerText);
 	this->textFehler->visible(true);
@@ -63,8 +63,8 @@ ErrorMenu::ErrorMenu(string fehlerText) {
 	this->buttonOk = new Button(254, 220, "Ok");
 	this->buttonOk->setzeBeimKlicken(&ErrorMenu::ok);
 
-	this->hintergrund->fuegeUnterElementHinzu(this->textFehler);
-	this->hintergrund->fuegeUnterElementHinzu(this->buttonOk);
+	this->background->fuegeUnterElementHinzu(this->textFehler);
+	this->background->fuegeUnterElementHinzu(this->buttonOk);
 }
 
 ErrorMenu::~ErrorMenu() {
@@ -74,7 +74,7 @@ ErrorMenu::~ErrorMenu() {
 
 void ErrorMenu::showErrorMenu() {
 	GraphicHandler::getGraphicHandler()->setzeAnzeigeElement(
-			ErrorMenu::fehlerMenue->hintergrund);
+			ErrorMenu::fehlerMenue->background);
 
 	while (true) {
 #if defined _WIN32 || defined __CYGWIN__
@@ -89,7 +89,7 @@ void ErrorMenu::showErrorMenu() {
 		pthread_mutex_unlock(&ErrorMenu::fehlerMenue->mutexWait);
 #endif
 
-		ErrorMenu::fehlerMenue->hintergrund->setzeKeyboardAnzeigen(false);
+		ErrorMenu::fehlerMenue->background->setzeKeyboardAnzeigen(false);
 		ErrorMenu::fehlerMenue->textFehler->visible(false);
 		ErrorMenu::fehlerMenue->buttonOk->visible(false);
 

@@ -33,23 +33,23 @@
 
 using namespace std;
 
-Item *Block005Holz::getInstance() {
-	return new Block005Holz();
+Item *Block005Planks::getInstance() {
+	return new Block005Planks();
 }
 
-bool Block005Holz::registiereItem() {
-	ItemManager::registriereItem(new Block005Holz());
+bool Block005Planks::registiereItem() {
+	ItemManager::registriereItem(new Block005Planks());
 
 	return true;
 }
 
-Block005Holz::Block005Holz() {
+Block005Planks::Block005Planks() {
 	this->setzeStandardWerte();
 
 	Item::id = 0x005;
 }
 
-void Block005Holz::zeichne(float x, float y, float z, byte meta) {
+void Block005Planks::zeichne(float x, float y, float z, byte meta) {
 	if (meta == 1) { // Fichtenholz
 		ItemBlock::zeichneBlock(x, y, z, 198);
 	} else if (meta == 2) { // Birkenholz
@@ -61,6 +61,6 @@ void Block005Holz::zeichne(float x, float y, float z, byte meta) {
 	}
 }
 
-bool Block005Holz::istDurchsichtig() {
+bool Block005Planks::istDurchsichtig() {
 	return false;
 }

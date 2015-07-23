@@ -108,7 +108,7 @@ bool PacketWriterThread::gebeNaechstesPacket() {
 #endif
 
 		this->schreibPuffer = priority_queue<PacketClient *,
-				vector<PacketClient*>, PacketVergleicher>();
+				vector<PacketClient*>, PacketMatcher>();
 		pthread_mutex_unlock(&this->mutexqueue);
 
 		return false;

@@ -115,8 +115,8 @@ void Packet34MultiBlockChange::verarbeitePacket() {
 		buffer = NULL;
 #endif
 
-		BlockAenderung * b = new BlockAenderung(index, blockTyp, blockMetadata);
-		World::getWorld()->ergaenzeBlockAenderung(this->chunkX, this->chunkZ, b);
+		BlockChange * b = new BlockChange(index, blockTyp, blockMetadata);
+		World::getWorld()->ergaenzeBlockChange(this->chunkX, this->chunkZ, b);
 
 		datenPosition += 4;
 	}

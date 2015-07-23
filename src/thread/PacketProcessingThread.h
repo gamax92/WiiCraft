@@ -52,7 +52,7 @@ public:
 	void verarbeitePacket(PacketServer *p);
 
 private:
-	priority_queue<PacketServer *, vector<PacketServer*>, PacketVergleicher> verarbeitungPuffer;
+	priority_queue<PacketServer *, vector<PacketServer*>, PacketMatcher> verarbeitungPuffer;
 	bool gestoppt;
 
 	pthread_mutex_t mutexqueue;

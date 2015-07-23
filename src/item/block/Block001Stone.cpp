@@ -33,26 +33,26 @@
 
 using namespace std;
 
-Item *Block001Stein::getInstance() {
-	return new Block001Stein();
+Item *Block001Stone::getInstance() {
+	return new Block001Stone();
 }
 
-bool Block001Stein::registiereItem() {
-	ItemManager::registriereItem(new Block001Stein());
+bool Block001Stone::registiereItem() {
+	ItemManager::registriereItem(new Block001Stone());
 
 	return true;
 }
 
-Block001Stein::Block001Stein() {
+Block001Stone::Block001Stone() {
 	this->setzeStandardWerte();
 
 	Item::id = 0x001;
 }
 
-void Block001Stein::zeichne(float x, float y, float z, byte meta) {
+void Block001Stone::zeichne(float x, float y, float z, byte meta) {
 	ItemBlock::zeichneBlock(x, y, z, 1);
 }
 
-bool Block001Stein::istDurchsichtig() {
+bool Block001Stone::istDurchsichtig() {
 	return false;
 }

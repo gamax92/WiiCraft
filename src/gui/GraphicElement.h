@@ -27,8 +27,8 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef GRAFIKELEMENT_H_
-#define GRAFIKELEMENT_H_
+#ifndef GRAPHICELEMENT_H_
+#define GRAPHICELEMENT_H_
 
 #if defined _WIN32 || defined __CYGWIN__
 #include <pthread.h>
@@ -85,4 +85,4 @@ private:
 };
 
 }
-#endif /* GRAFIKELEMENT_H_ */
+#endif /* GRAPHICELEMENT_H_ */

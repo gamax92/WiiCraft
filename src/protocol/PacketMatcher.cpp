@@ -33,7 +33,7 @@
 
 using namespace std;
 
-bool PacketVergleicher::operator()(Packet *a, Packet *b) const {
+bool PacketMatcher::operator()(Packet *a, Packet *b) const {
 	if (a->gebePrio() > b->gebePrio()) {
 		return true;
 	} else if (a->gebePrio() == b->gebePrio()) {

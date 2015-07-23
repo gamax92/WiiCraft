@@ -34,9 +34,9 @@
 
 namespace std {
 
-class Block03FSchild: public ItemBlock {
+class Block03FSign: public ItemBlock {
 public:
-	Block03FSchild();
+	Block03FSign();
 	Item *getInstance();
 	static bool registiereItem();
 	void zeichne(float x, float y, float z, byte meta);

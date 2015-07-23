@@ -46,25 +46,25 @@
 
 using namespace std;
 
-ServerAuswahlMenue *ServerAuswahlMenue::serverAuswahlMenue;
+ServerSelectionMenu *ServerSelectionMenu::serverAuswahlMenue;
 
-void ServerAuswahlMenue::initialize() {
-	ServerAuswahlMenue::serverAuswahlMenue = new ServerAuswahlMenue();
+void ServerSelectionMenu::initialize() {
+	ServerSelectionMenu::serverAuswahlMenue = new ServerSelectionMenu();
 }
 
-void ServerAuswahlMenue::deinitialize() {
-	delete ServerAuswahlMenue::serverAuswahlMenue;
+void ServerSelectionMenu::deinitialize() {
+	delete ServerSelectionMenu::serverAuswahlMenue;
 }
 
-ServerAuswahlMenue::ServerAuswahlMenue() {
+ServerSelectionMenu::ServerSelectionMenu() {
 	pthread_mutex_init(&this->mutexwait, NULL);
 	pthread_cond_init(&this->condwait, NULL);
 
-	this->hintergrund = new Background("bildMenueHintergrund");
-	this->hintergrund->setzeKeyboardAnzeigen(true);
-	this->hintergrund->setzeCursorAnzeigen(true);
+	this->background = new Background("pictureMenueBackground");
+	this->background->setzeKeyboardAnzeigen(true);
+	this->background->setzeCursorAnzeigen(true);
 
-	Texture *bild = new Texture(144, 20, "logo");
+	Texture *picture = new Texture(144, 20, "logo");
 	this->textFehler = new Text(250, 260, "");
 	this->textFehler->setBackgroundColor(0xff33337f);
 	this->textBetreten = new Text(200, 160, "Server betreten...");
@@ -73,80 +73,80 @@ ServerAuswahlMenue::ServerAuswahlMenue() {
 	this->textServer = new Text(250, 124, "Server:");
 	this->textFeldServer = new TextField(250, 140, "");
 	this->textFeldServer->setzeBeimKlicken(
-			&ServerAuswahlMenue::auswaehlenServer);
+			&ServerSelectionMenu::auswaehlenServer);
 	this->textPort = new Text(250, 164, "Port:");
 	this->textFeldPort = new TextField(250, 180, "25565");
-	this->textFeldPort->setzeBeimKlicken(&ServerAuswahlMenue::auswaehlenPort);
+	this->textFeldPort->setzeBeimKlicken(&ServerSelectionMenu::auswaehlenPort);
 	this->buttonBetreten = new Button(254, 220, "Betreten");
-	this->buttonBetreten->setzeBeimKlicken(&ServerAuswahlMenue::betreten);
+	this->buttonBetreten->setzeBeimKlicken(&ServerSelectionMenu::betreten);
 
-	this->hintergrund->fuegeUnterElementHinzu(bild);
-	this->hintergrund->fuegeUnterElementHinzu(this->textFehler);
-	this->hintergrund->fuegeUnterElementHinzu(this->textBetreten);
-	this->hintergrund->fuegeUnterElementHinzu(this->textServer);
-	this->hintergrund->fuegeUnterElementHinzu(this->textFeldServer);
-	this->hintergrund->fuegeUnterElementHinzu(this->textPort);
-	this->hintergrund->fuegeUnterElementHinzu(this->textFeldPort);
-	this->hintergrund->fuegeUnterElementHinzu(this->buttonBetreten);
+	this->background->fuegeUnterElementHinzu(picture);
+	this->background->fuegeUnterElementHinzu(this->textFehler);
+	this->background->fuegeUnterElementHinzu(this->textBetreten);
+	this->background->fuegeUnterElementHinzu(this->textServer);
+	this->background->fuegeUnterElementHinzu(this->textFeldServer);
+	this->background->fuegeUnterElementHinzu(this->textPort);
+	this->background->fuegeUnterElementHinzu(this->textFeldPort);
+	this->background->fuegeUnterElementHinzu(this->buttonBetreten);
 }
 
-ServerAuswahlMenue::~ServerAuswahlMenue() {
+ServerSelectionMenu::~ServerSelectionMenu() {
 	pthread_mutex_destroy(&this->mutexwait);
 	pthread_cond_destroy(&this->condwait);
 }
 
-void ServerAuswahlMenue::zeigeServerAuswahlMenue() {
+void ServerSelectionMenu::zeigeServerSelectionMenu() {
 	GraphicHandler::getGraphicHandler()->setzeAnzeigeElement(
-			ServerAuswahlMenue::serverAuswahlMenue->hintergrund);
+			ServerSelectionMenu::serverAuswahlMenue->background);
 	GraphicHandler::getGraphicHandler()->setSelectedElement(
-			ServerAuswahlMenue::serverAuswahlMenue->textFeldServer);
+			ServerSelectionMenu::serverAuswahlMenue->textFeldServer);
 
 	while (true) {
 #if defined _WIN32 || defined __CYGWIN__
 		string input = "";
 		getline(cin, input);
 
-		ServerAuswahlMenue::serverAuswahlMenue->textFeldServer->setText(
+		ServerSelectionMenu::serverAuswahlMenue->textFeldServer->setText(
 				input);
 
 		input = "";
 		getline(cin, input);
 
-		ServerAuswahlMenue::serverAuswahlMenue->textFeldPort->setText(
+		ServerSelectionMenu::serverAuswahlMenue->textFeldPort->setText(
 				input);
 
-		ServerAuswahlMenue::serverAuswahlMenue->buttonBetreten->beimKlicken(0);
+		ServerSelectionMenu::serverAuswahlMenue->buttonBetreten->beimKlicken(0);
 #else
-		pthread_mutex_lock(&ServerAuswahlMenue::serverAuswahlMenue->mutexwait);
-		pthread_cond_wait(&ServerAuswahlMenue::serverAuswahlMenue->condwait,
-				&ServerAuswahlMenue::serverAuswahlMenue->mutexwait);
+		pthread_mutex_lock(&ServerSelectionMenu::serverAuswahlMenue->mutexwait);
+		pthread_cond_wait(&ServerSelectionMenu::serverAuswahlMenue->condwait,
+				&ServerSelectionMenu::serverAuswahlMenue->mutexwait);
 		pthread_mutex_unlock(
-				&ServerAuswahlMenue::serverAuswahlMenue->mutexwait);
+				&ServerSelectionMenu::serverAuswahlMenue->mutexwait);
 #endif
-		ServerAuswahlMenue::serverAuswahlMenue->hintergrund->setzeKeyboardAnzeigen(
+		ServerSelectionMenu::serverAuswahlMenue->background->setzeKeyboardAnzeigen(
 				false);
-		ServerAuswahlMenue::serverAuswahlMenue->textFehler->visible(false);
-		ServerAuswahlMenue::serverAuswahlMenue->textServer->visible(false);
-		ServerAuswahlMenue::serverAuswahlMenue->textFeldServer->visible(
+		ServerSelectionMenu::serverAuswahlMenue->textFehler->visible(false);
+		ServerSelectionMenu::serverAuswahlMenue->textServer->visible(false);
+		ServerSelectionMenu::serverAuswahlMenue->textFeldServer->visible(
 				false);
-		ServerAuswahlMenue::serverAuswahlMenue->textPort->visible(false);
-		ServerAuswahlMenue::serverAuswahlMenue->textFeldPort->visible(
+		ServerSelectionMenu::serverAuswahlMenue->textPort->visible(false);
+		ServerSelectionMenu::serverAuswahlMenue->textFeldPort->visible(
 				false);
-		ServerAuswahlMenue::serverAuswahlMenue->buttonBetreten->visible(
+		ServerSelectionMenu::serverAuswahlMenue->buttonBetreten->visible(
 				false);
-		ServerAuswahlMenue::serverAuswahlMenue->textBetreten->visible(
+		ServerSelectionMenu::serverAuswahlMenue->textBetreten->visible(
 				true);
 
 		try {
 			string _server =
-					ServerAuswahlMenue::serverAuswahlMenue->textFeldServer->getText();
+					ServerSelectionMenu::serverAuswahlMenue->textFeldServer->getText();
 			string _portString =
-					ServerAuswahlMenue::serverAuswahlMenue->textFeldPort->getText();
+					ServerSelectionMenu::serverAuswahlMenue->textFeldPort->getText();
 			int _portInt = atoi(_portString.c_str());
-			bool verbunden = Verbindung::verbinde(_server, _portInt);
+			bool verbunden = Connection::verbinde(_server, _portInt);
 
 			if (verbunden) {
-				Verbindung::starteSchnittstelle();
+				Connection::starteSchnittstelle();
 
 				string usernameAndHost;
 				usernameAndHost.append(Session::getUsername());
@@ -156,30 +156,30 @@ void ServerAuswahlMenue::zeigeServerAuswahlMenue() {
 				usernameAndHost.append(_portString);
 
 				PacketClient *p = new Packet02Handshake(usernameAndHost);
-				Verbindung::zuVerschickendenPacketenHinzufuegen(p);
+				Connection::zuVerschickendenPacketenHinzufuegen(p);
 			} else {
 				throw ExcSocketHTTPServerLoginFailed(
-						"Verbindung zum Server konnte nicht hergestellt werden.");
+						"Connection zum Server konnte nicht hergestellt werden.");
 			}
 		} catch (ExcSocketHTTPServerLoginFailed &exception) {
 
-			ServerAuswahlMenue::serverAuswahlMenue->textFehler->setText(
+			ServerSelectionMenu::serverAuswahlMenue->textFehler->setText(
 					exception.getFehler());
-			ServerAuswahlMenue::serverAuswahlMenue->hintergrund->setzeKeyboardAnzeigen(
+			ServerSelectionMenu::serverAuswahlMenue->background->setzeKeyboardAnzeigen(
 					true);
-			ServerAuswahlMenue::serverAuswahlMenue->textFehler->visible(
+			ServerSelectionMenu::serverAuswahlMenue->textFehler->visible(
 					true);
-			ServerAuswahlMenue::serverAuswahlMenue->textServer->visible(
+			ServerSelectionMenu::serverAuswahlMenue->textServer->visible(
 					true);
-			ServerAuswahlMenue::serverAuswahlMenue->textFeldServer->visible(
+			ServerSelectionMenu::serverAuswahlMenue->textFeldServer->visible(
 					true);
-			ServerAuswahlMenue::serverAuswahlMenue->textPort->visible(
+			ServerSelectionMenu::serverAuswahlMenue->textPort->visible(
 					true);
-			ServerAuswahlMenue::serverAuswahlMenue->textFeldPort->visible(
+			ServerSelectionMenu::serverAuswahlMenue->textFeldPort->visible(
 					true);
-			ServerAuswahlMenue::serverAuswahlMenue->buttonBetreten->visible(
+			ServerSelectionMenu::serverAuswahlMenue->buttonBetreten->visible(
 					true);
-			ServerAuswahlMenue::serverAuswahlMenue->textBetreten->visible(
+			ServerSelectionMenu::serverAuswahlMenue->textBetreten->visible(
 					false);
 			continue;
 		}
@@ -187,18 +187,18 @@ void ServerAuswahlMenue::zeigeServerAuswahlMenue() {
 	}
 }
 
-void ServerAuswahlMenue::betreten() {
-	pthread_mutex_lock(&ServerAuswahlMenue::serverAuswahlMenue->mutexwait);
-	pthread_cond_signal(&ServerAuswahlMenue::serverAuswahlMenue->condwait);
-	pthread_mutex_unlock(&ServerAuswahlMenue::serverAuswahlMenue->mutexwait);
+void ServerSelectionMenu::betreten() {
+	pthread_mutex_lock(&ServerSelectionMenu::serverAuswahlMenue->mutexwait);
+	pthread_cond_signal(&ServerSelectionMenu::serverAuswahlMenue->condwait);
+	pthread_mutex_unlock(&ServerSelectionMenu::serverAuswahlMenue->mutexwait);
 }
 
-void ServerAuswahlMenue::auswaehlenServer() {
+void ServerSelectionMenu::auswaehlenServer() {
 	GraphicHandler::getGraphicHandler()->setSelectedElement(
-			ServerAuswahlMenue::serverAuswahlMenue->textFeldServer);
+			ServerSelectionMenu::serverAuswahlMenue->textFeldServer);
 }
 
-void ServerAuswahlMenue::auswaehlenPort() {
+void ServerSelectionMenu::auswaehlenPort() {
 	GraphicHandler::getGraphicHandler()->setSelectedElement(
-			ServerAuswahlMenue::serverAuswahlMenue->textFeldPort);
+			ServerSelectionMenu::serverAuswahlMenue->textFeldPort);
 }

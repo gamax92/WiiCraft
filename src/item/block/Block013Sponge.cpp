@@ -33,26 +33,26 @@
 
 using namespace std;
 
-Item *Block013Schwamm::getInstance() {
-	return new Block013Schwamm();
+Item *Block013Sponge::getInstance() {
+	return new Block013Sponge();
 }
 
-bool Block013Schwamm::registiereItem() {
-	ItemManager::registriereItem(new Block013Schwamm());
+bool Block013Sponge::registiereItem() {
+	ItemManager::registriereItem(new Block013Sponge());
 
 	return true;
 }
 
-Block013Schwamm::Block013Schwamm() {
+Block013Sponge::Block013Sponge() {
 	this->setzeStandardWerte();
 
 	Item::id = 0x013;
 }
 
-void Block013Schwamm::zeichne(float x, float y, float z, byte meta) {
+void Block013Sponge::zeichne(float x, float y, float z, byte meta) {
 	ItemBlock::zeichneBlock(x, y, z, 48);
 }
 
-bool Block013Schwamm::istDurchsichtig() {
+bool Block013Sponge::istDurchsichtig() {
 	return false;
 }

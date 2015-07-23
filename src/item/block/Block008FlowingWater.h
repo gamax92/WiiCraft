@@ -27,16 +27,16 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef BLOCK008FLIESSENDESWASSER_H_
-#define BLOCK008FLIESSENDESWASSER_H_
+#ifndef BLOCK008FLOWINGWATER_H_
+#define BLOCK008FLOWINGWATER_H_
 
 #include "../ItemBlock.h"
 
 namespace std {
 
-class Block008FliessendesWasser: public ItemBlock {
+class Block008FlowingWater: public ItemBlock {
 public:
-	Block008FliessendesWasser();
+	Block008FlowingWater();
 	Item *getInstance();
 	static bool registiereItem();
 	void zeichne(float x, float y, float z, byte meta);
@@ -45,4 +45,4 @@ private:
 };
 
 }
-#endif /* BLOCK008FLIESSENDESWASSER_H_ */
+#endif /* BLOCK008FLOWINGWATER_H_ */

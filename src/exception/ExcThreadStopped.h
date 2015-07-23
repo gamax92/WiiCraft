@@ -27,8 +27,8 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef EXCTHREADGESTOPPT_H_
-#define EXCTHREADGESTOPPT_H_
+#ifndef EXCTHREADSTOPPED_H_
+#define EXCTHREADSTOPPED_H_
 
 #include <string>
 
@@ -42,4 +42,4 @@ private:
 };
 
 }
-#endif /* EXCTHREADGESTOPPT_H_ */
+#endif /* EXCTHREADSTOPPED_H_ */

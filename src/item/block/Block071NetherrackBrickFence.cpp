@@ -33,27 +33,27 @@
 
 using namespace std;
 
-Item *Block071Netherziegelzaun::getInstance() {
-	return new Block071Netherziegelzaun();
+Item *Block071NetherrackBrickFence::getInstance() {
+	return new Block071NetherrackBrickFence();
 }
 
-bool Block071Netherziegelzaun::registiereItem() {
-	ItemManager::registriereItem(new Block071Netherziegelzaun());
+bool Block071NetherrackBrickFence::registiereItem() {
+	ItemManager::registriereItem(new Block071NetherrackBrickFence());
 
 	return true;
 }
 
-Block071Netherziegelzaun::Block071Netherziegelzaun() {
+Block071NetherrackBrickFence::Block071NetherrackBrickFence() {
 	this->setzeStandardWerte();
 
 	Item::id = 0x071;
 }
 
-void Block071Netherziegelzaun::zeichne(float x, float y, float z, byte meta) {
+void Block071NetherrackBrickFence::zeichne(float x, float y, float z, byte meta) {
 	// TODO zeichnen fertig umsetzen
 	ItemBlock::zeichneBlock(x, y, z, 169);
 }
 
-bool Block071Netherziegelzaun::istDurchsichtig() {
+bool Block071NetherrackBrickFence::istDurchsichtig() {
 	return true;
 }

@@ -34,9 +34,9 @@
 
 namespace std {
 
-class Block044Wandschild: public ItemBlock {
+class Block044Wallschild: public ItemBlock {
 public:
-	Block044Wandschild();
+	Block044Wallschild();
 	Item *getInstance();
 	static bool registiereItem();
 	void zeichne(float x, float y, float z, byte meta);

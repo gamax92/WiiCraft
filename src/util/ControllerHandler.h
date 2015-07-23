@@ -27,8 +27,8 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef KONTROLLERHANDLER_H_
-#define KONTROLLERHANDLER_H_
+#ifndef CONTROLLERHANDLER_H_
+#define CONTROLLERHANDLER_H_
 
 #if defined _WIN32 || defined __CYGWIN__
 #include "../util/WiiFunction.h"
@@ -52,4 +52,4 @@ private:
 	void gedrueckt(unsigned int gedrueckt);
 };
 }
-#endif /* KONTROLLERHANDLER_H_ */
+#endif /* CONTROLLERHANDLER_H_ */

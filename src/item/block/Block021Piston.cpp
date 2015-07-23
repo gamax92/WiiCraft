@@ -33,27 +33,27 @@
 
 using namespace std;
 
-Item *Block021Kolben::getInstance() {
-	return new Block021Kolben();
+Item *Block021Piston::getInstance() {
+	return new Block021Piston();
 }
 
-bool Block021Kolben::registiereItem() {
-	ItemManager::registriereItem(new Block021Kolben());
+bool Block021Piston::registiereItem() {
+	ItemManager::registriereItem(new Block021Piston());
 
 	return true;
 }
 
-Block021Kolben::Block021Kolben() {
+Block021Piston::Block021Piston() {
 	this->setzeStandardWerte();
 
 	Item::id = 0x021;
 }
 
-void Block021Kolben::zeichne(float x, float y, float z, byte meta) {
+void Block021Piston::zeichne(float x, float y, float z, byte meta) {
 	// TODO zeichnen fertig umsetzen
 	ItemBlock::zeichneBlock(x, y, z, 169);
 }
 
-bool Block021Kolben::istDurchsichtig() {
+bool Block021Piston::istDurchsichtig() {
 	return true;
 }

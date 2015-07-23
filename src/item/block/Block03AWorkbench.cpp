@@ -34,23 +34,23 @@
 
 using namespace std;
 
-Item *Block03AWerkbank::getInstance() {
-	return new Block03AWerkbank();
+Item *Block03AWorkbench::getInstance() {
+	return new Block03AWorkbench();
 }
 
-bool Block03AWerkbank::registiereItem() {
-	ItemManager::registriereItem(new Block03AWerkbank());
+bool Block03AWorkbench::registiereItem() {
+	ItemManager::registriereItem(new Block03AWorkbench());
 
 	return true;
 }
 
-Block03AWerkbank::Block03AWerkbank() {
+Block03AWorkbench::Block03AWorkbench() {
 	this->setzeStandardWerte();
 
 	Item::id = 0x03a;
 }
 
-void Block03AWerkbank::zeichne(float x, float y, float z, byte meta) {
+void Block03AWorkbench::zeichne(float x, float y, float z, byte meta) {
 	float x1 = x + 1.0f;
 	float y1 = y + 1.0f;
 	float z1 = z + 1.0f;
@@ -58,34 +58,34 @@ void Block03AWerkbank::zeichne(float x, float y, float z, byte meta) {
 	// sued
 	guVector sued[4] = { { x, y1, z1 }, { x1, y1, z1 }, { x1, y, z1 }, { x, y,
 			z1 } };
-	GrrlibErsatz::GRRLIB_DrawImgQuadTile(sued, 59);
+	GrrlibReplacement::GRRLIB_DrawImgQuadTile(sued, 59);
 
 	// nord
 	guVector nord[4] =
 			{ { x1, y1, z }, { x, y1, z }, { x, y, z }, { x1, y, z } };
-	GrrlibErsatz::GRRLIB_DrawImgQuadTile(nord, 59);
+	GrrlibReplacement::GRRLIB_DrawImgQuadTile(nord, 59);
 
 	// ost
 	guVector ost[4] = { { x1, y1, z1 }, { x1, y1, z }, { x1, y, z },
 			{ x1, y, z1 } };
-	GrrlibErsatz::GRRLIB_DrawImgQuadTile(ost, 60);
+	GrrlibReplacement::GRRLIB_DrawImgQuadTile(ost, 60);
 
 	// west
 	guVector west[4] =
 			{ { x, y1, z }, { x, y1, z1 }, { x, y, z1 }, { x, y, z } };
-	GrrlibErsatz::GRRLIB_DrawImgQuadTile(west, 60);
+	GrrlibReplacement::GRRLIB_DrawImgQuadTile(west, 60);
 
 	// oben
 	guVector oben[4] = { { x, y1, z }, { x1, y1, z }, { x1, y1, z1 }, { x, y1,
 			z1 } };
-	GrrlibErsatz::GRRLIB_DrawImgQuadTile(oben, 43);
+	GrrlibReplacement::GRRLIB_DrawImgQuadTile(oben, 43);
 
 	// unten
 	guVector unten[4] =
 			{ { x1, y, z }, { x, y, z }, { x, y, z1 }, { x1, y, z1 } };
-	GrrlibErsatz::GRRLIB_DrawImgQuadTile(unten, 43);
+	GrrlibReplacement::GRRLIB_DrawImgQuadTile(unten, 43);
 }
 
-bool Block03AWerkbank::istDurchsichtig() {
+bool Block03AWorkbench::istDurchsichtig() {
 	return false;
 }

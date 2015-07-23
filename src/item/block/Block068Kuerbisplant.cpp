@@ -33,27 +33,27 @@
 
 using namespace std;
 
-Item *Block068Kuerbispflanze::getInstance() {
-	return new Block068Kuerbispflanze();
+Item *Block068Kuerbisplant::getInstance() {
+	return new Block068Kuerbisplant();
 }
 
-bool Block068Kuerbispflanze::registiereItem() {
-	ItemManager::registriereItem(new Block068Kuerbispflanze());
+bool Block068Kuerbisplant::registiereItem() {
+	ItemManager::registriereItem(new Block068Kuerbisplant());
 
 	return true;
 }
 
-Block068Kuerbispflanze::Block068Kuerbispflanze() {
+Block068Kuerbisplant::Block068Kuerbisplant() {
 	this->setzeStandardWerte();
 
 	Item::id = 0x068;
 }
 
-void Block068Kuerbispflanze::zeichne(float x, float y, float z, byte meta) {
+void Block068Kuerbisplant::zeichne(float x, float y, float z, byte meta) {
 	// TODO zeichnen fertig umsetzen
 	ItemBlock::zeichneBlock(x, y, z, 169);
 }
 
-bool Block068Kuerbispflanze::istDurchsichtig() {
+bool Block068Kuerbisplant::istDurchsichtig() {
 	return true;
 }

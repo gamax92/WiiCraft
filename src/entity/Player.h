@@ -27,8 +27,8 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef SPIELER_H_
-#define SPIELER_H_
+#ifndef PLAYER_H_
+#define PLAYER_H_
 
 #include "Entity.h"
 
@@ -94,4 +94,4 @@ private:
 	~Player();
 };
 }
-#endif /* SPIELER_H_ */
+#endif /* PLAYER_H_ */

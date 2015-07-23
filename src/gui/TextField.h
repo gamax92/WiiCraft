@@ -27,8 +27,8 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef TEXTFELD_H_
-#define TEXTFELD_H_
+#ifndef TEXTFIELD_H_
+#define TEXTFIELD_H_
 
 #include "TextElement.h"
 
@@ -49,4 +49,4 @@ private:
 };
 
 }
-#endif /* TEXTFELD_H_ */
+#endif /* TEXTFIELD_H_ */

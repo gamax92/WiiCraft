@@ -33,26 +33,26 @@
 
 using namespace std;
 
-Item *Block070Netherziegel::getInstance() {
-	return new Block070Netherziegel();
+Item *Block070NetherrackBrick::getInstance() {
+	return new Block070NetherrackBrick();
 }
 
-bool Block070Netherziegel::registiereItem() {
-	ItemManager::registriereItem(new Block070Netherziegel());
+bool Block070NetherrackBrick::registiereItem() {
+	ItemManager::registriereItem(new Block070NetherrackBrick());
 
 	return true;
 }
 
-Block070Netherziegel::Block070Netherziegel() {
+Block070NetherrackBrick::Block070NetherrackBrick() {
 	this->setzeStandardWerte();
 
 	Item::id = 0x070;
 }
 
-void Block070Netherziegel::zeichne(float x, float y, float z, byte meta) {
+void Block070NetherrackBrick::zeichne(float x, float y, float z, byte meta) {
 	ItemBlock::zeichneBlock(x, y, z, 224);
 }
 
-bool Block070Netherziegel::istDurchsichtig() {
+bool Block070NetherrackBrick::istDurchsichtig() {
 	return false;
 }

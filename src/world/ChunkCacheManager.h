@@ -35,7 +35,7 @@
 namespace std {
 
 class Chunk;
-class GecachterChunk;
+class CachedChunk;
 
 class ChunkCacheManager {
 public:
@@ -44,7 +44,7 @@ public:
 	void loescheChunk(Chunk *chunk);
 	void fuegeChunkHinzu(Chunk *chunk);
 private:
-	map<int, map<int, GecachterChunk *> > gecachteChunks;
+	map<int, map<int, CachedChunk *> > gecachteChunks;
 	void aktualisiereCacheWennNoetig();
 };
 

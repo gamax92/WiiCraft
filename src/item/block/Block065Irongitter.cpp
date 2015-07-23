@@ -33,27 +33,27 @@
 
 using namespace std;
 
-Item *Block065Eisengitter::getInstance() {
-	return new Block065Eisengitter();
+Item *Block065Irongitter::getInstance() {
+	return new Block065Irongitter();
 }
 
-bool Block065Eisengitter::registiereItem() {
-	ItemManager::registriereItem(new Block065Eisengitter());
+bool Block065Irongitter::registiereItem() {
+	ItemManager::registriereItem(new Block065Irongitter());
 
 	return true;
 }
 
-Block065Eisengitter::Block065Eisengitter() {
+Block065Irongitter::Block065Irongitter() {
 	this->setzeStandardWerte();
 
 	Item::id = 0x065;
 }
 
-void Block065Eisengitter::zeichne(float x, float y, float z, byte meta) {
+void Block065Irongitter::zeichne(float x, float y, float z, byte meta) {
 	// TODO zeichnen fertig umsetzen
 	ItemBlock::zeichneBlock(x, y, z, 169);
 }
 
-bool Block065Eisengitter::istDurchsichtig() {
+bool Block065Irongitter::istDurchsichtig() {
 	return true;
 }

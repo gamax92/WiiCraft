@@ -33,27 +33,27 @@
 
 using namespace std;
 
-Item *Block06FSeerose::getInstance() {
-	return new Block06FSeerose();
+Item *Block06FSearose::getInstance() {
+	return new Block06FSearose();
 }
 
-bool Block06FSeerose::registiereItem() {
-	ItemManager::registriereItem(new Block06FSeerose());
+bool Block06FSearose::registiereItem() {
+	ItemManager::registriereItem(new Block06FSearose());
 
 	return true;
 }
 
-Block06FSeerose::Block06FSeerose() {
+Block06FSearose::Block06FSearose() {
 	this->setzeStandardWerte();
 
 	Item::id = 0x06f;
 }
 
-void Block06FSeerose::zeichne(float x, float y, float z, byte meta) {
+void Block06FSearose::zeichne(float x, float y, float z, byte meta) {
 	// TODO zeichnen fertig umsetzen
 	ItemBlock::zeichneBlock(x, y, z, 169);
 }
 
-bool Block06FSeerose::istDurchsichtig() {
+bool Block06FSearose::istDurchsichtig() {
 	return true;
 }

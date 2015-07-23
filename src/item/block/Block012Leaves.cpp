@@ -33,23 +33,23 @@
 
 using namespace std;
 
-Item *Block012Blaetter::getInstance() {
-	return new Block012Blaetter();
+Item *Block012Leaves::getInstance() {
+	return new Block012Leaves();
 }
 
-bool Block012Blaetter::registiereItem() {
-	ItemManager::registriereItem(new Block012Blaetter());
+bool Block012Leaves::registiereItem() {
+	ItemManager::registriereItem(new Block012Leaves());
 
 	return true;
 }
 
-Block012Blaetter::Block012Blaetter() {
+Block012Leaves::Block012Leaves() {
 	this->setzeStandardWerte();
 
 	Item::id = 0x012;
 }
 
-void Block012Blaetter::zeichne(float x, float y, float z, byte meta) {
+void Block012Leaves::zeichne(float x, float y, float z, byte meta) {
 	// Wie auch beim Baumstamm entscheidet der Wert ueber die Baumart. Zusaetzlich
 	// springt der Wert auf 8, wenn ein Block neben den Blaettern updated. In
 	// diesem Fall wird ueberprueft, ob die Blaetter decayen sollen. Vom Player
@@ -67,6 +67,6 @@ void Block012Blaetter::zeichne(float x, float y, float z, byte meta) {
 	}
 }
 
-bool Block012Blaetter::istDurchsichtig() {
+bool Block012Leaves::istDurchsichtig() {
 	return true;
 }

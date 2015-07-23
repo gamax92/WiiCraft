@@ -33,27 +33,27 @@
 
 using namespace std;
 
-Item *Block06DSteinziegeltreppe::getInstance() {
-	return new Block06DSteinziegeltreppe();
+Item *Block06DStonezBrickstairs::getInstance() {
+	return new Block06DStonezBrickstairs();
 }
 
-bool Block06DSteinziegeltreppe::registiereItem() {
-	ItemManager::registriereItem(new Block06DSteinziegeltreppe());
+bool Block06DStonezBrickstairs::registiereItem() {
+	ItemManager::registriereItem(new Block06DStonezBrickstairs());
 
 	return true;
 }
 
-Block06DSteinziegeltreppe::Block06DSteinziegeltreppe() {
+Block06DStonezBrickstairs::Block06DStonezBrickstairs() {
 	this->setzeStandardWerte();
 
 	Item::id = 0x06d;
 }
 
-void Block06DSteinziegeltreppe::zeichne(float x, float y, float z, byte meta) {
+void Block06DStonezBrickstairs::zeichne(float x, float y, float z, byte meta) {
 	// TODO zeichnen fertig umsetzen
 	ItemBlock::zeichneBlock(x, y, z, 169);
 }
 
-bool Block06DSteinziegeltreppe::istDurchsichtig() {
+bool Block06DStonezBrickstairs::istDurchsichtig() {
 	return true;
 }

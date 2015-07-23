@@ -33,27 +33,27 @@
 
 using namespace std;
 
-Item *Block033Feuer::getInstance() {
-	return new Block033Feuer();
+Item *Block033Fire::getInstance() {
+	return new Block033Fire();
 }
 
-bool Block033Feuer::registiereItem() {
-	ItemManager::registriereItem(new Block033Feuer());
+bool Block033Fire::registiereItem() {
+	ItemManager::registriereItem(new Block033Fire());
 
 	return true;
 }
 
-Block033Feuer::Block033Feuer() {
+Block033Fire::Block033Fire() {
 	this->setzeStandardWerte();
 
 	Item::id = 0x033;
 }
 
-void Block033Feuer::zeichne(float x, float y, float z, byte meta) {
+void Block033Fire::zeichne(float x, float y, float z, byte meta) {
 	// TODO zeichnen fertig umsetzen
 	ItemBlock::zeichneBlock(x, y, z, 169);
 }
 
-bool Block033Feuer::istDurchsichtig() {
+bool Block033Fire::istDurchsichtig() {
 	return true;
 }

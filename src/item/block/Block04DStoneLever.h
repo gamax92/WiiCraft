@@ -34,9 +34,9 @@
 
 namespace std {
 
-class Block04DSteinschalter: public ItemBlock {
+class Block04DStoneLever: public ItemBlock {
 public:
-	Block04DSteinschalter();
+	Block04DStoneLever();
 	Item *getInstance();
 	static bool registiereItem();
 	void zeichne(float x, float y, float z, byte meta);

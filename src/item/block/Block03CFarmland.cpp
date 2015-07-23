@@ -33,27 +33,27 @@
 
 using namespace std;
 
-Item *Block03CAckerboden::getInstance() {
-	return new Block03CAckerboden();
+Item *Block03CFarmland::getInstance() {
+	return new Block03CFarmland();
 }
 
-bool Block03CAckerboden::registiereItem() {
-	ItemManager::registriereItem(new Block03CAckerboden());
+bool Block03CFarmland::registiereItem() {
+	ItemManager::registriereItem(new Block03CFarmland());
 
 	return true;
 }
 
-Block03CAckerboden::Block03CAckerboden() {
+Block03CFarmland::Block03CFarmland() {
 	this->setzeStandardWerte();
 
 	Item::id = 0x03c;
 }
 
-void Block03CAckerboden::zeichne(float x, float y, float z, byte meta) {
+void Block03CFarmland::zeichne(float x, float y, float z, byte meta) {
 	// TODO zeichnen fertig umsetzen
 	ItemBlock::zeichneBlock(x, y, z, 169);
 }
 
-bool Block03CAckerboden::istDurchsichtig() {
+bool Block03CFarmland::istDurchsichtig() {
 	return true;
 }

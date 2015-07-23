@@ -34,9 +34,9 @@
 
 namespace std {
 
-class Block03AWerkbank: public ItemBlock {
+class Block03AWorkbench: public ItemBlock {
 public:
-	Block03AWerkbank();
+	Block03AWorkbench();
 	Item *getInstance();
 	static bool registiereItem();
 	void zeichne(float x, float y, float z, byte meta);

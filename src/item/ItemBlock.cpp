@@ -63,32 +63,32 @@ void ItemBlock::zeichneBlock(float x, float y, float z, int textur) {
 	// sued
 	guVector sued[4] = { { x, y1, z1 }, { x1, y1, z1 }, { x1, y, z1 }, { x, y,
 			z1 } };
-	GrrlibErsatz::GRRLIB_DrawImgQuadTile(sued, textur);
+	GrrlibReplacement::GRRLIB_DrawImgQuadTile(sued, textur);
 
 	// nord
 	guVector nord[4] =
 			{ { x1, y1, z }, { x, y1, z }, { x, y, z }, { x1, y, z } };
-	GrrlibErsatz::GRRLIB_DrawImgQuadTile(nord, textur);
+	GrrlibReplacement::GRRLIB_DrawImgQuadTile(nord, textur);
 
 	// ost
 	guVector ost[4] = { { x1, y1, z1 }, { x1, y1, z }, { x1, y, z },
 			{ x1, y, z1 } };
-	GrrlibErsatz::GRRLIB_DrawImgQuadTile(ost, textur);
+	GrrlibReplacement::GRRLIB_DrawImgQuadTile(ost, textur);
 
 	// west
 	guVector west[4] =
 			{ { x, y1, z }, { x, y1, z1 }, { x, y, z1 }, { x, y, z } };
-	GrrlibErsatz::GRRLIB_DrawImgQuadTile(west, textur);
+	GrrlibReplacement::GRRLIB_DrawImgQuadTile(west, textur);
 
 	// oben
 	guVector oben[4] = { { x, y1, z }, { x1, y1, z }, { x1, y1, z1 }, { x, y1,
 			z1 } };
-	GrrlibErsatz::GRRLIB_DrawImgQuadTile(oben, textur);
+	GrrlibReplacement::GRRLIB_DrawImgQuadTile(oben, textur);
 
 	// unten
 	guVector unten[4] =
 			{ { x1, y, z }, { x, y, z }, { x, y, z1 }, { x1, y, z1 } };
-	GrrlibErsatz::GRRLIB_DrawImgQuadTile(unten, textur);
+	GrrlibReplacement::GRRLIB_DrawImgQuadTile(unten, textur);
 }
 
 void ItemBlock::zeichnePflanze(float x, float y, float z, int textur,
@@ -101,31 +101,31 @@ void ItemBlock::zeichnePflanze(float x, float y, float z, int textur,
 		// sued
 		guVector sued[4] = { { x, y1, z1 - 0.2 }, { x1, y1, z1 - 0.2 }, { x1, y,
 				z1 - 0.2 }, { x, y, z1 - 0.2 } };
-		GrrlibErsatz::GRRLIB_DrawImgQuadTile(sued, textur);
+		GrrlibReplacement::GRRLIB_DrawImgQuadTile(sued, textur);
 
 		// nord
 		guVector nord[4] = { { x1, y1, z + 0.2 }, { x, y1, z + 0.2 }, { x, y, z
 				+ 0.2 }, { x1, y, z + 0.2 } };
-		GrrlibErsatz::GRRLIB_DrawImgQuadTile(nord, textur);
+		GrrlibReplacement::GRRLIB_DrawImgQuadTile(nord, textur);
 
 		// ost
 		guVector ost[4] = { { x1 - 0.2, y1, z1 }, { x1 - 0.2, y1, z }, { x1
 				- 0.2, y, z }, { x1 - 0.2, y, z1 } };
-		GrrlibErsatz::GRRLIB_DrawImgQuadTile(ost, textur);
+		GrrlibReplacement::GRRLIB_DrawImgQuadTile(ost, textur);
 
 		// west
 		guVector west[4] = { { x + 0.2, y1, z }, { x + 0.2, y1, z1 }, { x + 0.2,
 				y, z1 }, { x + 0.2, y, z } };
-		GrrlibErsatz::GRRLIB_DrawImgQuadTile(west, textur);
+		GrrlibReplacement::GRRLIB_DrawImgQuadTile(west, textur);
 	} else {
 		// ost
 		guVector ost[4] = { { x1, y1, z1 }, { x, y1, z }, { x, y, z }, { x1, y,
 				z1 } };
-		GrrlibErsatz::GRRLIB_DrawImgQuadTile(ost, textur);
+		GrrlibReplacement::GRRLIB_DrawImgQuadTile(ost, textur);
 
 		// west
 		guVector west[4] = { { x1, y1, z }, { x, y1, z1 }, { x, y, z1 }, { x1,
 				y, z } };
-		GrrlibErsatz::GRRLIB_DrawImgQuadTile(west, textur);
+		GrrlibReplacement::GRRLIB_DrawImgQuadTile(west, textur);
 	}
 }

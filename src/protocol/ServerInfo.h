@@ -41,7 +41,7 @@ public:
 	static void initializeServerInfo(byte maximaleAnzahlPlayer);
 	static ServerInfo *getServerInfo();
 
-	void aktualisierePlayerStatus(string _spieler, bool _online, short _ping);
+	void aktualisierePlayerStatus(string _player, bool _online, short _ping);
 private:
 	static ServerInfo *serverInfo;
 
@@ -50,12 +50,12 @@ private:
 	ServerInfo(byte _maximaleAnzahlPlayer);
 
 	struct Player {
-		string spieler;
+		string player;
 		bool online;
 		short ping;
 	};
 
-	map<string, Player> spieler;
+	map<string, Player> player;
 };
 
 }

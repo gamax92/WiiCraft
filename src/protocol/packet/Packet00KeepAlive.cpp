@@ -70,7 +70,7 @@ void Packet00KeepAlive::lesePacketInhalt(DataInputStream *in) {
 
 void Packet00KeepAlive::verarbeitePacket() {
 	PacketClient *p = new Packet00KeepAlive(0);
-	Verbindung::zuVerschickendenPacketenHinzufuegen(p);
+	Connection::zuVerschickendenPacketenHinzufuegen(p);
 
 #ifdef DEBUG_ON
 	char *buffer = new char[100];

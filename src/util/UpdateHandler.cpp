@@ -49,18 +49,18 @@ bool UpdateHandler::istUpdateVorhanden() {
 		response = h->get("freielancommunity.de", 80, get);
 	} catch (ExcSocketHTTP &exception) {
 		throw ExcSocketHTTPServerLoginFailed(
-				"Verbindung zu freielancommunity.de nicht moeglich");
+				"Connection zu freielancommunity.de nicht moeglich");
 	}
 
 	short pos1 = response.find("<release_date>");
 	short pos2 = response.find("</release_date>", pos1 + 1);
 	string serverReleaseVersion = response.substr(pos1 + 14, pos2 - pos1 - 14);
 
-	string pfad = Path::getPath();
-	pfad.append("meta.xml");
+	string path = Path::getPath();
+	path.append("meta.xml");
 	string metaDatei;
 
-	fstream fin(pfad.data());
+	fstream fin(path.data());
 	string buffer;
 	int i = 0;
 	while (fin.good()) {
@@ -110,14 +110,14 @@ bool UpdateHandler::ladeXML(LoadingBar *l) {
 
 	HTTP * h = new HTTP();
 
-	string pfad = Path::getPath();
-	pfad.append("meta.xml");
+	string path = Path::getPath();
+	path.append("meta.xml");
 
 	try {
-		return h->getFile("freielancommunity.de", 80, get, pfad, l);
+		return h->getFile("freielancommunity.de", 80, get, path, l);
 	} catch (ExcSocketHTTP &exception) {
 		throw ExcSocketHTTPServerLoginFailed(
-				"Verbindung zu freielancommunity.de nicht moeglich");
+				"Connection zu freielancommunity.de nicht moeglich");
 	}
 
 	return false;
@@ -128,14 +128,14 @@ bool UpdateHandler::ladeIcon(LoadingBar *l) {
 
 	HTTP * h = new HTTP();
 
-	string pfad = Path::getPath();
-	pfad.append("icon.png");
+	string path = Path::getPath();
+	path.append("icon.png");
 
 	try {
-		return h->getFile("freielancommunity.de", 80, get, pfad, l);
+		return h->getFile("freielancommunity.de", 80, get, path, l);
 	} catch (ExcSocketHTTP &exception) {
 		throw ExcSocketHTTPServerLoginFailed(
-				"Verbindung zu freielancommunity.de nicht moeglich");
+				"Connection zu freielancommunity.de nicht moeglich");
 	}
 
 	return false;
@@ -146,14 +146,14 @@ bool UpdateHandler::ladeDol(LoadingBar *l) {
 
 	HTTP * h = new HTTP();
 
-	string pfad = Path::getPath();
-	pfad.append("boot.dol");
+	string path = Path::getPath();
+	path.append("boot.dol");
 
 	try {
-		return h->getFile("freielancommunity.de", 80, get, pfad, l);
+		return h->getFile("freielancommunity.de", 80, get, path, l);
 	} catch (ExcSocketHTTP &exception) {
 		throw ExcSocketHTTPServerLoginFailed(
-				"Verbindung zu freielancommunity.de nicht moeglich");
+				"Connection zu freielancommunity.de nicht moeglich");
 	}
 
 	return false;

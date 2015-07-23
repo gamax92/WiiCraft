@@ -82,7 +82,7 @@ World::World(int _dimension, string _levelTyp, byte _schwierigkeitsGrad,
 	pthread_mutex_init(&this->mutexChunks, NULL);
 	pthread_mutex_init(&this->mutexLoadedChunks, NULL);
 	pthread_mutex_init(&this->mutexTime, NULL);
-	pthread_mutex_init(&this->mutexWelthoehe, NULL);
+	pthread_mutex_init(&this->mutexWorldhoehe, NULL);
 
 	this->time = 0;
 	this->dimension = _dimension;
@@ -98,19 +98,19 @@ World::World(int _dimension, string _levelTyp, byte _schwierigkeitsGrad,
 	this->chunkCacheManager = new ChunkCacheManager();
 
 	// TODO wird von Mojang noch nicht ausgewertet
-	pthread_mutex_lock(&this->mutexWelthoehe);
+	pthread_mutex_lock(&this->mutexWorldhoehe);
 	this->worldHeight = 256;
 	if (_worldHeight != 0) {
 		this->worldHeight = _worldHeight;
 	}
-	pthread_mutex_unlock(&this->mutexWelthoehe);
+	pthread_mutex_unlock(&this->mutexWorldhoehe);
 }
 
 World::~World() {
 	pthread_mutex_destroy(&this->mutexChunks);
 	pthread_mutex_destroy(&this->mutexLoadedChunks);
 	pthread_mutex_destroy(&this->mutexTime);
-	pthread_mutex_destroy(&this->mutexWelthoehe);
+	pthread_mutex_destroy(&this->mutexWorldhoehe);
 
 	for (map<int, map<int, Chunk *> >::iterator x = this->chunks.begin();
 			x != this->chunks.end(); ++x) {
@@ -185,16 +185,16 @@ bool World::istChunkGeladen(int x, int z) {
 }
 
 void World::ergaenzeKomprimierteDaten(int chunkX, int chunkZ,
-		KomprimierteChunkDaten *komprimierteDaten) {
+		CompressedChunkData *komprimierteDaten) {
 	pthread_mutex_lock(&this->mutexChunks);
 	this->chunks[chunkX][chunkZ]->ergaenzeKomprimierteDaten(komprimierteDaten);
 	pthread_mutex_unlock(&this->mutexChunks);
 }
 
-void World::ergaenzeBlockAenderung(int chunkX, int chunkZ,
-		BlockAenderung *blockAenderung) {
+void World::ergaenzeBlockChange(int chunkX, int chunkZ,
+		BlockChange *blockAenderung) {
 	pthread_mutex_lock(&this->mutexChunks);
-	this->chunks[chunkX][chunkZ]->ergaenzeBlockAenderung(blockAenderung);
+	this->chunks[chunkX][chunkZ]->ergaenzeBlockChange(blockAenderung);
 	pthread_mutex_unlock(&this->mutexChunks);
 }
 
@@ -242,9 +242,9 @@ void World::zeichne() {
 }
 
 unsigned short World::getWorldHeight() {
-	pthread_mutex_lock(&this->mutexWelthoehe);
+	pthread_mutex_lock(&this->mutexWorldhoehe);
 	short _worldHeight = this->worldHeight;
-	pthread_mutex_unlock(&this->mutexWelthoehe);
+	pthread_mutex_unlock(&this->mutexWorldhoehe);
 
 	return _worldHeight;
 }

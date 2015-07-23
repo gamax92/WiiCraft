@@ -34,26 +34,26 @@
 
 using namespace std;
 
-Item *Block020ToterStrauch::getInstance() {
-	return new Block020ToterStrauch();
+Item *Block020DeadStrauch::getInstance() {
+	return new Block020DeadStrauch();
 }
 
-bool Block020ToterStrauch::registiereItem() {
-	ItemManager::registriereItem(new Block020ToterStrauch());
+bool Block020DeadStrauch::registiereItem() {
+	ItemManager::registriereItem(new Block020DeadStrauch());
 
 	return true;
 }
 
-Block020ToterStrauch::Block020ToterStrauch() {
+Block020DeadStrauch::Block020DeadStrauch() {
 	this->setzeStandardWerte();
 
 	Item::id = 0x020;
 }
 
-void Block020ToterStrauch::zeichne(float x, float y, float z, byte meta) {
+void Block020DeadStrauch::zeichne(float x, float y, float z, byte meta) {
 	ItemBlock::zeichnePflanze(x, y, z, 55);
 }
 
-bool Block020ToterStrauch::istDurchsichtig() {
+bool Block020DeadStrauch::istDurchsichtig() {
 	return true;
 }

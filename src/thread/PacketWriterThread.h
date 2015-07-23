@@ -56,7 +56,7 @@ public:
 private:
 	Socket *socket;
 	DataOutputStream *oStream;
-	priority_queue<PacketClient *, vector<PacketClient*>, PacketVergleicher> schreibPuffer;
+	priority_queue<PacketClient *, vector<PacketClient*>, PacketMatcher> schreibPuffer;
 	bool gestoppt;
 
 	pthread_mutex_t mutexqueue;

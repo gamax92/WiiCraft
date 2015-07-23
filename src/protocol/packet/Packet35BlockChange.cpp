@@ -74,9 +74,9 @@ void Packet35BlockChange::verarbeitePacket() {
 
 	short index = World::getWorld()->berechneIndex(startX, startY, startZ);
 
-	BlockAenderung * b = new BlockAenderung(index, this->blockType,
+	BlockChange * b = new BlockChange(index, this->blockType,
 			this->blockMetadata);
-	World::getWorld()->ergaenzeBlockAenderung(chunkX, chunkZ, b);
+	World::getWorld()->ergaenzeBlockChange(chunkX, chunkZ, b);
 
 #ifdef DEBUG_ON
 	char *buffer = new char[100];

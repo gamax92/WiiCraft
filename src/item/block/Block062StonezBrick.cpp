@@ -33,23 +33,23 @@
 
 using namespace std;
 
-Item *Block062Steinziegel::getInstance() {
-	return new Block062Steinziegel();
+Item *Block062StonezBrick::getInstance() {
+	return new Block062StonezBrick();
 }
 
-bool Block062Steinziegel::registiereItem() {
-	ItemManager::registriereItem(new Block062Steinziegel());
+bool Block062StonezBrick::registiereItem() {
+	ItemManager::registriereItem(new Block062StonezBrick());
 
 	return true;
 }
 
-Block062Steinziegel::Block062Steinziegel() {
+Block062StonezBrick::Block062StonezBrick() {
 	this->setzeStandardWerte();
 
 	Item::id = 0x062;
 }
 
-void Block062Steinziegel::zeichne(float x, float y, float z, byte meta) {
+void Block062StonezBrick::zeichne(float x, float y, float z, byte meta) {
 
 	if (meta == 1) { // Bemoost
 		ItemBlock::zeichneBlock(x, y, z, 100);
@@ -62,6 +62,6 @@ void Block062Steinziegel::zeichne(float x, float y, float z, byte meta) {
 	}
 }
 
-bool Block062Steinziegel::istDurchsichtig() {
+bool Block062StonezBrick::istDurchsichtig() {
 	return false;
 }

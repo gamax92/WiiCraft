@@ -33,26 +33,26 @@
 
 using namespace std;
 
-Item *Block015LapisLazuliErz::getInstance() {
-	return new Block015LapisLazuliErz();
+Item *Block015LapisLazuliOre::getInstance() {
+	return new Block015LapisLazuliOre();
 }
 
-bool Block015LapisLazuliErz::registiereItem() {
-	ItemManager::registriereItem(new Block015LapisLazuliErz());
+bool Block015LapisLazuliOre::registiereItem() {
+	ItemManager::registriereItem(new Block015LapisLazuliOre());
 
 	return true;
 }
 
-Block015LapisLazuliErz::Block015LapisLazuliErz() {
+Block015LapisLazuliOre::Block015LapisLazuliOre() {
 	this->setzeStandardWerte();
 
 	Item::id = 0x015;
 }
 
-void Block015LapisLazuliErz::zeichne(float x, float y, float z, byte meta) {
+void Block015LapisLazuliOre::zeichne(float x, float y, float z, byte meta) {
 	ItemBlock::zeichneBlock(x, y, z, 160);
 }
 
-bool Block015LapisLazuliErz::istDurchsichtig() {
+bool Block015LapisLazuliOre::istDurchsichtig() {
 	return false;
 }

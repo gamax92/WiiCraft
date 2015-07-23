@@ -34,23 +34,23 @@
 
 using namespace std;
 
-Item *Block03EBrennenderOfen::getInstance() {
-	return new Block03EBrennenderOfen();
+Item *Block03EBurningFurnace::getInstance() {
+	return new Block03EBurningFurnace();
 }
 
-bool Block03EBrennenderOfen::registiereItem() {
-	ItemManager::registriereItem(new Block03EBrennenderOfen());
+bool Block03EBurningFurnace::registiereItem() {
+	ItemManager::registriereItem(new Block03EBurningFurnace());
 
 	return true;
 }
 
-Block03EBrennenderOfen::Block03EBrennenderOfen() {
+Block03EBurningFurnace::Block03EBurningFurnace() {
 	this->setzeStandardWerte();
 
 	Item::id = 0x03e;
 }
 
-void Block03EBrennenderOfen::zeichne(float x, float y, float z, byte meta) {
+void Block03EBurningFurnace::zeichne(float x, float y, float z, byte meta) {
 	float x1 = x + 1.0f;
 	float y1 = y + 1.0f;
 	float z1 = z + 1.0f;
@@ -73,34 +73,34 @@ void Block03EBrennenderOfen::zeichne(float x, float y, float z, byte meta) {
 	// sued
 	guVector sued[4] = { { x, y1, z1 }, { x1, y1, z1 }, { x1, y, z1 }, { x, y,
 			z1 } };
-	GrrlibErsatz::GRRLIB_DrawImgQuadTile(sued, suedT);
+	GrrlibReplacement::GRRLIB_DrawImgQuadTile(sued, suedT);
 
 	// nord
 	guVector nord[4] =
 			{ { x1, y1, z }, { x, y1, z }, { x, y, z }, { x1, y, z } };
-	GrrlibErsatz::GRRLIB_DrawImgQuadTile(nord, nordT);
+	GrrlibReplacement::GRRLIB_DrawImgQuadTile(nord, nordT);
 
 	// ost
 	guVector ost[4] = { { x1, y1, z1 }, { x1, y1, z }, { x1, y, z },
 			{ x1, y, z1 } };
-	GrrlibErsatz::GRRLIB_DrawImgQuadTile(ost, ostT);
+	GrrlibReplacement::GRRLIB_DrawImgQuadTile(ost, ostT);
 
 	// west
 	guVector west[4] =
 			{ { x, y1, z }, { x, y1, z1 }, { x, y, z1 }, { x, y, z } };
-	GrrlibErsatz::GRRLIB_DrawImgQuadTile(west, westT);
+	GrrlibReplacement::GRRLIB_DrawImgQuadTile(west, westT);
 
 	// oben
 	guVector oben[4] = { { x, y1, z }, { x1, y1, z }, { x1, y1, z1 }, { x, y1,
 			z1 } };
-	GrrlibErsatz::GRRLIB_DrawImgQuadTile(oben, 62);
+	GrrlibReplacement::GRRLIB_DrawImgQuadTile(oben, 62);
 
 	// unten
 	guVector unten[4] =
 			{ { x1, y, z }, { x, y, z }, { x, y, z1 }, { x1, y, z1 } };
-	GrrlibErsatz::GRRLIB_DrawImgQuadTile(unten, 62);
+	GrrlibReplacement::GRRLIB_DrawImgQuadTile(unten, 62);
 }
 
-bool Block03EBrennenderOfen::istDurchsichtig() {
+bool Block03EBurningFurnace::istDurchsichtig() {
 	return false;
 }

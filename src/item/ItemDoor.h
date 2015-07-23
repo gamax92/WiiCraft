@@ -27,8 +27,8 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef ITEMTUER_H_
-#define ITEMTUER_H_
+#ifndef ITEMDOOR_H_
+#define ITEMDOOR_H_
 
 #include "Item.h"
 
@@ -38,4 +38,4 @@ class ItemDoor: public std::Item {
 };
 
 }
-#endif /* ITEMTUER_H_ */
+#endif /* ITEMDOOR_H_ */

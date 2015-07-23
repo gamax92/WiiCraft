@@ -27,8 +27,8 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef VERBINDUNG_H_
-#define VERBINDUNG_H_
+#ifndef CONNECTION_H_
+#define CONNECTION_H_
 
 #include "../net/Socket.h"
 #include "PacketClient.h"
@@ -39,11 +39,11 @@
 
 namespace std {
 
-class PacketeLesenThread;
+class PacketReadingThread;
 class PacketWriterThread;
 class PacketProcessingThread;
 
-class Verbindung {
+class Connection {
 public:
 	static bool verbinde(string server, int port);
 	static void starteSchnittstelle();
@@ -53,9 +53,9 @@ public:
 	static void beenden(bool aktiv);
 private:
 	static Socket *socket;
-	static PacketeLesenThread *vLesen;
+	static PacketReadingThread *vLesen;
 	static PacketWriterThread *vSchreiben;
 	static PacketProcessingThread *vVerarbeitung;
 };
 }
-#endif /* VERBINDUNG_H_ */
+#endif /* CONNECTION_H_ */

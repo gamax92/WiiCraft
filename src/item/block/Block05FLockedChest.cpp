@@ -33,27 +33,27 @@
 
 using namespace std;
 
-Item *Block05FVerschlosseneTruhe::getInstance() {
-	return new Block05FVerschlosseneTruhe();
+Item *Block05FLockedChest::getInstance() {
+	return new Block05FLockedChest();
 }
 
-bool Block05FVerschlosseneTruhe::registiereItem() {
-	ItemManager::registriereItem(new Block05FVerschlosseneTruhe());
+bool Block05FLockedChest::registiereItem() {
+	ItemManager::registriereItem(new Block05FLockedChest());
 
 	return true;
 }
 
-Block05FVerschlosseneTruhe::Block05FVerschlosseneTruhe() {
+Block05FLockedChest::Block05FLockedChest() {
 	this->setzeStandardWerte();
 
 	Item::id = 0x05f;
 }
 
-void Block05FVerschlosseneTruhe::zeichne(float x, float y, float z, byte meta) {
+void Block05FLockedChest::zeichne(float x, float y, float z, byte meta) {
 	// TODO zeichnen fertig umsetzen
 	ItemBlock::zeichneBlock(x, y, z, 169);
 }
 
-bool Block05FVerschlosseneTruhe::istDurchsichtig() {
+bool Block05FLockedChest::istDurchsichtig() {
 	return true;
 }

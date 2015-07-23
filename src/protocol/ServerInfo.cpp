@@ -51,13 +51,13 @@ ServerInfo::ServerInfo(byte _maximaleAnzahlPlayer) {
 	this->maximaleAnzahlPlayer = _maximaleAnzahlPlayer;
 }
 
-void ServerInfo::aktualisierePlayerStatus(string _spieler, bool _online,
+void ServerInfo::aktualisierePlayerStatus(string _player, bool _online,
 		short _ping) {
-	if (!_online && this->spieler.count(_spieler) > 0) {
-		this->spieler.erase(_spieler);
+	if (!_online && this->player.count(_player) > 0) {
+		this->player.erase(_player);
 	} else {
-		this->spieler[_spieler].spieler = _spieler;
-		this->spieler[_spieler].online = _online;
-		this->spieler[_spieler].ping = _ping;
+		this->player[_player].player = _player;
+		this->player[_player].online = _online;
+		this->player[_player].ping = _ping;
 	}
 }

@@ -102,7 +102,7 @@ bool PacketProcessingThread::gebeNaechstesPacket() {
 #endif
 
 		this->verarbeitungPuffer = priority_queue<PacketServer *,
-				vector<PacketServer*>, PacketVergleicher>();
+				vector<PacketServer*>, PacketMatcher>();
 		pthread_mutex_unlock(&this->mutexqueue);
 
 		return false;

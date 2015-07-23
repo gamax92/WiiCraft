@@ -33,27 +33,27 @@
 
 using namespace std;
 
-Item *Block064RoterPilzblock::getInstance() {
-	return new Block064RoterPilzblock();
+Item *Block064RoterMushroomblock::getInstance() {
+	return new Block064RoterMushroomblock();
 }
 
-bool Block064RoterPilzblock::registiereItem() {
-	ItemManager::registriereItem(new Block064RoterPilzblock());
+bool Block064RoterMushroomblock::registiereItem() {
+	ItemManager::registriereItem(new Block064RoterMushroomblock());
 
 	return true;
 }
 
-Block064RoterPilzblock::Block064RoterPilzblock() {
+Block064RoterMushroomblock::Block064RoterMushroomblock() {
 	this->setzeStandardWerte();
 
 	Item::id = 0x064;
 }
 
-void Block064RoterPilzblock::zeichne(float x, float y, float z, byte meta) {
+void Block064RoterMushroomblock::zeichne(float x, float y, float z, byte meta) {
 	// TODO zeichnen fertig umsetzen
 	ItemBlock::zeichneBlock(x, y, z, 169);
 }
 
-bool Block064RoterPilzblock::istDurchsichtig() {
+bool Block064RoterMushroomblock::istDurchsichtig() {
 	return false;
 }

@@ -31,23 +31,23 @@
 
 using namespace std;
 
-BlockAenderung::BlockAenderung(unsigned short _index, short _wertTyp,
+BlockChange::BlockChange(unsigned short _index, short _wertTyp,
 		byte _wertMeta) {
 	this->index = _index;
 	this->wertTyp = _wertTyp;
 	this->wertMeta = _wertMeta;
 }
 
-bool BlockAenderung::Vergleicher(BlockAenderung *first,
-		BlockAenderung *second) {
+bool BlockChange::Vergleicher(BlockChange *first,
+		BlockChange *second) {
 	return (first->getIndex() == second->getIndex());
 }
 
-unsigned short BlockAenderung::getIndex() {
+unsigned short BlockChange::getIndex() {
 	return this->index;
 }
 
-void BlockAenderung::aendereDaten(short *bloeckeTyp, byte *bloeckeMeta,
+void BlockChange::aendereDaten(short *bloeckeTyp, byte *bloeckeMeta,
 		byte *bloeckeLicht, byte *bloeckeHimmelLicht) {
 	bloeckeTyp[this->index] = this->wertTyp;
 }

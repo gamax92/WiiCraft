@@ -27,8 +27,8 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef FEHLERMENUE_H_
-#define FEHLERMENUE_H_
+#ifndef ERRORMENU_H_
+#define ERRORMENU_H_
 
 #if defined _WIN32 || defined __CYGWIN__
 #include <pthread.h>
@@ -54,7 +54,7 @@ private:
 	ErrorMenu(string fehlerText);
 	~ErrorMenu();
 
-	Background *hintergrund;
+	Background *background;
 	Text *textFehler;
 	Button *buttonOk;
 
@@ -63,4 +63,4 @@ private:
 };
 
 }
-#endif /* FEHLERMENUE_H_ */
+#endif /* ERRORMENU_H_ */

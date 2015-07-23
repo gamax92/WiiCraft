@@ -58,32 +58,32 @@ void Block02ETNT::zeichne(float x, float y, float z, byte meta) {
 	// sued
 	guVector sued[4] = { { x, y1, z1 }, { x1, y1, z1 }, { x1, y, z1 }, { x, y,
 			z1 } };
-	GrrlibErsatz::GRRLIB_DrawImgQuadTile(sued, 8);
+	GrrlibReplacement::GRRLIB_DrawImgQuadTile(sued, 8);
 
 	// nord
 	guVector nord[4] =
 			{ { x1, y1, z }, { x, y1, z }, { x, y, z }, { x1, y, z } };
-	GrrlibErsatz::GRRLIB_DrawImgQuadTile(nord, 8);
+	GrrlibReplacement::GRRLIB_DrawImgQuadTile(nord, 8);
 
 	// ost
 	guVector ost[4] = { { x1, y1, z1 }, { x1, y1, z }, { x1, y, z },
 			{ x1, y, z1 } };
-	GrrlibErsatz::GRRLIB_DrawImgQuadTile(ost, 8);
+	GrrlibReplacement::GRRLIB_DrawImgQuadTile(ost, 8);
 
 	// west
 	guVector west[4] =
 			{ { x, y1, z }, { x, y1, z1 }, { x, y, z1 }, { x, y, z } };
-	GrrlibErsatz::GRRLIB_DrawImgQuadTile(west, 8);
+	GrrlibReplacement::GRRLIB_DrawImgQuadTile(west, 8);
 
 	// oben
 	guVector oben[4] = { { x, y1, z }, { x1, y1, z }, { x1, y1, z1 }, { x, y1,
 			z1 } };
-	GrrlibErsatz::GRRLIB_DrawImgQuadTile(oben, 9);
+	GrrlibReplacement::GRRLIB_DrawImgQuadTile(oben, 9);
 
 	// unten
 	guVector unten[4] =
 			{ { x1, y, z }, { x, y, z }, { x, y, z1 }, { x1, y, z1 } };
-	GrrlibErsatz::GRRLIB_DrawImgQuadTile(unten, 10);
+	GrrlibReplacement::GRRLIB_DrawImgQuadTile(unten, 10);
 }
 
 bool Block02ETNT::istDurchsichtig() {

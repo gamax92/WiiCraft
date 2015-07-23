@@ -33,27 +33,27 @@
 
 using namespace std;
 
-Item *Block036Truhe::getInstance() {
-	return new Block036Truhe();
+Item *Block036Chest::getInstance() {
+	return new Block036Chest();
 }
 
-bool Block036Truhe::registiereItem() {
-	ItemManager::registriereItem(new Block036Truhe());
+bool Block036Chest::registiereItem() {
+	ItemManager::registriereItem(new Block036Chest());
 
 	return true;
 }
 
-Block036Truhe::Block036Truhe() {
+Block036Chest::Block036Chest() {
 	this->setzeStandardWerte();
 
 	Item::id = 0x036;
 }
 
-void Block036Truhe::zeichne(float x, float y, float z, byte meta) {
+void Block036Chest::zeichne(float x, float y, float z, byte meta) {
 	// TODO zeichnen fertig umsetzen
 	ItemBlock::zeichneBlock(x, y, z, 169);
 }
 
-bool Block036Truhe::istDurchsichtig() {
+bool Block036Chest::istDurchsichtig() {
 	return true;
 }

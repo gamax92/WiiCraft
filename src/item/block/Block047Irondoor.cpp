@@ -33,27 +33,27 @@
 
 using namespace std;
 
-Item *Block047Eisentuer::getInstance() {
-	return new Block047Eisentuer();
+Item *Block047Irondoor::getInstance() {
+	return new Block047Irondoor();
 }
 
-bool Block047Eisentuer::registiereItem() {
-	ItemManager::registriereItem(new Block047Eisentuer());
+bool Block047Irondoor::registiereItem() {
+	ItemManager::registriereItem(new Block047Irondoor());
 
 	return true;
 }
 
-Block047Eisentuer::Block047Eisentuer() {
+Block047Irondoor::Block047Irondoor() {
 	this->setzeStandardWerte();
 
 	Item::id = 0x047;
 }
 
-void Block047Eisentuer::zeichne(float x, float y, float z, byte meta) {
+void Block047Irondoor::zeichne(float x, float y, float z, byte meta) {
 	// TODO zeichnen fertig umsetzen
 	ItemBlock::zeichneBlock(x, y, z, 169);
 }
 
-bool Block047Eisentuer::istDurchsichtig() {
+bool Block047Irondoor::istDurchsichtig() {
 	return true;
 }

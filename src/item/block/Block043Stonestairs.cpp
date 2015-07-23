@@ -33,27 +33,27 @@
 
 using namespace std;
 
-Item *Block043Steintreppe::getInstance() {
-	return new Block043Steintreppe();
+Item *Block043Stonestairs::getInstance() {
+	return new Block043Stonestairs();
 }
 
-bool Block043Steintreppe::registiereItem() {
-	ItemManager::registriereItem(new Block043Steintreppe());
+bool Block043Stonestairs::registiereItem() {
+	ItemManager::registriereItem(new Block043Stonestairs());
 
 	return true;
 }
 
-Block043Steintreppe::Block043Steintreppe() {
+Block043Stonestairs::Block043Stonestairs() {
 	this->setzeStandardWerte();
 
 	Item::id = 0x043;
 }
 
-void Block043Steintreppe::zeichne(float x, float y, float z, byte meta) {
+void Block043Stonestairs::zeichne(float x, float y, float z, byte meta) {
 	// TODO zeichnen fertig umsetzen
 	ItemBlock::zeichneBlock(x, y, z, 169);
 }
 
-bool Block043Steintreppe::istDurchsichtig() {
+bool Block043Stonestairs::istDurchsichtig() {
 	return true;
 }

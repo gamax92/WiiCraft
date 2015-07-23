@@ -34,26 +34,26 @@
 
 using namespace std;
 
-Item *Block028Fliegenpilz::getInstance() {
-	return new Block028Fliegenpilz();
+Item *Block028RedMushroom::getInstance() {
+	return new Block028RedMushroom();
 }
 
-bool Block028Fliegenpilz::registiereItem() {
-	ItemManager::registriereItem(new Block028Fliegenpilz());
+bool Block028RedMushroom::registiereItem() {
+	ItemManager::registriereItem(new Block028RedMushroom());
 
 	return true;
 }
 
-Block028Fliegenpilz::Block028Fliegenpilz() {
+Block028RedMushroom::Block028RedMushroom() {
 	this->setzeStandardWerte();
 
 	Item::id = 0x028;
 }
 
-void Block028Fliegenpilz::zeichne(float x, float y, float z, byte meta) {
+void Block028RedMushroom::zeichne(float x, float y, float z, byte meta) {
 	ItemBlock::zeichnePflanze(x, y, z, 28);
 }
 
-bool Block028Fliegenpilz::istDurchsichtig() {
+bool Block028RedMushroom::istDurchsichtig() {
 	return true;
 }

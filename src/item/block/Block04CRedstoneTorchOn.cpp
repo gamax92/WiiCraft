@@ -33,27 +33,27 @@
 
 using namespace std;
 
-Item *Block04CRedstoneFackelAn::getInstance() {
-	return new Block04CRedstoneFackelAn();
+Item *Block04CRedstoneTorchOn::getInstance() {
+	return new Block04CRedstoneTorchOn();
 }
 
-bool Block04CRedstoneFackelAn::registiereItem() {
-	ItemManager::registriereItem(new Block04CRedstoneFackelAn());
+bool Block04CRedstoneTorchOn::registiereItem() {
+	ItemManager::registriereItem(new Block04CRedstoneTorchOn());
 
 	return true;
 }
 
-Block04CRedstoneFackelAn::Block04CRedstoneFackelAn() {
+Block04CRedstoneTorchOn::Block04CRedstoneTorchOn() {
 	this->setzeStandardWerte();
 
 	Item::id = 0x04c;
 }
 
-void Block04CRedstoneFackelAn::zeichne(float x, float y, float z, byte meta) {
+void Block04CRedstoneTorchOn::zeichne(float x, float y, float z, byte meta) {
 	// TODO zeichnen fertig umsetzen
 	ItemBlock::zeichneBlock(x, y, z, 169);
 }
 
-bool Block04CRedstoneFackelAn::istDurchsichtig() {
+bool Block04CRedstoneTorchOn::istDurchsichtig() {
 	return true;
 }

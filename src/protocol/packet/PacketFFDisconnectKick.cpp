@@ -63,7 +63,7 @@ bool PacketFFDisconnectKick::registerPacket() {
 void PacketFFDisconnectKick::schreibePacketInhalt(DataOutputStream *out) {
 	out->schreibeString(this->reason);
 
-	Verbindung::beenden(false);
+	Connection::beenden(false);
 }
 
 void PacketFFDisconnectKick::lesePacketInhalt(DataInputStream *in) {
@@ -78,5 +78,5 @@ void PacketFFDisconnectKick::verarbeitePacket() {
 #ifdef DEBUG_ON
 	Debug::schreibePacketLog("PacketFFDisconnectKick", this->reason);
 #endif
-	Verbindung::beenden(false);
+	Connection::beenden(false);
 }

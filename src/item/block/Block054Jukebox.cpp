@@ -58,32 +58,32 @@ void Block054Jukebox::zeichne(float x, float y, float z, byte meta) {
 	// sued
 	guVector sued[4] = { { x, y1, z1 }, { x1, y1, z1 }, { x1, y, z1 }, { x, y,
 			z1 } };
-	GrrlibErsatz::GRRLIB_DrawImgQuadTile(sued, 74);
+	GrrlibReplacement::GRRLIB_DrawImgQuadTile(sued, 74);
 
 	// nord
 	guVector nord[4] =
 			{ { x1, y1, z }, { x, y1, z }, { x, y, z }, { x1, y, z } };
-	GrrlibErsatz::GRRLIB_DrawImgQuadTile(nord, 74);
+	GrrlibReplacement::GRRLIB_DrawImgQuadTile(nord, 74);
 
 	// ost
 	guVector ost[4] = { { x1, y1, z1 }, { x1, y1, z }, { x1, y, z },
 			{ x1, y, z1 } };
-	GrrlibErsatz::GRRLIB_DrawImgQuadTile(ost, 74);
+	GrrlibReplacement::GRRLIB_DrawImgQuadTile(ost, 74);
 
 	// west
 	guVector west[4] =
 			{ { x, y1, z }, { x, y1, z1 }, { x, y, z1 }, { x, y, z } };
-	GrrlibErsatz::GRRLIB_DrawImgQuadTile(west, 74);
+	GrrlibReplacement::GRRLIB_DrawImgQuadTile(west, 74);
 
 	// oben
 	guVector oben[4] = { { x, y1, z }, { x1, y1, z }, { x1, y1, z1 }, { x, y1,
 			z1 } };
-	GrrlibErsatz::GRRLIB_DrawImgQuadTile(oben, 75);
+	GrrlibReplacement::GRRLIB_DrawImgQuadTile(oben, 75);
 
 	// unten
 	guVector unten[4] =
 			{ { x1, y, z }, { x, y, z }, { x, y, z1 }, { x1, y, z1 } };
-	GrrlibErsatz::GRRLIB_DrawImgQuadTile(unten, 74);
+	GrrlibReplacement::GRRLIB_DrawImgQuadTile(unten, 74);
 }
 
 bool Block054Jukebox::istDurchsichtig() {

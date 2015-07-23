@@ -27,8 +27,8 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef GRRLIBERSATZ_H_
-#define GRRLIBERSATZ_H_
+#ifndef GRRLIBREPLACEMENT_H_
+#define GRRLIBREPLACEMENT_H_
 
 #if defined _WIN32 || defined __CYGWIN__
 #include "WiiFunction.h"
@@ -38,7 +38,7 @@
 
 namespace std {
 
-class GrrlibErsatz {
+class GrrlibReplacement {
 public:
 	static void GRRLIB_SetTexture(GRRLIB_texImg *tex, bool rep);
 	static void GRRLIB_DrawImgQuadTile(const guVector pos[4], const int frame);
@@ -47,4 +47,4 @@ private:
 };
 
 }
-#endif /* GRRLIBERSATZ_H_ */
+#endif /* GRRLIBREPLACEMENT_H_ */
