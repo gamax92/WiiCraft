@@ -27,7 +27,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Block030BemoosterPflasterstein.h"
+#include "Block030MossyCobbleStone.h"
 
 #include "../ItemManager.h"
 

@@ -27,7 +27,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Block033Feuer.h"
+#include "Block033Fire.h"
 
 #include "../ItemManager.h"
 

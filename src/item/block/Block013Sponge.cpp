@@ -27,7 +27,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Block013Schwamm.h"
+#include "Block013Sponge.h"
 
 #include "../ItemManager.h"
 

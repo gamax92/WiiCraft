@@ -27,7 +27,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Block00EGolderz.h"
+#include "Block00EGoldOre.h"
 
 #include "../ItemManager.h"
 

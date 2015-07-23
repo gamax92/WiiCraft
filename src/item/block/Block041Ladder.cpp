@@ -27,7 +27,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Block041Leiter.h"
+#include "Block041Ladder.h"
 
 #include "../ItemManager.h"
 

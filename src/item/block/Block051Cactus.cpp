@@ -27,7 +27,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Block051Kaktus.h"
+#include "Block051Cactus.h"
 
 #include "../ItemManager.h"
 

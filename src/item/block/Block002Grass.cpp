@@ -27,7 +27,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Block002Gras.h"
+#include "Block002Grass.h"
 
 #include "../../util/GrrlibReplacement.h"
 #include "../ItemManager.h"

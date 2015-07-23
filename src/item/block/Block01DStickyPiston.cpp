@@ -27,7 +27,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Block01DHaftenderKolben.h"
+#include "Block01DStickyPiston.h"
 
 #include "../ItemManager.h"
 

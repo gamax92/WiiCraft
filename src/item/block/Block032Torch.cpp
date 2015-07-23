@@ -27,7 +27,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Block032Fackel.h"
+#include "Block032Torch.h"
 
 #include "../ItemManager.h"
 

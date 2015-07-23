@@ -27,7 +27,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Block067Melone.h"
+#include "Block067Melon.h"
 
 #include "../../util/GrrlibReplacement.h"
 #include "../ItemManager.h"

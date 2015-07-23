@@ -27,7 +27,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Block066Glasscheibe.h"
+#include "Block066GlassPane.h"
 
 #include "../ItemManager.h"
 

@@ -27,7 +27,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Block050Schneeblock.h"
+#include "Block050Snowblock.h"
 
 #include "../ItemManager.h"
 

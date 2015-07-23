@@ -27,7 +27,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Block046Druckplatte.h"
+#include "Block046PressurePlate.h"
 
 #include "../ItemManager.h"
 

@@ -27,7 +27,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Block055Zaun.h"
+#include "Block055Fence.h"
 
 #include "../ItemManager.h"
 

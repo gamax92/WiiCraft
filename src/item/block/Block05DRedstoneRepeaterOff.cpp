@@ -27,7 +27,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Block05DRedstoneRepeaterAus.h"
+#include "Block05DRedstoneRepeaterOff.h"
 
 #include "../ItemManager.h"
 

@@ -27,7 +27,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Block03AWerkbank.h"
+#include "Block03AWorkbench.h"
 
 #include "../../util/GrrlibReplacement.h"
 #include "../ItemManager.h"

@@ -27,7 +27,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Block040Holztuer.h"
+#include "Block040WoodenDoor.h"
 
 #include "../ItemManager.h"
 

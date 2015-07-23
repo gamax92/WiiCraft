@@ -27,7 +27,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Block047Eisentuer.h"
+#include "Block047Irondoor.h"
 
 #include "../ItemManager.h"
 

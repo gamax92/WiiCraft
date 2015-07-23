@@ -27,7 +27,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Block071Netherziegelzaun.h"
+#include "Block071NetherrackBrickFence.h"
 
 #include "../ItemManager.h"
 

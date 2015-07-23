@@ -27,7 +27,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Block044Wandschild.h"
+#include "Block044Wallschild.h"
 
 #include "../ItemManager.h"
 

@@ -27,7 +27,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Block024VerschobenerBlock.h"
+#include "Block024MovedBlock.h"
 
 #include "../ItemManager.h"
 

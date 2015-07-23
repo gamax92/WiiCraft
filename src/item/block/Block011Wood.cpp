@@ -27,7 +27,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Block011Baumstamm.h"
+#include "Block011Wood.h"
 
 #include "../../util/GrrlibReplacement.h"
 #include "../ItemManager.h"

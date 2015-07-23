@@ -27,7 +27,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Block07BRedstoneLampeAus.h"
+#include "Block07BRedstoneLampeOff.h"
 
 #include "../ItemManager.h"
 

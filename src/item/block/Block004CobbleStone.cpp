@@ -27,7 +27,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Block004Pflasterstein.h"
+#include "Block004CobbleStone.h"
 
 #include "../ItemManager.h"
 

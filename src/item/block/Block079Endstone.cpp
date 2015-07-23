@@ -27,7 +27,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Block079Endstein.h"
+#include "Block079Endstone.h"
 
 #include "../ItemManager.h"
 

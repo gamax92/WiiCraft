@@ -27,7 +27,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Block06FSeerose.h"
+#include "Block06FSearose.h"
 
 #include "../ItemManager.h"
 

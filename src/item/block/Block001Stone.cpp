@@ -27,7 +27,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Block001Stein.h"
+#include "Block001Stone.h"
 
 #include "../ItemManager.h"
 

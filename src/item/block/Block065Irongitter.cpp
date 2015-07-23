@@ -27,7 +27,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Block065Eisengitter.h"
+#include "Block065Irongitter.h"
 
 #include "../ItemManager.h"
 

@@ -27,7 +27,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Block063BraunerPilzblock.h"
+#include "Block063BrownMushroomblock.h"
 
 #include "../ItemManager.h"
 

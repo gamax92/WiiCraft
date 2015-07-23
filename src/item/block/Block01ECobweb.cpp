@@ -27,7 +27,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Block01ESpinnennetz.h"
+#include "Block01ECobweb.h"
 
 #include "../../util/GrrlibReplacement.h"
 #include "../ItemManager.h"

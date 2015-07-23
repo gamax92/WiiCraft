@@ -27,7 +27,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Block05CKuchenblock.h"
+#include "Block05CCakeblock.h"
 
 #include "../ItemManager.h"
 

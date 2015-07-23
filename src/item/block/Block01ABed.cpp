@@ -27,7 +27,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Block01ABett.h"
+#include "Block01ABed.h"
 
 #include "../ItemManager.h"
 

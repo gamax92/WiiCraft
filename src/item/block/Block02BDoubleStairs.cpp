@@ -27,7 +27,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Block02BDoppelteStufe.h"
+#include "Block02BDoubleStairs.h"
 
 #include "../ItemManager.h"
 

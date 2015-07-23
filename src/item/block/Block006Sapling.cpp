@@ -27,7 +27,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Block006Setzling.h"
+#include "Block006Sapling.h"
 
 #include "../../util/GrrlibReplacement.h"
 #include "../ItemManager.h"

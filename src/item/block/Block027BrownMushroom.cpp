@@ -27,7 +27,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Block027BraunerPilz.h"
+#include "Block027BrownMushroom.h"
 
 #include "../../util/GrrlibReplacement.h"
 #include "../ItemManager.h"

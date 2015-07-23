@@ -27,7 +27,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Block02CStufe.h"
+#include "Block02CStairs.h"
 
 #include "../ItemManager.h"
 

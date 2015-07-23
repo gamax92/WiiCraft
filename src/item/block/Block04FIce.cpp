@@ -27,7 +27,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Block04FEis.h"
+#include "Block04FIce.h"
 
 #include "../ItemManager.h"
 

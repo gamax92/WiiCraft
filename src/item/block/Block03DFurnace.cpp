@@ -27,7 +27,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Block03DOfen.h"
+#include "Block03DFurnace.h"
 
 #include "../../util/GrrlibReplacement.h"
 #include "../ItemManager.h"

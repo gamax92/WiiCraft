@@ -27,7 +27,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Block015LapisLazuliErz.h"
+#include "Block015LapisLazuliOre.h"
 
 #include "../ItemManager.h"
 

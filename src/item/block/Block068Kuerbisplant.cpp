@@ -27,7 +27,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Block068Kuerbispflanze.h"
+#include "Block068Kuerbisplant.h"
 
 #include "../ItemManager.h"
 

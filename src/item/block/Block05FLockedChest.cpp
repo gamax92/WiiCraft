@@ -27,7 +27,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Block05FVerschlosseneTruhe.h"
+#include "Block05FLockedChest.h"
 
 #include "../ItemManager.h"
 

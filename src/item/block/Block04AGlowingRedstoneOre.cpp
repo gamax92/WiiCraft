@@ -27,7 +27,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Block04ALeuchtendesRedstoneerz.h"
+#include "Block04AGlowingRedstoneOre.h"
 
 #include "../ItemManager.h"
 

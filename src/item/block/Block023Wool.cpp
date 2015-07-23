@@ -27,7 +27,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Block023Wolle.h"
+#include "Block023Wool.h"
 
 #include "../ItemManager.h"
 

@@ -27,7 +27,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Block018Sandstein.h"
+#include "Block018Sandstone.h"
 
 #include "../../util/GrrlibReplacement.h"
 #include "../ItemManager.h"

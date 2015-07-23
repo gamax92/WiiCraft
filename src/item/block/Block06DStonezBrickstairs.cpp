@@ -27,7 +27,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Block06DSteinziegeltreppe.h"
+#include "Block06DStonezBrickstairs.h"
 
 #include "../ItemManager.h"
 

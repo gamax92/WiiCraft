@@ -27,7 +27,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Block04BRedstoneFackelAus.h"
+#include "Block04BRedstoneTorchOff.h"
 
 #include "../ItemManager.h"
 

@@ -27,7 +27,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Block036Truhe.h"
+#include "Block036Chest.h"
 
 #include "../ItemManager.h"
 

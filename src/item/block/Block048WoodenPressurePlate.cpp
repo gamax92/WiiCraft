@@ -27,7 +27,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Block048HoelzerneDruckplatte.h"
+#include "Block048WoodenPressurePlate.h"
 
 #include "../ItemManager.h"
 

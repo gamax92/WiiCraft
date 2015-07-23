@@ -27,7 +27,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Block003Erde.h"
+#include "Block003Dirt.h"
 
 #include "../ItemManager.h"
 

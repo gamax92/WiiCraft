@@ -27,7 +27,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Block020ToterStrauch.h"
+#include "Block020DeadStrauch.h"
 
 #include "../../util/GrrlibReplacement.h"
 #include "../ItemManager.h"

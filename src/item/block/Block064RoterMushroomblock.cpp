@@ -27,7 +27,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Block064RoterPilzblock.h"
+#include "Block064RoterMushroomblock.h"
 
 #include "../ItemManager.h"
 

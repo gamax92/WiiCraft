@@ -27,7 +27,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Block014Glas.h"
+#include "Block014Glass.h"
 
 #include "../ItemManager.h"
 

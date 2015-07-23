@@ -27,7 +27,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Block061SteinMitSilberfischen.h"
+#include "Block061StoneWithSilverfish.h"
 
 #include "../ItemManager.h"
 

@@ -27,7 +27,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Block02DZiegelstein.h"
+#include "Block02DBrickstone.h"
 
 #include "../ItemManager.h"
 

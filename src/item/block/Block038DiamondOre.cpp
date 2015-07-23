@@ -27,7 +27,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Block038Diamanterz.h"
+#include "Block038DiamondOre.h"
 
 #include "../ItemManager.h"
 

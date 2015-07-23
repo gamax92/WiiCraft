@@ -27,7 +27,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Block04DSteinschalter.h"
+#include "Block04DStoneLever.h"
 
 #include "../ItemManager.h"
 

@@ -27,7 +27,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Block00AFliessendeLava.h"
+#include "Block00AFlowingLava.h"
 
 #include "../ItemManager.h"
 

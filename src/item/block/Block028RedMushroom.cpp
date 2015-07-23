@@ -27,7 +27,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Block028Fliegenpilz.h"
+#include "Block028RedMushroom.h"
 
 #include "../../util/GrrlibReplacement.h"
 #include "../ItemManager.h"

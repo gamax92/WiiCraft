@@ -27,7 +27,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Block069Melonenpflanze.h"
+#include "Block069Melonnplant.h"
 
 #include "../ItemManager.h"
 

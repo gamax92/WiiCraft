@@ -27,7 +27,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Block008FliessendesWasser.h"
+#include "Block008FlowingWater.h"
 
 #include "../ItemManager.h"
 

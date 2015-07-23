@@ -27,7 +27,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Block06BZauntor.h"
+#include "Block06BFencetor.h"
 
 #include "../ItemManager.h"
 

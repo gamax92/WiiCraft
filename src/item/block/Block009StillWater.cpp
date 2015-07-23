@@ -27,7 +27,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "Block009StehendesWasser.h"
+#include "Block009StillWater.h"
 
 #include "../ItemManager.h"
 
